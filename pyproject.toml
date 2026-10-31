@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=72.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyrolysis-predictor"
+version = "0.1.0"
+description = "폐기물 열분해 생성물·고체 특성·촉매 성능 예측 프로그램"
+requires-python = ">=3.12"
+readme = "README.md"
+license = { text = "Proprietary" }
+
+# 웹 실행에 필요한 핵심 의존성만 선언.
+# 정확한 버전은 requirements.txt 에서 고정한다.
+dependencies = [
+    "streamlit>=1.40.0,<2.0",
+    "pandas>=2.2.0,<3.0",
+    "numpy>=1.26.0,<2.0",
+    "openpyxl>=3.1.0,<4.0",
+    "pydantic>=2.10.0,<3.0",
+    "pyyaml>=6.0.0,<7.0",
+    "scikit-learn>=1.5.0,<2.0",
+    "xgboost>=2.1.0,<3.0",
+    "joblib>=1.4.0,<2.0",
+    "matplotlib>=3.9.0,<4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3.0,<9.0",
+    "pytest-cov>=5.0.0,<6.0",
+    "jupyterlab>=4.2.0,<5.0",
+    "ipykernel>=6.29.0,<7.0",
+]
+
+[project.scripts]
+pyrolysis-cli = "pyrolysis.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyrolysis*"]
+
+# ────────────────────────────────────────────
+# pytest 설정
+# ────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+# ────────────────────────────────────────────
+# 커버리지 설정
+# ────────────────────────────────────────────
+[tool.coverage.run]
+source = ["pyrolysis"]
+omit = ["tests/*", "notebooks/*"]
+
+[tool.coverage.report]
+show_missing = true

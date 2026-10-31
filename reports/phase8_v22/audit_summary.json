@@ -1,0 +1,210 @@
+{
+  "source_name": "Biochar_Phase8_Integrated_Data_Package",
+  "model_retrained": false,
+  "model_deployment_changed": false,
+  "stage1": {
+    "previous": 256,
+    "integrated": 264,
+    "added": 8,
+    "doi_previous": 30,
+    "doi_integrated": 32,
+    "new_dois": [
+      "10.1039/c8ra03958e",
+      "10.3390/molecules30204121"
+    ],
+    "bet_approved": 262,
+    "tpv_approved": 199
+  },
+  "stage2": {
+    "previous": 97,
+    "integrated": 98,
+    "added": 1,
+    "doi_previous": 25,
+    "doi_integrated": 26,
+    "strict_new": 1,
+    "pollutants": {
+      "Cd(II)": 41,
+      "Cu(II)": 22,
+      "Ni(II)": 11,
+      "Pb(II)": 14,
+      "Phenol": 10
+    }
+  },
+  "feedstock": {
+    "dictionary_rows": 84,
+    "alias_rows": 228
+  },
+  "recipes": {
+    "total": 264,
+    "adapter_allowed": 162
+  },
+  "composition_coverage": {
+    "BET": {
+      "total": 262,
+      "fields": {
+        "C": {
+          "n": 61,
+          "doi": 6
+        },
+        "H": {
+          "n": 57,
+          "doi": 5
+        },
+        "O": {
+          "n": 51,
+          "doi": 4
+        },
+        "N": {
+          "n": 42,
+          "doi": 4
+        },
+        "Ash": {
+          "n": 48,
+          "doi": 5
+        },
+        "VM": {
+          "n": 17,
+          "doi": 1
+        },
+        "FC": {
+          "n": 17,
+          "doi": 1
+        },
+        "CHON_complete": {
+          "n": 36,
+          "doi": 3
+        },
+        "proximate_VM_Ash_FC_complete": {
+          "n": 17,
+          "doi": 1
+        }
+      }
+    },
+    "TPV": {
+      "total": 199,
+      "fields": {
+        "C": {
+          "n": 44,
+          "doi": 5
+        },
+        "H": {
+          "n": 40,
+          "doi": 4
+        },
+        "O": {
+          "n": 34,
+          "doi": 3
+        },
+        "N": {
+          "n": 25,
+          "doi": 3
+        },
+        "Ash": {
+          "n": 30,
+          "doi": 4
+        },
+        "VM": {
+          "n": 0,
+          "doi": 0
+        },
+        "FC": {
+          "n": 0,
+          "doi": 0
+        },
+        "CHON_complete": {
+          "n": 19,
+          "doi": 2
+        },
+        "proximate_VM_Ash_FC_complete": {
+          "n": 0,
+          "doi": 0
+        }
+      }
+    }
+  },
+  "stage1_new": [
+    {
+      "material_id": "V13_XIAN_PC300",
+      "doi": "10.1039/c8ra03958e",
+      "feedstock": "Spent Pleurotus ostreatus substrate",
+      "pyrolysis_temperature_C": "300",
+      "BET_m2_g": "3.79",
+      "TPV_cm3_g": "0.014"
+    },
+    {
+      "material_id": "V13_XIAN_PC500",
+      "doi": "10.1039/c8ra03958e",
+      "feedstock": "Spent Pleurotus ostreatus substrate",
+      "pyrolysis_temperature_C": "500",
+      "BET_m2_g": "18.05",
+      "TPV_cm3_g": "0.061"
+    },
+    {
+      "material_id": "V13_XIAN_PC700",
+      "doi": "10.1039/c8ra03958e",
+      "feedstock": "Spent Pleurotus ostreatus substrate",
+      "pyrolysis_temperature_C": "700",
+      "BET_m2_g": "188.57",
+      "TPV_cm3_g": "0.134"
+    },
+    {
+      "material_id": "V13_XIAN_SC300",
+      "doi": "10.1039/c8ra03958e",
+      "feedstock": "Spent shiitake substrate",
+      "pyrolysis_temperature_C": "300",
+      "BET_m2_g": "12.97",
+      "TPV_cm3_g": "0.028"
+    },
+    {
+      "material_id": "V13_XIAN_SC500",
+      "doi": "10.1039/c8ra03958e",
+      "feedstock": "Spent shiitake substrate",
+      "pyrolysis_temperature_C": "500",
+      "BET_m2_g": "47.07",
+      "TPV_cm3_g": "0.07"
+    },
+    {
+      "material_id": "V13_XIAN_SC700",
+      "doi": "10.1039/c8ra03958e",
+      "feedstock": "Spent shiitake substrate",
+      "pyrolysis_temperature_C": "700",
+      "BET_m2_g": "218.7",
+      "TPV_cm3_g": "0.138"
+    },
+    {
+      "material_id": "V15_ALMOND_AS-RAW-SP",
+      "doi": "10.3390/molecules30204121",
+      "feedstock": "almond shell",
+      "pyrolysis_temperature_C": "600",
+      "BET_m2_g": "693.0",
+      "TPV_cm3_g": "0.598"
+    },
+    {
+      "material_id": "V15_ALMOND_AS-KOH-SP",
+      "doi": "10.3390/molecules30204121",
+      "feedstock": "almond shell",
+      "pyrolysis_temperature_C": "600",
+      "BET_m2_g": "476.0",
+      "TPV_cm3_g": "0.185"
+    }
+  ],
+  "stage2_new": [
+    {
+      "adsorption_id": "V15_ADS_ALMOND_SP_C500",
+      "doi": "10.3390/molecules30204121",
+      "pollutant": "Pb(II)",
+      "qe_mg_g": "103.0",
+      "C0_mg_L": "500",
+      "dose_g_L": "2",
+      "source_target_status": "USE_DIRECT_EQUILIBRIUM"
+    }
+  ],
+  "limitations": [
+    "Phase8 added 8 Stage1 rows and 1 Stage2 row, NOT 264+98 independent new observations.",
+    "No training/deployed model is updated by importing this package.",
+    "The new strict equilibrium observation is part of Stage2=98, not a separate 99th row.",
+    "Most Stage1-Stage2 observations lack an approved material-level bridge.",
+    "Stage1 composition values with non-comparable analysis basis must not be silently harmonized.",
+    "Research ranking is not a validated global optimum."
+  ]
+}

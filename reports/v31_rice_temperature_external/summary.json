@@ -1,0 +1,65 @@
+{
+  "train_rows": 98,
+  "train_dois": 26,
+  "external_doi": "10.3390/molecules30173616",
+  "external_doi_seen_in_stage2_training": false,
+  "rice_husk_train_rows": 13,
+  "rice_husk_single_stage_train_rows": 0,
+  "global_single_stage_train_rows": 25,
+  "explicit_unmodified_agent_category_seen_in_training": false,
+  "external_target": "graph experimental qt at 1440 min; exploratory, equilibrium not certified",
+  "external_qa_approved_for_training": false,
+  "external_rows": 6,
+  "external_dois": 1,
+  "external_pollutant_series": 2,
+  "primary_fit": "A XGBoost / B Ridge re-fit on Core98; active deployed B XGBoost joblib NOT loaded",
+  "core97_sensitivity_fit": "Fixed original 97-row cohort re-fit (NOT the saved deployed estimator)",
+  "source_paper_method_pages": [
+    18,
+    19
+  ],
+  "contains_same_paper_stage1_BET_TPV_measurements_as_eval_predictors": false,
+  "train_model_uses_graph_data": false,
+  "observational_qt_never_used_to_fit_model": true,
+  "no_clipping_used_for_model_scoring": true,
+  "tolerance_mg_g": 0.5,
+  "models": {
+    "A_XGBoost": {
+      "mae_mg_g": 11.399371369679768,
+      "raw_constraint_violations": 3,
+      "pairwise_macro": 0.5,
+      "top1_expected_mean": 0.3333333333333333,
+      "mean_regret_mg_g": 2.8833333333333337
+    },
+    "B_Ridge": {
+      "mae_mg_g": 8.200563401070298,
+      "raw_constraint_violations": 3,
+      "pairwise_macro": 0.6666666666666666,
+      "top1_expected_mean": 0.0,
+      "mean_regret_mg_g": 2.25
+    },
+    "B_XGBoost_sensitivity": {
+      "mae_mg_g": 12.491709136962891,
+      "raw_constraint_violations": 3,
+      "pairwise_macro": 0.6666666666666666,
+      "top1_expected_mean": 0.0,
+      "mean_regret_mg_g": 2.25
+    },
+    "B_Ridge_refitCore97_sensitivity": {
+      "mae_mg_g": 6.594205135652021,
+      "raw_constraint_violations": 3,
+      "pairwise_macro": 0.6666666666666666,
+      "top1_expected_mean": 0.0,
+      "mean_regret_mg_g": 2.25
+    },
+    "B_XGBoost_refitCore97_sensitivity": {
+      "mae_mg_g": 15.459279123942059,
+      "raw_constraint_violations": 3,
+      "pairwise_macro": 0.6666666666666666,
+      "top1_expected_mean": 0.0,
+      "mean_regret_mg_g": 2.25
+    }
+  },
+  "independent_validation_level": "ONE externally held-out DOI; 2 correlated series, NOT generalization accuracy",
+  "interpretation": "Do not deploy global optimum / no improvement claim; paper/route OOD; 1440-min graph approximations."
+}

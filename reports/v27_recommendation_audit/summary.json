@@ -1,0 +1,111 @@
+{
+  "stage2_ranking": {
+    "contract": "Research-only v27, 98 rows / 26 DOI, v24 69 rows excluded, Model B Ridge fixed; no deployment",
+    "found": {
+      "groups_with_at_least_2_recipes": 12,
+      "groups_with_nontied_observed_target": 11,
+      "rows_in_groups": 33,
+      "independent_DOIs": 8,
+      "fully_reported_adsorption_groups": 11,
+      "physically_eligible_groups": 6,
+      "all_candidates_physically_valid_groups": 6,
+      "groups_with_predicted_ties": 8,
+      "model_B_raw_violations_in_group_rows": 17
+    },
+    "all_evaluable_groups": {
+      "n_groups": 11,
+      "n_dois": 7,
+      "n_pairs_total": 30,
+      "macro_pairwise_tie_half": 0.8712121212121212,
+      "doi_macro_pairwise_tie_half": 0.8928571428571429,
+      "pooled_pairwise_tie_half": 0.8333333333333334,
+      "heldout_top1_expected_mean": 0.6212121212121212,
+      "random_top1_expected_mean": 0.37121212121212116,
+      "regret_mg_g_mean": 8.946818181818182,
+      "random_regret_mg_g_mean": 21.663030303030308
+    },
+    "adsorption_complete": {
+      "n_groups": 11,
+      "n_dois": 7,
+      "n_pairs_total": 30,
+      "macro_pairwise_tie_half": 0.8712121212121212,
+      "doi_macro_pairwise_tie_half": 0.8928571428571429,
+      "pooled_pairwise_tie_half": 0.8333333333333334,
+      "heldout_top1_expected_mean": 0.6212121212121212,
+      "random_top1_expected_mean": 0.37121212121212116,
+      "regret_mg_g_mean": 8.946818181818182,
+      "random_regret_mg_g_mean": 21.663030303030308
+    },
+    "physical_eligible_subset": {
+      "n_groups": 6,
+      "n_dois": 5,
+      "n_pairs_total": 12,
+      "macro_pairwise_tie_half": 0.9166666666666666,
+      "doi_macro_pairwise_tie_half": 0.9333333333333333,
+      "pooled_pairwise_tie_half": 0.875,
+      "heldout_top1_expected_mean": 0.75,
+      "random_top1_expected_mean": 0.4166666666666667,
+      "regret_mg_g_mean": 15.914166666666668,
+      "random_regret_mg_g_mean": 37.826666666666675
+    },
+    "all_candidates_physically_valid_subset": {
+      "n_groups": 6,
+      "n_dois": 5,
+      "n_pairs_total": 12,
+      "macro_pairwise_tie_half": 0.9166666666666666,
+      "doi_macro_pairwise_tie_half": 0.9333333333333333,
+      "pooled_pairwise_tie_half": 0.875,
+      "heldout_top1_expected_mean": 0.75,
+      "random_top1_expected_mean": 0.4166666666666667,
+      "regret_mg_g_mean": 15.914166666666668,
+      "random_regret_mg_g_mean": 37.826666666666675
+    },
+    "margin_1mg": {
+      "groups": 11,
+      "macro_pairwise": 0.9166666666666667,
+      "pairs": 27
+    },
+    "margin_2mg": {
+      "groups": 10,
+      "macro_pairwise": 0.9375000000000002,
+      "pairs": 21
+    },
+    "doi_uncertainty": {
+      "doi_count": 7,
+      "macro_doi_mean": 0.8928571428571429,
+      "cluster_ci_95": [
+        0.8214285714285714,
+        0.9642857142857143
+      ],
+      "signflip_two_sided_p_exploratory": 0.015625,
+      "interpretation": "n small; CI and signflip exploratory; groups within DOI not independent"
+    },
+    "limitations": [
+      "Within-DOI comparable groups are grouped at exactly same adsorption inputs, no imputed conditions",
+      "Ridge trained on other DOI only, unseen feedstocks frequently confounded with DOI",
+      "Top1 is highest within held-out candidates, NOT global optimization or 16-condition oracle",
+      "Predicted tie is assigned fair 0.5 pairwise credit; real small differences may be noise",
+      "Physical limits checked BEFORE clipping. Eligible subset is selected after prediction; not unbiased score",
+      "Observed qe is reported uptake not uniformly certified equilibrium",
+      "DOI-level inference not available at large sample n; groups per DOI dependent"
+    ]
+  },
+  "stage1_robustness": {
+    "BET": {
+      "doi_improved": 19,
+      "doi_worsened": 13,
+      "doi_mean_delta_mae": -31.64536272072622,
+      "worst_doi_delta_mae": 227.59696175134835,
+      "oof_rows": 262,
+      "external_dois": 6
+    },
+    "TPV": {
+      "doi_improved": 14,
+      "doi_worsened": 15,
+      "doi_mean_delta_mae": -0.005742004738608569,
+      "worst_doi_delta_mae": 0.17500404499034344,
+      "oof_rows": 199,
+      "external_dois": 6
+    }
+  }
+}

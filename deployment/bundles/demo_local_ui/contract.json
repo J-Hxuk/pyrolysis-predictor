@@ -1,0 +1,18 @@
+{
+  "bundle_id": "demo_local_ui",
+  "bundle_type": "demo-synthetic",
+  "disclaimer": "시험용 합성 자료 - 실제 연구 성능 아님. 이 결과를 실제 촉매 성능 예측의 검증 결과로 사용하지 않습니다.",
+  "input_ids": [
+    "synthetic_x1",
+    "synthetic_x2",
+    "synthetic_x3"
+  ],
+  "input_dtypes": {
+    "synthetic_x1": "float",
+    "synthetic_x2": "float",
+    "synthetic_x3": "category"
+  },
+  "target_id": "synthetic_y1",
+  "target_task": "regression",
+  "target_unit": null
+}

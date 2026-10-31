@@ -1,0 +1,3 @@
+model,scenario,mae_mg_g,rmse_mg_g
+A,pollutant_gated_posthoc,17.877235298777897,30.980849642870837
+B,pollutant_gated_posthoc,17.91946500994101,32.96302800519541

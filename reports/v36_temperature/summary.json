@@ -1,0 +1,89 @@
+{
+  "version": "v36",
+  "purpose": "EXPLORATORY_SUBJECT_TO_SOURCE_GRAPH_REVIEW",
+  "source_rows": 28,
+  "distinct_doi": 4,
+  "panels": 7,
+  "source_rows_old_v35": 15,
+  "new_single_reader_graph_rows": 13,
+  "target_warning": "Mixed source-reported uptake/24h graph readouts; all research-only, not strict equilibrium qe approved",
+  "strategy_summaries": {
+    "highest_temperature": {
+      "panel_count": 7,
+      "heldout_doi_count": 4,
+      "raw_top1_exact": 3,
+      "raw_top1_rate": 0.42857142857142855,
+      "robust_top1_evaluable_panels": 4,
+      "robust_top1_correct": 1,
+      "near_optimal_within_readout_margin": 3,
+      "top2_contains_point_max": 7,
+      "mean_regret_mg_g": 1.758214285714286,
+      "macro_DOI_mean_regret_mg_g": 1.2839583333333333,
+      "macro_DOI_raw_top1_rate": 0.5,
+      "confident_pairwise_n": 38,
+      "confident_pairwise_correct": 30,
+      "confident_pairwise_accuracy": 0.7894736842105263
+    },
+    "pairwise_quadratic": {
+      "panel_count": 7,
+      "heldout_doi_count": 4,
+      "raw_top1_exact": 2,
+      "raw_top1_rate": 0.2857142857142857,
+      "robust_top1_evaluable_panels": 4,
+      "robust_top1_correct": 0,
+      "near_optimal_within_readout_margin": 2,
+      "top2_contains_point_max": 7,
+      "mean_regret_mg_g": 3.7582142857142857,
+      "macro_DOI_mean_regret_mg_g": 4.7839583333333335,
+      "macro_DOI_raw_top1_rate": 0.25,
+      "confident_pairwise_n": 38,
+      "confident_pairwise_correct": 29,
+      "confident_pairwise_accuracy": 0.7631578947368421
+    },
+    "target_500C": {
+      "panel_count": 7,
+      "heldout_doi_count": 4,
+      "raw_top1_exact": 3,
+      "raw_top1_rate": 0.42857142857142855,
+      "robust_top1_evaluable_panels": 4,
+      "robust_top1_correct": 3,
+      "near_optimal_within_readout_margin": 3,
+      "top2_contains_point_max": 4,
+      "mean_regret_mg_g": 6.235714285714286,
+      "macro_DOI_mean_regret_mg_g": 7.4,
+      "macro_DOI_raw_top1_rate": 0.25,
+      "confident_pairwise_n": 38,
+      "confident_pairwise_correct": 24,
+      "confident_pairwise_accuracy": 0.631578947368421
+    }
+  },
+  "prospective_new_two_doi": {
+    "highest_temperature": {
+      "groups": 3,
+      "evaluable": 3,
+      "top1_exact": 3,
+      "mean_regret_mg_g": 0.0
+    },
+    "pairwise_quadratic": {
+      "groups": 3,
+      "evaluable": 0,
+      "top1_exact": null,
+      "mean_regret_mg_g": null
+    },
+    "target_500C": {
+      "groups": 3,
+      "evaluable": 3,
+      "top1_exact": 0,
+      "mean_regret_mg_g": 14.033333333333333
+    }
+  },
+  "limitations": [
+    "Only four DOI; no valid precision/confidence claim from treating panel pairs as independent.",
+    "Single-reader graph readouts require independent graphical verification before training approval.",
+    "Pre-v36 two DOI contain only one with numeric uncertainty; a conservative frozen-old2 pairwise model cannot be trained.",
+    "Jia and Shen graphs report 24h observations; no automatic conversion to strictly certified equilibrium qe.",
+    "Shen initial pH NR; Lv graph initial C0 / experimental duration NR: hold out of ranking ML.",
+    "Within-paper adsorption conditions differ; compare only relative ranks within matched panels.",
+    "Study was used for model design; results descriptive, not preregistered external performance."
+  ]
+}

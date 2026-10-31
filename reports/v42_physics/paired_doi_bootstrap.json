@@ -1,0 +1,142 @@
+[
+  {
+    "model": "A",
+    "baseline": "XGB_raw",
+    "comparison": "XGB_clipped",
+    "delta_mae_mg_g": -3.6998952208594877,
+    "bootstrap_CI95_mg_g": [
+      -6.77575251140797,
+      -1.1767812636264836
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "A",
+    "baseline": "XGB_raw",
+    "comparison": "Logit_Ridge_fraction",
+    "delta_mae_mg_g": 7.259461892534942,
+    "bootstrap_CI95_mg_g": [
+      -1.7950592243153771,
+      22.472647155556423
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "A",
+    "baseline": "XGB_raw",
+    "comparison": "RF_fraction",
+    "delta_mae_mg_g": 3.4151882317906352,
+    "bootstrap_CI95_mg_g": [
+      -3.520334124651891,
+      13.740727138314616
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "A",
+    "baseline": "XGB_raw",
+    "comparison": "FoldMean_fraction",
+    "delta_mae_mg_g": 3.8829996392570476,
+    "bootstrap_CI95_mg_g": [
+      -3.972052201993049,
+      16.01256819775304
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "A",
+    "baseline": "XGB_raw",
+    "comparison": "FoldFullRemoval_cap",
+    "delta_mae_mg_g": 17.08460053212998,
+    "bootstrap_CI95_mg_g": [
+      3.979973288473462,
+      38.97752699389116
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "B",
+    "baseline": "XGB_raw",
+    "comparison": "XGB_clipped",
+    "delta_mae_mg_g": -5.395087978676029,
+    "bootstrap_CI95_mg_g": [
+      -8.863755708452885,
+      -2.7585846801044576
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "B",
+    "baseline": "XGB_raw",
+    "comparison": "Logit_Ridge_fraction",
+    "delta_mae_mg_g": 3.5031043381783826,
+    "bootstrap_CI95_mg_g": [
+      -6.032539243596496,
+      19.34011154516488
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "B",
+    "baseline": "XGB_raw",
+    "comparison": "RF_fraction",
+    "delta_mae_mg_g": 0.7826588425079772,
+    "bootstrap_CI95_mg_g": [
+      -6.791562436551392,
+      12.5489243083001
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "B",
+    "baseline": "XGB_raw",
+    "comparison": "FoldMean_fraction",
+    "delta_mae_mg_g": 1.286871280597714,
+    "bootstrap_CI95_mg_g": [
+      -6.5629940909510545,
+      13.701527019491733
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  },
+  {
+    "model": "B",
+    "baseline": "XGB_raw",
+    "comparison": "FoldFullRemoval_cap",
+    "delta_mae_mg_g": 14.488472173470647,
+    "bootstrap_CI95_mg_g": [
+      0.3823882352526561,
+      37.087891053710784
+    ],
+    "n_doi": 30,
+    "bootstrap_reps": 3000,
+    "unit": "DOI cluster, sampled with replacement",
+    "note": "Exploratory repeated-cohort comparison, NOT a confirmatory significance test"
+  }
+]

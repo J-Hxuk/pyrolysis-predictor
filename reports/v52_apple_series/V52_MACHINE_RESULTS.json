@@ -1,0 +1,246 @@
+{
+  "source_DOI": "10.3390/en13133498",
+  "source_URL": "https://www.mdpi.com/1996-1073/13/13/3498",
+  "base_Stage2_rows": 140,
+  "new_Stage2_rows": 24,
+  "new_Stage2_DOI": 1,
+  "merged_Stage2_rows": 164,
+  "base_Stage1_rows": 417,
+  "new_Stage1_BET_rows": 4,
+  "merged_Stage1_rows": 421,
+  "Stage1_TPV_new_rows": 0,
+  "old_Stage2_sha256": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+  "old_Stage1_sha256": "f2f8ce477b374dda75b8b8a2e09221316142260947fb79afbf99c44fc48e033d",
+  "model_compatibility": "Models serialized in execution environment; Windows re-run training before deployment",
+  "stage2_same140_scores": [
+    {
+      "evaluation": "fixed_original140_DOI_GroupKFold5",
+      "model": "A_base140",
+      "rows": 140,
+      "doi_count": 32,
+      "mae_mg_g": 17.246810957570563,
+      "r2": 0.6983629896178569,
+      "physical_violations": 0,
+      "cap_hits": 43
+    },
+    {
+      "evaluation": "fixed_original140_DOI_GroupKFold5",
+      "model": "A_plus24",
+      "rows": 140,
+      "doi_count": 32,
+      "mae_mg_g": 16.760127406300303,
+      "r2": 0.7101785579958324,
+      "physical_violations": 0,
+      "cap_hits": 42
+    },
+    {
+      "evaluation": "fixed_original140_DOI_GroupKFold5",
+      "model": "B_base140",
+      "rows": 140,
+      "doi_count": 32,
+      "mae_mg_g": 17.690416005177664,
+      "r2": 0.6868810618223955,
+      "physical_violations": 0,
+      "cap_hits": 50
+    },
+    {
+      "evaluation": "fixed_original140_DOI_GroupKFold5",
+      "model": "B_plus24",
+      "rows": 140,
+      "doi_count": 32,
+      "mae_mg_g": 17.760962665444612,
+      "r2": 0.6921833513711815,
+      "physical_violations": 0,
+      "cap_hits": 46
+    }
+  ],
+  "stage1_BET_scores": [
+    {
+      "model": "BET_base",
+      "mae_m2_g": 247.97097503269376,
+      "r2": 0.554559677449987,
+      "rows": 361,
+      "doi_count": 49
+    },
+    {
+      "model": "BET_plus4",
+      "mae_m2_g": 252.97320915581358,
+      "r2": 0.5399732411028453,
+      "rows": 361,
+      "doi_count": 49
+    }
+  ],
+  "apple_new_DOI_scores": [
+    {
+      "model": "A",
+      "pollutant": "Cu(II)",
+      "dose_g_L": 1.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 7.956789093017577,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "A",
+      "pollutant": "Cu(II)",
+      "dose_g_L": 5.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 5.027500000000002,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "A",
+      "pollutant": "Cu(II)",
+      "dose_g_L": 20.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 0.1775000000000001,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "A",
+      "pollutant": "Zn(II)",
+      "dose_g_L": 1.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 11.368841400146485,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "A",
+      "pollutant": "Zn(II)",
+      "dose_g_L": 5.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 6.227499999999999,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "A",
+      "pollutant": "Zn(II)",
+      "dose_g_L": 20.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 0.34250000000000014,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "B",
+      "pollutant": "Cu(II)",
+      "dose_g_L": 1.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 3.513088445663452,
+      "ranking_defined": true,
+      "predicted_best_T_C": 600.0,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "B",
+      "pollutant": "Cu(II)",
+      "dose_g_L": 5.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 1.163121857643128,
+      "ranking_defined": true,
+      "predicted_best_T_C": 600.0,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "B",
+      "pollutant": "Cu(II)",
+      "dose_g_L": 20.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 0.1775000000000001,
+      "ranking_defined": false,
+      "predicted_best_T_C": NaN,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "B",
+      "pollutant": "Zn(II)",
+      "dose_g_L": 1.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 4.348717603683472,
+      "ranking_defined": true,
+      "predicted_best_T_C": 600.0,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "B",
+      "pollutant": "Zn(II)",
+      "dose_g_L": 5.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 1.7385796689987183,
+      "ranking_defined": true,
+      "predicted_best_T_C": 600.0,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    },
+    {
+      "model": "B",
+      "pollutant": "Zn(II)",
+      "dose_g_L": 20.0,
+      "rows": 4,
+      "doi_count": 1,
+      "mae_mg_g": 0.30031254768371596,
+      "ranking_defined": true,
+      "predicted_best_T_C": 400.0,
+      "observed_best_T_C": 500.0,
+      "top1": false
+    }
+  ],
+  "research_models": [
+    {
+      "model": "Stage2_A",
+      "file": "V52_STAGE2_A_164_NOT_ACTIVE.joblib",
+      "sha256": "b291e47eb3ed8431ff0db4d084300dc7629713691a1f3eb0d88803cdcd2d2230",
+      "nrows": 164
+    },
+    {
+      "model": "Stage2_B",
+      "file": "V52_STAGE2_B_164_NOT_ACTIVE.joblib",
+      "sha256": "ab270691136f8a6e279f58f8a5f97cc5eb8d689ef29123359d1286d3822315fb",
+      "nrows": 164
+    },
+    {
+      "model": "Stage1_BET",
+      "file": "V52_STAGE1_BET_365_NOT_ACTIVE.joblib",
+      "sha256": "21c8b0988f09d85b80014ed19b2f25dbee35c8427dee92a9c422419c4fdba817",
+      "nrows": 365
+    },
+    {
+      "model": "Stage1_TPV",
+      "file": "V52_STAGE1_TPV_231_NOT_ACTIVE.joblib",
+      "sha256": "c4317abc3ca466edf79aa0125547d6ade4580b51c1e3a733b26c0ad335cc8196",
+      "nrows": 231
+    }
+  ],
+  "model_deployed": false
+}

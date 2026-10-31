@@ -1,0 +1,7 @@
+scenario,subset,n_panels_inventory,n_doi_inventory,n_panels,n_doi,n_panels_undefined_rho,undefined_panel_keys,mean_delta_rho,ci95_low,ci95_high,reason
+152,all,15,9,13,9,2,10.3390/ijerph16050845:11 | 10.3390/ijerph16050845:13,-0.33552478966807114,-0.6525270553055929,0.006225744976383366,
+152,full_ads_conditions,4,3,4,3,0,,-0.47126317077200064,-0.7999999999999999,0.0,
+152,strict_experimental_qe,2,1,2,1,0,,-0.7999999999999999,,,TOO_FEW_INDEPENDENT_DOIS_FOR_CI
+188,all,15,9,14,8,1,10.3390/su14159022:14,-0.008710146064228985,-0.22403536772259125,0.1853116730221384,
+188,full_ads_conditions,4,3,3,2,1,10.3390/su14159022:14,-0.3708199267978953,,,TOO_FEW_INDEPENDENT_DOIS_FOR_CI
+188,strict_experimental_qe,2,1,2,1,0,,-0.4,,,TOO_FEW_INDEPENDENT_DOIS_FOR_CI

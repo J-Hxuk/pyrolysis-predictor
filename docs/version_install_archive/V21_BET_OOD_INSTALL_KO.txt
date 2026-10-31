@@ -1,0 +1,33 @@
+Stage 1 v21 — 학습범위 밖 조성 참고 예측 · 분석 basis UI 정리
+============================================================
+
+전제: 기존 v19 + v20이 설치된 Windows 프로그램 폴더. 설치 전 전체 폴더 백업 권장.
+
+1) 다운로드된 Biochar_Stage1_v21_Composition_OOD_Patch.zip을
+   C:\Users\jh030\Desktop\대학\학술대회\프로그램 폴더에 복사하세요.
+
+2) PowerShell에서:
+   Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+   Expand-Archive -LiteralPath ".\Biochar_Stage1_v21_Composition_OOD_Patch.zip" -DestinationPath "." -Force
+
+3) 테스트:
+   .\.venv\Scripts\python.exe -m pytest tests\test_stage1_bet_v20.py tests\test_stage1_bet_v21_ood.py tests\test_biochar_stage2_input_support.py -q
+
+4) Streamlit 재시작 (이미 실행 중이면 Ctrl+C 후):
+   .\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+
+5) 사이드바 F. Experimental BET (Stage 1)
+   - 공업분석은 dry basis, 원소분석은 dry ash-free (daf)로 고정됨.
+   - VM=20 / Ash=20 / FC=60 (원료의 실측 dry basis) 예시:
+      * 열분해 조건이 학습 범위 안일 경우, 고불확실성 안내+동의 체크박스 등장.
+      * 체크 후 참고 BET 수치 출력 가능.
+      * 체크하지 않으면 이전과 동일하게 학습범위 밖 정량 예측은 차단.
+   - VM+Ash+FC 합계 100±2 wt% 및 기타 입력 검증 유지.
+
+중요: 범위 밖 값은 RandomForest의 정상 외삽 능력을 의미하지 않습니다.
+      트리 기반 모델은 학습범위 외 트렌드를 제대로 외삽하지 못합니다.
+      참고 숫자를 논문 실측치, 신뢰구간, 물성 보증값으로 해석하지 마세요.
+      모델 JSON/학습 데이터/Stage1 v60/Stage2 저장 모델은 변경하지 않습니다.
+
+실행환경: Linux Python 3.13에서 관련 테스트 39개 통과.
+           Windows Streamlit 화면 재확인은 사용자 PC에서 수행해야 합니다.

@@ -1,0 +1,29 @@
+﻿Biochar v17 + v18 통합 패치 — 안전 설치 안내
+
+포함 기능
+- v17: Stage 2 원료명 자유 입력 및 UI 개선
+- v18: Stage 1 조성변수 BET 실험 코드·기존 평가 결과(읽기 전용)
+
+중요
+- 기존 프로그램 폴더의 .venv/, data/, deployment/를 삭제하지 마세요.
+- 모델이 실제 조성값을 이용하도록 업데이트된 것은 아닙니다. v18은 별도 분석 실험입니다.
+- 연구 현황 문서 docs/biochar_data_status.md는 일부러 패치에서 제외하여 덮어쓰지 않습니다.
+- 기존 파일 가운데 덮어쓰는 것은 pyrolysis/biochar_ui/stage2_pages.py 하나입니다.
+
+설치 전: 프로그램 폴더를 백업하거나, 최소한 pyrolysis/biochar_ui/stage2_pages.py를 별도 위치에 복사하세요.
+1. ZIP을 C:\Users\jh030\Desktop\대학\학술대회\에 다운로드/이동하세요.
+2. PowerShell 실행:
+   Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+   Copy-Item ".\pyrolysis\biochar_ui\stage2_pages.py" "..\stage2_pages_before_v17.py"
+   Expand-Archive -LiteralPath "..\Biochar_v17_v18_Combined_Patch_SAFE.zip" -DestinationPath "." -Force
+3. 점검:
+   .\.venv\Scripts\python.exe -m pytest tests/test_biochar_stage2_input_support.py tests/test_stage1_composition_v18.py -q
+   .\.venv\Scripts\python.exe scripts/check_stage2_environment.py
+4. 위 환경 점검이 PASS면 앱 실행:
+   .\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+
+기존 v18 평가 결과: reports/stage1_composition_v18/RESULTS_KO.md
+재평가 필요할 때만 (학습/검증 계산에 시간이 걸릴 수 있음):
+   .\.venv\Scripts\python.exe -m scripts.run_stage1_composition_v18
+
+실행 중 에러가 발생하면 기존 가상환경이나 모델 파일을 삭제/재설치하지 말고, 오류 메시지를 확인하세요.

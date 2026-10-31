@@ -1,0 +1,34 @@
+Biochar Stage 2 v19 UI patch — 설치 및 사용
+
+기준: Biochar_v17_v18_Combined_Patch_SAFE 적용 후
+대상: 기존 프로그램 루트(=biochar_stage2_app.py, pyrolysis, tests가 있는 폴더)
+
+[변경 내용]
+- 화면 1: Stage 2 흡착량 예측(기본 Model A, 체크할 때만 제조조건 입력 및 B 예측)
+- 원소분석/공업분석/구성성분은 시작부터 펼쳐진 선택 입력 항목
+- 화면 2: 제조조건 후보 탐색 (원료 및 고정 흡착조건을 입력 → 해당 원료·오염물질의 문헌 제조조건을 가져와 B 예측 결과 순위표/그래프 출력)
+- Model B 후보는 기존 실험 제조조건 범위에서만 생성하며, 관측 타깃 qe값으로 순위를 계산하지 않음
+- 미학습 원료는 Model B 예측·추천 차단. Model A는 원료를 구별하지 않는 일반 흡착조건 추정치만 가능
+- 후보가 하나뿐이면 최적조건 순위를 제시하지 않음. 물질수지 위반 후보는 순위에서 제외
+- Stage 1 v60, Stage 2 모델, 데이터, 활성 설정, 기존 v16 검증 결과 모두 보존
+
+[Windows PowerShell 설치]
+1. Biochar_v17_v18_Combined_Patch_SAFE 설치 완료 상태인지 확인 (안 되어 있다면 먼저 설치)
+2. v19 ZIP을 '프로그램' 상위 폴더로 이동
+3. 기존 프로젝트의 pyrolysis/biochar_ui/stage2_pages.py를 별도 위치에 백업
+4. '프로그램' 폴더에서 다음을 실행:
+   Expand-Archive -LiteralPath '..\Biochar_Stage2_v19_OutputFirst_UI_Patch.zip' -DestinationPath '.' -Force
+5. 테스트:
+   .\.venv\Scripts\python.exe -m pytest tests/test_stage2_candidate_screening_v19.py tests/test_biochar_stage2_input_support.py tests/test_biochar_stage2_v16.py -q
+6. 실행:
+   .\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+7. 브라우저에서 사이드바 'C. Manufacture Candidates'를 선택해 제조조건 후보 출력 확인
+
+[적용 한계]
+- v19은 제조조건 전역 최적화 모델이 아님. 학습 데이터에 실제 존재하는 제조 입력조합만 비교.
+- 예를 들어 rice husk + Cd(II): 관측 13행이지만 제조조건 1종이므로 추천 순위를 만들지 않음.
+- peanut shell + Pb(II): 제조경로 2종이 있어 탐색적 후보 비교 가능.
+- v16에서 Model B는 독립 DOI 검증상 Model A보다 낮은 성능이므로 추천은 실험 설계 참고용뿐.
+- 신규 원료 이름만으로 조성을 유도하지 않음. 입력된 조성은 현 Stage 2 모델 예측에 미반영.
+- 원료 조성을 사용한 Stage 1 v18 BET 분석은 별도 검증이며 Stage 2 B 학습·예측에는 아직 통합되지 않음.
+- Python 구버전 모델 로딩 호환성은 사용자의 Windows .venv에서 확인해야 함.

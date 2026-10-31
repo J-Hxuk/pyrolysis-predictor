@@ -1,0 +1,5 @@
+stage,model,eval,n_new,new_doi,n,mae,r2,negative_predictions,physical_violation_count,physical_clipped_mae,upper_cap_hit_count
+Stage1,Poisson,new_DOI_preexisting_old_only_model,12,3,12,101.06079658187936,-16.233890983305105,0,,,
+Stage1,Poisson,new_DOI_preexisting_old_only_model,5,1,5,0.058650258019679345,-9.780433601598425,0,,,
+Stage2,A,new_DOI_preexisting_old_only_model,10,2,10,31.285514068603515,0.643900939587963,0,0.0,31.285514068603515,0.0
+Stage2,B,new_DOI_preexisting_old_only_model,10,2,10,32.056017827987674,0.6621509505303729,2,2.0,31.927069449424742,0.0

@@ -1,0 +1,5 @@
+model,augmented,mae_improvement_mg_g,doi_cluster_bootstrap_ci_low,doi_cluster_bootstrap_ci_high,doi_groups,bootstrap_replicates,caveat
+A,plus8,0.2675016978007266,0.012323154448848303,0.5231387042885708,32,3000,Fixed original 140 DOI folds; training augmentation study not a new independent external holdout
+A,plus24,1.271514548036646,0.14227318715099463,2.6363908321312732,32,3000,Fixed original 140 DOI folds; training augmentation study not a new independent external holdout
+B,plus8,-0.3604311236199878,-0.8356582647716169,0.09142125087763754,32,3000,Fixed original 140 DOI folds; training augmentation study not a new independent external holdout
+B,plus24,-0.2011394257999602,-0.8309564850454869,0.5364825490683429,32,3000,Fixed original 140 DOI folds; training augmentation study not a new independent external holdout

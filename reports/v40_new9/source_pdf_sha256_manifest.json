@@ -1,0 +1,56 @@
+[
+  {
+    "pdf_name": "ChickenManure_Biochar_Pb_DOI_10.1039-C9RA08199B_main.pdf",
+    "pages": 8,
+    "sha256": "ddd51d46c06e1d4de10222cc67a98206a5b48e0f67f64a92e5adb9688aab1526",
+    "file_size_bytes": 1542694
+  },
+  {
+    "pdf_name": "CoconutShell_RiceHusk_CattleManure_Stage1_DOI_10.3390-ma17123030_main.pdf",
+    "pages": 15,
+    "sha256": "f1576c5eaef8395d21dbe429bc9c3592aa85fe8cd8acb6694e76c9956278e65c",
+    "file_size_bytes": 4978153
+  },
+  {
+    "pdf_name": "Kelp_Biochar_Cu_DOI_10.3390-app11199223_main.pdf",
+    "pages": 17,
+    "sha256": "abc57c9c7280ea81ca96b3221881088ab9cb384e6ad56ecdab3324c7c35f9054",
+    "file_size_bytes": 2452225
+  },
+  {
+    "pdf_name": "MaizeStraw_Biochar_HgCdPb_DOI_10.3390-su14159022_main.pdf",
+    "pages": 16,
+    "sha256": "acff0348e367efbc81264f4deabf2454e6a68ae5a23589cdc51a7cbecdead87a",
+    "file_size_bytes": 3316827
+  },
+  {
+    "pdf_name": "MaizeStraw_PlatanusLeaves_Biochar_Cd_DOI_10.3390-ijerph16050845_main.pdf",
+    "pages": 16,
+    "sha256": "44cede5eeef89c14892f843f9cabab52617a89dcace6cbfad3d43c011a947683",
+    "file_size_bytes": 5841041
+  },
+  {
+    "pdf_name": "RiceHusk_FeedstockProperties_DOI_10.3390-en13226033_main.pdf",
+    "pages": 15,
+    "sha256": "5b62fa2bdbe10a86cbeabc220e26d4728646ebf8b228b6ad3faf1f2cc2732f5d",
+    "file_size_bytes": 2763486
+  },
+  {
+    "pdf_name": "RiceStraw_Biochar_PbZn_DOI_10.1016-j.biteb.2021.100920_main.pdf",
+    "pages": 9,
+    "sha256": "b0ddd8ec95b749abb6101bbc4b58dc66e95834cf00c6f6e466f5e4df927f61e5",
+    "file_size_bytes": 595660
+  },
+  {
+    "pdf_name": "SoybeanStraw_FeedstockProperties_DOI_10.1021-acsomega.1c04717_main.pdf",
+    "pages": 7,
+    "sha256": "712092143dcabdd9ef47660c6815b1f245bbfc4d5ada5ad579e5d570f49a8656",
+    "file_size_bytes": 2006231
+  },
+  {
+    "pdf_name": "SpentCoffeeGrounds_FeedstockProperties_DOI_10.1016-j.egyr.2021.07.032_main.pdf",
+    "pages": 8,
+    "sha256": "1b20ff585093b7ebf8d1f54956d0a9e38aa70ca2a3aa0eda59da703a475e1ea7",
+    "file_size_bytes": 2608456
+  }
+]

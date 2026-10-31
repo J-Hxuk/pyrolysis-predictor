@@ -1,0 +1,45 @@
+doi,feedstock,pollutant,n_temps,model,observed_best_T_C,predicted_best_T_C,top1_correct,ranking_defined,pairs,correct_pairs,tied_pairs,note
+10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),Cd(II),5,A_clipped,800.0,,,False,10,0,10,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),Cd(II),5,B_clipped,800.0,800.0,True,True,10,8,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),Cd(II),5,CdCu_local_B_clipped,800.0,700.0,False,True,10,7,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),Cd(II),5,B_bounded_fraction,800.0,500.0,False,True,10,4,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,A_clipped,500.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,B_clipped,500.0,700.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,CdCu_local_B_clipped,500.0,700.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,B_bounded_fraction,500.0,700.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,A_clipped,700.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,B_clipped,700.0,700.0,True,True,3,3,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,CdCu_local_B_clipped,700.0,700.0,True,True,3,3,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Cd(II),3,B_bounded_fraction,700.0,700.0,True,True,3,3,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,A_clipped,500.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,B_clipped,500.0,700.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,CdCu_local_B_clipped,500.0,700.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,B_bounded_fraction,500.0,700.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,A_clipped,700.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,B_clipped,700.0,700.0,True,True,3,3,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,CdCu_local_B_clipped,700.0,700.0,True,True,3,3,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.chemosphere.2022.134051,spent coffee grounds,Zn(II),3,B_bounded_fraction,700.0,700.0,True,True,3,3,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.psep.2017.10.014,sewage sludge (oven dried),Cu(II),5,A_clipped,600.0,,,False,10,0,10,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.psep.2017.10.014,sewage sludge (oven dried),Cu(II),5,B_clipped,600.0,500.0,False,True,10,4,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.psep.2017.10.014,sewage sludge (oven dried),Cu(II),5,CdCu_local_B_clipped,600.0,600.0,True,True,10,9,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.1016/j.psep.2017.10.014,sewage sludge (oven dried),Cu(II),5,B_bounded_fraction,600.0,900.0,False,True,10,5,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/app11199223,Macrocystis pyrifera,Cu(II),3,A_clipped,450.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/app11199223,Macrocystis pyrifera,Cu(II),3,B_clipped,450.0,600.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/app11199223,Macrocystis pyrifera,Cu(II),3,CdCu_local_B_clipped,450.0,600.0,False,True,3,1,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/app11199223,Macrocystis pyrifera,Cu(II),3,B_bounded_fraction,450.0,600.0,False,True,3,2,0,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,A_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,B_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,CdCu_local_B_clipped,500.0,500.0,True,True,6,3,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,B_bounded_fraction,500.0,600.0,False,True,6,2,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,A_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,B_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,CdCu_local_B_clipped,500.0,500.0,True,True,6,4,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,B_bounded_fraction,500.0,600.0,False,True,6,3,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,A_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,B_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,CdCu_local_B_clipped,500.0,,,False,6,0,6,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/ijerph16050845,maize straw,Cd(II),4,B_bounded_fraction,500.0,600.0,False,True,6,2,1,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/su14159022,maize straw,Cd(II),3,A_clipped,400.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/su14159022,maize straw,Cd(II),3,B_clipped,400.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/su14159022,maize straw,Cd(II),3,CdCu_local_B_clipped,400.0,,,False,3,0,3,OOF values from same held-out DOI; predictions may tie when features do not vary
+10.3390/su14159022,maize straw,Cd(II),3,B_bounded_fraction,400.0,500.0,False,True,3,1,0,OOF values from same held-out DOI; predictions may tie when features do not vary

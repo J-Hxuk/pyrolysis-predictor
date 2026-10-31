@@ -1,0 +1,16 @@
+지금은 **Task 6 검증 대기 상태**야. `OK` 출력만으로는 파일 내용과 동작이 정상이라고 확정할 수 없어. 다음은 재혁이 터미널에서 직접 테스트하면 돼.
+
+앱이 실행 중이면 `Ctrl+C`로 중지하고, **프로젝트 폴더의 터미널**에서 아래 한 줄을 실행해 줘.
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests/test_contracts.py tests/test_config.py tests/test_demo_training.py tests/test_demo_roundtrip.py -q --tb=short
+```
+
+키로가 제안한 두 테스트에 **기존 학습·저장 테스트도 포함했어.** `demo.yaml`의 입력과 예측 대상 개수가 바뀌었으니, 기존 기능과의 호환성도 확인해야 하거든.
+
+실행 후 다음 내용을 보내줘.
+
+- **모두 성공:** 마지막 `○○ passed` 요약
+- **실패:** 실패 항목의 오류 내용과 마지막 요약
+
+참고로 **기존 `demo_local_ui` 모델은 YAML을 수정해도 자동 갱신되지 않아.** 테스트 결과를 확인한 뒤 새 설정과 저장된 모델의 연결도 확인하자.

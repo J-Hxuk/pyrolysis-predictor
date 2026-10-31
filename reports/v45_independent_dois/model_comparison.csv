@@ -1,0 +1,15 @@
+stage,target,model,evaluation,strategy,n,mae,r2,negative_predictions,physical_violation_count,physical_clipped_mae,upper_cap_hit_count
+Stage1,BET_m2_g_training_candidate,Poisson,old_DOI_fixed_5fold,old_only_refit,336,239.43955980280805,0.48971676567504907,0,,,
+Stage1,BET_m2_g_training_candidate,Poisson,old_DOI_fixed_5fold,pooled_from_scratch_refit,336,250.03579774491712,0.4265067403473144,0,,,
+Stage1,BET_m2_g_training_candidate,Poisson,all_DOI_group5,pooled_from_scratch_refit,348,237.39403303172446,0.48888358733771253,0,,,
+Stage1,TPV_cm3_g_training_candidate,Poisson,old_DOI_fixed_5fold,old_only_refit,213,0.18073239439295619,0.36259546081862815,0,,,
+Stage1,TPV_cm3_g_training_candidate,Poisson,old_DOI_fixed_5fold,pooled_from_scratch_refit,213,0.1884164240103157,0.3134457806151014,0,,,
+Stage1,TPV_cm3_g_training_candidate,Poisson,all_DOI_group5,pooled_from_scratch_refit,218,0.18155976732535523,0.3192646354984996,0,,,
+Stage2,target_value,A,old_DOI_fixed_5fold,old_only_refit,128,18.663922532469037,0.6599499741360412,1,29.0,14.964027311609547,28.0
+Stage2,target_value,A,old_DOI_fixed_5fold,pooled_from_scratch_refit,128,21.34131104585528,0.6312733267512844,1,47.0,16.338783089574537,46.0
+Stage2,target_value,A,old_DOI_fixed_5fold,warm_continue_on_new_only,128,23.009200270965696,0.633181450246169,0,49.0,16.049434863827383,49.0
+Stage2,target_value,A,all_DOI_group5,pooled_from_scratch_refit,138,21.909868943629057,0.6297007213394399,1,32.0,17.65674691238687,31.0
+Stage2,target_value,B,old_DOI_fixed_5fold,old_only_refit,128,21.26005089112837,0.5833657582255898,0,44.0,15.86496291245234,44.0
+Stage2,target_value,B,old_DOI_fixed_5fold,pooled_from_scratch_refit,128,24.112555410943926,0.5172812095813715,0,48.0,16.508174195755384,48.0
+Stage2,target_value,B,old_DOI_fixed_5fold,warm_continue_on_new_only,128,29.71669727486372,0.49125787860360204,0,69.0,17.631008911983532,69.0
+Stage2,target_value,B,all_DOI_group5,pooled_from_scratch_refit,138,23.90082905310479,0.579198982456762,5,52.0,17.66173089197075,47.0

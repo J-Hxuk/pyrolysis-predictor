@@ -1,0 +1,105 @@
+# synthetic_spec_b.yaml — 작업 24 통합 점검용 합성 규격 B (A와 다른 규격).
+#
+# 가상 자료 전용. 규격 A와 입력 ID·단위·대상 구성이 다르다 (규격 교체 점검용).
+# 회귀 대상 2개(서로 다른 단위) + 분류 1개. 그중 하나는 미지원(비활성) 대상.
+schema_version: 1
+problem_id: synthetic-accept-b
+status: configured
+
+inputs:
+  - id: b_p
+    label_ko: 합성 B 입력 P (시험용)
+    description: 시험용 합성 수치 변수 - 실제 공정 변수 아님
+    role: feedstock
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 시험용 임의 물리 범위
+        min_value: 0.0
+        max_value: 50.0
+    display_order: 1
+
+  - id: b_q
+    label_ko: 합성 B 입력 Q (시험용)
+    description: 시험용 합성 수치 변수 - 실제 공정 변수 아님
+    role: preparation
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 시험용 임의 물리 범위
+        min_value: 0.0
+        max_value: 50.0
+    display_order: 2
+
+targets:
+  - id: b_yield
+    label_ko: 합성 B 수율 (시험용)
+    family: liquid
+    task: regression
+    definition: 시험용 합성 회귀 대상 - 실제 성능 지표 아님
+    unit: wt%
+    basis: null
+    measurement: 시험용 합성 측정 - 실제 측정 아님
+    input_ids: [b_p, b_q]
+    label_mapping: null
+    positive_label: null
+    detection_rule: null
+    reaction_context: null
+    output_constraints:
+      non_negative: false
+      finite: true
+      tolerance: 1.0e-6
+    display_precision: 4
+
+  - id: b_area
+    label_ko: 합성 B 표면적 (시험용)
+    family: pore
+    task: regression
+    definition: 시험용 합성 회귀 대상 - 실제 기공 지표 아님
+    unit: m2/g
+    basis: null
+    measurement: 시험용 합성 산출 - 실제 산출 아님
+    input_ids: [b_p, b_q]
+    label_mapping: null
+    positive_label: null
+    detection_rule: null
+    reaction_context: null
+    output_constraints:
+      non_negative: true
+      finite: true
+      tolerance: 1.0e-6
+    display_precision: 4
+
+  - id: b_perf
+    label_ko: 합성 B 성능 분류 - 미지원 (시험용)
+    family: performance
+    task: binary_classification
+    definition: 시험용 합성 미지원 대상 - 자료 부족으로 비활성
+    unit: null
+    basis: null
+    measurement: 시험용 합성 기준 - 실제 기준 아님
+    input_ids: [b_p, b_q]
+    label_mapping:
+      low: 0
+      high: 1
+    positive_label: high
+    detection_rule: null
+    reaction_context: 시험용 합성 반응 조건
+    output_constraints:
+      non_negative: false
+      finite: true
+      tolerance: null
+    display_precision: 4
+
+composition_groups: []
+physical_constraints: []
+applicability:
+  description: 시험용 합성 규격 B - 실제 연구 지표 아님

@@ -1,0 +1,85 @@
+{
+  "input": {
+    "stage1_before": 333,
+    "stage1_added": 18,
+    "stage1_after": 351,
+    "stage1_bet": 313,
+    "stage1_tpv": 205,
+    "stage2_before": 113,
+    "stage2_conditional_added": 12,
+    "stage2_after": 125,
+    "stage2_new_pH_NR": 12,
+    "stage2_new_source_DOI": 1
+  },
+  "evaluation": "exact pre-existing DOI test rows and same GroupKFold 5 split; new DOI train-only in augmentation; new DOI challenge diagnostic",
+  "policy": "NO automatic model activation; source-derived reported uptake provisional; not certified strict equilibrium; qmax & qt & mixed metal excluded",
+  "python_versions": {
+    "scikit_learn": "1.8.0"
+  },
+  "results": [
+    {
+      "stage": "Stage1",
+      "target": "BET",
+      "algorithm": "Ridge",
+      "tested_rows": 299,
+      "tested_dois": 39,
+      "added_train_rows": 14,
+      "MAE_old": 255.821676513489,
+      "MAE_new": 251.8306921529089,
+      "delta_new_minus_old": -3.9909843605800916,
+      "ci95_low": -12.7899248028553,
+      "ci95_high": 3.2773682454650217,
+      "R2_old": 0.49083952925426844,
+      "R2_new": 0.4855250665100389
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV",
+      "algorithm": "RF_log",
+      "tested_rows": 199,
+      "tested_dois": 29,
+      "added_train_rows": 6,
+      "MAE_old": 0.17081892079603214,
+      "MAE_new": 0.16834577782854931,
+      "delta_new_minus_old": -0.0024731429674828354,
+      "ci95_low": -0.010086546815231334,
+      "ci95_high": 0.005492297018413801,
+      "R2_old": 0.34988143149962136,
+      "R2_new": 0.3643969309356502
+    },
+    {
+      "stage": "Stage2",
+      "target": "A",
+      "algorithm": "XGBoost",
+      "tested_rows": 113,
+      "tested_dois": 28,
+      "added_train_rows": 12,
+      "MAE_old": 19.800076850418495,
+      "MAE_new": 18.186926771526846,
+      "delta_new_minus_old": -1.6131500788916528,
+      "ci95_low": -3.338091079490225,
+      "ci95_high": 0.07997967000415418,
+      "R2_old": 0.6853828267978818,
+      "R2_new": 0.7005745735570124,
+      "raw_violations_old": 34,
+      "raw_violations_new": 21
+    },
+    {
+      "stage": "Stage2",
+      "target": "B",
+      "algorithm": "XGBoost",
+      "tested_rows": 113,
+      "tested_dois": 28,
+      "added_train_rows": 12,
+      "MAE_old": 19.74225907904701,
+      "MAE_new": 19.818291206579296,
+      "delta_new_minus_old": 0.07603212753228385,
+      "ci95_low": -1.2559118188686198,
+      "ci95_high": 1.374150765517125,
+      "R2_old": 0.6772766857778554,
+      "R2_new": 0.6714683818795013,
+      "raw_violations_old": 43,
+      "raw_violations_new": 35
+    }
+  ]
+}

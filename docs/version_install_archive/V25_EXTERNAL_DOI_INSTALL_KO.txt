@@ -1,0 +1,24 @@
+Biochar v25 — 신규 데이터 외부 스트레스 테스트 (v24 다음 단계)
+
+[중요]
+- 기존 Stage1 v60 / Stage2 A,B,C 모델과 UI를 변경하지 않습니다.
+- 기존 v23 및 v24 패치가 설치된 작업 폴더에 적용하세요.
+- 이번 패치는 연구용 평가 코드·결과·테스트·보고서만 포함하며 학습 승인/새 배포 모델 생성이 아닙니다.
+- 원본 프로젝트는 반드시 별도 백업해 두세요.
+
+[설치]
+1) Biochar_v25_External_DOI_Challenge_Patch.zip을 프로그램 폴더에 다운로드
+2) PowerShell:
+   Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+   Expand-Archive -LiteralPath ".\Biochar_v25_External_DOI_Challenge_Patch.zip" -DestinationPath "." -Force
+3) 결과 보기:
+   reports\v25_v24_external_challenge\RESULTS_KO.md
+4) 무결성 테스트:
+   .\.venv\Scripts\python.exe -m pytest tests\test_v25_external_challenge.py -q
+5) 평가 재현(필요한 경우):
+   .\.venv\Scripts\python.exe -m scripts.evaluate_v24_v25
+
+[주의]
+- Python 라이브러리 버전이 다른 Windows 환경에서는 재현 결과가 달라질 수 있습니다.
+- 이미 패치에 평가 결과가 포함되어 있으므로 재학습하거나 배포 모델을 교체할 필요 없습니다.
+- v25는 Streamlit 화면을 수정하지 않습니다.

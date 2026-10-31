@@ -1,0 +1,16 @@
+Stage 1 v20 (v19 UI + 별도 연구용 Composition-assisted BET)
+
+1. 반드시 현재 v19 UI가 정상 실행되는 프로젝트를 백업합니다.
+2. 본 ZIP을 현재 프로젝트의 루트 폴더(기존 biochar_stage2_app.py가 있는 곳)에 압축 해제합니다.
+   - pyrolysis/biochar_ui/stage2_pages.py 만 덮어쓰며 기존 v19 기능을 유지하고 F 페이지를 추가합니다.
+   - 신규: stage1_bet_v20_page.py / composition_inference_v20.py / train_stage1_bet_v20.py
+   - 신규 연구용 모델 JSON과 테스트, 결과 문서가 포함됩니다.
+   - .venv, 기존 deployment/stage1_models, deployment/stage2_models, data는 변경하지 않습니다.
+3. 실행 (PowerShell, 프로젝트 폴더에서):
+   .\.venv\Scripts\python.exe -m pytest tests\test_stage1_bet_v20.py -q
+   .\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+4. 사이드바 'F. Experimental BET (Stage 1)' 선택.
+5. 원료명은 자유입력이지만 예측 변수는 아님. 원료 dry 공업분석 VM/Ash/FC 필수.
+   원료 daf 원소분석 C/H/N/O 4개가 모두 있으면 Full Composition 모델 사용.
+6. 출력은 BET(m2/g), 탐색적 연구 결과. Stage2 qe / TPV / 최적제조조건과 미연결.
+7. 실행 불가면 오류를 그대로 공유. 환경 전체 재설치나 기존 모델 재학습은 하지 마세요.

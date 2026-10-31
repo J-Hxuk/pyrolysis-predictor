@@ -1,0 +1,38 @@
+# runtime.yaml — 운영 모드와 처리 한도
+#
+# 실제 처리 한도는 자료 규모와 배포 환경에서 측정한 뒤 확정한다.
+# 미설정 값(null)을 무제한으로 해석하지 않는다.
+# 작업 17·29에서 실측 후 채운다.
+
+schema_version: 1
+
+# 운영 모드: research (기본) 또는 demo (명시적 개발 점검용)
+# demo 는 개발자가 명시적으로 설정한 경우에만 합성 자료·모델을 사용한다.
+mode: research
+
+# 배포 묶음 위치 (저장소 루트 기준 상대 경로)
+bundle_dir: deployment/bundles
+active_pointer: deployment/active.json
+
+# ── 파일 처리 한도 ────────────────────────────────────────
+# 실제 값은 자료 규모 확인 후 작업 29에서 채운다.
+limits:
+  max_upload_size_mib: null      # Streamlit server.maxUploadSize 와 동기화
+  max_candidate_rows: null       # 일괄 예측 최대 행 수
+  max_candidate_cols: null       # 입력 파일 최대 열 수
+  max_error_display: 50          # 화면에 표시할 최대 오류 수 (전체 검사는 계속)
+
+# ── 추론 설정 ────────────────────────────────────────────
+inference:
+  max_concurrent_requests: null  # 동시 추론 요청 수
+  inference_threads: null        # 모델 내부 병렬 스레드 수 (무료 서버 고려)
+  wait_timeout_seconds: null     # 대기 한도 (초). 초과 시 재시도 안내
+
+# ── demo 전용 한도 (research 모드에서는 무시) ────────────
+demo_limits:
+  max_upload_size_mib: 5
+  max_candidate_rows: 100
+  max_candidate_cols: 50
+  max_error_display: 20
+  inference_threads: 1
+  wait_timeout_seconds: 30

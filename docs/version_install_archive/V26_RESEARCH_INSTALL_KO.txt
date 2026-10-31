@@ -1,0 +1,19 @@
+Biochar v26 — Stage 1 로그 스케일 및 Stage 2 물리제약 비교 연구 패치
+
+전제: v25까지 적용된 프로젝트. 이 패치는 새 배포 모델이나 Streamlit UI를 변경하지 않습니다.
+
+1. 기존 '프로그램' 폴더 백업. .venv 삭제 금지.
+2. Biochar_v26_Physics_Aware_Research_Patch.zip을 '프로그램' 폴더에 내려받기.
+3. PowerShell에서:
+   Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+   Test-Path ".\Biochar_v26_Physics_Aware_Research_Patch.zip"
+   Expand-Archive -LiteralPath ".\Biochar_v26_Physics_Aware_Research_Patch.zip" -DestinationPath "." -Force
+4. 테스트:
+   .\.venv\Scripts\python.exe -m pytest tests\test_v26_physics_aware.py -q
+5. (선택) 연구 실험 다시 계산:
+   .\.venv\Scripts\python.exe -m scripts.evaluate_v26_physics_aware
+6. 분석 결과 읽기:
+   reports\v26_physics_aware\RESULTS_KO.md
+
+경고: 실험을 다시 계산하면 reports/v26_physics_aware의 숫자 파일을 재생성합니다.
+기존 'deployment/', 모델 활성화 JSON, 기존 데이터, Streamlit 앱은 이 패치에 포함하지 않습니다.

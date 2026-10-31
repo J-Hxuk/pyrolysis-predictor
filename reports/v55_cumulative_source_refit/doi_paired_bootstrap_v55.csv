@@ -1,0 +1,13 @@
+model,scenario,mae_improvement_mg_g,doi_cluster_bootstrap95_low,doi_cluster_bootstrap95_high,all_original_32_DOI_fixed,n_boot,caution
+A,v53_148,0.2675016978007272,0.016406385216247897,0.512569050808255,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+A,v53_164_sensitivity,1.2715145480366459,0.1424432037658221,2.670566609569053,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+A,v55_152_plus_sugar,0.44745690348453276,-0.18643397803950174,1.0190971946662917,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+A,v55_156_plus_cocoa_conditional,0.3485105785651759,-0.6623909884614589,1.557612341010544,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+A,v55_168_all24_plus_sugar_sensitivity,1.2296845871454676,-0.02189079034703848,2.8173334812107402,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+A,v55_172_all24_plus_cocoa_sensitivity,1.2706836106056747,-0.2903209399432906,3.287469362701739,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+B,v53_148,-0.3604311236199874,-0.8476165783158532,0.09109672602265798,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+B,v53_164_sensitivity,-0.20113942579996025,-0.8407526781316375,0.5051125725799993,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+B,v55_152_plus_sugar,0.06265062314961238,-0.8051585443924538,1.049789882086005,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+B,v55_156_plus_cocoa_conditional,0.2542773474368815,-0.9016402350139067,1.4628555600331075,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+B,v55_168_all24_plus_sugar_sensitivity,0.31180055513025134,-0.8356885372290354,1.7019310599012536,True,3000,Exploratory post-comparison CI; not confirmation after tuning
+B,v55_172_all24_plus_cocoa_sensitivity,0.40945930559163707,-1.1034168773141098,2.1952213752382117,True,3000,Exploratory post-comparison CI; not confirmation after tuning

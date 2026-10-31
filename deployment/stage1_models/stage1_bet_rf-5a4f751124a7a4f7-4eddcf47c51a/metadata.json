@@ -1,0 +1,315 @@
+{
+  "model_name": "stage1_bet_rf",
+  "model_version": "stage1_bet_rf-5a4f751124a7a4f7-4eddcf47c51a",
+  "stage": "stage1",
+  "target": {
+    "id": "BET_m2_g",
+    "label_ko": "BET 비표면적",
+    "unit": "m2/g",
+    "description": "원료 조성·열분해 조건으로 예측하는 바이오차 BET 비표면적."
+  },
+  "inputs": [
+    {
+      "id": "C_pct",
+      "order": 0,
+      "unit": "wt%",
+      "basis": "dry ash-free (daf)",
+      "group": "elemental"
+    },
+    {
+      "id": "H_pct",
+      "order": 1,
+      "unit": "wt%",
+      "basis": "dry ash-free (daf)",
+      "group": "elemental"
+    },
+    {
+      "id": "N_pct",
+      "order": 2,
+      "unit": "wt%",
+      "basis": "dry ash-free (daf)",
+      "group": "elemental"
+    },
+    {
+      "id": "O_pct",
+      "order": 3,
+      "unit": "wt%",
+      "basis": "dry ash-free (daf)",
+      "group": "elemental"
+    },
+    {
+      "id": "VM_pct",
+      "order": 4,
+      "unit": "wt%",
+      "basis": "dry basis",
+      "group": "proximate"
+    },
+    {
+      "id": "Ash_pct",
+      "order": 5,
+      "unit": "wt%",
+      "basis": "dry basis",
+      "group": "proximate"
+    },
+    {
+      "id": "FC_pct",
+      "order": 6,
+      "unit": "wt%",
+      "basis": "dry basis",
+      "group": "proximate"
+    },
+    {
+      "id": "temperature_C",
+      "order": 7,
+      "unit": "°C",
+      "basis": "—",
+      "group": "pyrolysis"
+    },
+    {
+      "id": "time_min",
+      "order": 8,
+      "unit": "min",
+      "basis": "—",
+      "group": "pyrolysis"
+    },
+    {
+      "id": "heating_rate_C_min",
+      "order": 9,
+      "unit": "°C/min",
+      "basis": "—",
+      "group": "pyrolysis"
+    }
+  ],
+  "input_order": [
+    "C_pct",
+    "H_pct",
+    "N_pct",
+    "O_pct",
+    "VM_pct",
+    "Ash_pct",
+    "FC_pct",
+    "temperature_C",
+    "time_min",
+    "heating_rate_C_min"
+  ],
+  "analysis_basis": {
+    "elemental_CHNO": "dry ash-free (daf), 원료 기준",
+    "proximate_VM_Ash_FC": "dry basis, 원료 기준",
+    "note": "원료 조성 기준. 생성 바이오차 조성이 아니다. 합을 100 으로 정규화하지 않음."
+  },
+  "model_type": "RandomForestRegressor",
+  "hyperparameters": {
+    "n_estimators": 300,
+    "min_samples_leaf": 2,
+    "random_state": 42,
+    "n_jobs": 1
+  },
+  "preprocessing": "SimpleImputer(strategy='median', add_indicator=True) (파이프라인 내부, 학습 자료로만 fit)",
+  "training_data": {
+    "dataset_source": "Biochar_Complete_Project_v41 / eval37",
+    "base_file": "eval37/base.csv",
+    "extra_file": "eval37/extra_leng.csv",
+    "base_rows": 182,
+    "extra_rows": 99,
+    "base_sha256": "b72428c4ce8c5306f8fc84e4aa61a212a127447ddbc3728c6877597accf99ef8",
+    "extra_sha256": "f1ef31e98858938dfd62dcc65b83d350770ad5f78652b68dfad2b8a1e9cf5fd3",
+    "dataset_version_hash": "5a4f751124a7a4f7",
+    "n_total_with_target": 281,
+    "n_base": 182,
+    "n_extra": 99,
+    "provenance_groups": [
+      "10.1007/s10973-018-7185-z",
+      "10.1016/j.apsusc.2014.07.126",
+      "10.1016/j.biombioe.2015.11.010",
+      "10.1016/j.biortech.2009.05.009",
+      "10.1016/j.biortech.2011.11.084",
+      "10.1016/j.biortech.2012.12.012",
+      "10.1016/j.biortech.2013.03.186",
+      "10.1016/j.biortech.2013.06.033",
+      "10.1016/j.biortech.2013.08.135",
+      "10.1016/j.biortech.2013.12.084",
+      "10.1016/j.biortech.2015.05.054",
+      "10.1016/j.biortech.2016.03.066",
+      "10.1016/j.biortech.2016.07.049",
+      "10.1016/j.biortech.2017.03.103",
+      "10.1016/j.biortech.2017.11.012",
+      "10.1016/j.biortech.2020.124023",
+      "10.1016/j.cej.2014.04.053",
+      "10.1016/j.chemosphere.2012.05.085",
+      "10.1016/j.energy.2019.05.214",
+      "10.1016/j.envpol.2011.01.002",
+      "10.1016/j.envres.2020.110034",
+      "10.1016/j.fuproc.2007.01.001",
+      "10.1016/j.jaap.2014.07.004",
+      "10.1016/j.jaap.2014.09.016",
+      "10.1016/j.jaap.2018.04.010",
+      "10.1016/j.jaap.2018.06.018",
+      "10.1016/j.jaap.2019.104659",
+      "10.1016/j.jclepro.2017.11.013",
+      "10.1016/j.jclepro.2018.05.034",
+      "10.1016/j.jenvman.2018.12.031",
+      "10.1016/j.jhazmat.2008.10.011",
+      "10.1016/j.jhazmat.2009.09.142",
+      "10.1016/j.jhazmat.2016.08.050",
+      "10.1016/j.mset.2020.06.003",
+      "10.1016/j.proeng.2013.12.193",
+      "10.1016/j.psep.2017.05.002",
+      "10.1016/j.psep.2017.10.014",
+      "10.1080/09542299.2018.1487774",
+      "10.1098/rsos.172346",
+      "10.15376/biores.11.2.3356-3372"
+    ],
+    "n_provenance_groups": 40
+  },
+  "training_numeric_ranges": {
+    "C_pct": {
+      "min": 33.77,
+      "max": 87.6153681047435,
+      "n": 256
+    },
+    "H_pct": {
+      "min": 3.4197631686402623,
+      "max": 13.67292225201072,
+      "n": 256
+    },
+    "N_pct": {
+      "min": 0.05000500050005,
+      "max": 8.209999999999999,
+      "n": 256
+    },
+    "O_pct": {
+      "min": 0.8692852543464262,
+      "max": 52.86,
+      "n": 256
+    },
+    "VM_pct": {
+      "min": 49.3577656593132,
+      "max": 94.161220043573,
+      "n": 207
+    },
+    "Ash_pct": {
+      "min": 0.3,
+      "max": 42.02,
+      "n": 269
+    },
+    "FC_pct": {
+      "min": 3.36601307189542,
+      "max": 37.77,
+      "n": 204
+    },
+    "temperature_C": {
+      "min": 150.0,
+      "max": 800.0,
+      "n": 281
+    },
+    "time_min": {
+      "min": 10.0,
+      "max": 480.0,
+      "n": 281
+    },
+    "heating_rate_C_min": {
+      "min": 1.0,
+      "max": 300.0,
+      "n": 281
+    }
+  },
+  "trained_at_utc": "2026-10-25T11:58:27.556115+00:00",
+  "cross_validation": {
+    "evaluation_type": "탐색적 일반화 검증 (GroupKFold, 새 원료·새 논문). 이 최종 학습 모델의 독립 검증 결과가 아니다.",
+    "config": "RF fixed (n_estimators=300, min_samples_leaf=2, random_state=42)",
+    "outer_seeds": [
+      0,
+      1,
+      2
+    ],
+    "outer_folds": 5,
+    "group_column": "provenance_group",
+    "result": {
+      "model_name": "RF",
+      "config": "fixed",
+      "per_seed": [
+        {
+          "seed": 0,
+          "r2": 0.34731336927634904,
+          "mae": 64.85729682621013,
+          "rmse": 90.29200222412226
+        },
+        {
+          "seed": 1,
+          "r2": 0.2833907573530561,
+          "mae": 69.87577163488821,
+          "rmse": 94.61023642982929
+        },
+        {
+          "seed": 2,
+          "r2": 0.3924288004043859,
+          "mae": 63.16026950094553,
+          "rmse": 87.11551625758004
+        }
+      ],
+      "mean_r2": 0.34104430901126365,
+      "mean_mae": 65.96444598734796,
+      "mean_rmse": 90.67258497051053,
+      "r2_min": 0.2833907573530561,
+      "r2_max": 0.3924288004043859,
+      "n_base_rows": 182,
+      "n_groups": 24,
+      "leakage_checks_passed": true,
+      "note": "탐색적 일반화 검증 (새 원료·새 논문). 최종 학습 모델의 독립 검증이 아니다. eval37/run.py 의 고정 RF 설정을 재현한다 (내부 GridSearch 튜닝 제외). 로컬 sklearn 이 GroupKFold(shuffle=) 를 지원하지 않을 수 있어 그룹 셔플 분할을 자체 구현(shuffled_group_kfold)으로 재현했으며, eval37 분할과 완전히 동일하지 않을 수 있다."
+    },
+    "comparison_with_eval37_reference": {
+      "reference_found": true,
+      "reference_key": "RF_fixed",
+      "reference": {
+        "r2": 0.3200155501957488,
+        "mae": 67.42276414157479,
+        "rmse": 91.9596534928337,
+        "r2_min": 0.2176119762946351,
+        "r2_max": 0.4344092795967061
+      },
+      "reproduced": {
+        "r2": 0.34104430901126365,
+        "mae": 65.96444598734796,
+        "rmse": 90.67258497051053,
+        "r2_min": 0.2833907573530561,
+        "r2_max": 0.3924288004043859
+      },
+      "delta": {
+        "r2": 0.02102875881551486,
+        "mae": -1.4583181542268306,
+        "rmse": -1.2870685223231675
+      },
+      "note": "로컬 sklearn/xgboost 버전이 eval37(versions.json: sklearn 1.8.0, xgboost 3.4.1)과 다르면 OOF 예측과 지표에 소수점 차이가 생길 수 있다. GroupKFold 구현·난수도 버전에 따라 분할이 달라질 수 있어 차이를 그대로 보고한다."
+    }
+  },
+  "library_versions": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "sklearn": "1.5.2",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "joblib": "1.4.2",
+    "xgboost": "2.1.3"
+  },
+  "applicability": {
+    "domain": "Leng2022 기반 비활성화(unmodified) 바이오매스 열분해",
+    "elemental_basis": "dry ash-free (daf), 원료 기준",
+    "proximate_basis": "dry basis, 원료 기준",
+    "not_modeled": [
+      "활성화제",
+      "함침제",
+      "세척",
+      "반응기 종류",
+      "분위기",
+      "입도",
+      "가스 유량"
+    ],
+    "note": "입력에 없는 인자(활성화·함침·세척·반응기·분위기 등)의 영향은 검증하지 않았다. 활성화 공정 등으로 확장하려면 별도 입력과 평가가 필요하다."
+  },
+  "unvalidated_notes": [
+    "입력에 없는 인자(활성화·함침·세척·반응기·분위기 등)의 영향은 검증하지 않았다.",
+    "GroupKFold 점수는 탐색적 일반화 검증이며 이 배포 모델의 독립 검증이 아니다.",
+    "Leng2022 기반 비활성화 바이오매스 열분해 범위 밖은 외삽이다.",
+    "예측 신뢰도 백분율을 제공하지 않는다."
+  ]
+}

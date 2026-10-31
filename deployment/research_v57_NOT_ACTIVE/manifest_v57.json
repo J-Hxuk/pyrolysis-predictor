@@ -1,0 +1,99 @@
+{
+  "version": "v57_k_handoff_36_cumulative",
+  "active": false,
+  "research_only": true,
+  "source_batch_new_QE_36": 36,
+  "source_count": 2,
+  "new_experimental_graph_29": 29,
+  "new_experimental_table_7": 7,
+  "added_stage1_unique_BET_materials": 4,
+  "new_TPV": 0,
+  "source_hash_sha256": "8373083d3f19b7fa696278929dcc6906d3906acf677d7f95d631f87df85e9b81",
+  "baseline_v55_152_sha256": "4aa3c2685cf39b9f2ef2264e2852324dc975b60555b599e6873b622ec73fe0ad",
+  "baseline_140_sha256": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+  "legacy_active_sha256": "c892b8e710a472698cebaf2d9ff89e462dae289cb39d2b82a918b94e9b24fb1f",
+  "python": "3.12.10",
+  "scikit_learn": "1.5.2",
+  "xgboost": "2.1.3",
+  "note": "Same140 estimates posthoc; sourceout uses models trained before addition but sources were not hidden; no blind validation; optional new data do not imply performance improvements",
+  "artifacts": [
+    {
+      "model": "A",
+      "scenario": "v57_159_cao_only",
+      "path": "deployment/research_v57_NOT_ACTIVE/A_v57_159_cao_only_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "7f79d7ac3db63ea91882e1adc751d5cbe33714f8ff534f95829b95f924f590fb"
+    },
+    {
+      "model": "B",
+      "scenario": "v57_159_cao_only",
+      "path": "deployment/research_v57_NOT_ACTIVE/B_v57_159_cao_only_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "1c8807a647e1eb6879bac7940f4b27551a38d88d878acc4719ad776b0b3bb9bc"
+    },
+    {
+      "model": "A",
+      "scenario": "v57_181_shen_only",
+      "path": "deployment/research_v57_NOT_ACTIVE/A_v57_181_shen_only_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "3bd21d6c90083548a4baa5c26fb30cd5e79392b955b1f71d2ca802b0e2e73c5d"
+    },
+    {
+      "model": "B",
+      "scenario": "v57_181_shen_only",
+      "path": "deployment/research_v57_NOT_ACTIVE/B_v57_181_shen_only_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "0f44adb9524c7246e229b4a238dd8d649529e8f9a9b4c572570d50dbbf43fb85"
+    },
+    {
+      "model": "A",
+      "scenario": "v57_188_both",
+      "path": "deployment/research_v57_NOT_ACTIVE/A_v57_188_both_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "5341920b851c29f68e2f6a36a487a42503729ec65e12cd5d4a224ca1b180e68c"
+    },
+    {
+      "model": "B",
+      "scenario": "v57_188_both",
+      "path": "deployment/research_v57_NOT_ACTIVE/B_v57_188_both_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "f8ab030b9b60e39fb0446a44a1c5705607eb069c928d39e39222dfaa4ff25b9a"
+    },
+    {
+      "model": "A",
+      "scenario": "v57_192_cocoa_sensitivity",
+      "path": "deployment/research_v57_NOT_ACTIVE/A_v57_192_cocoa_sensitivity_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "907d99f7b0df657f955c842b8e8a6ee262e19deaf1cf6a31b2b675ffe17e0e9b"
+    },
+    {
+      "model": "B",
+      "scenario": "v57_192_cocoa_sensitivity",
+      "path": "deployment/research_v57_NOT_ACTIVE/B_v57_192_cocoa_sensitivity_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "a4c502f5f1705e755583ee372f68cc9daa81aedd7586fed115e01feb2fb7e436"
+    },
+    {
+      "model": "A",
+      "scenario": "v57_204_apple24_sensitivity",
+      "path": "deployment/research_v57_NOT_ACTIVE/A_v57_204_apple24_sensitivity_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "793dc049207b89f72a706c4455ab85045d4a2f631a8bf883c32ee6c2f7097abc"
+    },
+    {
+      "model": "B",
+      "scenario": "v57_204_apple24_sensitivity",
+      "path": "deployment/research_v57_NOT_ACTIVE/B_v57_204_apple24_sensitivity_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "741cafa2889f06569889f912f068525d95b5500fb098f00b8c7b303940d5a21a"
+    },
+    {
+      "model": "A",
+      "scenario": "v57_208_apple24_cocoa_sensitivity",
+      "path": "deployment/research_v57_NOT_ACTIVE/A_v57_208_apple24_cocoa_sensitivity_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "4e4810c01abb7bf9df3e9fff0530a276cf66f5d1ad4eee69e73a6f7e628c5be1"
+    },
+    {
+      "model": "B",
+      "scenario": "v57_208_apple24_cocoa_sensitivity",
+      "path": "deployment/research_v57_NOT_ACTIVE/B_v57_208_apple24_cocoa_sensitivity_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "3354d4a2e44b21c08ab25031d724d1ac7e53cfe88ea1ffff9fb9a9f4b0dc3066"
+    },
+    {
+      "model": "Stage1_BET",
+      "scenario": "v57_450",
+      "path": "deployment\\research_v57_NOT_ACTIVE\\Stage1_BET_450_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "f5c132e7aeb36bac6f1c828bd75c7e35fb6ca14ce3676e468043dda2025e94c7"
+    }
+  ]
+}

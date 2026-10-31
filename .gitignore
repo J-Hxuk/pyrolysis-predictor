@@ -1,0 +1,103 @@
+# ============================================================
+# Git 제외 목록
+# 실제 연구 자료·비밀값·로컬 설정·산출물을 저장소에서 제외한다.
+# ============================================================
+
+# ── Python 빌드·캐시 ──────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+MANIFEST
+pip-wheel-metadata/
+share/python-wheels/
+
+# ── 가상 환경 ──────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env/
+
+# ── 개발 도구 ──────────────────────────────────────────────
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+nosetests.xml
+test-results/
+
+# ── Jupyter 노트북 출력 ───────────────────────────────────
+# 노트북 파일 자체는 포함하되 셀 출력은 Git 커밋 전에 제거한다.
+# nbstripout 또는 수동으로 Kernel > Restart & Clear Output 후 저장.
+# 노트북 실행 중 생성되는 체크포인트는 제외한다.
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# ── 실제 연구 데이터 (절대 업로드 금지) ──────────────────
+data/
+runs/
+templates/local/
+
+# ── 로컬 전용 설정 (실제 파일 경로·변수명 포함) ──────────
+configs/local/
+
+# ── Streamlit 비밀값 ──────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── 운영 비밀값·환경 파일 ─────────────────────────────────
+.env
+*.env
+secrets.yaml
+secrets.json
+
+# ── OS 생성 파일 ──────────────────────────────────────────
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.nfs*
+
+# ── IDE·에디터 설정 ───────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ── 임시 파일 ──────────────────────────────────────────────
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+tmp/
+temp/
+
+# ── 배포 묶음 (Git LFS 등 별도 관리가 필요해지면 조정) ──
+# 현재는 일반 Git 관리 범위의 묶음만 저장소에 포함한다.
+# 100 MiB 초과 파일이 생기면 작업 35에서 별도 결정한다.
+# deployment/ 는 포함하므로 제외하지 않음.

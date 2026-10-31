@@ -1,0 +1,277 @@
+{
+  "n_rows": 97,
+  "n_doi": 25,
+  "model_comparison_path": "reports\\stage2_v16\\model_comparison.csv",
+  "nested_cv": {
+    "A": {
+      "n": 97,
+      "r2": 0.6747602050296708,
+      "mae": 18.63612070699913,
+      "rmse": 34.08081137985508
+    },
+    "B": {
+      "n": 97,
+      "r2": 0.5702470404413219,
+      "mae": 23.62909250765978,
+      "rmse": 39.175768484967584
+    },
+    "A_chosen": {
+      "XGBoost": 24,
+      "Ridge": 1
+    },
+    "B_chosen": {
+      "XGBoost": 21,
+      "Ridge": 4
+    }
+  },
+  "physical_baseline_LODO": {
+    "n": 97,
+    "r2": 0.191824157590469,
+    "mae": 26.55888278497827,
+    "rmse": 53.72309427725185
+  },
+  "bootstrap_AB": {
+    "metric": "MAE_B - MAE_A (mg/g)",
+    "point_estimate": 4.993,
+    "ci95_low": 0.5776,
+    "ci95_high": 10.6422,
+    "n_boot": 2000,
+    "interpretation": "양수 = B 오차가 A 보다 큼(개선 아님). CI 가 0 을 포함하면 차이 불확실."
+  },
+  "lofo_doi_overlap": {
+    "n_folds": 30,
+    "n_folds_with_doi_overlap": 7,
+    "doi_independent": false,
+    "classification": "new feedstock within partly seen DOI (DOI 독립 아님; LODO 와 동등 주장 불가)",
+    "note": "DOI 와 원료가 내포돼 새 DOI 효과와 새 원료 효과를 통계적으로 분리하기 어렵다. DOI 공유가 있으면 LOFO 를 독립·외삽 검증으로 서술하지 않는다."
+  },
+  "ablation": {
+    "A_only": {
+      "n": 97,
+      "r2": 0.5701004657591839,
+      "mae": 26.097563307277262,
+      "rmse": 39.18244870223179
+    },
+    "B_full": {
+      "n": 97,
+      "r2": 0.6365165341499429,
+      "mae": 22.652480536648117,
+      "rmse": 36.028851364779655
+    },
+    "baseline_consistency": {
+      "baseline": "A_only",
+      "same_algo": "Ridge",
+      "same_scheme": "LODO",
+      "same_rows_and_folds": true,
+      "note": "add_one_to_A·B_full·drop_one_from_B·A_only 모두 동일 eval_cols(동일 algo·동일 scheme·동일 행/fold)로 산출. delta 는 같은 run 의 A_only 기준. 서로 다른 평가절차 점수를 섞지 않음."
+    },
+    "delta_vs_A_only": {
+      "feedstock_label_normalized": {
+        "delta_r2_vs_A": 0.037884,
+        "delta_mae_vs_A": -2.022013
+      },
+      "manufacturing_route": {
+        "delta_r2_vs_A": 0.096803,
+        "delta_mae_vs_A": -3.643857
+      },
+      "process_step_count": {
+        "delta_r2_vs_A": 0.026539,
+        "delta_mae_vs_A": -2.958842
+      },
+      "pyrolysis_temperature_C": {
+        "delta_r2_vs_A": 0.034221,
+        "delta_mae_vs_A": -0.468747
+      },
+      "pyrolysis_hold_min": {
+        "delta_r2_vs_A": -0.366552,
+        "delta_mae_vs_A": 5.401856
+      },
+      "heating_rate_C_min": {
+        "delta_r2_vs_A": -0.144943,
+        "delta_mae_vs_A": 4.037152
+      },
+      "pyrolysis_atmosphere": {
+        "delta_r2_vs_A": -0.212579,
+        "delta_mae_vs_A": 1.536256
+      },
+      "activation_or_modification": {
+        "delta_r2_vs_A": 0.013349,
+        "delta_mae_vs_A": -0.70759
+      },
+      "secondary_temperature_C": {
+        "delta_r2_vs_A": -0.081582,
+        "delta_mae_vs_A": 1.653713
+      },
+      "secondary_hold_min": {
+        "delta_r2_vs_A": -0.212319,
+        "delta_mae_vs_A": 1.973435
+      }
+    },
+    "interpretation_note": "delta_r2_vs_A/delta_mae_vs_A 는 같은 run 의 A_only 기준 변화량이다. 같은 기준에서 제조조건 추가가 A 를 넘어서는지 여부만 말한다. 결측률과 기여도의 연관만으로 '고결측이 성능저하의 주원인'이라고 인과적으로 단정하지 않는다."
+  },
+  "fraction_experiment": {
+    "LODO": {
+      "qe_direct": {
+        "n": 97,
+        "r2": 0.5701004657591839,
+        "mae": 26.097563307277262,
+        "rmse": 39.18244870223179,
+        "constraint_violation_rate": 0.299
+      },
+      "f_rate_then_qe": {
+        "n": 97,
+        "r2": 0.19448501676828078,
+        "mae": 27.443153594002926,
+        "rmse": 53.63458170499075,
+        "constraint_violation_rate": 0.0
+      },
+      "f_target_metrics": {
+        "n": 97,
+        "r2": -0.34019343626638054,
+        "mae": 0.2927912028413123,
+        "rmse": 0.3554390792051955
+      }
+    },
+    "GroupKFold_DOI": {
+      "qe_direct": {
+        "n": 97,
+        "r2": 0.4427362773773402,
+        "mae": 27.564096562980765,
+        "rmse": 44.61064189556053,
+        "constraint_violation_rate": 0.2887
+      },
+      "f_rate_then_qe": {
+        "n": 97,
+        "r2": -0.007377870237263107,
+        "mae": 29.75043011942756,
+        "rmse": 59.9797000354553,
+        "constraint_violation_rate": 0.0
+      },
+      "f_target_metrics": {
+        "n": 97,
+        "r2": -0.4508297247634456,
+        "mae": 0.30710872983188753,
+        "rmse": 0.369819369886165
+      }
+    }
+  },
+  "fraction_experiment_note": "타깃 공간(target_space)을 분리해 보고한다. 'R²(qe)' 와 'R²(f)' 는 서로 다른 평가공간이며 f 를 학습한 예측을 qe 로 환산한 R²(qe) 를 R²(f) 라고 말하지 않는다. qe_direct·f_rate_then_qe 는 qe 공간, f_target_metrics 는 무차원 f 공간(0≤f≤1) 지표다. 높은 R²(qe) 가 C0/dose 분산에 의존하는지는 물리 baseline(f constant) 대조로 함께 해석한다.",
+  "chen16_pooled_loo": {
+    "diagnostic_type": "CROSS_FOLD_POOLED_DIAGNOSTIC (not single-fit ranking)",
+    "dummy_anti_correlation_note": "평균예측 Dummy 를 LOO 로 적용하면 yhat_i=(Σy−y_i)/(n−1) 이므로 비상수 y 에서 Spearman(y,yhat)=−1 이 수학적으로 강제된다. Dummy 의 Spearman=−1·top3=0 은 구조적 산물이며 학습 모델 대비 순위성능의 타당한 비교가 아니다.",
+    "results": {
+      "Dummy": {
+        "mae_pp": 23.461,
+        "spearman": -1.0,
+        "top3": 0,
+        "regret": 68.93
+      },
+      "Ridge": {
+        "mae_pp": 11.671,
+        "spearman": 0.9029,
+        "top3": 3,
+        "regret": 4.42
+      },
+      "RandomForest": {
+        "mae_pp": 16.918,
+        "spearman": 0.6618,
+        "top3": 0,
+        "regret": 36.07
+      },
+      "ExtraTrees": {
+        "mae_pp": 17.386,
+        "spearman": 0.8235,
+        "top3": 3,
+        "regret": 4.42
+      },
+      "XGBoost": {
+        "mae_pp": 11.657,
+        "spearman": 0.6588,
+        "top3": 0,
+        "regret": 25.81
+      }
+    }
+  },
+  "chen16_single_fit_holdout": {
+    "n_train": 12,
+    "n_test": 4,
+    "n_repeats": 50,
+    "primary_metric": "pairwise_ranking_accuracy (Top-3 은 test 4개 중 3개라 우연적중 높아 보조지표)",
+    "generalization_caveat": "동일 논문·동일 설계 내 미관측 조건의 제한적 순위 검증. 새 원료/64 전체조합 일반화 아님. 반복 split 의 test 조건은 중복될 수 있어 지표는 상호 의존적이다.",
+    "tie_handling": "pairwise: 실제 동률 쌍 제외, 예측 동률 쌍은 불일치로 보수적 처리. top-1: 예측 최댓값 동률이면 균등 tie-break 기대 적중확률(1/동률수)로 집계.",
+    "results": {
+      "Dummy": {
+        "pairwise_ranking_accuracy": 0.0,
+        "top1_hit_rate": 0.25,
+        "top3_overlap_mean_of_3": 2.28,
+        "regret_pp_mean": 30.9656,
+        "removal_mae_pp_mean": 23.7004,
+        "n_evaluated_splits": 50
+      },
+      "Ridge": {
+        "pairwise_ranking_accuracy": 0.9,
+        "top1_hit_rate": 0.92,
+        "top3_overlap_mean_of_3": 2.6,
+        "regret_pp_mean": 0.5134,
+        "removal_mae_pp_mean": 13.8915,
+        "n_evaluated_splits": 50
+      },
+      "RandomForest": {
+        "pairwise_ranking_accuracy": 0.8033,
+        "top1_hit_rate": 0.7,
+        "top3_overlap_mean_of_3": 2.6,
+        "regret_pp_mean": 5.529,
+        "removal_mae_pp_mean": 19.0624,
+        "n_evaluated_splits": 50
+      },
+      "ExtraTrees": {
+        "pairwise_ranking_accuracy": 0.82,
+        "top1_hit_rate": 0.88,
+        "top3_overlap_mean_of_3": 2.54,
+        "regret_pp_mean": 2.4044,
+        "removal_mae_pp_mean": 20.0449,
+        "n_evaluated_splits": 50
+      },
+      "XGBoost": {
+        "pairwise_ranking_accuracy": 0.6767,
+        "top1_hit_rate": 0.5767,
+        "top3_overlap_mean_of_3": 2.6,
+        "regret_pp_mean": 7.5092,
+        "removal_mae_pp_mean": 13.6408,
+        "n_evaluated_splits": 50
+      }
+    }
+  },
+  "chen16": {
+    "Dummy": {
+      "mae_pp": 23.461,
+      "spearman": -1.0,
+      "top3": 0,
+      "regret": 68.93
+    },
+    "Ridge": {
+      "mae_pp": 11.671,
+      "spearman": 0.9029,
+      "top3": 3,
+      "regret": 4.42
+    },
+    "RandomForest": {
+      "mae_pp": 16.918,
+      "spearman": 0.6618,
+      "top3": 0,
+      "regret": 36.07
+    },
+    "ExtraTrees": {
+      "mae_pp": 17.386,
+      "spearman": 0.8235,
+      "top3": 3,
+      "regret": 4.42
+    },
+    "XGBoost": {
+      "mae_pp": 11.657,
+      "spearman": 0.6588,
+      "top3": 0,
+      "regret": 25.81
+    }
+  }
+}

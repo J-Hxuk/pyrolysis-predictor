@@ -1,0 +1,9 @@
+﻿scenario,model,n_panels,n_doi,n_unique_top,n_tied_top,n_strict_context,n_research_candidates_not_deployment,n_withhold,mean_best_tie_regret_mg_g,mean_worst_tie_regret_mg_g,mean_pairwise_concordance_valid,n_valid_pairwise_panels,n_new_predicted_ties_after_clipping,n_raw_cap_exceed_rows_across_panels
+152,A_row,15,9,0,15,2,0,15,0.0,18.363166666666665,0.5,15,0.0,21.0
+152,B_doi_material,15,9,11,4,2,2,13,4.47,6.2625,0.7085714285714285,15,13.0,11.0
+152,B_row,15,9,9,6,2,0,15,7.2059999999999995,8.2885,0.6757142857142857,15,15.0,14.0
+152,mfg_forest,15,9,15,0,2,2,13,3.204666666666664,3.204666666666664,0.6185714285714285,15,,
+188,A_row,15,9,0,15,2,0,15,0.0,18.363166666666665,0.5,15,0.0,8.0
+188,B_doi_material,15,9,9,6,2,0,15,4.226666666666666,5.630499999999999,0.7150793650793652,15,12.0,14.0
+188,B_row,15,9,12,3,2,2,13,9.110166666666666,9.3865,0.6922222222222221,15,4.0,6.0
+188,mfg_forest,15,9,14,1,2,2,13,3.5053333333333314,3.6453333333333315,0.7407936507936507,15,,

@@ -1,0 +1,7 @@
+{
+  "_comment": "현재 활성 배포 묶음을 가리키는 포인터 파일.",
+  "_note": "bundle_id 와 manifest_hash 는 작업 16·17에서 실제 묶음 생성 후 채운다.",
+  "_status": "no_bundle",
+  "bundle_id": null,
+  "manifest_hash": null
+}

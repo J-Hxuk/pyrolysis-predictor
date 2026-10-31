@@ -1,0 +1,8 @@
+{
+  "manufacturing_panels": 15,
+  "complete_adsorption_panels": 4,
+  "strict_apple_qe_panels": 2,
+  "concentration_series": 5,
+  "concentration_doi": 2,
+  "paired_DOI_bootstrap": "two-sided percentile with DOI resampling, posthoc study"
+}

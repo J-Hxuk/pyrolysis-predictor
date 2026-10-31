@@ -1,0 +1,26 @@
+Stage2 Phase8 데이터 통합 패치 v22 (v21 설치된 프로젝트에 적용)
+
+1) 사용 중인 Streamlit은 Ctrl+C로 종료합니다.
+2) 현재 '프로그램' 폴더를 별도로 백업하십시오.
+3) ZIP 다운로드 후 '프로그램' 폴더로 옮겨주세요. 다른 위치에 두었다면 Expand-Archive 경로를 맞춰주세요.
+4) 프로그램 폴더에서 PowerShell을 실행한 후:
+
+Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+Test-Path ".\Biochar_Phase8_v22_Data_Integration_Patch.zip"
+# True 확인 후
+Expand-Archive -LiteralPath ".\Biochar_Phase8_v22_Data_Integration_Patch.zip" -DestinationPath "." -Force
+
+5) 학습 없이 데이터 감사 결과 생성:
+.\.venv\Scripts\python.exe -m scripts.build_phase8_v22_reports
+6) 신버전 테스트:
+.\.venv\Scripts\python.exe -m pytest tests\test_phase8_v22.py -q
+7) 기존 UI 실행:
+.\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+8) 사이드바 'G. Phase 8 Data Evidence'에서 신규 제조시료 8개 및 흡착 관측 1개를 확인합니다.
+
+주의:
+- 기존 .venv, data/imports/Stage1_Stage2_Model_Ready_v15, 기존 stage1/stage2 model 경로는 수정하지 않습니다.
+- Phase8 데이터는 '별도 검증된 관측 자료'로 추가됩니다. 현재 저장 모델에 자동 재학습되지는 않습니다.
+- 핵심 신규 1개 연구용 데이터까지 합친 CSV는 reports/phase8_v22/stage2_98_RESEARCH_CANDIDATE_NOT_TRAINED.csv.
+- Streamlit 화면 G는 원자료/결측률 조회 기능이며, 새 데이터로 학습된 qe 예측이 아닙니다.
+- v22 패치는 v20+v21+v19가 선행 설치된 프로젝트에 맞춰 만들어졌습니다.

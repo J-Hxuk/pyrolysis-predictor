@@ -1,0 +1,186 @@
+{
+  "evaluation_name": "Phase 8 fixed-pipeline, DOI-paired incremental audit",
+  "deployed_model_unchanged": true,
+  "same_doi_test_rows_for_old_cohort": true,
+  "not_v60_deployed_architecture": true,
+  "not_nested_v16_selection": true,
+  "new_doi_used_for_old_doi_training_only": true,
+  "models": {
+    "Stage1_BET": {
+      "target": "BET",
+      "original_rows": 254,
+      "expanded_rows": 262,
+      "old_doi_count": 30,
+      "new_doi_count": 2,
+      "paired_original": {
+        "n": 254,
+        "r2": 0.266518879691619,
+        "mae": 318.10883920419536,
+        "rmse": 480.80721409533834
+      },
+      "paired_expanded": {
+        "n": 254,
+        "r2": 0.2495620850217487,
+        "mae": 321.4551455040436,
+        "rmse": 486.33316796265257
+      },
+      "paired_delta": {
+        "delta_mae": 3.346306299848279,
+        "ci95": [
+          -3.9144812722558946,
+          9.848607037134546
+        ],
+        "doi_count": 30,
+        "unit": "expanded_minus_original; negative favors expanded"
+      },
+      "new_doi_old_training": {
+        "n": 8,
+        "r2": 0.04770560876687058,
+        "mae": 132.21448937454267,
+        "rmse": 231.25274698272884
+      },
+      "new_doi_other_new_training": {
+        "n": 8,
+        "r2": 0.043297983586571,
+        "mae": 122.7103377400662,
+        "rmse": 231.78729740695434
+      }
+    },
+    "Stage1_TPV": {
+      "target": "TPV",
+      "original_rows": 191,
+      "expanded_rows": 199,
+      "old_doi_count": 27,
+      "new_doi_count": 2,
+      "paired_original": {
+        "n": 191,
+        "r2": 0.16406164976235438,
+        "mae": 0.20440071419726608,
+        "rmse": 0.2901558345652542
+      },
+      "paired_expanded": {
+        "n": 191,
+        "r2": 0.15351710719239098,
+        "mae": 0.2068636987537503,
+        "rmse": 0.2919801153786751
+      },
+      "paired_delta": {
+        "delta_mae": 0.0024629845564842273,
+        "ci95": [
+          -0.001643861973568302,
+          0.006715555097722162
+        ],
+        "doi_count": 27,
+        "unit": "expanded_minus_original; negative favors expanded"
+      },
+      "new_doi_old_training": {
+        "n": 8,
+        "r2": -0.24546055548744028,
+        "mae": 0.10692663452787925,
+        "rmse": 0.19725632041651
+      },
+      "new_doi_other_new_training": {
+        "n": 8,
+        "r2": -0.19306245254002996,
+        "mae": 0.1017304392276829,
+        "rmse": 0.19306232312657315
+      }
+    },
+    "Stage2_A_XGBoost": {
+      "model": "A",
+      "algorithm": "XGBoost",
+      "original_rows": 97,
+      "expanded_rows": 98,
+      "paired_original": {
+        "n": 97,
+        "r2": 0.6740916129274337,
+        "mae": 19.338526569086252,
+        "rmse": 34.11582318250064
+      },
+      "paired_expanded": {
+        "n": 97,
+        "r2": 0.677261334746909,
+        "mae": 19.787702623111684,
+        "rmse": 33.94951588362374
+      },
+      "paired_delta": {
+        "delta_mae": 0.4491760540254337,
+        "ci95": [
+          -0.3833879651795877,
+          1.223103842693319
+        ],
+        "doi_count": 25,
+        "unit": "expanded_minus_original; negative favors expanded"
+      },
+      "new_DOI_challenge": {
+        "n": 1,
+        "r2": null,
+        "mae": 11.941055297851562,
+        "rmse": 11.941055297851562
+      },
+      "new_DOI_absolute_error": 11.941055297851562,
+      "clipped_original": {
+        "n": 97,
+        "r2": 0.7070930867893748,
+        "mae": 16.508564768467366,
+        "rmse": 32.34244865900619
+      },
+      "clipped_expanded": {
+        "n": 97,
+        "r2": 0.7122944268249307,
+        "mae": 16.881933595190954,
+        "rmse": 32.053999347824785
+      },
+      "raw_violation_original_pct": 20.618556701030926,
+      "raw_violation_expanded_pct": 32.98969072164948
+    },
+    "Stage2_B_Ridge": {
+      "model": "B",
+      "algorithm": "Ridge",
+      "original_rows": 97,
+      "expanded_rows": 98,
+      "paired_original": {
+        "n": 97,
+        "r2": 0.6365165616490672,
+        "mae": 22.65247192607592,
+        "rmse": 36.02885000190902
+      },
+      "paired_expanded": {
+        "n": 97,
+        "r2": 0.4010874265298391,
+        "mae": 28.640109709260976,
+        "rmse": 46.247664064129374
+      },
+      "paired_delta": {
+        "delta_mae": 5.987637783185064,
+        "ci95": [
+          1.7324655198444023,
+          11.445282656830218
+        ],
+        "doi_count": 25,
+        "unit": "expanded_minus_original; negative favors expanded"
+      },
+      "new_DOI_challenge": {
+        "n": 1,
+        "r2": null,
+        "mae": 68.47494867623408,
+        "rmse": 68.47494867623408
+      },
+      "new_DOI_absolute_error": 68.47494867623408,
+      "clipped_original": {
+        "n": 97,
+        "r2": 0.7049165326228201,
+        "mae": 18.69738211716794,
+        "rmse": 32.462392568834204
+      },
+      "clipped_expanded": {
+        "n": 97,
+        "r2": 0.6561540707346467,
+        "mae": 20.34372176718819,
+        "rmse": 35.042092361590726
+      },
+      "raw_violation_original_pct": 28.865979381443296,
+      "raw_violation_expanded_pct": 48.45360824742268
+    }
+  }
+}

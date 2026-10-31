@@ -1,0 +1,48 @@
+{
+  "comment": "수정 전 템플릿. baseline140 / v52 Stage2 CSV를 같은 컬럼 계약으로 export해야 합니다. 아래 feature lists는 예시이므로 실제 v52 사용 변수만 Kiro가 재현할 것.",
+  "columns": {
+    "doi": "doi",
+    "metal": "pollutant",
+    "dose": "dose_g_L",
+    "temp": "pyrolysis_temp_C",
+    "qe": "observed_adsorption_mg_g",
+    "c0": "C0_mg_L"
+  },
+  "n_splits": 5,
+  "estimators": [
+    "Mean",
+    "RandomForest",
+    "ExtraTrees"
+  ],
+  "models": {
+    "A": {
+      "numeric": [
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_temperature_C",
+        "contact_time_min"
+      ],
+      "categorical": [
+        "pollutant"
+      ]
+    },
+    "B": {
+      "numeric": [
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_temperature_C",
+        "contact_time_min",
+        "pyrolysis_temp_C"
+      ],
+      "categorical": [
+        "pollutant",
+        "feedstock_original"
+      ]
+    }
+  },
+  "zhao_related_material_dois": [
+    "10.3390/en10091293"
+  ]
+}

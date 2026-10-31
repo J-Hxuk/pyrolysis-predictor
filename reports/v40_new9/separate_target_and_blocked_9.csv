@@ -1,0 +1,10 @@
+doi,sample,pollutant,pyrolysis_temperature_C,value_mg_g,value_kind,source_locator,training_use
+10.3390/app11199223,Kelp_BC300,Cu(II),300,49.24,Langmuir_fitted_qmax,Appl. Sci. 2021 Table 4 p11,QMAX_ONLY_NEVER_QE
+10.3390/app11199223,Kelp_BC450,Cu(II),450,58.0,Langmuir_fitted_qmax,Appl. Sci. 2021 Table 4 p11,QMAX_ONLY_NEVER_QE
+10.3390/app11199223,Kelp_BC600,Cu(II),600,93.55,Langmuir_fitted_qmax,Appl. Sci. 2021 Table 4 p11,QMAX_ONLY_NEVER_QE
+10.1039/C9RA08199B,CMB200,Pb(II),200,180.21,Langmuir_fitted_qmax,RSC Adv 2019 abstract + Table 2 pp4-5; verify label conflict,QMAX_ONLY_NEVER_QE
+10.1039/C9RA08199B,CMB400,Pb(II),400,200.8,Langmuir_fitted_qmax,RSC Adv 2019 abstract + Table 2 pp4-5; verify label conflict,QMAX_ONLY_NEVER_QE
+10.1039/C9RA08199B,CMB600,Pb(II),600,239.59,Langmuir_fitted_qmax,RSC Adv 2019 abstract + Table 2 pp4-5; verify label conflict,QMAX_ONLY_NEVER_QE
+10.1039/C9RA08199B,CMB800,Pb(II),800,242.57,Langmuir_fitted_qmax,RSC Adv 2019 abstract + Table 2 pp4-5; verify label conflict,QMAX_ONLY_NEVER_QE
+10.1016/j.biteb.2021.100920,RSB500,Pb(II),500,17.93,reported_temperature_comparison,"Bioresour Technol Rep 2022 Methods p2, Fig 1 p5",BLOCKED_QE_MASS_BALANCE_CAP_5
+10.1016/j.biteb.2021.100920,RSB500,Zn(II),500,25.73,reported_temperature_comparison,"Bioresour Technol Rep 2022 Methods p2, Fig 1 p5",BLOCKED_QE_MASS_BALANCE_CAP_5

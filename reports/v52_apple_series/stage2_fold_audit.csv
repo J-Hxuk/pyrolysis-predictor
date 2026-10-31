@@ -1,0 +1,6 @@
+fold,train_old_rows,added_new_doi_rows,test_old_rows,held_doi_count,extra_doi_not_held_out
+1,112,24,28,6,True
+2,112,24,28,6,True
+3,112,24,28,6,True
+4,112,24,28,7,True
+5,112,24,28,7,True

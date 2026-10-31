@@ -1,0 +1,13 @@
+﻿variant,training_scenario,method,mae_improvement_bounded_over_direct_mg_g,ci95_low,ci95_high,n_doi,bootstrap_repeats,warning
+A,base140,logit_fraction,-2.218177783586566,-6.832119696505215,2.3537033333953836,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+A,base140,logistic_fraction,-4.341732409223657,-10.674218846649099,0.5117550255711303,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+A,plus8,logit_fraction,-2.4694458943324253,-7.241525816979287,2.0883477230905174,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+A,plus8,logistic_fraction,-4.002589223799252,-10.812088990496324,1.440783739764704,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+A,plus24,logit_fraction,-3.4731894493123647,-7.63279880231275,0.28915381121142447,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+A,plus24,logistic_fraction,-4.060310960691618,-10.627273808429534,0.8980750665200617,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+B,base140,logit_fraction,-4.410656045919073,-13.257200901311268,2.0937071110499352,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+B,base140,logistic_fraction,-4.4020594272721,-11.610664903261595,0.7582620725104205,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+B,plus8,logit_fraction,-4.001322103796947,-12.88390349280135,2.511369571341781,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+B,plus8,logistic_fraction,-3.6714640692649545,-10.550700639895751,1.8981880426509576,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+B,plus24,logit_fraction,-3.1524903865277905,-11.844122426568324,3.307495136104015,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism
+B,plus24,logistic_fraction,-2.7249761247149715,-9.914064611262594,2.917047057792413,32,2000,Observational DOI-cluster interval; not causal proof; model selection on same folds incurs optimism

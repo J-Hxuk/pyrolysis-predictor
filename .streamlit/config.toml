@@ -1,0 +1,22 @@
+# .streamlit/config.toml — Streamlit 앱 설정
+#
+# disableDataExport 와 enableStaticServing 은 Streamlit 1.40 이상에서 지원한다.
+# 해당 설정을 지원하지 않는 버전을 사용하면 초기 배포의 지원 환경에 포함하지 않는다.
+# 설정 미지원 오류를 무시한 채 내보내기를 활성 상태로 두지 않는다.
+
+[client]
+# 데이터프레임 내보내기(CSV 다운로드) 비활성화
+disableDataExport = true
+
+[server]
+# 정적 파일 제공 비활성화
+enableStaticServing = false
+
+# 최대 업로드 크기 (MiB).
+# 실제 값은 runtime.yaml 의 limits.max_upload_size_mib 와 동기화한다.
+# prepare-runtime 명령 (작업 17)이 이 값을 자동으로 생성한다.
+# maxUploadSize = 10   # 작업 17에서 runtime.yaml 로부터 채운다.
+
+[theme]
+# 기본 테마 사용 (한국어 화면에 맞게 작업 5에서 조정 가능)
+base = "light"

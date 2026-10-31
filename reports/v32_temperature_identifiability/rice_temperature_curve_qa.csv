@@ -1,0 +1,5 @@
+pollutant,algorithm,curve_is_nondecreasing,curve_is_nonincreasing,curve_has_interior_strict_local_maximum,n_equal_adjacent_grid_steps,predicted_best_C_300_400_500,observed_best_C,top1_expected_3_temps,regret_mg_g,pairwise,pairwise_pairs,pred_ties,n_grid_raw_violations
+Cd(II),Ridge,True,False,False,0,500,400,0.0,3.0,0.6666666666666666,3,0,9
+Cd(II),XGBoost,True,False,False,5,500,400,0.0,3.0,0.6666666666666666,3,0,0
+Pb(II),Ridge,True,False,False,0,500,400,0.0,1.5,0.6666666666666666,3,0,0
+Pb(II),XGBoost,True,False,False,5,500,400,0.0,1.5,0.6666666666666666,3,0,9

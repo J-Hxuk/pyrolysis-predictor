@@ -1,0 +1,17 @@
+Stage 1–2 v27 | 기존 v26 적용 상태에서 덮어쓰기
+
+1) 기존 프로그램 폴더의 'pyrolysis/biochar_ui/stage2_pages.py' 파일을 별도 복사하여 백업.
+2) Biochar_v27_Ranking_Gate_Research_Patch.zip을 프로그램 폴더 안에 저장.
+3) PowerShell에서:
+   Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+   Expand-Archive -LiteralPath ".\Biochar_v27_Ranking_Gate_Research_Patch.zip" -DestinationPath "." -Force
+   .\.venv\Scripts\python.exe -m pytest tests\test_v27_recommendation_audit.py tests\test_v26_physics_aware.py -q
+   .\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+
+v27 검증 재계산(선택):
+   .\.venv\Scripts\python.exe -m scripts.evaluate_v27_recommendation
+
+메뉴 C. Manufacture Candidates 에서 입력한 흡착조건이 학습 범위를 벗어난다면 후보 정렬 전에 경고하고 차단.
+변경: stage2_pages.py 안전성 게이트 연결, 분석 스크립트, 연구 결과표/보고서, 테스트.
+유지: data/, deployment/, Stage1 v60, Stage2 A/B/C, .venv 원본. Stage1->2 통합 없음.
+참고: 모델 추천 성능은 검증 완료된 것이 아니며 Windows의 실제 화면 테스트는 사용자가 확인해야 함.

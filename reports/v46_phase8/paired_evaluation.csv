@@ -1,0 +1,13 @@
+stage,model,target,evaluation,n,doi_count,mae,r2,negative_pred,mass_balance_violations
+Stage1,Poisson,BET_m2_g_training_candidate,old_fixed_old_train,348,48,237.39403303172446,0.48888358733771253,0,
+Stage1,Poisson,BET_m2_g_training_candidate,old_fixed_source_augmented,348,48,226.9607702689384,0.508086953398577,0,
+Stage1,Poisson,BET_m2_g_training_candidate,pooled_all_doi_group5,361,49,247.97097503269376,0.554559677449987,0,
+Stage1,Poisson,TPV_cm3_g_training_candidate,old_fixed_old_train,218,34,0.18155976732535523,0.3192646354984996,0,
+Stage1,Poisson,TPV_cm3_g_training_candidate,old_fixed_source_augmented,218,34,0.18167827978484646,0.3325068263092721,0,
+Stage1,Poisson,TPV_cm3_g_training_candidate,pooled_all_doi_group5,231,35,0.1701911046632852,0.4815329968265011,0,
+Stage2,A,target_value,old_fixed_old_train,138,32,21.909868943629057,0.6297007213394399,1,32.0
+Stage2,A,target_value,old_fixed_source_augmented,138,32,21.97960885722395,0.6264579236641243,1,31.0
+Stage2,A,target_value,pooled_all_doi_group5,140,32,23.123227991792135,0.6047231530004757,1,44.0
+Stage2,B,target_value,old_fixed_old_train,138,32,23.90082905310479,0.579198982456762,5,52.0
+Stage2,B,target_value,old_fixed_source_augmented,138,32,23.876863370536036,0.5734519516989041,5,55.0
+Stage2,B,target_value,pooled_all_doi_group5,140,32,24.94418343783106,0.5755783688942151,0,50.0

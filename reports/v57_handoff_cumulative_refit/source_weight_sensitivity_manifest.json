@@ -1,0 +1,38 @@
+{
+  "weights": [
+    1.0,
+    0.5,
+    0.25,
+    0.1
+  ],
+  "note": "Post hoc model selection on old140 only. All 36 raw source rows retained; Shen per-row downweight is not removal. Models NOT ACTIVE.",
+  "models": [
+    {
+      "model": "A",
+      "shen_weight": 0.25,
+      "path": "deployment\\research_v57_NOT_ACTIVE\\A_v57_188_shen_weight_0.25_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "73414bbe62ba0e071c55f92393ca2479f6a21f8cfeddfaffe00dace377d99ce6"
+    },
+    {
+      "model": "B",
+      "shen_weight": 0.25,
+      "path": "deployment\\research_v57_NOT_ACTIVE\\B_v57_188_shen_weight_0.25_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "18f283c87289251316e875a5d62cb522008bcf8131950b0256bc4a884143d344"
+    },
+    {
+      "model": "A",
+      "shen_weight": 0.1,
+      "path": "deployment\\research_v57_NOT_ACTIVE\\A_v57_188_shen_weight_0.10_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "23618ab20b052e85beb14c6f58bdcc92d781ac44e5dcac25e7eb4e9d85bee97b"
+    },
+    {
+      "model": "B",
+      "shen_weight": 0.1,
+      "path": "deployment\\research_v57_NOT_ACTIVE\\B_v57_188_shen_weight_0.10_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "95bf41db2fd4505d6fcf02c4702e08d6cf18ba254af84d5ed66028edba2dc6fa"
+    }
+  ],
+  "python": "3.12.10",
+  "sklearn": "1.5.2",
+  "xgboost": "2.1.3"
+}

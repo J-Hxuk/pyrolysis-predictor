@@ -1,0 +1,4 @@
+scope,model,n,doi,mae,r2,physical_violation,cap_hits
+same_measured_property_rows,A_clipped,103,27,17.32386655089084,0.7003878572695901,0,34
+same_measured_property_rows,B_clipped,103,27,17.396288407545924,0.6939083414371116,0,27
+same_measured_property_rows,C_measured_BET_TPV_clipped,103,27,17.970772889064925,0.6732315378791187,0,34

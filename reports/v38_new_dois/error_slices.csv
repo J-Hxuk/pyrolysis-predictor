@@ -1,0 +1,318 @@
+domain,slice_type,category,n_rows,n_doi,MAE,reportable
+Stage1_BET,target_band,BET_above_200,169,29,329.4930172399452,True
+Stage1_BET,target_band,BET_25_200,80,26,186.52336678174518,True
+Stage1_BET,target_band,BET_0_25,50,15,117.68984042885711,True
+Stage1_BET,feedstock_group,natural textile fibres,27,1,532.7347487032725,False
+Stage1_BET,feedstock_group,various biomass,8,1,71.31877787598259,False
+Stage1_BET,feedstock_group,furfural residue,11,1,96.79561701571143,False
+Stage1_BET,feedstock_group,rice husk,25,3,98.0108261501599,True
+Stage1_BET,feedstock_group,bamboo,14,1,82.44233089523654,False
+Stage1_BET,feedstock_group,crop residue,64,9,234.48854179046927,True
+Stage1_BET,feedstock_group,woody orchard residue,4,1,33.64079013552115,False
+Stage1_BET,feedstock_group,sewage_sludge_co_pyrolysis,20,1,206.81319060988366,False
+Stage1_BET,feedstock_group,coconut shell,15,4,426.89667105417175,True
+Stage1_BET,feedstock_group,industrial lignin/lignosulfonate,3,1,220.41197955718317,False
+Stage1_BET,feedstock_group,sago waste,4,1,148.75591682735205,False
+Stage1_BET,feedstock_group,tea twigs,9,1,76.677250642862,False
+Stage1_BET,feedstock_group,sweet potato vine,8,1,276.7432802848409,False
+Stage1_BET,feedstock_group,animal manure,6,1,301.5100191335771,False
+Stage1_BET,feedstock_group,woody_residue,27,4,424.4240495835448,True
+Stage1_BET,feedstock_group,waste_wood,6,1,545.4128197472029,False
+Stage1_BET,feedstock_group,food_waste,6,1,248.36452226391376,False
+Stage1_BET,feedstock_group,sludge_biomass_blend,7,1,356.7427492315948,False
+Stage1_BET,feedstock_group,spent mushroom substrate,6,1,203.14361187306838,False
+Stage1_BET,feedstock_group,nut shell,2,1,348.4217317496251,False
+Stage1_BET,feedstock_group,maize straw,7,2,84.0158887021913,False
+Stage1_BET,feedstock_group,Platanus leaves,3,1,137.86810431344017,False
+Stage1_BET,feedstock_group,cotton straw,5,1,332.9275688995827,False
+Stage1_BET,feedstock_group,soybean straw,3,1,312.74438546365263,False
+Stage1_BET,feedstock_group,Ligustrum vulgare pruning waste,6,1,108.14112728594891,False
+Stage1_BET,feedstock_group,rice straw,3,1,109.24058848203971,False
+Stage1_BET,manufacture_route,NR,132,13,214.7047150572756,True
+Stage1_BET,manufacture_route,none,7,2,33.39192936329364,False
+Stage1_BET,manufacture_route,post_pyrolysis_modification,6,1,79.9956023904795,False
+Stage1_BET,manufacture_route,carbonization_only,19,8,217.63436535177013,True
+Stage1_BET,manufacture_route,carbonization_then_physical_activation,14,3,152.75352560579077,True
+Stage1_BET,manufacture_route,wet_impregnation_then_one_step_carbonization_activation,6,2,505.2815699211682,False
+Stage1_BET,manufacture_route,one_step_carbonization,1,1,504.2477200931321,False
+Stage1_BET,manufacture_route,one_step_KOH_activation,1,1,977.7199468358147,False
+Stage1_BET,manufacture_route,impregnation_then_thermal_activation,2,1,250.9316378125028,False
+Stage1_BET,manufacture_route,carbonization_then_CO2_activation,17,3,192.67541051195553,True
+Stage1_BET,manufacture_route,one_pot_ZnCl2_NaHCO3_coactivation,3,1,220.41197955718317,False
+Stage1_BET,manufacture_route,carbonization_then_solution_treatment_then_thermal_activation,4,1,148.75591682735205,False
+Stage1_BET,manufacture_route,two_stage_carbonization_activation,38,6,332.8076372075825,True
+Stage1_BET,manufacture_route,one_stage_impregnation_carbonization_activation,8,1,276.7432802848409,False
+Stage1_BET,manufacture_route,two_stage_carbonization_wet_activation,3,1,566.2269024448169,False
+Stage1_BET,manufacture_route,two_stage_carbonization_dry_activation,3,1,140.21537896705675,False
+Stage1_BET,manufacture_route,one_stage_impregnation_then_pyrolysis,7,2,1063.3475281470585,False
+Stage1_BET,manufacture_route,pyrolysis_only,8,3,168.99607882349696,True
+Stage1_BET,manufacture_route,post_carbonization_activation,11,2,318.3164204172039,False
+Stage1_BET,manufacture_route,one_step_impregnation_activation,2,1,331.8168675304603,False
+Stage1_BET,manufacture_route,single_stage_pyrolysis,7,2,239.22836221242915,False
+Stage1_BET,doi,10.1002/cin4.70006,9,1,259.5265656321219,False
+Stage1_BET,doi,10.1002/clem.21,4,1,865.665360795606,False
+Stage1_BET,doi,10.1007/s10450-023-00399-7,12,1,180.6004709811563,False
+Stage1_BET,doi,10.1016/j.arabjc.2024.105946,3,1,312.74438546365263,False
+Stage1_BET,doi,10.1016/j.biortech.2021.126273,14,1,82.44233089523654,False
+Stage1_BET,doi,10.1016/j.cej.2004.06.011,15,1,222.41120358352165,False
+Stage1_BET,doi,10.1016/j.crcon.2022.09.001,12,1,672.3657478959437,False
+Stage1_BET,doi,10.1016/j.eti.2025.104706,6,1,301.5100191335771,False
+Stage1_BET,doi,10.1016/j.eti.2026.105028,7,1,356.7427492315948,False
+Stage1_BET,doi,10.1016/j.jaap.2003.12.007,27,1,532.7347487032725,False
+Stage1_BET,doi,10.1016/j.jaap.2018.06.018,17,1,50.55733858450844,False
+Stage1_BET,doi,10.1016/j.jenvman.2014.08.003,8,1,71.31877787598259,False
+Stage1_BET,doi,10.1016/j.nxnano.2025.100198,2,1,781.8160849015641,False
+Stage1_BET,doi,10.1016/j.scitotenv.2018.11.282,3,1,109.24058848203971,False
+Stage1_BET,doi,10.1016/j.wasman.2018.04.014,11,1,96.79561701571143,False
+Stage1_BET,doi,10.1021/acs.energyfuels.6c01629,3,1,283.31626891057687,False
+Stage1_BET,doi,10.1021/acsomega.0c06029,6,1,248.36452226391376,False
+Stage1_BET,doi,10.1021/acsomega.4c11089,20,1,206.81319060988366,False
+Stage1_BET,doi,10.1038/s41598-021-93934-x,5,1,160.53621237816213,False
+Stage1_BET,doi,10.1038/s41598-024-54028-6,6,1,108.14112728594891,False
+Stage1_BET,doi,10.1039/C9RA09208K,4,1,182.85108612629162,False
+Stage1_BET,doi,10.1039/D0RA09644J,4,1,668.425,False
+Stage1_BET,doi,10.1039/D6RA01057A,8,1,276.7432802848409,False
+Stage1_BET,doi,10.1039/c8ra03958e,6,1,203.14361187306838,False
+Stage1_BET,doi,10.1080/10962247.2018.1460282,7,1,155.31028472999944,False
+Stage1_BET,doi,10.1177/02636174251383610,9,1,76.677250642862,False
+Stage1_BET,doi,10.3390/app112411640,4,1,148.75591682735205,False
+Stage1_BET,doi,10.3390/app8071019,10,1,306.36561457091653,False
+Stage1_BET,doi,10.3390/en10091293,4,1,33.64079013552115,False
+Stage1_BET,doi,10.3390/ijerph16050845,7,1,132.67993257274682,False
+Stage1_BET,doi,10.3390/ma17040942,3,1,220.41197955718317,False
+Stage1_BET,doi,10.3390/molecules28207187,2,1,740.9838334644734,False
+Stage1_BET,doi,10.3390/molecules30173616,9,1,64.35043992709421,False
+Stage1_BET,doi,10.3390/molecules30204121,2,1,348.4217317496251,False
+Stage1_BET,doi,10.3390/molecules31020263,8,1,313.4876777935964,False
+Stage1_BET,doi,10.3390/plants11233234,3,1,63.925865535367585,False
+Stage1_BET,doi,10.3390/su14159022,3,1,24.318668615477275,False
+Stage1_BET,doi,10.3390/su15065566,4,1,215.64099191598143,False
+Stage1_BET,doi,10.3390/su17041554,12,1,302.6961992638057,False
+Stage1_TPV,target_band,TPV_0_0.05,30,11,0.12907345123137912,True
+Stage1_TPV,target_band,TPV_0.05_0.25,65,21,0.13811080749197022,True
+Stage1_TPV,target_band,TPV_above_0.25,104,23,0.20330345398549005,True
+Stage1_TPV,feedstock_group,various biomass,7,1,0.05590109020245546,False
+Stage1_TPV,feedstock_group,furfural residue,11,1,0.21113458414600997,False
+Stage1_TPV,feedstock_group,bamboo,14,1,0.13788960940991524,False
+Stage1_TPV,feedstock_group,crop residue,64,9,0.18459274650931373,True
+Stage1_TPV,feedstock_group,woody orchard residue,4,1,0.08468457718027018,False
+Stage1_TPV,feedstock_group,coconut shell,15,4,0.2617415655952328,True
+Stage1_TPV,feedstock_group,industrial lignin/lignosulfonate,3,1,0.08183585550037069,False
+Stage1_TPV,feedstock_group,sago waste,4,1,0.09845549170199186,False
+Stage1_TPV,feedstock_group,tea twigs,9,1,0.057891998707637914,False
+Stage1_TPV,feedstock_group,sweet potato vine,8,1,0.25996777574001395,False
+Stage1_TPV,feedstock_group,animal manure,6,1,0.25531681448467364,False
+Stage1_TPV,feedstock_group,woody_residue,27,4,0.18939017873579078,True
+Stage1_TPV,feedstock_group,waste_wood,6,1,0.11236085367386019,False
+Stage1_TPV,feedstock_group,food_waste,6,1,0.1778915136699072,False
+Stage1_TPV,feedstock_group,sludge_biomass_blend,7,1,0.1152194396780818,False
+Stage1_TPV,feedstock_group,spent mushroom substrate,6,1,0.05198487347597001,False
+Stage1_TPV,feedstock_group,nut shell,2,1,0.26221505868265743,False
+Stage1_TPV,manufacture_route,NR,32,3,0.14513258089881598,True
+Stage1_TPV,manufacture_route,none,7,2,0.08592071338328676,False
+Stage1_TPV,manufacture_route,post_pyrolysis_modification,6,1,0.20305774853207928,False
+Stage1_TPV,manufacture_route,carbonization_only,19,8,0.07091624090825226,True
+Stage1_TPV,manufacture_route,carbonization_then_physical_activation,14,3,0.13610646231969253,True
+Stage1_TPV,manufacture_route,wet_impregnation_then_one_step_carbonization_activation,6,2,0.5095685795239174,False
+Stage1_TPV,manufacture_route,one_step_carbonization,1,1,0.034329339334497166,False
+Stage1_TPV,manufacture_route,one_step_KOH_activation,1,1,0.49312915855300665,False
+Stage1_TPV,manufacture_route,impregnation_then_thermal_activation,2,1,0.17666419526702293,False
+Stage1_TPV,manufacture_route,carbonization_then_CO2_activation,17,3,0.20813640130514652,True
+Stage1_TPV,manufacture_route,one_pot_ZnCl2_NaHCO3_coactivation,3,1,0.08183585550037069,False
+Stage1_TPV,manufacture_route,carbonization_then_solution_treatment_then_thermal_activation,4,1,0.09845549170199186,False
+Stage1_TPV,manufacture_route,two_stage_carbonization_activation,38,6,0.21765100292414774,True
+Stage1_TPV,manufacture_route,one_stage_impregnation_carbonization_activation,8,1,0.25996777574001395,False
+Stage1_TPV,manufacture_route,two_stage_carbonization_wet_activation,3,1,0.33834686000483855,False
+Stage1_TPV,manufacture_route,two_stage_carbonization_dry_activation,3,1,0.05722861069434552,False
+Stage1_TPV,manufacture_route,one_stage_impregnation_then_pyrolysis,7,2,0.185284522520922,False
+Stage1_TPV,manufacture_route,pyrolysis_only,8,3,0.07674528434321093,True
+Stage1_TPV,manufacture_route,post_carbonization_activation,11,2,0.15363696332186597,False
+Stage1_TPV,manufacture_route,one_step_impregnation_activation,2,1,0.10176489288280667,False
+Stage1_TPV,manufacture_route,single_stage_pyrolysis,7,2,0.11692690716359085,False
+Stage1_TPV,doi,10.1002/cin4.70006,9,1,0.16202804937612367,False
+Stage1_TPV,doi,10.1002/clem.21,4,1,0.7949435801359416,False
+Stage1_TPV,doi,10.1007/s10450-023-00399-7,12,1,0.04958787376570086,False
+Stage1_TPV,doi,10.1016/j.biortech.2021.126273,14,1,0.13788960940991524,False
+Stage1_TPV,doi,10.1016/j.cej.2004.06.011,15,1,0.12091966961179976,False
+Stage1_TPV,doi,10.1016/j.crcon.2022.09.001,12,1,0.142435363424221,False
+Stage1_TPV,doi,10.1016/j.eti.2025.104706,6,1,0.25531681448467364,False
+Stage1_TPV,doi,10.1016/j.eti.2026.105028,7,1,0.1152194396780818,False
+Stage1_TPV,doi,10.1016/j.jenvman.2014.08.003,7,1,0.05590109020245546,False
+Stage1_TPV,doi,10.1016/j.nxnano.2025.100198,2,1,0.18789061795684847,False
+Stage1_TPV,doi,10.1016/j.wasman.2018.04.014,11,1,0.21113458414600997,False
+Stage1_TPV,doi,10.1021/acs.energyfuels.6c01629,3,1,0.2426127164654317,False
+Stage1_TPV,doi,10.1021/acsomega.0c06029,6,1,0.1778915136699072,False
+Stage1_TPV,doi,10.1038/s41598-021-93934-x,5,1,0.1932413138900429,False
+Stage1_TPV,doi,10.1039/C9RA09208K,4,1,0.08336772879465443,False
+Stage1_TPV,doi,10.1039/D0RA09644J,4,1,0.2875,False
+Stage1_TPV,doi,10.1039/D6RA01057A,8,1,0.25996777574001395,False
+Stage1_TPV,doi,10.1039/c8ra03958e,6,1,0.05198487347597001,False
+Stage1_TPV,doi,10.1080/10962247.2018.1460282,7,1,0.0996845871635615,False
+Stage1_TPV,doi,10.1177/02636174251383610,9,1,0.057891998707637914,False
+Stage1_TPV,doi,10.3390/app112411640,4,1,0.09845549170199186,False
+Stage1_TPV,doi,10.3390/en10091293,4,1,0.08468457718027018,False
+Stage1_TPV,doi,10.3390/ma17040942,3,1,0.08183585550037069,False
+Stage1_TPV,doi,10.3390/molecules28207187,2,1,0.26372924894375194,False
+Stage1_TPV,doi,10.3390/molecules30173616,9,1,0.1645614640171558,False
+Stage1_TPV,doi,10.3390/molecules30204121,2,1,0.26221505868265743,False
+Stage1_TPV,doi,10.3390/molecules31020263,8,1,0.28688070009137445,False
+Stage1_TPV,doi,10.3390/su15065566,4,1,0.36037214155939334,False
+Stage1_TPV,doi,10.3390/su17041554,12,1,0.23129364432957633,False
+Stage2_A,pollutant,Pb(II),14,7,43.26624613625663,True
+Stage2_A,pollutant,Cu(II),22,7,13.933443391973322,True
+Stage2_A,pollutant,Ni(II),11,4,38.89632971330122,True
+Stage2_A,pollutant,Cd(II),56,10,12.765065868241447,True
+Stage2_A,pollutant,Phenol,10,6,18.24421680984497,True
+Stage2_A,feedstock,garden waste leaves and wood,3,1,10.339433568318684,False
+Stage2_A,feedstock,"rice husk;nanchang,jiangxi",1,1,32.88210525512695,False
+Stage2_A,feedstock,cow litter,6,1,70.82579978942871,False
+Stage2_A,feedstock,mandarin peel,3,1,10.3293185933431,False
+Stage2_A,feedstock,sweet lime peel,3,1,11.525985260009767,False
+Stage2_A,feedstock,rangpur lime peel,3,1,10.825985260009764,False
+Stage2_A,feedstock,orange peel,3,1,13.375985260009765,False
+Stage2_A,feedstock,food waste,2,1,21.40628433227539,False
+Stage2_A,feedstock,eupatorium adenophorum + eggshell catalyst,3,1,32.66180267333984,False
+Stage2_A,feedstock,water hyacinth;yiyangriveryangzhouchina,2,1,47.13005752563476,False
+Stage2_A,feedstock,mango peel,10,1,13.548996620178224,False
+Stage2_A,feedstock,bamboo,3,1,9.168585205078125,False
+Stage2_A,feedstock,sunflower leaves,1,1,0.059805870056152344,False
+Stage2_A,feedstock,"municipal sewage sludge, lanzhou",4,1,15.730461120605469,False
+Stage2_A,feedstock,"scots pine sawdust;gumushane,turkiye",3,1,9.19718448638916,False
+Stage2_A,feedstock,rice husk,13,1,6.852129334669846,False
+Stage2_A,feedstock,waste bamboo chopsticks,2,1,5.42588996887207,False
+Stage2_A,feedstock,almond shell,2,2,17.842933654785156,False
+Stage2_A,feedstock,municipal sewage sludge,2,1,39.33487945556641,False
+Stage2_A,feedstock,end-of-life wood panel waste;wood particles with uf/mf resins,1,1,14.606666259765632,False
+Stage2_A,feedstock,brewed tea waste,6,1,48.66265309651693,False
+Stage2_A,feedstock,bamboo powder,3,1,15.61489939371745,False
+Stage2_A,feedstock,oak cupules,5,1,23.925172912597652,False
+Stage2_A,feedstock,ginger stalks,2,1,13.871055221557619,False
+Stage2_A,feedstock,sichuan pepper branches,2,1,16.571055221557618,False
+Stage2_A,feedstock,kiwifruit leaves,2,1,17.921055221557616,False
+Stage2_A,feedstock,municipal sludge:peanut shell=3:1 drymass,2,1,35.93747581481934,False
+Stage2_A,feedstock,peanut shell,2,1,19.54656982421875,False
+Stage2_A,feedstock,phoenix dactylifera ghars variety fiber;ouargla algeria,1,1,11.63536180114746,False
+Stage2_A,feedstock,rice straw,3,1,9.947301432291669,False
+Stage2_A,feedstock,maize straw,15,2,12.349647674560545,False
+Stage2_A,manufacture_route,SINGLE_STAGE_PYROLYSIS,40,12,16.28780503845215,True
+Stage2_A,manufacture_route,UREA_CO_PYROLYSIS,1,1,32.88210525512695,False
+Stage2_A,manufacture_route,CHEMICAL_POST_MODIFICATION,15,4,35.97945329793295,True
+Stage2_A,manufacture_route,TWO_STAGE_THERMAL,26,5,9.356076698303223,True
+Stage2_A,manufacture_route,TWO_STAGE_THERMAL_STEAM,2,1,21.40628433227539,False
+Stage2_A,manufacture_route,CO_PYROLYSIS_EGGSHELL,3,1,32.66180267333984,False
+Stage2_A,manufacture_route,METAL_OXIDE_COMPOSITE_POST_PYRO,1,1,0.059805870056152344,False
+Stage2_A,manufacture_route,PREIMPREGNATION_PYROLYSIS,4,2,26.197214794158935,False
+Stage2_A,manufacture_route,H3BO3_PREIMPREGNATION_PYROLYSIS,3,1,9.19718448638916,False
+Stage2_A,manufacture_route,MICROWAVE_NO_PYRO_T_C,1,1,5.42588996887207,False
+Stage2_A,manufacture_route,METAL_OXIDE_POST_MODIFICATION,1,1,31.774879455566406,False
+Stage2_A,manufacture_route,POST_PYRO_SOL_GEL_THERMAL_CALCINATION,6,1,48.66265309651693,False
+Stage2_A,manufacture_route,H3PO4_PREIMPREGNATION_PYROLYSIS,6,2,21.876871060689286,False
+Stage2_A,manufacture_route,CLAY_POST_MODIFICATION,1,1,6.54656982421875,False
+Stage2_A,manufacture_route,AQUEOUS_POST_MODIFICATION,3,1,9.947301432291669,False
+Stage2_A,doi,10.1007/s10967-023-09104-y,3,1,10.339433568318684,False
+Stage2_A,doi,10.1007/s11270-026-09592-0,1,1,32.88210525512695,False
+Stage2_A,doi,10.1016/j.eti.2023.103268,6,1,70.82579978942871,False
+Stage2_A,doi,10.1016/j.wasman.2022.07.024,12,1,11.514318593343098,False
+Stage2_A,doi,10.1021/acsomega.0c06029,2,1,21.40628433227539,False
+Stage2_A,doi,10.1021/acsomega.2c01957,3,1,32.66180267333984,False
+Stage2_A,doi,10.1038/s41598-020-63000-z,2,1,47.13005752563476,False
+Stage2_A,doi,10.1039/d0ra06586b,10,1,13.548996620178224,False
+Stage2_A,doi,10.1039/d3ra05315f,3,1,9.168585205078125,False
+Stage2_A,doi,10.1039/d5ra00057b,1,1,0.059805870056152344,False
+Stage2_A,doi,10.1039/d5ra09939k,4,1,15.730461120605469,False
+Stage2_A,doi,10.1039/d6ra06700j,3,1,9.19718448638916,False
+Stage2_A,doi,10.1039/d6ra08271h,13,1,6.852129334669846,False
+Stage2_A,doi,10.1186/s42834-024-00238-6,2,1,5.42588996887207,False
+Stage2_A,doi,10.1186/s42834-025-00243-3,1,1,13.921066284179688,False
+Stage2_A,doi,10.1371/journal.pone.0218114,2,1,39.33487945556641,False
+Stage2_A,doi,10.3390/app15158518,1,1,14.606666259765632,False
+Stage2_A,doi,10.3390/gels11080628,6,1,48.66265309651693,False
+Stage2_A,doi,10.3390/ijerph16050845,12,1,15.149051885604857,False
+Stage2_A,doi,10.3390/molecules26196014,3,1,15.61489939371745,False
+Stage2_A,doi,10.3390/molecules29112489,5,1,23.925172912597652,False
+Stage2_A,doi,10.3390/molecules30204121,1,1,21.764801025390625,False
+Stage2_A,doi,10.3390/su14159022,3,1,1.1520308303833005,False
+Stage2_A,doi,10.3390/su18010373,6,1,16.12105522155762,False
+Stage2_A,doi,10.5004/dwt.2018.22210,2,1,35.93747581481934,False
+Stage2_A,doi,10.5004/dwt.2021.27019,2,1,19.54656982421875,False
+Stage2_A,doi,10.5004/dwt.2022.29056,1,1,11.63536180114746,False
+Stage2_A,doi,10.5004/dwt.2023.29443,3,1,9.947301432291669,False
+Stage2_B,pollutant,Pb(II),14,7,42.08130702427456,True
+Stage2_B,pollutant,Cu(II),22,7,11.868418149081144,True
+Stage2_B,pollutant,Ni(II),11,4,40.11139298178933,True
+Stage2_B,pollutant,Cd(II),56,10,13.126962117467608,True
+Stage2_B,pollutant,Phenol,10,6,20.429657693481445,True
+Stage2_B,feedstock,garden waste leaves and wood,3,1,9.631733474731446,False
+Stage2_B,feedstock,"rice husk;nanchang,jiangxi",1,1,29.918123626708983,False
+Stage2_B,feedstock,cow litter,6,1,68.23539016723633,False
+Stage2_B,feedstock,mandarin peel,3,1,4.960863469441732,False
+Stage2_B,feedstock,sweet lime peel,3,1,5.795801976521809,False
+Stage2_B,feedstock,rangpur lime peel,3,1,5.490863469441731,False
+Stage2_B,feedstock,orange peel,3,1,7.64580197652181,False
+Stage2_B,feedstock,food waste,2,1,21.55020523071289,False
+Stage2_B,feedstock,eupatorium adenophorum + eggshell catalyst,3,1,35.90832621256511,False
+Stage2_B,feedstock,water hyacinth;yiyangriveryangzhouchina,2,1,34.93136901855468,False
+Stage2_B,feedstock,mango peel,10,1,4.588620052337647,False
+Stage2_B,feedstock,bamboo,3,1,33.46968231201172,False
+Stage2_B,feedstock,sunflower leaves,1,1,1.8143463134765625,False
+Stage2_B,feedstock,"municipal sewage sludge, lanzhou",4,1,9.089991092681885,False
+Stage2_B,feedstock,"scots pine sawdust;gumushane,turkiye",3,1,3.2853842926025387,False
+Stage2_B,feedstock,rice husk,13,1,18.18643382145808,False
+Stage2_B,feedstock,waste bamboo chopsticks,2,1,2.183053970336914,False
+Stage2_B,feedstock,almond shell,2,2,12.808174133300781,False
+Stage2_B,feedstock,municipal sewage sludge,2,1,46.51330429077149,False
+Stage2_B,feedstock,end-of-life wood panel waste;wood particles with uf/mf resins,1,1,39.64368408203126,False
+Stage2_B,feedstock,brewed tea waste,6,1,53.20837097167968,False
+Stage2_B,feedstock,bamboo powder,3,1,13.649899241129559,False
+Stage2_B,feedstock,oak cupules,5,1,15.368670379638669,False
+Stage2_B,feedstock,ginger stalks,2,1,14.503192520141603,False
+Stage2_B,feedstock,sichuan pepper branches,2,1,18.38743476867676,False
+Stage2_B,feedstock,kiwifruit leaves,2,1,18.5531925201416,False
+Stage2_B,feedstock,municipal sludge:peanut shell=3:1 drymass,2,1,39.762233390808106,False
+Stage2_B,feedstock,peanut shell,2,1,17.98360824584961,False
+Stage2_B,feedstock,phoenix dactylifera ghars variety fiber;ouargla algeria,1,1,27.47755731201172,False
+Stage2_B,feedstock,rice straw,3,1,8.036772613525391,False
+Stage2_B,feedstock,maize straw,15,2,11.324594533284506,False
+Stage2_B,manufacture_route,SINGLE_STAGE_PYROLYSIS,40,12,12.912682213783265,True
+Stage2_B,manufacture_route,UREA_CO_PYROLYSIS,1,1,29.918123626708983,False
+Stage2_B,manufacture_route,CHEMICAL_POST_MODIFICATION,15,4,37.59335796101888,True
+Stage2_B,manufacture_route,TWO_STAGE_THERMAL,26,5,14.698127676156853,True
+Stage2_B,manufacture_route,TWO_STAGE_THERMAL_STEAM,2,1,21.55020523071289,False
+Stage2_B,manufacture_route,CO_PYROLYSIS_EGGSHELL,3,1,35.90832621256511,False
+Stage2_B,manufacture_route,METAL_OXIDE_COMPOSITE_POST_PYRO,1,1,1.8143463134765625,False
+Stage2_B,manufacture_route,PREIMPREGNATION_PYROLYSIS,4,2,19.31799669265747,False
+Stage2_B,manufacture_route,H3BO3_PREIMPREGNATION_PYROLYSIS,3,1,3.2853842926025387,False
+Stage2_B,manufacture_route,MICROWAVE_NO_PYRO_T_C,1,1,3.5837268829345703,False
+Stage2_B,manufacture_route,METAL_OXIDE_POST_MODIFICATION,1,1,41.221710205078125,False
+Stage2_B,manufacture_route,POST_PYRO_SOL_GEL_THERMAL_CALCINATION,6,1,53.20837097167968,False
+Stage2_B,manufacture_route,H3PO4_PREIMPREGNATION_PYROLYSIS,6,2,17.386818201700844,False
+Stage2_B,manufacture_route,CLAY_POST_MODIFICATION,1,1,6.143409729003906,False
+Stage2_B,manufacture_route,AQUEOUS_POST_MODIFICATION,3,1,8.036772613525391,False
+Stage2_B,doi,10.1007/s10967-023-09104-y,3,1,9.631733474731446,False
+Stage2_B,doi,10.1007/s11270-026-09592-0,1,1,29.918123626708983,False
+Stage2_B,doi,10.1016/j.eti.2023.103268,6,1,68.23539016723633,False
+Stage2_B,doi,10.1016/j.wasman.2022.07.024,12,1,5.97333272298177,False
+Stage2_B,doi,10.1021/acsomega.0c06029,2,1,21.55020523071289,False
+Stage2_B,doi,10.1021/acsomega.2c01957,3,1,35.90832621256511,False
+Stage2_B,doi,10.1038/s41598-020-63000-z,2,1,34.93136901855468,False
+Stage2_B,doi,10.1039/d0ra06586b,10,1,4.588620052337647,False
+Stage2_B,doi,10.1039/d3ra05315f,3,1,33.46968231201172,False
+Stage2_B,doi,10.1039/d5ra00057b,1,1,1.8143463134765625,False
+Stage2_B,doi,10.1039/d5ra09939k,4,1,9.089991092681885,False
+Stage2_B,doi,10.1039/d6ra06700j,3,1,3.2853842926025387,False
+Stage2_B,doi,10.1039/d6ra08271h,13,1,18.18643382145808,False
+Stage2_B,doi,10.1186/s42834-024-00238-6,2,1,2.183053970336914,False
+Stage2_B,doi,10.1186/s42834-025-00243-3,1,1,4.694305419921875,False
+Stage2_B,doi,10.1371/journal.pone.0218114,2,1,46.51330429077149,False
+Stage2_B,doi,10.3390/app15158518,1,1,39.64368408203126,False
+Stage2_B,doi,10.3390/gels11080628,6,1,53.20837097167968,False
+Stage2_B,doi,10.3390/ijerph16050845,12,1,12.32380531311035,False
+Stage2_B,doi,10.3390/molecules26196014,3,1,13.649899241129559,False
+Stage2_B,doi,10.3390/molecules29112489,5,1,15.368670379638669,False
+Stage2_B,doi,10.3390/molecules30204121,1,1,20.922042846679688,False
+Stage2_B,doi,10.3390/su14159022,3,1,7.32775141398112,False
+Stage2_B,doi,10.3390/su18010373,6,1,17.14793993631999,False
+Stage2_B,doi,10.5004/dwt.2018.22210,2,1,39.762233390808106,False
+Stage2_B,doi,10.5004/dwt.2021.27019,2,1,17.98360824584961,False
+Stage2_B,doi,10.5004/dwt.2022.29056,1,1,27.47755731201172,False
+Stage2_B,doi,10.5004/dwt.2023.29443,3,1,8.036772613525391,False

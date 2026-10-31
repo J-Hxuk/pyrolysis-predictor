@@ -1,0 +1,31 @@
+{
+  "release": "v50_model_utility_research",
+  "required_baseline": "v47 integrated + v48 UI + v49 demo",
+  "model_promotion": false,
+  "modified_existing_active_assets": false,
+  "source_stage2_rows": 140,
+  "source_stage2_doi": 32,
+  "source_stage2_sha256": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+  "files": {
+    "CHECK_V50.cmd": "47db47652c8383de858f6bf3f08f5a6c91f48c84bb9daafba5d40484616b1500",
+    "README_V50_KO.md": "418f212062a7e19199687003f295e03dffef55d3d8df473fe34696cd852da718",
+    "reports/v50_model_utility/RESULTS_KO.md": "f58122c248655e9a33ae756ddda5cdec0e861733b8b5de51f8a6b6a63c044e67",
+    "reports/v50_model_utility/doi_cluster_bootstrap.csv": "bb64714fbd93631f8b6dda0c8102907ef692da145ec29e4a8bddc34c458b9396",
+    "reports/v50_model_utility/doi_oof_predictions.csv": "adc766ba946778ec49e92791fbcc342b3accd026e6b878cfb29dae916b513564",
+    "reports/v50_model_utility/global_model_comparison.csv": "92c40ad947f35946415a276f373a39e2542b544d83621b4aa2e7af0dec9a886f",
+    "reports/v50_model_utility/matched_temperature_panels.csv": "9bed983c66974cd3a5c9029ff7c1a459ba3469b7497cb417e7630fadd5b22b5a",
+    "reports/v50_model_utility/measured_BET_TPV_oof_predictions.csv": "54f7345ece1fbc5e6818da1f153c9d9e875165afad206b17eea8d253b4884fce",
+    "reports/v50_model_utility/measured_BET_TPV_paired_comparison.csv": "545aacdaf6518c9d8b5e47c0c7ddab812952bb0e8b944b491d2325392be3fccd",
+    "reports/v50_model_utility/per_doi_candidate_comparison.csv": "218aa1f05500e4e056d3f9441c33811bb4b7446a65794aaf3735dde7878c1363",
+    "reports/v50_model_utility/per_pollutant_comparison.csv": "4760de21ece6d7f8748b7692bbac25b80033e44359569ac5de9e8daf10c76309",
+    "reports/v50_model_utility/specialist_fold_audit.csv": "c040d24320b97ebbee8381889da2299c6f9bbb9499320d2a4e0eab658d56466c",
+    "reports/v50_model_utility/summary.json": "054187bb1dfdc1ab35677fefd67b28bccbb17dd5a15e9a623e5d1c23c918d1fb",
+    "reports/v50_model_utility/v50_cu_mae.png": "f50f338ba71790d13733387f6469d3827106fd47146d93f307b739bc64e75c34",
+    "reports/v50_model_utility/v50_overall_mae.png": "9955c811cda79033f27c6c5f5de21dfe301b729ada87173df407f60ab6419811",
+    "scripts/create_v50_figures.py": "ffae9549eaf332a17883f9f0ac93b504c5afde7b260bbb6d6b29b563add856ac",
+    "scripts/evaluate_v50_model_utility.py": "dbfe0c4fa35c0544143769742d1550a024807d69b465b9bf2462929b59c8d81f",
+    "scripts/summarize_v50_evidence.py": "f02d1ca8a1c1d190ab28a23ed8f54f33a5f3609baa9b4f3ea2107f4c17f183bb",
+    "scripts/train_v50_bounded_candidate.py": "2d6f505444b113f5700107bed2dd6cae7aad33641a5a523ad64c810858dc3bec",
+    "tests/test_v50_model_utility.py": "12ddc1c15154dffcf701abd3d043baae0f6ca8d74d6f9b4487b3056ffafa4c02"
+  }
+}

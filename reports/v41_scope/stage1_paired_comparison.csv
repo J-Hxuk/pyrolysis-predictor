@@ -1,0 +1,5 @@
+﻿target,baseline,challenger,n,n_doi,MAE_baseline,MAE_challenger,delta_MAE_challenger_minus_baseline,n_negative_baseline,n_negative_challenger,n_low_target_le_25,low_target_MAE_baseline,low_target_MAE_challenger
+BET_m2_g_training_candidate,Ridge,Poisson_Process,336,45,249.47339137314827,239.43955980280805,-10.033831570340226,66,0,73,130.29944429132337,97.26678370664636
+BET_m2_g_training_candidate,Ridge,Poisson_Composition,336,45,249.47339137314827,241.02284086661257,-8.45055050653568,66,0,73,130.29944429132337,98.92496032522466
+TPV_cm3_g_training_candidate,Ridge,Poisson_Process,213,33,0.18732323420077804,0.18073239439295627,-0.0065908398078218505,6,0,213,0.18732323420077804,0.18073239439295627
+TPV_cm3_g_training_candidate,Ridge,Poisson_Composition,213,33,0.18732323420077804,0.17910682743228645,-0.008216406768491653,6,0,213,0.18732323420077804,0.17910682743228645

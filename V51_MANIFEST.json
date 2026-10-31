@@ -1,0 +1,17 @@
+{
+  "patch_name": "Biochar_v51_NewPaper_Intake_SAFE_Patch",
+  "stage": "source_review_only",
+  "training_rows_added": 0,
+  "train_run": false,
+  "existing_model_overwrite": false,
+  "files": {
+    "README_V51_KO.md": "a773aedfc46489b9c2f7c027fb4ca100c20d6ed792a2054d27f21f355f212058",
+    "scripts/audit_v51_newpapers.py": "3d08ca0543eb50def2a63c301dc95471d2601729eb3e53123599b27cc6ece881",
+    "tests/test_v51_newpapers.py": "94d548b997904236e3aac2e5b1fd333167be9d5de4b07c68ab673627c2d9d5cf",
+    "reports/v51_newpaper_review/RESULTS_KO.md": "332cdbcbb64ceaa9bf078058c294f00f29d27cd93d93b35fa44b7210a7edb86e",
+    "data/imports/v51_newpaper_review/Additional_Paper_Extraction_Audit.xlsx": "a794ddf11b7a0c6ebf492d663974fcd128afd426c1c6d425ddef96a7d48b862a",
+    "data/imports/v51_newpaper_review/Additional_Papers_Source_and_Readiness_Report.md": "d6798bea39330d1d9ab87c9e7ffd0f34f0c1770d421f45b33576f89bd81cc8e5",
+    "data/imports/v51_newpaper_review/Additional_Comparison_Series_Readiness.csv": "f649d4c46b68fb119cf0d8a2fb3398f3d772e12447b4f22ec7fa2708bd926053",
+    "data/imports/v51_newpaper_review/Additional_Observed_Adsorption_Candidates.csv": "7c801e1872b4d9e921ed914d13ab4e79a8943efe1059fcfc5f9e8f0e9533ec23"
+  }
+}

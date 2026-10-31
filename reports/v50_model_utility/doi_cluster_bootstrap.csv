@@ -1,0 +1,4 @@
+pollutant,reference,candidate,n,doi,reference_mae,candidate_mae,delta_mae,improved_doi,ci2_5,ci97_5,bootstrap_unit,bootstrap_replications,uncertainty_note
+Cu(II),A_clipped,A_bounded_fraction,31,9,13.118460616277014,9.11325826636445,-4.005202349912563,6,-13.206365999655915,0.9376735403404032,DOI,3000,"Exploratory reused-DOI CV; intervals are descriptive, not prospectively validated"
+Cd(II),A_clipped,B_clipped,67,12,10.679848564774241,8.935919712147307,-1.743928852626934,8,-4.615194982704443,-0.15058153773624072,DOI,3000,"Exploratory reused-DOI CV; intervals are descriptive, not prospectively validated"
+Cu(II),B_clipped,CdCu_local_B_clipped,31,9,18.11255067192729,18.374183145429036,0.2616324735017426,3,-11.033587185197183,9.992691190512003,DOI,3000,"Exploratory reused-DOI CV; intervals are descriptive, not prospectively validated"

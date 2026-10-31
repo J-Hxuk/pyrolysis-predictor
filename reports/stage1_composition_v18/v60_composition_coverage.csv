@@ -1,0 +1,10 @@
+feature,available_rows,total_rows,fraction_available,n_doi_with_value,distinct_values
+feedstock_C_pct_original,61,256,0.23828125,6,8
+feedstock_H_pct_original,57,256,0.22265625,5,7
+feedstock_O_pct_original,51,256,0.19921875,4,6
+feedstock_N_pct_original,42,256,0.1640625,4,4
+feedstock_S_pct_original,42,256,0.1640625,4,4
+feedstock_ash_pct_original,48,256,0.1875,5,12
+feedstock_VM_pct_original,17,256,0.06640625,1,1
+feedstock_FC_pct_original,17,256,0.06640625,1,1
+feedstock_moisture_pct_original,17,256,0.06640625,1,1

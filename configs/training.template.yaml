@@ -1,0 +1,30 @@
+# training.template.yaml — 학습 설정 원형
+#
+# 실제 설정은 configs/local/training.yaml 에 작성한다 (Git 제외).
+# 분할 비율·fold 수·조정 범위·정확도 목표는 데이터 확보 후 작업 27에서 확정한다.
+# 임의의 80:20 분할, 교차검증 횟수, 정확도 기준을 미리 넣지 않는다.
+
+schema_version: 1
+
+# 분할 계획 (데이터 확보 후 작업 27에서 확정)
+splitting:
+  method: null           # group_holdout | nested_cv
+  group_id: null         # 독립 그룹 식별자
+  holdout_groups: null   # 고정 평가 그룹 목록 (group_holdout 시)
+  n_outer_folds: null    # 외부 fold 수 (nested_cv 시)
+  n_inner_folds: null    # 내부 fold 수 (nested_cv 시)
+  random_seed: null      # 재현용 난수 설정
+
+# 후보 모델 (데이터 확보 후 작업 27에서 적용 가능성 확인)
+candidates:
+  regression: []         # linear_regression | random_forest | xgboost
+  classification: []     # majority_baseline | logistic_regression | random_forest | xgboost
+
+# 모델 선정 기준 (데이터 확보 후 작업 27에서 확정)
+selection:
+  metric: null           # 회귀: mae | rmse, 분류: f1 등
+  direction: null        # minimize | maximize
+  tiebreak: null         # 동점 처리 기준
+
+# 하이퍼파라미터 조정 범위 (데이터 확보 후 작업 27에서 확정)
+hyperparameter_search: {}

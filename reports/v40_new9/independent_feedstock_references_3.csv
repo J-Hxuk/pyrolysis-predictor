@@ -1,0 +1,4 @@
+doi,feedstock,VM_pct,FC_pct,ash_pct,moisture_pct,C_pct,H_pct,O_pct,N_pct,S_pct,proximate_basis,ultimate_basis,source_locator,join_policy
+10.1021/acsomega.1c04717,soybean straw,73.61,14.59,5.03,6.77,53.68,5.38,37.17,2.59,1.17,as listed incl moisture,dry,ACS Omega 2021 Table 1 p2; elemental sum may exceed 100 due reporting,INDEPENDENT_REFERENCE_NO_CROSS_DOI_JOIN
+10.3390/en13226033,rice husk,71.94,4.16,14.45,9.45,41.28,5.12,53.11,0.42,0.07,as received,dry ash free,Energies 2020 Table 1 p3,INDEPENDENT_REFERENCE_NO_CROSS_DOI_JOIN
+10.1016/j.egyr.2021.07.032,spent coffee grounds,76.0,12.5,1.5,10.0,54.7,6.5,,2.7,,air dried,dry ash free,"Energy Reports 2021 Table 1 p4; O+S reported combined 36.1, not O alone",SAME_DOI_COFFEE_CHAR_ONLY

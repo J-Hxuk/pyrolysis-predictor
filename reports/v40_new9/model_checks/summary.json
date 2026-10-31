@@ -1,0 +1,331 @@
+{
+  "n_stage1": 381,
+  "n_stage2": 128,
+  "new_DOI_added": 7,
+  "model_metrics": [
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Ridge",
+      "subset": "all_doi_group5",
+      "n": 336,
+      "n_doi": 45,
+      "MAE": 249.47339137314827,
+      "R2": 0.5189618999638087,
+      "raw_negative": 66
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Poisson_Process",
+      "subset": "all_doi_group5",
+      "n": 336,
+      "n_doi": 45,
+      "MAE": 239.43955980280805,
+      "R2": 0.48971676567504907,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Poisson_Composition",
+      "subset": "all_doi_group5",
+      "n": 336,
+      "n_doi": 45,
+      "MAE": 241.02284086661257,
+      "R2": 0.48149632277847376,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Ridge",
+      "subset": "all_doi_group5",
+      "n": 213,
+      "n_doi": 33,
+      "MAE": 0.1873232342007781,
+      "R2": 0.3454557547819702,
+      "raw_negative": 6
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Poisson_Process",
+      "subset": "all_doi_group5",
+      "n": 213,
+      "n_doi": 33,
+      "MAE": 0.18073239439295619,
+      "R2": 0.36259546081862815,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Poisson_Composition",
+      "subset": "all_doi_group5",
+      "n": 213,
+      "n_doi": 33,
+      "MAE": 0.1791068274322864,
+      "R2": 0.38195324781568496,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage2",
+      "target": "target_value",
+      "model": "A",
+      "subset": "all_doi_group5",
+      "n": 128,
+      "n_doi": 30,
+      "MAE": 18.663922532469037,
+      "R2": 0.6599499741360412,
+      "raw_negative": 1,
+      "cap_exceeded": 28,
+      "raw_physics_violations": 29
+    },
+    {
+      "stage": "Stage2",
+      "target": "target_value",
+      "model": "B",
+      "subset": "all_doi_group5",
+      "n": 128,
+      "n_doi": 30,
+      "MAE": 21.26005089112837,
+      "R2": 0.5833657582255898,
+      "raw_negative": 0,
+      "cap_exceeded": 44,
+      "raw_physics_violations": 44
+    }
+  ],
+  "paired_old_doi": [
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Ridge",
+      "old_rows": 313,
+      "old_doi": 41,
+      "new_train_rows": 23,
+      "new_train_doi": 4,
+      "old_train_MAE": 258.9103841742598,
+      "augmented_train_MAE": 247.47588591857928,
+      "delta_MAE": -11.434498255680417,
+      "DOI_bootstrap_CI95": [
+        -21.651800103488203,
+        -3.120799481270078
+      ]
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Poisson_Process",
+      "old_rows": 313,
+      "old_doi": 41,
+      "new_train_rows": 23,
+      "new_train_doi": 4,
+      "old_train_MAE": 248.63113764753436,
+      "augmented_train_MAE": 257.3318271869885,
+      "delta_MAE": 8.700689539454125,
+      "DOI_bootstrap_CI95": [
+        -16.173764267210274,
+        36.16574944629491
+      ]
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Poisson_Composition",
+      "old_rows": 313,
+      "old_doi": 41,
+      "new_train_rows": 23,
+      "new_train_doi": 4,
+      "old_train_MAE": 250.81252106561706,
+      "augmented_train_MAE": 265.23992172044393,
+      "delta_MAE": 14.427400654826867,
+      "DOI_bootstrap_CI95": [
+        -9.614354148223581,
+        36.71300836537667
+      ]
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Ridge",
+      "old_rows": 205,
+      "old_doi": 30,
+      "new_train_rows": 8,
+      "new_train_doi": 3,
+      "old_train_MAE": 0.18444862770342466,
+      "augmented_train_MAE": 0.18383637507306178,
+      "delta_MAE": -0.0006122526303628709,
+      "DOI_bootstrap_CI95": [
+        -0.004548248331630698,
+        0.0033221710491587704
+      ]
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Poisson_Process",
+      "old_rows": 205,
+      "old_doi": 30,
+      "new_train_rows": 8,
+      "new_train_doi": 3,
+      "old_train_MAE": 0.1836057499049989,
+      "augmented_train_MAE": 0.1899928466541691,
+      "delta_MAE": 0.00638709674917016,
+      "DOI_bootstrap_CI95": [
+        -0.008701824577236983,
+        0.021759379779220895
+      ]
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Poisson_Composition",
+      "old_rows": 205,
+      "old_doi": 30,
+      "new_train_rows": 8,
+      "new_train_doi": 3,
+      "old_train_MAE": 0.1900502684048308,
+      "augmented_train_MAE": 0.18280503980803453,
+      "delta_MAE": -0.007245228596796267,
+      "DOI_bootstrap_CI95": [
+        -0.01911072500756057,
+        0.0031527566677420882
+      ]
+    },
+    {
+      "stage": "Stage2",
+      "target": "target_value",
+      "model": "A",
+      "old_rows": 125,
+      "old_doi": 29,
+      "new_train_rows": 3,
+      "new_train_doi": 1,
+      "old_train_MAE": 20.638945974395753,
+      "augmented_train_MAE": 20.27545934368896,
+      "delta_MAE": -0.3634866307067871,
+      "DOI_bootstrap_CI95": [
+        -1.1401215671239633,
+        0.36274724268186354
+      ]
+    },
+    {
+      "stage": "Stage2",
+      "target": "target_value",
+      "model": "B",
+      "old_rows": 125,
+      "old_doi": 29,
+      "new_train_rows": 3,
+      "new_train_doi": 1,
+      "old_train_MAE": 22.222700208709714,
+      "augmented_train_MAE": 23.55762876339722,
+      "delta_MAE": 1.3349285546874998,
+      "DOI_bootstrap_CI95": [
+        -0.8083746173962455,
+        3.7684399033978293
+      ]
+    }
+  ],
+  "prospective_new_doi": [
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Ridge",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 23,
+      "n_doi": 4,
+      "MAE": 78.94147450120411,
+      "R2": -1.248380582634892,
+      "raw_negative": 1
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Poisson_Process",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 23,
+      "n_doi": 4,
+      "MAE": 56.286969746814094,
+      "R2": -0.07126403955279659,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET_m2_g_training_candidate",
+      "model": "Poisson_Composition",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 23,
+      "n_doi": 4,
+      "MAE": 57.02826464633116,
+      "R2": -0.07600076102602737,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Ridge",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 8,
+      "n_doi": 3,
+      "MAE": 0.17321299006771412,
+      "R2": -0.7071483931042806,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Poisson_Process",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 8,
+      "n_doi": 3,
+      "MAE": 0.12916868168081005,
+      "R2": -0.1489458800277117,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV_cm3_g_training_candidate",
+      "model": "Poisson_Composition",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 8,
+      "n_doi": 3,
+      "MAE": 0.14001233674321,
+      "R2": -0.19879245499219755,
+      "raw_negative": 0
+    },
+    {
+      "stage": "Stage2",
+      "target": "target_value",
+      "model": "A",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 3,
+      "n_doi": 1,
+      "MAE": 25.73030364990235,
+      "R2": -1.6212625323726049,
+      "raw_negative": 0,
+      "cap_exceeded": 0,
+      "raw_physics_violations": 0
+    },
+    {
+      "stage": "Stage2",
+      "target": "target_value",
+      "model": "B",
+      "subset": "prospective_new_DOI_NOT_BLINDED",
+      "n": 3,
+      "n_doi": 1,
+      "MAE": 50.76776026407878,
+      "R2": -6.338708167027473,
+      "raw_negative": 0,
+      "cap_exceeded": 0,
+      "raw_physics_violations": 0
+    }
+  ],
+  "methodology": "DOI GroupKFold 5-fold, predefined hyperparameters; full model fit non-active; historical source QA",
+  "limitations": [
+    "No blinded independent DOI: uploaded sources already inspected for model planning",
+    "Not all observational rows production approved, graph-derived not auto-enrolled",
+    "QE reported experimental 24h cannot certify strict equilibrium",
+    "Source-specific raw feedstock composition not imputed across DOI",
+    "Foldwise preprocessing, no credit for physical cap clipping"
+  ]
+}

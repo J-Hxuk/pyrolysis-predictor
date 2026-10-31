@@ -1,0 +1,3 @@
+scenario,source,n_temperature_conditions,spearman_rho,predicted_top1_temp_C,top1_regret_mg_g,prediction_top_tied
+v55_152,cao,7,0.592999453328881,500.0,48.499999999999986,False
+v55_156_conditional,cao,7,0.8017837257372733,,,True

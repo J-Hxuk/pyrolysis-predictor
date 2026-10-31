@@ -1,0 +1,15 @@
+{
+  "papers_in_zip": 9,
+  "existing_doi_repeats": 2,
+  "new_doi": 7,
+  "material_rows_added": 30,
+  "stage1_all": 381,
+  "bet_observations": 336,
+  "tpv_observations": 213,
+  "qe_added_conditional": 3,
+  "stage2_all_conditional": 128,
+  "stage2_doi": 30,
+  "separate_target_count": 9,
+  "no_auto_deploy": true,
+  "notes": "All rows staged; no source transferred from unrelated DOI as same sample."
+}

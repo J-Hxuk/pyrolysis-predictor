@@ -1,0 +1,20 @@
+{
+  "source_rows_qmax": 32,
+  "DOIs": 5,
+  "temp_contrast_qmax_series": 8,
+  "temp_contrast_qmax_dois": 3,
+  "temp_contrast_qmax_sample_rows": 26,
+  "qe_temperature_ranking_validated": false,
+  "next_data_required": "Source-reported qe or Ce, matched C0/dose/pH/contact_time, stable contaminant and manufacturing route, >=3 temperature settings/DOI",
+  "interpretation": "This is discovery of candidate cohorts for new source-based qe extraction, never a measured-qe benchmark.",
+  "external_poultry_reported_uptake": {
+    "groups": 17,
+    "records": 51,
+    "independent_dois": 1,
+    "groups_with_3_temperatures": 17,
+    "max_within_group_qe_gap_mg_g": 0.02069999999999972,
+    "all_100_g_L": true,
+    "approved_for_temperature_model_training": false,
+    "reason": "Only one new DOI, 100 g/L OOD, precipitation and tiny qe contrasts; do not treat technical repeated groups as independent DOIs."
+  }
+}

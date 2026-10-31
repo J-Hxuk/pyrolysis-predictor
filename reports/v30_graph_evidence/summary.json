@@ -1,0 +1,32 @@
+{
+  "version": "v30",
+  "date": "2026-10-30",
+  "rice_experimental_marker_rows": 18,
+  "rice_physical_cap_failure_count": 5,
+  "rice_figure_vs_fitted_table_conflict_count": 4,
+  "rice_conflict_samples": [
+    [
+      "Cd(II)",
+      "HNO3-BC400"
+    ],
+    [
+      "Cd(II)",
+      "KOH-BC400"
+    ],
+    [
+      "Pb(II)",
+      "HNO3-BC500"
+    ],
+    [
+      "Pb(II)",
+      "KOH-BC500"
+    ]
+  ],
+  "rice_ranking_usable_provisional_unmodified": 6,
+  "rice_ranking_dois": 1,
+  "UGW_approx_Ce_qe_records_not_independently_qualified": 21,
+  "sludge_approx_removal_records_with_dosage_conflict": 28,
+  "all_training_approved_count": 0,
+  "actual_new_Doi_independent_ranking_validation_ready": false,
+  "rationale": "Existing figures do supply experimental points, but 3 DOIs have discordance, different dose, or explicit 1000x dosage contradiction. Digitization is source-backed but approximate and needs manual independent review. Do not mix fitting qmax with measured qt/qe."
+}

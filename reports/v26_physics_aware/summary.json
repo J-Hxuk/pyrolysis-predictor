@@ -1,0 +1,263 @@
+{
+  "scope": "v26 research-only; no deployment/retraining/staging approval",
+  "stage1": {
+    "BET": {
+      "lodo_raw": {
+        "n": 262,
+        "mae": 315.38660175552525,
+        "rmse": 480.5605433102625,
+        "r2": 0.2557596519834391
+      },
+      "lodo_log": {
+        "n": 262,
+        "mae": 277.0836378843619,
+        "rmse": 465.17084177398743,
+        "r2": 0.302664203770018
+      },
+      "doi_cluster_bootstrap_delta_log_minus_raw": {
+        "delta_mae": -38.30296387116329,
+        "ci95": [
+          -84.64676287889634,
+          2.6371010806756767
+        ],
+        "doi_count": 32,
+        "unit": "expanded_minus_original; negative favors expanded"
+      },
+      "lodo_low_range": {
+        "threshold": 30,
+        "raw": {
+          "n": 46,
+          "mae": 106.1495494901831,
+          "rmse": 171.50216550072125,
+          "r2": -390.84150530783705
+        },
+        "log": {
+          "n": 46,
+          "mae": 84.31609058736488,
+          "rmse": 170.58868191856166,
+          "r2": -386.67843810960426
+        }
+      },
+      "external33_raw": {
+        "n": 33,
+        "mae": 152.6068649005096,
+        "rmse": 210.8567722843172,
+        "r2": -7.569777516687143
+      },
+      "external33_log": {
+        "n": 33,
+        "mae": 107.9286869151558,
+        "rmse": 198.22884576829756,
+        "r2": -6.574049570347178
+      },
+      "external_single_stage_raw": {
+        "n": 17,
+        "mae": 114.41202943421585,
+        "rmse": 129.51896643405422,
+        "r2": -167.95718352065802
+      },
+      "external_single_stage_log": {
+        "n": 17,
+        "mae": 42.89536763314527,
+        "rmse": 59.37880431533915,
+        "r2": -34.51181074197465
+      },
+      "external_low_range": {
+        "threshold": 30,
+        "raw": {
+          "n": 25,
+          "mae": 109.64611829325546,
+          "rmse": 138.47807526310817,
+          "r2": -233.40073741860095
+        },
+        "log": {
+          "n": 25,
+          "mae": 51.12242650917729,
+          "rmse": 109.85047921938306,
+          "r2": -146.50299826701396
+        }
+      }
+    },
+    "TPV": {
+      "lodo_raw": {
+        "n": 199,
+        "mae": 0.20263723605923503,
+        "rmse": 0.28865822455641443,
+        "r2": 0.163092588721667
+      },
+      "lodo_log": {
+        "n": 199,
+        "mae": 0.18694015654846968,
+        "rmse": 0.28728931200561336,
+        "r2": 0.17101154913578342
+      },
+      "doi_cluster_bootstrap_delta_log_minus_raw": {
+        "delta_mae": -0.01569707951076533,
+        "ci95": [
+          -0.042045876207101304,
+          0.009645948241051368
+        ],
+        "doi_count": 29,
+        "unit": "expanded_minus_original; negative favors expanded"
+      },
+      "lodo_low_range": {
+        "threshold": 0.03,
+        "raw": {
+          "n": 23,
+          "mae": 0.11449458026071416,
+          "rmse": 0.17979170461715063,
+          "r2": -483.7684183547628
+        },
+        "log": {
+          "n": 23,
+          "mae": 0.08435798134662442,
+          "rmse": 0.14122567225402385,
+          "r2": -298.1040682560188
+        }
+      },
+      "external33_raw": {
+        "n": 33,
+        "mae": 0.06874182902144195,
+        "rmse": 0.09563089642566455,
+        "r2": -0.14329093310261642
+      },
+      "external33_log": {
+        "n": 33,
+        "mae": 0.06438925871476632,
+        "rmse": 0.09951792847138688,
+        "r2": -0.23812063106693282
+      },
+      "external_single_stage_raw": {
+        "n": 17,
+        "mae": 0.06489909559852,
+        "rmse": 0.07765335492296001,
+        "r2": -1.489940096244149
+      },
+      "external_single_stage_log": {
+        "n": 17,
+        "mae": 0.05025413065112546,
+        "rmse": 0.05861435395915174,
+        "r2": -0.41865377068181453
+      },
+      "external_low_range": {
+        "threshold": 0.03,
+        "raw": {
+          "n": 12,
+          "mae": 0.05592551456747163,
+          "rmse": 0.06975120284601133,
+          "r2": -192.47630071111948
+        },
+        "log": {
+          "n": 12,
+          "mae": 0.029579510500558237,
+          "rmse": 0.04331823063649207,
+          "r2": -73.6218120529207
+        }
+      }
+    }
+  },
+  "stage2": {
+    "lodo_core98": {
+      "rows": 98,
+      "dois": 26,
+      "methods": {
+        "direct_xgb_raw": {
+          "n": 98,
+          "mae": 19.707634793262095,
+          "rmse": 33.79739193969286,
+          "r2": 0.6796497743973625,
+          "f_mae_pct_points": 35.58129820700692,
+          "physical_violation_pct": 32.6530612244898
+        },
+        "direct_xgb_clipped": {
+          "n": 98,
+          "mae": 16.831516469707903,
+          "rmse": 31.912843617196152,
+          "r2": 0.714379308699362,
+          "f_mae_pct_points": 21.01388327990667,
+          "physical_violation_pct": 0.0
+        },
+        "fraction_logit_ridge": {
+          "n": 98,
+          "mae": 30.26723486197006,
+          "rmse": 61.02488072303961,
+          "r2": -0.044413643092016786,
+          "f_mae_pct_points": 29.92462949771255,
+          "physical_violation_pct": 0.0
+        },
+        "fraction_mean_baseline": {
+          "n": 98,
+          "mae": 26.81094451643867,
+          "rmse": 53.574851497400815,
+          "r2": 0.19502830494480328,
+          "f_mae_pct_points": 27.803163173184313,
+          "physical_violation_pct": 0.0
+        },
+        "full_removal_baseline": {
+          "n": 98,
+          "mae": 40.797815839476264,
+          "rmse": 90.54634978882231,
+          "r2": -1.2993260110997058,
+          "f_mae_pct_points": 36.62507639676695,
+          "physical_violation_pct": 0.0
+        }
+      },
+      "bound_warning": "Target not strict equilibrium certified"
+    },
+    "external_poultry51_ood": {
+      "rows": 51,
+      "dois": 1,
+      "methods": {
+        "direct_xgb_raw": {
+          "n": 51,
+          "mae": 67.85098138512706,
+          "rmse": 78.53943743141781,
+          "r2": -489.6191196451119,
+          "f_mae_pct_points": 7126.6021914907415,
+          "physical_violation_pct": 100.0
+        },
+        "direct_xgb_clipped": {
+          "n": 51,
+          "mae": 0.015140980392156885,
+          "rmse": 0.03626655351589904,
+          "r2": 0.9998953880089758,
+          "f_mae_pct_points": 1.3918019607843148,
+          "physical_violation_pct": 0.0
+        },
+        "fraction_logit_ridge": {
+          "n": 51,
+          "mae": 0.015140912828767963,
+          "rmse": 0.0362665314130685,
+          "r2": 0.9998953881364884,
+          "f_mae_pct_points": 1.3918003281451576,
+          "physical_violation_pct": 0.0
+        },
+        "fraction_mean_baseline": {
+          "n": 51,
+          "mae": 1.1654791293389188,
+          "rmse": 1.7475179009274822,
+          "r2": 0.7571085861133225,
+          "f_mae_pct_points": 35.233274435982636,
+          "physical_violation_pct": 0.0
+        },
+        "full_removal_baseline": {
+          "n": 51,
+          "mae": 0.015140980392156885,
+          "rmse": 0.03626655351589904,
+          "r2": 0.9998953880089758,
+          "f_mae_pct_points": 1.3918019607843148,
+          "physical_violation_pct": 0.0
+        }
+      },
+      "bound_warning": "Poultry is one DOI, 100 g/L, untrained feedstock and Zn pollutant"
+    }
+  },
+  "interpretation": [
+    "Externally evaluated alternatives cannot be advertised as validated after exploratory selection",
+    "v24 data remains excluded from training",
+    "New raw composition not used because basis incomplete",
+    "DOI group is unit of uncertainty; repeated rows not independent",
+    "Clipped qe is not proof of predictive skill; always show full removal baseline",
+    "Stage1->2 model D remains inactive"
+  ]
+}

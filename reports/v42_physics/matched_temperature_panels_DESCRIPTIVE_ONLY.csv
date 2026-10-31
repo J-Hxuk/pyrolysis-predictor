@@ -1,0 +1,9 @@
+doi,n_temperatures,model,method,actual_best_temperature_C,predicted_best_temperature_C,top1,regret_mg_g,warning
+10.3390/su14159022,3,A,XGB_raw,400.0,300.0,0,3.079999999999999,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,A,XGB_clipped,400.0,300.0,0,3.079999999999999,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,A,Logit_Ridge_fraction,400.0,300.0,0,3.079999999999999,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,A,RF_fraction,400.0,300.0,0,3.079999999999999,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,B,XGB_raw,400.0,500.0,0,1.5499999999999998,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,B,XGB_clipped,400.0,300.0,0,3.079999999999999,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,B,Logit_Ridge_fraction,400.0,500.0,0,1.5499999999999998,"Single DOI matched panel, reused in training-design research; descriptive only"
+10.3390/su14159022,3,B,RF_fraction,400.0,400.0,1,0.0,"Single DOI matched panel, reused in training-design research; descriptive only"

@@ -1,0 +1,103 @@
+# synthetic_spec_a.yaml — 작업 24 통합 점검용 합성 규격 A.
+#
+# 가상 자료 전용. 실제 열분해 지표·단위·측정값이 아니다.
+# 대상 2개: 회귀(wt%) + 이진 분류(검출 표지). 활성 대상.
+schema_version: 1
+problem_id: synthetic-accept-a
+status: configured
+
+inputs:
+  - id: a_x1
+    label_ko: 합성 A 입력 1 (시험용)
+    description: 시험용 합성 수치 변수 - 실제 공정 변수 아님
+    role: feedstock
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 시험용 임의 물리 범위
+        min_value: -100.0
+        max_value: 100.0
+    display_order: 1
+
+  - id: a_x2
+    label_ko: 합성 A 입력 2 (시험용)
+    description: 시험용 합성 수치 변수 - 실제 공정 변수 아님
+    role: preparation
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 시험용 임의 물리 범위
+        min_value: -100.0
+        max_value: 100.0
+    display_order: 2
+
+  - id: a_cat
+    label_ko: 합성 A 범주 입력 (시험용)
+    description: 시험용 합성 범주 변수 - 실제 범주 아님
+    role: reaction_test
+    dtype: category
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories:
+      - value: g1
+        label_ko: 그룹 1 (시험용)
+      - value: g2
+        label_ko: 그룹 2 (시험용)
+    physical_constraints: []
+    display_order: 3
+
+targets:
+  - id: a_reg
+    label_ko: 합성 A 회귀 대상 (시험용)
+    family: gas
+    task: regression
+    definition: 시험용 합성 회귀 대상 - 실제 성능 지표 아님
+    unit: wt%
+    basis: null
+    measurement: 시험용 합성 측정 - 실제 측정 아님
+    input_ids: [a_x1, a_x2, a_cat]
+    label_mapping: null
+    positive_label: null
+    detection_rule: null
+    reaction_context: null
+    output_constraints:
+      non_negative: false
+      finite: true
+      tolerance: 1.0e-6
+    display_precision: 4
+
+  - id: a_cls
+    label_ko: 합성 A 검출 분류 (시험용)
+    family: functional_group
+    task: binary_classification
+    definition: 시험용 합성 이진 검출 대상 - 실제 작용기 아님
+    unit: null
+    basis: null
+    measurement: 시험용 합성 검출 기준 - 실제 기준 아님
+    input_ids: [a_x1, a_x2]
+    label_mapping:
+      absent: 0
+      present: 1
+    positive_label: present
+    detection_rule: 시험용 합성 검출 규칙
+    reaction_context: null
+    output_constraints:
+      non_negative: false
+      finite: true
+      tolerance: null
+    display_precision: 4
+
+composition_groups: []
+physical_constraints: []
+applicability:
+  description: 시험용 합성 규격 A - 실제 연구 지표 아님

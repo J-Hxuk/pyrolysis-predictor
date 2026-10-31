@@ -1,0 +1,38 @@
+[
+  {
+    "method": "XGB_raw",
+    "delta_MAE_B_minus_A": 2.5961283586593344,
+    "bootstrap_CI95": [
+      -1.3932440060156823,
+      7.43467351114549
+    ],
+    "n_doi": 30
+  },
+  {
+    "method": "XGB_clipped",
+    "delta_MAE_B_minus_A": 0.9009356008427926,
+    "bootstrap_CI95": [
+      -1.3773646788345495,
+      3.362551820913732
+    ],
+    "n_doi": 30
+  },
+  {
+    "method": "RF_fraction",
+    "delta_MAE_B_minus_A": -0.03640103062332234,
+    "bootstrap_CI95": [
+      -1.7362166534666374,
+      1.995606754287979
+    ],
+    "n_doi": 30
+  },
+  {
+    "method": "Logit_Ridge_fraction",
+    "delta_MAE_B_minus_A": -1.1602291956972266,
+    "bootstrap_CI95": [
+      -5.313304408731519,
+      2.7331196942859446
+    ],
+    "n_doi": 30
+  }
+]

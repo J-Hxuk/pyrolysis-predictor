@@ -1,0 +1,2 @@
+model,algorithm,observation_id,doi,actual,pred,c0,dose,evaluation
+A,XGBoost,V15_ADS_ALMOND_SP_C500,10.3390/molecules30204121,103.0,114.94105529785156,500.0,2.0,new_DOI_challenge

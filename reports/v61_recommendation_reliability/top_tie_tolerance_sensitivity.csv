@@ -1,0 +1,25 @@
+scenario,model,tie_tolerance_in_model_units,n_multi_top,n_unique_top,note
+152,A_row,1e-08,15,0,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,A_row,0.1,15,0,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,A_row,1.0,15,0,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,B_row,1e-08,6,9,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,B_row,0.1,6,9,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,B_row,1.0,10,5,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,B_doi_material,1e-08,4,11,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,B_doi_material,0.1,4,11,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,B_doi_material,1.0,8,7,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,mfg_forest,1e-08,0,15,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,mfg_forest,0.1,0,15,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+152,mfg_forest,1.0,2,13,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,A_row,1e-08,15,0,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,A_row,0.1,15,0,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,A_row,1.0,15,0,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,B_row,1e-08,3,12,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,B_row,0.1,4,11,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,B_row,1.0,5,10,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,B_doi_material,1e-08,6,9,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,B_doi_material,0.1,6,9,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,B_doi_material,1.0,7,8,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,mfg_forest,1e-08,1,14,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,mfg_forest,0.1,1,14,SENSITIVITY_ONLY; not a calibrated uncertainty interval
+188,mfg_forest,1.0,7,8,SENSITIVITY_ONLY; not a calibrated uncertainty interval

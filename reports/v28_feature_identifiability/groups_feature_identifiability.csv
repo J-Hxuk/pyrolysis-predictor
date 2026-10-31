@@ -1,0 +1,13 @@
+comparison_id,doi,feedstock,pollutant,candidate_rows,unique_full_manufacturing_vectors,varying_manufacturing_fields,pyrolysis_temperature_values_reported,temperature_contrast_testable,all_temperature_missing,observed_pairs,pairs_with_indistinguishable_model_inputs,indistinguishable_pairs_gap_over_1mg,v27_B_pairwise,v27_predicted_tie_pairs
+CG01,10.1016/j.eti.2023.103268,cow litter,Cd(II),3,2,manufacturing_route;process_step_count,1,False,False,3,1,1,0.8333333333333334,1
+CG02,10.1016/j.eti.2023.103268,cow litter,Pb(II),3,2,manufacturing_route;process_step_count,1,False,False,3,1,1,0.8333333333333334,1
+CG03,10.1016/j.wasman.2022.07.024,mandarin peel,Cu(II),3,3,manufacturing_route;process_step_count;activation_or_modification;secondary_temperature_C;secondary_hold_min,1,False,False,3,0,0,0.8333333333333334,1
+CG04,10.1016/j.wasman.2022.07.024,orange peel,Cu(II),3,3,manufacturing_route;process_step_count;activation_or_modification;secondary_temperature_C;secondary_hold_min,1,False,False,3,0,0,0.8333333333333334,1
+CG05,10.1016/j.wasman.2022.07.024,rangpur lime peel,Cu(II),3,3,manufacturing_route;process_step_count;activation_or_modification;secondary_temperature_C;secondary_hold_min,1,False,False,3,0,0,0.8333333333333334,1
+CG06,10.1016/j.wasman.2022.07.024,sweet lime peel,Cu(II),3,3,manufacturing_route;process_step_count;activation_or_modification;secondary_temperature_C;secondary_hold_min,1,False,False,3,0,0,0.8333333333333334,1
+CG07,10.1039/d5ra09939k,"municipal sewage sludge, lanzhou",Cd(II),4,2,manufacturing_route;process_step_count,1,False,False,6,3,3,0.75,3
+CG08,10.1186/s42834-024-00238-6,waste bamboo chopsticks,Pb(II),2,2,manufacturing_route;process_step_count,0,False,True,0,0,0,,0
+CG09,10.1371/journal.pone.0218114,municipal sewage sludge,Ni(II),2,2,manufacturing_route;process_step_count,1,False,False,1,0,0,1.0,0
+CG10,10.5004/dwt.2018.22210,municipal sludge:peanut shell=3:1 drymass,Phenol,2,2,manufacturing_route;process_step_count;activation_or_modification,1,False,False,1,0,0,1.0,0
+CG11,10.5004/dwt.2021.27019,peanut shell,Pb(II),2,2,manufacturing_route;process_step_count,1,False,False,1,0,0,1.0,0
+CG12,10.5004/dwt.2023.29443,rice straw,Cd(II),3,2,activation_or_modification,0,False,True,3,1,1,0.8333333333333334,1

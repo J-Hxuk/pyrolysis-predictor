@@ -1,0 +1,16 @@
+doi,panel_id,n,full_adsorption_context,strict_qe,n_ambiguous_pairwise_features,total_pairs
+10.1016/j.biortech.2014.04.048,0,5,False,False,0,10
+10.1016/j.chemosphere.2013.12.042,1,4,False,False,0,6
+10.1016/j.chemosphere.2022.134051,2,3,False,False,0,3
+10.1016/j.chemosphere.2022.134051,3,3,False,False,0,3
+10.1016/j.chemosphere.2022.134051,4,3,False,False,0,3
+10.1016/j.chemosphere.2022.134051,5,3,False,False,0,3
+10.1016/j.psep.2017.10.014,6,5,False,False,0,10
+10.1016/j.scitotenv.2019.07.102,7,7,True,False,0,21
+10.3390/app11199223,8,3,False,False,0,3
+10.3390/en13133498,9,4,True,True,0,6
+10.3390/en13133498,10,4,True,True,0,6
+10.3390/ijerph16050845,11,4,False,False,0,6
+10.3390/ijerph16050845,12,4,False,False,0,6
+10.3390/ijerph16050845,13,4,False,False,0,6
+10.3390/su14159022,14,3,True,False,0,3

@@ -1,0 +1,112 @@
+{
+  "patch": "v46_phase8_verified_additive_research",
+  "active_models_changed": false,
+  "source_uploaded_sha256": "315f135f20334afa0609791630673b322084bc9904ba6aebc9f661d8c3d58944",
+  "files": [
+    {
+      "path": "V46_INSTALL_KO.md",
+      "bytes": 1476,
+      "sha256": "f76f1250786952d8bf377eeb308fcabd73a9b613d674515e1460a118d720876a"
+    },
+    {
+      "path": "tests/test_v46_phase8.py",
+      "bytes": 3512,
+      "sha256": "0d58aec627d49e30fa3132f571c06bedaf3b21c98b21c45e39f8538f3b39a5d9"
+    },
+    {
+      "path": "scripts/build_v46_phase8.py",
+      "bytes": 15813,
+      "sha256": "1b85eca1cd3171b5932cf0f54baf18fdfe060d2f3a376eeeb4135061d4b3fece"
+    },
+    {
+      "path": "deployment/research_v46_NOT_ACTIVE/V46_Stage1_TPV_cm3_g_training_candidate_Poisson_RESEARCH_NOT_ACTIVE.joblib",
+      "bytes": 47724,
+      "sha256": "c4317abc3ca466edf79aa0125547d6ade4580b51c1e3a733b26c0ad335cc8196"
+    },
+    {
+      "path": "deployment/research_v46_NOT_ACTIVE/V46_Stage2_target_value_A_RESEARCH_NOT_ACTIVE.joblib",
+      "bytes": 23496,
+      "sha256": "acf893af1701d671387903ecd6890818ee4ad8d0086419b9d07e9b1cfadd141c"
+    },
+    {
+      "path": "deployment/research_v46_NOT_ACTIVE/V46_Stage1_BET_m2_g_training_candidate_Poisson_RESEARCH_NOT_ACTIVE.joblib",
+      "bytes": 51556,
+      "sha256": "f7eb8a0e0c9d59d4a4ec9e46bcb2764e0b7445c38339b689d2a737fc187b08a2"
+    },
+    {
+      "path": "deployment/research_v46_NOT_ACTIVE/V46_Stage2_target_value_B_RESEARCH_NOT_ACTIVE.joblib",
+      "bytes": 25780,
+      "sha256": "4320f10860f02937f906d5cf1fa0ab7956546e9521b03c1d186f88736e369de5"
+    },
+    {
+      "path": "reports/v46_phase8/summary.json",
+      "bytes": 3900,
+      "sha256": "f34208d536e6fa03ba92665df9c5ee9f22bc36bbe4e6ca1a45d8ea9f97893580"
+    },
+    {
+      "path": "reports/v46_phase8/RESULTS_KO.md",
+      "bytes": 5845,
+      "sha256": "31aa4eb1726ad2d83bc98052aa0eefcd0c7f509c4423519d5c839a48f96882c0"
+    },
+    {
+      "path": "reports/v46_phase8/paired_evaluation.csv",
+      "bytes": 1352,
+      "sha256": "0ca8b3ac33cabf201627af7b3590b7dc9021835b05f13a57e73873648feb6dc7"
+    },
+    {
+      "path": "reports/v46_phase8/old_DOI_paired_predictions.csv",
+      "bytes": 86002,
+      "sha256": "c4d5f2b37a2c9e62219d8c71b95ece2c48ac043238f2a6727df0a96b4e3d4df5"
+    },
+    {
+      "path": "data/imports/v46_phase8/Stage2_two_additional_v45_missing_rows.csv",
+      "bytes": 2807,
+      "sha256": "94c4c7e78dc7149635f94a8ec647431b93de9f98c3cfc46a2d73a67e8ea2df7a"
+    },
+    {
+      "path": "data/imports/v46_phase8/v45_Stage2_138_BASELINE.csv",
+      "bytes": 101369,
+      "sha256": "b55a30f6ac4cbb44ccbde485309f1218cf1bfc438dc83c4e087779e9084ed81e"
+    },
+    {
+      "path": "data/imports/v46_phase8/Stage1_417_EXPLORATORY_UNAPPROVED.csv",
+      "bytes": 405314,
+      "sha256": "f2f8ce477b374dda75b8b8a2e09221316142260947fb79afbf99c44fc48e033d"
+    },
+    {
+      "path": "data/imports/v46_phase8/Stage1_Stage2_mapping.csv",
+      "bytes": 1817,
+      "sha256": "3d4d58fdea85b62c4f7e588dff2a947059a9288e454a3c6f2723f24e88a839f8"
+    },
+    {
+      "path": "data/imports/v46_phase8/Stage1_13_compatible_features_INCOMPLETE.csv",
+      "bytes": 7777,
+      "sha256": "e1fca626aa80beb435554dd5ee01da8d08584468036b35ae88097fe3b3eabd16"
+    },
+    {
+      "path": "data/imports/v46_phase8/SOURCE_REPORT.md",
+      "bytes": 6798,
+      "sha256": "fa4ef25f73a3f8ee599aaf607e8f63befd0cb9af769f2ca40489b1b64f9b5455"
+    },
+    {
+      "path": "data/imports/v46_phase8/Stage2_140_SOURCE_VERIFIED_AUGMENTED_RESEARCH.csv",
+      "bytes": 110191,
+      "sha256": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a"
+    },
+    {
+      "path": "data/imports/v46_phase8/Phase8_source_verified_equilibrium_45.csv",
+      "bytes": 24184,
+      "sha256": "11b3f168dbb35e1b09df7096e831e5567362c18ec966063819fd34dddee1e4ac"
+    },
+    {
+      "path": "data/imports/v46_phase8/Stage1_new_13_source_staged.csv",
+      "bytes": 8738,
+      "sha256": "be3eaa49eff355f77d7f3ae9c6a9be1f8d2bc99b07963d766e599857a008b18f"
+    },
+    {
+      "path": "data/imports/v46_phase8/v45_Stage1_404_BASELINE.csv",
+      "bytes": 394461,
+      "sha256": "42c8e537c61704e9d42d15d26c1a8772df79052a35d0b69a63d95c5ed601bc84"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+﻿holdout_feedstock,n_test,test_doi,n_shared_doi_with_train,shared_doi,test_feedstock_in_train
+garden waste leaves and wood,3,['10.1007/s10967-023-09104-y'],0,[],False
+"rice husk;nanchang,jiangxi",1,['10.1007/s11270-026-09592-0'],0,[],False
+cow litter,6,['10.1016/j.eti.2023.103268'],0,[],False
+mandarin peel,3,['10.1016/j.wasman.2022.07.024'],1,['10.1016/j.wasman.2022.07.024'],False
+sweet lime peel,3,['10.1016/j.wasman.2022.07.024'],1,['10.1016/j.wasman.2022.07.024'],False
+rangpur lime peel,3,['10.1016/j.wasman.2022.07.024'],1,['10.1016/j.wasman.2022.07.024'],False
+orange peel,3,['10.1016/j.wasman.2022.07.024'],1,['10.1016/j.wasman.2022.07.024'],False
+food waste,2,['10.1021/acsomega.0c06029'],0,[],False
+eupatorium adenophorum + eggshell catalyst,3,['10.1021/acsomega.2c01957'],0,[],False
+water hyacinth;yiyangriveryangzhouchina,2,['10.1038/s41598-020-63000-z'],0,[],False
+mango peel,10,['10.1039/d0ra06586b'],0,[],False
+bamboo,3,['10.1039/d3ra05315f'],0,[],False
+sunflower leaves,1,['10.1039/d5ra00057b'],0,[],False
+"municipal sewage sludge, lanzhou",4,['10.1039/d5ra09939k'],0,[],False
+"scots pine sawdust;gumushane,turkiye",3,['10.1039/d6ra06700j'],0,[],False
+rice husk,13,['10.1039/d6ra08271h'],0,[],False
+waste bamboo chopsticks,2,['10.1186/s42834-024-00238-6'],0,[],False
+almond shell,1,['10.1186/s42834-025-00243-3'],0,[],False
+municipal sewage sludge,2,['10.1371/journal.pone.0218114'],0,[],False
+end-of-life wood panel waste;wood particles with uf/mf resins,1,['10.3390/app15158518'],0,[],False
+brewed tea waste,6,['10.3390/gels11080628'],0,[],False
+bamboo powder,3,['10.3390/molecules26196014'],0,[],False
+oak cupules,5,['10.3390/molecules29112489'],0,[],False
+ginger stalks,2,['10.3390/su18010373'],1,['10.3390/su18010373'],False
+sichuan pepper branches,2,['10.3390/su18010373'],1,['10.3390/su18010373'],False
+kiwifruit leaves,2,['10.3390/su18010373'],1,['10.3390/su18010373'],False
+municipal sludge:peanut shell=3:1 drymass,2,['10.5004/dwt.2018.22210'],0,[],False
+peanut shell,2,['10.5004/dwt.2021.27019'],0,[],False
+phoenix dactylifera ghars variety fiber;ouargla algeria,1,['10.5004/dwt.2022.29056'],0,[],False
+rice straw,3,['10.5004/dwt.2023.29443'],0,[],False

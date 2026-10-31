@@ -1,0 +1,132 @@
+# demo.yaml
+#
+# Task 6: synthetic_x4 (분류 전용 입력), synthetic_y2 (이진 분류 대상) 추가
+schema_version: 1
+problem_id: demo-synthetic-v1
+status: configured
+
+inputs:
+  - id: synthetic_x1
+    label_ko: 합성 입력 1 (시험용)
+    description: 시험용 합성 수치 변수 1 - 실제 공정 변수 아님
+    role: feedstock
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 합성 변수의 임의 물리 범위 (시험용)
+        min_value: 0.0
+        max_value: 100.0
+    display_order: 1
+
+  - id: synthetic_x2
+    label_ko: 합성 입력 2 (시험용)
+    description: 시험용 합성 수치 변수 2 - 실제 공정 변수 아님
+    role: preparation
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 합성 변수의 임의 물리 범위 (시험용)
+        min_value: 0.0
+        max_value: 100.0
+    display_order: 2
+
+  - id: synthetic_x3
+    label_ko: 합성 범주 입력 (시험용)
+    description: 시험용 합성 범주 변수 - 실제 범주 아님
+    role: reaction_test
+    dtype: category
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories:
+      - value: cat_a
+        label_ko: 범주 A (시험용)
+        description: 합성 범주 A - 실제 의미 없음
+      - value: cat_b
+        label_ko: 범주 B (시험용)
+        description: 합성 범주 B - 실제 의미 없음
+      - value: cat_c
+        label_ko: 범주 C (시험용)
+        description: 합성 범주 C - 실제 의미 없음
+    physical_constraints: []
+    display_order: 3
+
+  - id: synthetic_x4
+    label_ko: 합성 입력 4 - 분류 전용 (시험용)
+    description: 시험용 합성 수치 변수 4 - 이진 분류 대상 전용, 실제 공정 변수 아님
+    role: reaction_test
+    dtype: float
+    unit: null
+    basis: null
+    required: true
+    missing_policy: null
+    allowed_categories: []
+    physical_constraints:
+      - description: 합성 분류 전용 변수의 임의 물리 범위 (시험용)
+        min_value: 0.0
+        max_value: 1.0
+    display_order: 4
+
+targets:
+  - id: synthetic_y1
+    label_ko: 합성 출력 1 - 회귀 (시험용)
+    family: performance
+    task: regression
+    definition: 시험용 합성 회귀 대상 - 실제 성능 지표 아님
+    unit: null
+    basis: null
+    measurement: 시험용 합성 측정 방법 - 실제 측정 아님
+    input_ids:
+      - synthetic_x1
+      - synthetic_x2
+      - synthetic_x3
+    label_mapping: null
+    positive_label: null
+    detection_rule: null
+    reaction_context: null
+    output_constraints:
+      non_negative: false
+      finite: true
+      tolerance: 1.0e-6
+    display_precision: 4
+
+  - id: synthetic_y2
+    label_ko: 합성 출력 2 - 이진 분류 (시험용)
+    family: performance
+    task: binary_classification
+    definition: 시험용 합성 이진 분류 대상 - 실제 성능 지표 아님
+    unit: null
+    basis: null
+    measurement: 시험용 합성 측정 방법 - 실제 측정 아님
+    input_ids:
+      - synthetic_x1
+      - synthetic_x2
+      - synthetic_x4
+    label_mapping:
+      low: 0
+      high: 1
+    positive_label: high
+    detection_rule: null
+    reaction_context: null
+    output_constraints:
+      non_negative: false
+      finite: true
+      tolerance: null
+    display_precision: 4
+
+composition_groups: []
+physical_constraints: []
+applicability:
+  description: 시험용 합성 설정 - 실제 연구 지표 아님. mode demo 에서만 사용
+  feedstock_types: []
+  process_conditions: []
+  reaction_types: []

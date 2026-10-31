@@ -1,0 +1,5 @@
+evaluation,model,rows,doi_count,mae_mg_g,r2,physical_violations,cap_hits
+fixed_original140_DOI_GroupKFold5,A_base140,140,32,17.246810957570563,0.6983629896178569,0,43
+fixed_original140_DOI_GroupKFold5,A_plus24,140,32,16.760127406300303,0.7101785579958324,0,42
+fixed_original140_DOI_GroupKFold5,B_base140,140,32,17.690416005177664,0.6868810618223955,0,50
+fixed_original140_DOI_GroupKFold5,B_plus24,140,32,17.760962665444612,0.6921833513711815,0,46

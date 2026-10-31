@@ -1,0 +1,85 @@
+{
+  "version": "v35",
+  "target_contract": "EXPERIMENTAL_REPORTED_OR_DERIVED_UPTAKE_NOT_EQUILIBRIUM_CERTIFIED",
+  "dois": [
+    "10.3390/ijerph16050845",
+    "10.3390/su14159022"
+  ],
+  "independent_DOI_count": 2,
+  "real_source_rows": 15,
+  "temperature_comparison_groups": 4,
+  "source_accuracy_note": "Wang pH range 4.5-5.0 preserved; computed qe from measured removal and C0/dose; Hu reported qe; no qmax/qt mixing.",
+  "all_source_rows_physically_valid": true,
+  "top1_uncertainty_sensitive_groups": 1,
+  "zhou_unique_designs_qt_only": 26,
+  "digitization_audit_queue": 10,
+  "training_approval_rows": 0,
+  "strategy_summary": {
+    "A|XGBoost": {
+      "groups": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 0,
+      "top2_contains_actual": 0,
+      "top2_evaluable": 0,
+      "mean_regret_mg_g": null,
+      "mean_pairwise_score_ties_half": 0.5,
+      "groups_physically_valid": 2,
+      "group_count_for_physical_check": 4
+    },
+    "Baseline|HIGHEST_T": {
+      "groups": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "top2_contains_actual": 4,
+      "top2_evaluable": 4,
+      "mean_regret_mg_g": 3.0768750000000002,
+      "mean_pairwise_score_ties_half": 0.5833333333333333,
+      "groups_physically_valid": 0,
+      "group_count_for_physical_check": 0
+    },
+    "Baseline|LOWER_MEDIAN_T": {
+      "groups": 4,
+      "top1_correct": 1,
+      "top1_evaluable": 4,
+      "top2_contains_actual": 0,
+      "top2_evaluable": 0,
+      "mean_regret_mg_g": 0.5156250000000002,
+      "mean_pairwise_score_ties_half": 0.7291666666666667,
+      "groups_physically_valid": 0,
+      "group_count_for_physical_check": 0
+    },
+    "Baseline|LOWEST_T": {
+      "groups": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "top2_contains_actual": 1,
+      "top2_evaluable": 4,
+      "mean_regret_mg_g": 2.3137499999999998,
+      "mean_pairwise_score_ties_half": 0.41666666666666663,
+      "groups_physically_valid": 0,
+      "group_count_for_physical_check": 0
+    },
+    "B|Ridge": {
+      "groups": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "top2_contains_actual": 4,
+      "top2_evaluable": 4,
+      "mean_regret_mg_g": 3.0768750000000002,
+      "mean_pairwise_score_ties_half": 0.5833333333333333,
+      "groups_physically_valid": 0,
+      "group_count_for_physical_check": 4
+    },
+    "B|XGBoost": {
+      "groups": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "top2_contains_actual": 4,
+      "top2_evaluable": 4,
+      "mean_regret_mg_g": 3.0768750000000002,
+      "mean_pairwise_score_ties_half": 0.5833333333333333,
+      "groups_physically_valid": 0,
+      "group_count_for_physical_check": 4
+    }
+  }
+}

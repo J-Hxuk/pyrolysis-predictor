@@ -1,0 +1,9 @@
+stage,target,model,subset,n,n_doi,MAE,R2,raw_negative,cap_exceeded,raw_physics_violations
+Stage1,BET_m2_g_training_candidate,Ridge,all_doi_group5,336,45,249.47339137314827,0.5189618999638087,66,,
+Stage1,BET_m2_g_training_candidate,Poisson_Process,all_doi_group5,336,45,239.43955980280805,0.48971676567504907,0,,
+Stage1,BET_m2_g_training_candidate,Poisson_Composition,all_doi_group5,336,45,241.02284086661257,0.48149632277847376,0,,
+Stage1,TPV_cm3_g_training_candidate,Ridge,all_doi_group5,213,33,0.1873232342007781,0.3454557547819702,6,,
+Stage1,TPV_cm3_g_training_candidate,Poisson_Process,all_doi_group5,213,33,0.18073239439295619,0.36259546081862815,0,,
+Stage1,TPV_cm3_g_training_candidate,Poisson_Composition,all_doi_group5,213,33,0.1791068274322864,0.38195324781568496,0,,
+Stage2,target_value,A,all_doi_group5,128,30,18.663922532469037,0.6599499741360412,1,28.0,29.0
+Stage2,target_value,B,all_doi_group5,128,30,21.26005089112837,0.5833657582255898,0,44.0,44.0

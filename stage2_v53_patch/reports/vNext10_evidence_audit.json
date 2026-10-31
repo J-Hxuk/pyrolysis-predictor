@@ -1,0 +1,13 @@
+{
+  "source": {
+    "source_archive_sha256": "e4481c17655f8dd4a182e2b957124e982422a0c9e77f5bcbfbe4b3f6eb554a48",
+    "reference24_sha256": "ea65dd50c84a2e32009a570e7c438eb9478fa67398c0286cad4635375e70bea9",
+    "strict_qe_label_verified": 8,
+    "strict_label_not_automatically_training_eligible": 8,
+    "dose_1_20_review_non_strict": 16,
+    "bamboo_strict_approved": 0,
+    "external_holdout_approved": 0,
+    "physical_material_batch_link_confirmed": false,
+    "vnext10_strict8_duplicated_in_reference24": 8
+  }
+}

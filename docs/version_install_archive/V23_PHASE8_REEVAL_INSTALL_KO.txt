@@ -1,0 +1,24 @@
+Biochar Phase8 v23 — 추가 데이터가 모델 정확도를 개선하는지 독립 비교
+
+[필요 조건]
+- 기존 v22가 정상 설치되어 Phase8 원본 자료가 data/imports/Biochar_Phase8_Integrated_Data_Package에 존재할 것
+- .venv는 원본 컴퓨터에 그대로 유지
+- 이번 v23은 연구용 평가만 추가하며 UI/모델/데이터에는 변경 없음
+
+[설치]
+1. Biochar_Phase8_v23_Reevaluation_Patch.zip을 '프로그램' 폴더 안으로 다운로드/복사
+2. PowerShell에서 다음 실행:
+  Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+  Expand-Archive -LiteralPath ".\Biochar_Phase8_v23_Reevaluation_Patch.zip" -DestinationPath "." -Force
+3. 기존 결과 확인: reports\phase8_v23\RESULTS_KO.md
+4. 계산 재현 (배포 모델 변경 없음):
+  .\.venv\Scripts\python.exe -m scripts.compare_phase8_v23
+  .\.venv\Scripts\python.exe -m scripts.render_phase8_v23
+5. 테스트:
+  .\.venv\Scripts\python.exe -m pytest tests\test_phase8_v23.py tests\test_phase8_v22.py tests\test_biochar_stage2_v16.py -q
+
+[주의]
+- 분석 산출물 재생성은 CPU 작업을 수반한다. 자동 실행되지 않는다.
+- 기존 stage1/2 모델 재학습이나 활성화 없음. 기존 예측값/UI는 변화하지 않음.
+- Python .venv 삭제하지 말 것.
+- 스크립트는 현재 프로젝트의 v22 입력 경로가 맞다는 가정하에 실행됨.

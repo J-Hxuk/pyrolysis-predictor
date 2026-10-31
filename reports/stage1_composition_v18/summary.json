@@ -1,0 +1,214 @@
+{
+  "status": "EXPLORATORY_NOT_DEPLOYED",
+  "dataset": "eval37/base.csv (nonactivated BET only)",
+  "data_info": {
+    "rows": 182,
+    "doi_groups": 24,
+    "unique_composition_patterns": 44,
+    "unique_process_patterns": 91,
+    "duplicated_full_feature_rows": 1,
+    "target_min": 0.0187,
+    "target_max": 418.732
+  },
+  "v60_composition": {
+    "rows": 256,
+    "doi_count": 30,
+    "all_C_H_O_N_rows": 36,
+    "all_ash_VM_FC_rows": 17,
+    "complete_both_rows": 17,
+    "complete_both_doi_count": 1,
+    "composition_basis_counts": {
+      "NULL": 126,
+      "NOT_VERIFIED_RAW_FEEDSTOCK": 27,
+      "RAW_TABLE1_g_per_kg_TS_NOT_AS_TRAINING_FEATURE": 20,
+      "moisture-free feedstock, paper p4": 17,
+      "raw feedstock; reported wt%": 15,
+      "feedstock elemental not numerically identified in full main paper; NR": 14,
+      "daf": 11,
+      "UNRESOLVED_ORIGINAL_BASIS": 8,
+      "as reported raw precursor wt%": 8,
+      "washed_and_dried_food_waste; primary Table 2; O not directly isolated": 6,
+      "raw pinecone; article introduction reported": 4
+    },
+    "warning": "v60 조성 분석기준 및 원료/바이오차 구분 검증 필요; 통합학습 자동 금지"
+  },
+  "tpv_readiness": {
+    "all_rows": 748,
+    "accepted_rows": 545,
+    "complete_composition_and_temp_time": 483,
+    "complete_groups": 71,
+    "complete_from_unverified_secondary_source": 483,
+    "complete_with_heating_rate": 0,
+    "complete_with_named_feedstock": 0,
+    "duplicate_rows_when_activation_omitted": 264,
+    "status": "TPV_COMPOSITION_ABLATION_NOT_CERTIFIED",
+    "reason": "Complete cases stem entirely from secondary, not fully primary-verified compilation; heating rate and feedstock names absent; activation conditions may confound identical displayed process+composition features."
+  },
+  "split": "LeaveOneGroupOut(provenance_group), same held-out DOI per feature set",
+  "fitting_note": "All transformations fitted within each train fold; no holdout data fitted",
+  "disclaimer": "Not a v60 model comparison; cannot claim TPV or Stage2 improvement",
+  "metrics": [
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_all_composition",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": 0.256990278243987,
+      "mae_m2_g": 66.42461527371756,
+      "rmse_m2_g": 96.33723408947425,
+      "doi_macro_mae_m2_g": 80.47782792596637,
+      "negative_prediction_count": 0
+    },
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_elemental",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": -0.09919977894502385,
+      "mae_m2_g": 85.66650426548787,
+      "rmse_m2_g": 117.17507531165751,
+      "doi_macro_mae_m2_g": 88.36828089310835,
+      "negative_prediction_count": 0
+    },
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_only",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": -0.4596952261674998,
+      "mae_m2_g": 97.74862659589141,
+      "rmse_m2_g": 135.02930084857005,
+      "doi_macro_mae_m2_g": 106.05486429349635,
+      "negative_prediction_count": 0
+    },
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_proximate",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": 0.25282621543966766,
+      "mae_m2_g": 69.52078758792392,
+      "rmse_m2_g": 96.6068091716073,
+      "doi_macro_mae_m2_g": 76.16819545654052,
+      "negative_prediction_count": 0
+    },
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_all_composition",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": -3.814646779974459,
+      "mae_m2_g": 136.2665403044982,
+      "rmse_m2_g": 245.23312972241777,
+      "doi_macro_mae_m2_g": 153.1575170356082,
+      "negative_prediction_count": 29
+    },
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_elemental",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": -4.469901868739889,
+      "mae_m2_g": 143.74876117376598,
+      "rmse_m2_g": 261.38863009018274,
+      "doi_macro_mae_m2_g": 157.6050248565274,
+      "negative_prediction_count": 31
+    },
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_only",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": -5.000084941511778,
+      "mae_m2_g": 138.65010796538056,
+      "rmse_m2_g": 273.76355034135645,
+      "doi_macro_mae_m2_g": 152.20621893797215,
+      "negative_prediction_count": 20
+    },
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_proximate",
+      "n_rows": 182,
+      "n_doi": 24,
+      "r2_oof": -3.6263829794525986,
+      "mae_m2_g": 127.31679710722685,
+      "rmse_m2_g": 240.39072978029222,
+      "doi_macro_mae_m2_g": 136.3561873221624,
+      "negative_prediction_count": 21
+    }
+  ],
+  "paired_deltas": [
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_elemental",
+      "delta_mae_m2_g": 5.098653208385425,
+      "ci95_lo": -6.371998480912144,
+      "ci95_hi": 16.683601359388994,
+      "delta_doi_macro_mae_m2_g": 5.39880591855525,
+      "macro_ci95_lo": -12.34454753219966,
+      "macro_ci95_hi": 24.127902878957407,
+      "n_doi": 24,
+      "bootstrap_repeats": 2500
+    },
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_proximate",
+      "delta_mae_m2_g": -11.333310858153729,
+      "ci95_lo": -28.62125781631447,
+      "ci95_hi": 5.091509837181521,
+      "delta_doi_macro_mae_m2_g": -15.85003161580974,
+      "macro_ci95_lo": -34.33683543700924,
+      "macro_ci95_hi": 0.8291949964279952,
+      "n_doi": 24,
+      "bootstrap_repeats": 2500
+    },
+    {
+      "algorithm": "Ridge",
+      "feature_set": "process_all_composition",
+      "delta_mae_m2_g": -2.383567660882367,
+      "ci95_lo": -20.474291327538293,
+      "ci95_hi": 14.095160196668543,
+      "delta_doi_macro_mae_m2_g": 0.9512980976360316,
+      "macro_ci95_lo": -25.034701356746815,
+      "macro_ci95_hi": 26.217481575526417,
+      "n_doi": 24,
+      "bootstrap_repeats": 2500
+    },
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_elemental",
+      "delta_mae_m2_g": -12.082122330403536,
+      "ci95_lo": -35.68978087671025,
+      "ci95_hi": 10.62609167479668,
+      "delta_doi_macro_mae_m2_g": -17.686583400387985,
+      "macro_ci95_lo": -39.46582411364412,
+      "macro_ci95_hi": 2.626992390923697,
+      "n_doi": 24,
+      "bootstrap_repeats": 2500
+    },
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_proximate",
+      "delta_mae_m2_g": -28.227839007967493,
+      "ci95_lo": -64.1746477048109,
+      "ci95_hi": 1.9389766136830073,
+      "delta_doi_macro_mae_m2_g": -29.886668836955817,
+      "macro_ci95_lo": -60.00149416096426,
+      "macro_ci95_hi": -2.5887594432328624,
+      "n_doi": 24,
+      "bootstrap_repeats": 2500
+    },
+    {
+      "algorithm": "RandomForest",
+      "feature_set": "process_all_composition",
+      "delta_mae_m2_g": -31.324011322173845,
+      "ci95_lo": -62.717877268279594,
+      "ci95_hi": -1.3371672780230974,
+      "delta_doi_macro_mae_m2_g": -25.577036367529956,
+      "macro_ci95_lo": -57.50268344380867,
+      "macro_ci95_hi": 5.261870363709095,
+      "n_doi": 24,
+      "bootstrap_repeats": 2500
+    }
+  ]
+}

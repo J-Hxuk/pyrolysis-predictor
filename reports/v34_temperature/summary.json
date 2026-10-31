@@ -1,0 +1,399 @@
+{
+  "v34_status": "RESEARCH_TRAINING_COMPLETED_NOT_DEPLOYED",
+  "uploaded_zip_doifiles": 5,
+  "new_doi_in_zip": 4,
+  "duplicate_jia": "10.3390/app8071019",
+  "new_stage1_bet": 6,
+  "new_stage1_tpv": 0,
+  "new_cedar_qmax": 20,
+  "zhou_raw_qt": 34,
+  "zhou_unique_design_qt": 26,
+  "zhou_independent_doi": 1,
+  "core_baseline": {
+    "rows": 98,
+    "doi": 26
+  },
+  "stage2_expanded_qe_research": {
+    "rows": 113,
+    "doi": 28,
+    "v33_added_rows": 15,
+    "v34_qt_added_to_qe": 0
+  },
+  "paired_existing_doi": {
+    "A_XGBoost_expanded113": {
+      "n": 98,
+      "mae_mg_g": 20.359969271260866,
+      "r2": 0.6813985922255643,
+      "physical_violations": 33
+    },
+    "A_XGBoost_old98": {
+      "n": 98,
+      "mae_mg_g": 19.707634793262095,
+      "r2": 0.6796497743973625,
+      "physical_violations": 32
+    },
+    "B_Ridge_expanded113": {
+      "n": 98,
+      "mae_mg_g": 32.152745232284765,
+      "r2": 0.33950280552435896,
+      "physical_violations": 50
+    },
+    "B_Ridge_old98": {
+      "n": 98,
+      "mae_mg_g": 29.04658765790356,
+      "r2": 0.3928586820264234,
+      "physical_violations": 47
+    },
+    "B_XGBoost_expanded113": {
+      "n": 98,
+      "mae_mg_g": 21.672579051290242,
+      "r2": 0.6386764253376918,
+      "physical_violations": 37
+    },
+    "B_XGBoost_old98": {
+      "n": 98,
+      "mae_mg_g": 21.350323496665272,
+      "r2": 0.6291555236300207,
+      "physical_violations": 36
+    },
+    "A_XGBoost_paired_bootstrap": {
+      "delta_mae": 0.6523344779987725,
+      "ci95": [
+        -2.346385607001547,
+        3.68624161915861
+      ],
+      "doi_count": 26,
+      "unit": "expanded_minus_original; negative favors expanded"
+    },
+    "B_Ridge_paired_bootstrap": {
+      "delta_mae": 3.1061575743812053,
+      "ci95": [
+        0.23192841958139226,
+        6.41082181485878
+      ],
+      "doi_count": 26,
+      "unit": "expanded_minus_original; negative favors expanded"
+    },
+    "B_XGBoost_paired_bootstrap": {
+      "delta_mae": 0.3222555546249663,
+      "ci95": [
+        -2.3133434461096485,
+        2.8641169583787054
+      ],
+      "doi_count": 26,
+      "unit": "expanded_minus_original; negative favors expanded"
+    }
+  },
+  "new_doi_external": {
+    "A_XGBoost_old98_only": {
+      "n": 15,
+      "mae_mg_g": 15.482463752746582,
+      "violations": 8,
+      "temp_group_count": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 0,
+      "rankings": [
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 40.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 80.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 170.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        },
+        {
+          "doi": "10.3390/su14159022",
+          "c0": 50.0,
+          "actual_top_temperature_C": 400,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        }
+      ]
+    },
+    "A_XGBoost_other_new_doi_added": {
+      "n": 15,
+      "mae_mg_g": 12.314023392995198,
+      "violations": 4,
+      "temp_group_count": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 0,
+      "rankings": [
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 40.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 80.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 170.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        },
+        {
+          "doi": "10.3390/su14159022",
+          "c0": 50.0,
+          "actual_top_temperature_C": 400,
+          "pred_top_temperature_C": null,
+          "top1": null,
+          "regret_mg_g": null
+        }
+      ]
+    },
+    "B_Ridge_old98_only": {
+      "n": 15,
+      "mae_mg_g": 69.45141929663042,
+      "violations": 15,
+      "temp_group_count": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "rankings": [
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 40.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 0.3550000000000004
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 80.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 1.6899999999999995
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 170.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 8.7125
+        },
+        {
+          "doi": "10.3390/su14159022",
+          "c0": 50.0,
+          "actual_top_temperature_C": 400,
+          "pred_top_temperature_C": 500,
+          "top1": false,
+          "regret_mg_g": 1.5499999999999998
+        }
+      ]
+    },
+    "B_Ridge_other_new_doi_added": {
+      "n": 15,
+      "mae_mg_g": 66.4822403460813,
+      "violations": 15,
+      "temp_group_count": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "rankings": [
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 40.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 0.3550000000000004
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 80.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 1.6899999999999995
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 170.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 8.7125
+        },
+        {
+          "doi": "10.3390/su14159022",
+          "c0": 50.0,
+          "actual_top_temperature_C": 400,
+          "pred_top_temperature_C": 500,
+          "top1": false,
+          "regret_mg_g": 1.5499999999999998
+        }
+      ]
+    },
+    "B_XGBoost_old98_only": {
+      "n": 15,
+      "mae_mg_g": 15.231029612223304,
+      "violations": 13,
+      "temp_group_count": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "rankings": [
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 40.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 0.3550000000000004
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 80.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 1.6899999999999995
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 170.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 8.7125
+        },
+        {
+          "doi": "10.3390/su14159022",
+          "c0": 50.0,
+          "actual_top_temperature_C": 400,
+          "pred_top_temperature_C": 500,
+          "top1": false,
+          "regret_mg_g": 1.5499999999999998
+        }
+      ]
+    },
+    "B_XGBoost_other_new_doi_added": {
+      "n": 15,
+      "mae_mg_g": 12.511875857035317,
+      "violations": 6,
+      "temp_group_count": 4,
+      "top1_correct": 0,
+      "top1_evaluable": 4,
+      "rankings": [
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 40.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 0.3550000000000004
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 80.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 1.6899999999999995
+        },
+        {
+          "doi": "10.3390/ijerph16050845",
+          "c0": 170.0,
+          "actual_top_temperature_C": 500,
+          "pred_top_temperature_C": 600,
+          "top1": false,
+          "regret_mg_g": 8.7125
+        },
+        {
+          "doi": "10.3390/su14159022",
+          "c0": 50.0,
+          "actual_top_temperature_C": 400,
+          "pred_top_temperature_C": 500,
+          "top1": false,
+          "regret_mg_g": 1.5499999999999998
+        }
+      ]
+    }
+  },
+  "zhou_within_DOI_BBD_LOO": {
+    "Cu(II)_LinearRidge": {
+      "n": 13,
+      "MAE": 0.7703463344167564,
+      "R2": 0.05619477206582446,
+      "top1_actual_C": 400.0,
+      "top1_pred_C": 500.0,
+      "physical_violations": 0
+    },
+    "Cu(II)_Mean": {
+      "n": 13,
+      "MAE": 0.9029487179487178,
+      "R2": -0.17361111111111138,
+      "top1_actual_C": 400.0,
+      "top1_pred_C": 300.0,
+      "physical_violations": 0
+    },
+    "Cu(II)_QuadraticRidge": {
+      "n": 13,
+      "MAE": 0.9998190669720322,
+      "R2": -0.28293871048509267,
+      "top1_actual_C": 400.0,
+      "top1_pred_C": 500.0,
+      "physical_violations": 0
+    },
+    "Zn(II)_LinearRidge": {
+      "n": 13,
+      "MAE": 1.5310570603105815,
+      "R2": -0.03735786187220147,
+      "top1_actual_C": 400.0,
+      "top1_pred_C": 500.0,
+      "physical_violations": 0
+    },
+    "Zn(II)_Mean": {
+      "n": 13,
+      "MAE": 1.4953846153846162,
+      "R2": -0.17361111111111183,
+      "top1_actual_C": 400.0,
+      "top1_pred_C": 300.0,
+      "physical_violations": 0
+    },
+    "Zn(II)_QuadraticRidge": {
+      "n": 13,
+      "MAE": 1.1097895287310542,
+      "R2": 0.2938029010239561,
+      "top1_actual_C": 400.0,
+      "top1_pred_C": 500.0,
+      "physical_violations": 0
+    }
+  },
+  "deployed_model_updated": false,
+  "notes": [
+    "No duplicate Jia",
+    "Not equivalent to independently certified qe",
+    "BBD 240-min uptake trained SEPARATELY",
+    "No choice of best model based on these external DOI evaluations",
+    "Model files require compatible sklearn runtime"
+  ]
+}

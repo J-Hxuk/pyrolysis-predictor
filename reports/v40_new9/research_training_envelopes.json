@@ -1,0 +1,660 @@
+{
+  "Stage1_BET": {
+    "n_rows": 336,
+    "n_doi": 45,
+    "numerical": {
+      "pyrolysis_temperature_C": {
+        "reported": 336,
+        "min": 300.0,
+        "max": 1200.0
+      },
+      "pyrolysis_hold_min": {
+        "reported": 263,
+        "min": 0.0,
+        "max": 600.0
+      },
+      "heating_rate_C_min": {
+        "reported": 248,
+        "min": 1.0,
+        "max": 20.0
+      },
+      "pyrolysis_N2_flow_mL_min": {
+        "reported": 168,
+        "min": 5.0,
+        "max": 3000.0
+      },
+      "activation_temperature_C": {
+        "reported": 153,
+        "min": 80.0,
+        "max": 950.0
+      },
+      "activation_time_min": {
+        "reported": 120,
+        "min": 5.0,
+        "max": 360.0
+      },
+      "activation_agent_feedstock_mass_ratio": {
+        "reported": 76,
+        "min": 0.0,
+        "max": 6.0
+      },
+      "component_1_fraction": {
+        "reported": 27,
+        "min": 0.6666666666666666,
+        "max": 1.0
+      },
+      "component_2_fraction": {
+        "reported": 27,
+        "min": 0.0,
+        "max": 0.3333333333333333
+      }
+    },
+    "categorical": {
+      "feedstock": {
+        "reported": 336,
+        "known": [
+          "70%BSS-30%BKW",
+          "70%BSS-30%WS",
+          "70%LSS-30%BKW",
+          "70%LSS-30%WS",
+          "90%BSS-10%BKW",
+          "90%BSS-10%WS",
+          "90%LSS-10%BKW",
+          "90%LSS-10%WS",
+          "BSS",
+          "Coconut fibre",
+          "Coconut shell",
+          "Cotton stalk",
+          "Dicranopteris linearis",
+          "LSS",
+          "Ligustrum vulgare pruning waste",
+          "Macrocystis pyrifera",
+          "Olive pomace",
+          "Palm shell",
+          "Platanus leaves",
+          "Rice husk",
+          "Spent Pleurotus ostreatus substrate",
+          "Spent shiitake substrate",
+          "Sugarcane bagasse",
+          "Wheat straw",
+          "almond shell",
+          "apple sawdust",
+          "apple tree branches",
+          "bamboo scraps",
+          "cattle manure",
+          "cherry sawdust",
+          "coconut shell",
+          "corn hulls",
+          "corn stover",
+          "cotton straw",
+          "cow dung",
+          "flax textile fibre waste",
+          "food waste",
+          "forestry residue biomass",
+          "furfural residue",
+          "hemp textile fibre waste",
+          "hornbeam",
+          "maize straw",
+          "municipal sewage sludge + wheat straw (2:1 dry mass)",
+          "oak",
+          "oak wood waste",
+          "pinecone",
+          "reed",
+          "rice husk",
+          "rice straw",
+          "sago starch production waste",
+          "sodium lignosulfonate",
+          "soybean straw",
+          "spent coffee grounds",
+          "sugar beet residue",
+          "sugarcane bagasse",
+          "sweet potato vine",
+          "tea twigs (Camellia sinensis)",
+          "waste tea",
+          "waste wood",
+          "wheat straw"
+        ]
+      },
+      "feedstock_group": {
+        "reported": 336,
+        "known": [
+          "Ligustrum vulgare pruning waste",
+          "Macrocystis pyrifera",
+          "Platanus leaves",
+          "animal manure",
+          "bamboo",
+          "coconut shell",
+          "coffee grounds",
+          "cotton straw",
+          "cow dung",
+          "crop residue",
+          "food_waste",
+          "furfural residue",
+          "industrial lignin/lignosulfonate",
+          "maize straw",
+          "natural textile fibres",
+          "nut shell",
+          "rice husk",
+          "rice straw",
+          "sago waste",
+          "sewage_sludge_co_pyrolysis",
+          "sludge_biomass_blend",
+          "soybean straw",
+          "spent coffee grounds",
+          "spent mushroom substrate",
+          "sweet potato vine",
+          "tea twigs",
+          "various biomass",
+          "waste_wood",
+          "wheat straw",
+          "woody orchard residue",
+          "woody_residue"
+        ]
+      },
+      "pyrolysis_atmosphere": {
+        "reported": 334,
+        "known": [
+          "Ar",
+          "LIMITED_OXYGEN_UNSPECIFIED",
+          "N2",
+          "N2 (gas transport; reactor purge rate not directly verified)",
+          "NR",
+          "inert_N2",
+          "inert_not_further_specified",
+          "oxygen-limited;covered crucible;muffle furnace",
+          "oxygen_limited",
+          "reduced_oxygen_lidded_crucible",
+          "vacuum"
+        ]
+      },
+      "activation_method": {
+        "reported": 279,
+        "known": [
+          "K3PO4_impregnation",
+          "chemical",
+          "chemical KOH preimpregnation",
+          "chemical_coactivation",
+          "chemical_impregnation",
+          "chemical_impregnation_in_situ",
+          "chemical_low_temperature",
+          "chemical_one_step",
+          "none",
+          "one_stage_chemical",
+          "one_step_chemical_activation",
+          "oxidative_aging_H2O2",
+          "physical_activation",
+          "physical_steam",
+          "post_carbonization_chemical_KOH_dry",
+          "post_carbonization_chemical_KOH_wet",
+          "post_carbonization_chemical_activation",
+          "post_pyrolysis_chemical_modification",
+          "recycled_pyrolysis_gas",
+          "steam"
+        ]
+      },
+      "activation_agent": {
+        "reported": 278,
+        "known": [
+          "CO2",
+          "CO2+steam",
+          "H2O2",
+          "H3PO4",
+          "HNO3",
+          "K2CO3",
+          "K3PO4",
+          "KMnO4",
+          "KOH",
+          "ZnCl2",
+          "air",
+          "green alkali extract (K-rich)",
+          "none",
+          "recycled pyrolysis gas",
+          "steam"
+        ]
+      },
+      "process_stage": {
+        "reported": 181,
+        "known": [
+          "PYROLYSIS_PLUS_POST_AGING",
+          "SINGLE_STAGE_PYROLYSIS",
+          "carbonization_only",
+          "carbonization_then_CO2_activation",
+          "carbonization_then_physical_activation",
+          "carbonization_then_solution_treatment_then_thermal_activation",
+          "impregnation_then_thermal_activation",
+          "none",
+          "one_pot_ZnCl2_NaHCO3_coactivation",
+          "one_stage_impregnation_carbonization_activation",
+          "one_stage_impregnation_then_pyrolysis",
+          "one_step_KOH_activation",
+          "one_step_carbonization",
+          "one_step_impregnation_activation",
+          "post_carbonization_activation",
+          "post_pyrolysis_modification",
+          "pyrolysis_only",
+          "single_stage_pyrolysis",
+          "two_stage_carbonization_activation",
+          "two_stage_carbonization_dry_activation",
+          "two_stage_carbonization_wet_activation",
+          "wet_impregnation_then_one_step_carbonization_activation"
+        ]
+      }
+    }
+  },
+  "Stage1_TPV": {
+    "n_rows": 213,
+    "n_doi": 33,
+    "numerical": {
+      "pyrolysis_temperature_C": {
+        "reported": 213,
+        "min": 300.0,
+        "max": 1200.0
+      },
+      "pyrolysis_hold_min": {
+        "reported": 190,
+        "min": 30.0,
+        "max": 240.0
+      },
+      "heating_rate_C_min": {
+        "reported": 155,
+        "min": 2.0,
+        "max": 15.0
+      },
+      "pyrolysis_N2_flow_mL_min": {
+        "reported": 131,
+        "min": 5.0,
+        "max": 3000.0
+      },
+      "activation_temperature_C": {
+        "reported": 126,
+        "min": 80.0,
+        "max": 950.0
+      },
+      "activation_time_min": {
+        "reported": 120,
+        "min": 5.0,
+        "max": 360.0
+      },
+      "activation_agent_feedstock_mass_ratio": {
+        "reported": 49,
+        "min": 0.0,
+        "max": 6.0
+      },
+      "component_1_fraction": {
+        "reported": 7,
+        "min": 0.6666666666666666,
+        "max": 0.6666666666666666
+      },
+      "component_2_fraction": {
+        "reported": 7,
+        "min": 0.3333333333333333,
+        "max": 0.3333333333333333
+      }
+    },
+    "categorical": {
+      "feedstock": {
+        "reported": 213,
+        "known": [
+          "Coconut fibre",
+          "Coconut shell",
+          "Cotton stalk",
+          "Dicranopteris linearis",
+          "Macrocystis pyrifera",
+          "Palm shell",
+          "Rice husk",
+          "Spent Pleurotus ostreatus substrate",
+          "Spent shiitake substrate",
+          "Sugarcane bagasse",
+          "Wheat straw",
+          "almond shell",
+          "apple sawdust",
+          "apple tree branches",
+          "bamboo scraps",
+          "cattle manure",
+          "cherry sawdust",
+          "coconut shell",
+          "corn hulls",
+          "corn stover",
+          "food waste",
+          "forestry residue biomass",
+          "furfural residue",
+          "hornbeam",
+          "municipal sewage sludge + wheat straw (2:1 dry mass)",
+          "oak",
+          "oak wood waste",
+          "pinecone",
+          "reed",
+          "rice husk",
+          "rice straw",
+          "sago starch production waste",
+          "sodium lignosulfonate",
+          "spent coffee grounds",
+          "sugar beet residue",
+          "sugarcane bagasse",
+          "sweet potato vine",
+          "tea twigs (Camellia sinensis)",
+          "waste tea",
+          "waste wood"
+        ]
+      },
+      "feedstock_group": {
+        "reported": 213,
+        "known": [
+          "Macrocystis pyrifera",
+          "animal manure",
+          "bamboo",
+          "coconut shell",
+          "coffee grounds",
+          "crop residue",
+          "food_waste",
+          "furfural residue",
+          "industrial lignin/lignosulfonate",
+          "nut shell",
+          "rice straw",
+          "sago waste",
+          "sludge_biomass_blend",
+          "spent coffee grounds",
+          "spent mushroom substrate",
+          "sweet potato vine",
+          "tea twigs",
+          "various biomass",
+          "waste_wood",
+          "woody orchard residue",
+          "woody_residue"
+        ]
+      },
+      "pyrolysis_atmosphere": {
+        "reported": 211,
+        "known": [
+          "Ar",
+          "N2",
+          "NR",
+          "inert_N2",
+          "inert_not_further_specified",
+          "oxygen-limited;covered crucible;muffle furnace",
+          "reduced_oxygen_lidded_crucible",
+          "vacuum"
+        ]
+      },
+      "activation_method": {
+        "reported": 207,
+        "known": [
+          "K3PO4_impregnation",
+          "chemical",
+          "chemical KOH preimpregnation",
+          "chemical_coactivation",
+          "chemical_impregnation",
+          "chemical_impregnation_in_situ",
+          "chemical_low_temperature",
+          "chemical_one_step",
+          "none",
+          "one_stage_chemical",
+          "one_step_chemical_activation",
+          "oxidative_aging_H2O2",
+          "physical_activation",
+          "physical_steam",
+          "post_carbonization_chemical_KOH_dry",
+          "post_carbonization_chemical_KOH_wet",
+          "post_carbonization_chemical_activation",
+          "post_pyrolysis_chemical_modification",
+          "recycled_pyrolysis_gas",
+          "steam"
+        ]
+      },
+      "activation_agent": {
+        "reported": 205,
+        "known": [
+          "CO2",
+          "CO2+steam",
+          "H2O2",
+          "H3PO4",
+          "HNO3",
+          "K2CO3",
+          "K3PO4",
+          "KMnO4",
+          "KOH",
+          "ZnCl2",
+          "air",
+          "green alkali extract (K-rich)",
+          "none",
+          "recycled pyrolysis gas",
+          "steam"
+        ]
+      },
+      "process_stage": {
+        "reported": 173,
+        "known": [
+          "PYROLYSIS_PLUS_POST_AGING",
+          "SINGLE_STAGE_PYROLYSIS",
+          "carbonization_only",
+          "carbonization_then_CO2_activation",
+          "carbonization_then_physical_activation",
+          "carbonization_then_solution_treatment_then_thermal_activation",
+          "impregnation_then_thermal_activation",
+          "none",
+          "one_pot_ZnCl2_NaHCO3_coactivation",
+          "one_stage_impregnation_carbonization_activation",
+          "one_stage_impregnation_then_pyrolysis",
+          "one_step_KOH_activation",
+          "one_step_carbonization",
+          "one_step_impregnation_activation",
+          "post_carbonization_activation",
+          "post_pyrolysis_modification",
+          "pyrolysis_only",
+          "single_stage_pyrolysis",
+          "two_stage_carbonization_activation",
+          "two_stage_carbonization_dry_activation",
+          "two_stage_carbonization_wet_activation",
+          "wet_impregnation_then_one_step_carbonization_activation"
+        ]
+      }
+    }
+  },
+  "Stage2_A": {
+    "n_rows": 128,
+    "n_doi": 30,
+    "numerical": {
+      "C0_mg_L": {
+        "reported": 128,
+        "min": 5.0,
+        "max": 500.0
+      },
+      "initial_pH": {
+        "reported": 101,
+        "min": 1.0,
+        "max": 8.0
+      },
+      "dose_g_L": {
+        "reported": 128,
+        "min": 0.2,
+        "max": 10.0
+      },
+      "adsorption_T_C": {
+        "reported": 89,
+        "min": 14.85,
+        "max": 34.85
+      },
+      "contact_time_min": {
+        "reported": 89,
+        "min": 15.0,
+        "max": 2880.0
+      }
+    },
+    "categorical": {
+      "pollutant": {
+        "reported": 128,
+        "known": [
+          "Cd(II)",
+          "Cu(II)",
+          "Ni(II)",
+          "Pb(II)",
+          "Phenol",
+          "Zn(II)"
+        ]
+      }
+    }
+  },
+  "Stage2_B": {
+    "n_rows": 128,
+    "n_doi": 30,
+    "numerical": {
+      "C0_mg_L": {
+        "reported": 128,
+        "min": 5.0,
+        "max": 500.0
+      },
+      "initial_pH": {
+        "reported": 101,
+        "min": 1.0,
+        "max": 8.0
+      },
+      "dose_g_L": {
+        "reported": 128,
+        "min": 0.2,
+        "max": 10.0
+      },
+      "adsorption_T_C": {
+        "reported": 89,
+        "min": 14.85,
+        "max": 34.85
+      },
+      "contact_time_min": {
+        "reported": 89,
+        "min": 15.0,
+        "max": 2880.0
+      },
+      "process_step_count": {
+        "reported": 128,
+        "min": 1.0,
+        "max": 2.0
+      },
+      "pyrolysis_temperature_C": {
+        "reported": 109,
+        "min": 249.85,
+        "max": 900.0
+      },
+      "pyrolysis_hold_min": {
+        "reported": 109,
+        "min": 0.033333333,
+        "max": 600.0
+      },
+      "heating_rate_C_min": {
+        "reported": 60,
+        "min": 3.0,
+        "max": 20.0
+      },
+      "secondary_temperature_C": {
+        "reported": 34,
+        "min": 80.0,
+        "max": 900.0
+      },
+      "secondary_hold_min": {
+        "reported": 34,
+        "min": 15.0,
+        "max": 360.0
+      }
+    },
+    "categorical": {
+      "pollutant": {
+        "reported": 128,
+        "known": [
+          "Cd(II)",
+          "Cu(II)",
+          "Ni(II)",
+          "Pb(II)",
+          "Phenol",
+          "Zn(II)"
+        ]
+      },
+      "feedstock_label_normalized": {
+        "reported": 128,
+        "known": [
+          "Macrocystis pyrifera",
+          "almond shell",
+          "bamboo",
+          "bamboo powder",
+          "brewed tea waste",
+          "cow litter",
+          "end-of-life wood panel waste;wood particles with uf/mf resins",
+          "eupatorium adenophorum + eggshell catalyst",
+          "food waste",
+          "garden waste leaves and wood",
+          "ginger stalks",
+          "kiwifruit leaves",
+          "maize straw",
+          "mandarin peel",
+          "mango peel",
+          "municipal sewage sludge",
+          "municipal sewage sludge, lanzhou",
+          "municipal sludge:peanut shell=3:1 drymass",
+          "oak cupules",
+          "orange peel",
+          "peanut shell",
+          "phoenix dactylifera ghars variety fiber;ouargla algeria",
+          "rangpur lime peel",
+          "rice husk",
+          "rice husk;nanchang,jiangxi",
+          "rice straw",
+          "scots pine sawdust;gumushane,turkiye",
+          "sichuan pepper branches",
+          "spent coffee grounds",
+          "sunflower leaves",
+          "sweet lime peel",
+          "waste bamboo chopsticks",
+          "water hyacinth;yiyangriveryangzhouchina"
+        ]
+      },
+      "manufacturing_route": {
+        "reported": 128,
+        "known": [
+          "AQUEOUS_POST_MODIFICATION",
+          "CHEMICAL_POST_MODIFICATION",
+          "CLAY_POST_MODIFICATION",
+          "CO_PYROLYSIS_EGGSHELL",
+          "H3BO3_PREIMPREGNATION_PYROLYSIS",
+          "H3PO4_PREIMPREGNATION_PYROLYSIS",
+          "METAL_OXIDE_COMPOSITE_POST_PYRO",
+          "METAL_OXIDE_POST_MODIFICATION",
+          "MICROWAVE_NO_PYRO_T_C",
+          "POST_PYRO_SOL_GEL_THERMAL_CALCINATION",
+          "PREIMPREGNATION_PYROLYSIS",
+          "SINGLE_STAGE_PYROLYSIS",
+          "TWO_STAGE_THERMAL",
+          "TWO_STAGE_THERMAL_STEAM",
+          "UREA_CO_PYROLYSIS"
+        ]
+      },
+      "pyrolysis_atmosphere": {
+        "reported": 96,
+        "known": [
+          "Ar",
+          "LIMITED_OXYGEN_UNSPECIFIED",
+          "Muffle furnace, crucible covered with aluminum foil; no N2 flow reported",
+          "N2",
+          "absence of air;gas identity NR",
+          "inert_N2",
+          "low-oxygen",
+          "oxygen-limited",
+          "oxygen-limited;gasidentityNR",
+          "oxygen_limited"
+        ]
+      },
+      "activation_or_modification": {
+        "reported": 79,
+        "known": [
+          "CO2",
+          "Cu(NO3)2.3H2O;Fe(NO3)3.9H2O;citric acid",
+          "FeCl3.6H2O",
+          "H2O",
+          "H2O2_AGED",
+          "H3PO4",
+          "K2CO3;FeCl3",
+          "K2CO3;urea;acrylamide",
+          "none",
+          "none_reported",
+          "physical_steam;steam"
+        ]
+      }
+    }
+  }
+}

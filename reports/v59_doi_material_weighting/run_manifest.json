@@ -1,0 +1,196 @@
+{
+  "version": "v59",
+  "run_type": "RETROSPECTIVE_WEIGHTING_RESEARCH_NOT_ACTIVE",
+  "base_rows": 140,
+  "base_doi": 32,
+  "weights_definition": "doi_group_mass = n_doi ** alpha; material_share within doi proportional to n_material ** beta; row_share = material_share/n_material; then normalized to mean 1 per training fold",
+  "policies": {
+    "row_equal": [
+      1.0,
+      1.0
+    ],
+    "doi_sqrt_row_equal": [
+      0.5,
+      1.0
+    ],
+    "doi_sqrt_material_equal": [
+      0.5,
+      0.0
+    ],
+    "doi_equal_material_equal": [
+      0.0,
+      0.0
+    ]
+  },
+  "no_target_used_for_weighting": true,
+  "test_DOI_excluded_from_weight_computation": true,
+  "preregistered_candidates_saved_without_score_selection": true,
+  "posthoc_sensitivity_candidates_also_saved": true,
+  "training_data_sha256": {
+    "old": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+    "v55": "4aa3c2685cf39b9f2ef2264e2852324dc975b60555b599e6873b622ec73fe0ad",
+    "new": "07e7fa9fbf39bafb76806ee5a37de1278c3768b1a8c7a726358ca2364a369081"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "sklearn": "1.5.2",
+    "xgboost": "2.1.3"
+  },
+  "models": [
+    {
+      "model": "A",
+      "feature_set": "baseline",
+      "weights": "doi_sqrt_material_equal",
+      "path": "deployment\\research_v59_NOT_ACTIVE\\A_188_baseline_doi_sqrt_material_equal_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "5b3a94e0e216ceba427f6ed1a5a19c1b353ef336dc052dbadd5618897e72407d",
+      "required_feature_columns": [
+        "pollutant",
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_T_C",
+        "contact_time_min"
+      ],
+      "training_rows": 188,
+      "training_dois": 36,
+      "sample_weight_sum": 187.99999999999997
+    },
+    {
+      "model": "A",
+      "feature_set": "cap",
+      "weights": "doi_sqrt_material_equal",
+      "path": "deployment\\research_v59_NOT_ACTIVE\\A_188_cap_doi_sqrt_material_equal_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "55ea0292677b753fa715d87a83f54ebed3ad72ffc3a6d491bebd5938cbb2c525",
+      "required_feature_columns": [
+        "pollutant",
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_T_C",
+        "contact_time_min",
+        "physical_cap_mg_g"
+      ],
+      "training_rows": 188,
+      "training_dois": 36,
+      "sample_weight_sum": 187.99999999999997
+    },
+    {
+      "model": "B",
+      "feature_set": "baseline",
+      "weights": "doi_sqrt_material_equal",
+      "path": "deployment\\research_v59_NOT_ACTIVE\\B_188_baseline_doi_sqrt_material_equal_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "79cf442eeeb60d93476c6551caa5fda140e439bcb97a902b585dcec9f1d47751",
+      "required_feature_columns": [
+        "pollutant",
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_T_C",
+        "contact_time_min",
+        "feedstock_label_normalized",
+        "manufacturing_route",
+        "process_step_count",
+        "pyrolysis_temperature_C",
+        "pyrolysis_hold_min",
+        "heating_rate_C_min",
+        "pyrolysis_atmosphere",
+        "activation_or_modification",
+        "secondary_temperature_C",
+        "secondary_hold_min"
+      ],
+      "training_rows": 188,
+      "training_dois": 36,
+      "sample_weight_sum": 187.99999999999997
+    },
+    {
+      "model": "B",
+      "feature_set": "cap",
+      "weights": "doi_sqrt_material_equal",
+      "path": "deployment\\research_v59_NOT_ACTIVE\\B_188_cap_doi_sqrt_material_equal_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "e0364735c55564329db8e3ac666d0d9781d0591308b1c611d70fff7c7c00316a",
+      "required_feature_columns": [
+        "pollutant",
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_T_C",
+        "contact_time_min",
+        "feedstock_label_normalized",
+        "manufacturing_route",
+        "process_step_count",
+        "pyrolysis_temperature_C",
+        "pyrolysis_hold_min",
+        "heating_rate_C_min",
+        "pyrolysis_atmosphere",
+        "activation_or_modification",
+        "secondary_temperature_C",
+        "secondary_hold_min",
+        "physical_cap_mg_g"
+      ],
+      "training_rows": 188,
+      "training_dois": 36,
+      "sample_weight_sum": 187.99999999999997
+    },
+    {
+      "model": "B",
+      "feature_set": "cap",
+      "weights": "doi_sqrt_material_equal",
+      "path": "deployment\\research_v59_NOT_ACTIVE\\B_152_cap_doi_sqrt_material_equal_POSTHOC_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "d16ad6594c87eddc05901bae5f2079305fc0ba7e57e3925f999e3a6f3b85fd6d",
+      "required_feature_columns": [
+        "pollutant",
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_T_C",
+        "contact_time_min",
+        "feedstock_label_normalized",
+        "manufacturing_route",
+        "process_step_count",
+        "pyrolysis_temperature_C",
+        "pyrolysis_hold_min",
+        "heating_rate_C_min",
+        "pyrolysis_atmosphere",
+        "activation_or_modification",
+        "secondary_temperature_C",
+        "secondary_hold_min",
+        "physical_cap_mg_g"
+      ],
+      "training_rows": 152,
+      "training_dois": 34,
+      "selection": "POSTHOC_HISTORICAL_OLD140_NOT_INDEPENDENT",
+      "sample_weight_sum": 152.0
+    },
+    {
+      "model": "B",
+      "feature_set": "cap",
+      "weights": "doi_sqrt_row_equal",
+      "path": "deployment\\research_v59_NOT_ACTIVE\\B_188_cap_doi_sqrt_row_equal_POSTHOC_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "dfa76f0e6a97992f2efd1504361fc9a2b026ad1ffb55f01d9d6253d8e60d2db5",
+      "required_feature_columns": [
+        "pollutant",
+        "C0_mg_L",
+        "initial_pH",
+        "dose_g_L",
+        "adsorption_T_C",
+        "contact_time_min",
+        "feedstock_label_normalized",
+        "manufacturing_route",
+        "process_step_count",
+        "pyrolysis_temperature_C",
+        "pyrolysis_hold_min",
+        "heating_rate_C_min",
+        "pyrolysis_atmosphere",
+        "activation_or_modification",
+        "secondary_temperature_C",
+        "secondary_hold_min",
+        "physical_cap_mg_g"
+      ],
+      "training_rows": 188,
+      "training_dois": 36,
+      "selection": "POSTHOC_HISTORICAL_OLD140_NOT_INDEPENDENT",
+      "sample_weight_sum": 188.0
+    }
+  ],
+  "historical_sourceout_not_prospective": true
+}

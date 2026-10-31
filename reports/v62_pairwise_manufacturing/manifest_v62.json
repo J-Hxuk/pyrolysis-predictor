@@ -1,0 +1,77 @@
+{
+  "research_artifact": "deployment\\research_v62_NOT_ACTIVE\\pairwise_logit_188_RELATIVE_SCORE_NOT_QE.joblib",
+  "research_artifact_sha256": "a79f0fd5aa2161085325ee44620c0e3ecab16a04b04889758be77faae1f64a6a",
+  "full_train_metadata": {
+    "train_rows": 59,
+    "train_panels": 15,
+    "train_doi": 9,
+    "n_observed_pairs": 95,
+    "n_identical_pairs": 0,
+    "training_rows_both_directions": 190
+  },
+  "model_role": "RESEARCH_ONLY_DOI_GROUPED_POSTHOC",
+  "panel_count": 15,
+  "doi_count": 9,
+  "rows_in_manufacturing_panels": 59,
+  "numeric_feature_variation_panels": {
+    "process_step_count": 0,
+    "pyrolysis_temperature_C": 15,
+    "pyrolysis_hold_min": 0,
+    "heating_rate_C_min": 0,
+    "secondary_temperature_C": 0,
+    "secondary_hold_min": 0
+  },
+  "categorical_feature_variation_panels": {
+    "pollutant": 0,
+    "feedstock_label_normalized": 0,
+    "manufacturing_route": 0,
+    "pyrolysis_atmosphere": 0,
+    "activation_or_modification": 0
+  },
+  "n_ambiguous_input_pairs": 0,
+  "n_pairs_total": 95,
+  "raw_upper_cap_violation_all188": 61,
+  "clipping_at_cap_all188": 61,
+  "compare_pairwise": {
+    "mfg_forest": {
+      "n_panels_total": 15,
+      "n_panels_valid": 15,
+      "n_doi_valid": 9,
+      "difference": -0.07909115423720635,
+      "ci": [
+        -0.33508188807779643,
+        0.1833732737882001
+      ]
+    },
+    "B_clipped": {
+      "n_panels_total": 15,
+      "n_panels_valid": 14,
+      "n_doi_valid": 8,
+      "difference": -0.09345066846123576,
+      "ci": [
+        -0.2593532170619275,
+        0.0014508592242931022
+      ]
+    },
+    "B_raw_invalid_as_qe": {
+      "n_panels_total": 15,
+      "n_panels_valid": 15,
+      "n_doi_valid": 9,
+      "difference": -0.0011543273147663457,
+      "ci": [
+        -0.0064718262418748725,
+        0.0017682346796072182
+      ]
+    }
+  },
+  "libraries": {
+    "python": "3.12.10",
+    "sklearn": "1.5.2"
+  },
+  "inputs": {
+    "v60_oof_sha256": "630fb768da0e92539281fa16514b4df0345514659e2b9843243f90ec8b8ae865",
+    "v60_panel_evidence_sha256": "713f0a25fa518317053745cbc4f26d0c5a2720c8252b027bd4ea34c3c0921551",
+    "v55_pre152_sha256": "4aa3c2685cf39b9f2ef2264e2852324dc975b60555b599e6873b622ec73fe0ad",
+    "v57_new36_sha256": "07e7fa9fbf39bafb76806ee5a37de1278c3768b1a8c7a726358ca2364a369081"
+  }
+}

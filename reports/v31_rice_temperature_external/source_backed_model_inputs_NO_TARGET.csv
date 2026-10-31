@@ -1,0 +1,7 @@
+feedstock_label_normalized,manufacturing_route,process_step_count,pyrolysis_hold_min,heating_rate_C_min,pyrolysis_atmosphere,activation_or_modification,secondary_temperature_C,secondary_hold_min,pollutant,C0_mg_L,dose_g_L,initial_pH,adsorption_T_C,contact_time_min,pyrolysis_temperature_C,sample_id,doi
+rice husk,SINGLE_STAGE_PYROLYSIS,1,120.0,10.0,N2,none,,,Cd(II),50.0,2.5,5.0,25.0,1440.0,300.0,BC300,10.3390/molecules30173616
+rice husk,SINGLE_STAGE_PYROLYSIS,1,120.0,10.0,N2,none,,,Cd(II),50.0,2.5,5.0,25.0,1440.0,400.0,BC400,10.3390/molecules30173616
+rice husk,SINGLE_STAGE_PYROLYSIS,1,120.0,10.0,N2,none,,,Cd(II),50.0,2.5,5.0,25.0,1440.0,500.0,BC500,10.3390/molecules30173616
+rice husk,SINGLE_STAGE_PYROLYSIS,1,120.0,10.0,N2,none,,,Pb(II),50.0,2.5,5.0,25.0,1440.0,300.0,BC300,10.3390/molecules30173616
+rice husk,SINGLE_STAGE_PYROLYSIS,1,120.0,10.0,N2,none,,,Pb(II),50.0,2.5,5.0,25.0,1440.0,400.0,BC400,10.3390/molecules30173616
+rice husk,SINGLE_STAGE_PYROLYSIS,1,120.0,10.0,N2,none,,,Pb(II),50.0,2.5,5.0,25.0,1440.0,500.0,BC500,10.3390/molecules30173616

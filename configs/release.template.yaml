@@ -1,0 +1,24 @@
+# release.template.yaml — 배포 설정 원형
+#
+# 실제 설정은 configs/local/release.yaml 에 작성한다 (Git 제외).
+# 활성화할 대상은 데이터 확보·학습·독립 평가 후 작업 28·29에서 확정한다.
+
+schema_version: 1
+
+# 실제 활성화할 대상 (작업 28에서 채운다)
+active_targets: []
+
+# 비활성 대상과 사유 (작업 28에서 채운다)
+disabled_targets: []
+# 예시 구조:
+# disabled_targets:
+#   - target_id: null
+#     reason: null    # unconfigured | data_insufficient | trained_unvalidated | disabled
+
+# 최종 재학습 설정 (작업 28에서 채운다)
+final_training:
+  use_all_data: null    # 전체 자료로 재학습 여부
+  note: null            # 재학습과 보고된 평가의 관계 기록
+
+# 배포 묶음 출력 경로 (저장소 루트 기준 상대 경로)
+output_dir: deployment/bundles

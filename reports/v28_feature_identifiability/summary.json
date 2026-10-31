@@ -1,0 +1,22 @@
+{
+  "source": "v27 frozen OOF data; 98-row/26-DOI cohort; zero training in v28",
+  "comparison_groups": 12,
+  "evaluable_groups": 11,
+  "evaluable_DOIs": 7,
+  "groups_with_verified_temperature_contrast": 0,
+  "groups_with_identical_temperature_in_all_reported_candidates": 10,
+  "groups_with_all_temperature_unreported": 2,
+  "evaluable_groups_with_collapsed_material_inputs": 4,
+  "pairwise_comparisons": 30,
+  "pairs_with_identical_manufacturing_input_signature": 6,
+  "pairs_with_predicted_tie": 10,
+  "model_B_pairwise_macro_from_v27": 0.8712121212121212,
+  "random_tie_baseline_pairwise": 0.5,
+  "limitations": [
+    "No held-out comparison group varies pyrolysis temperature; do not claim temperature optimization.",
+    "A material pair with identical model inputs cannot be distinguished even when labels differ.",
+    "Performance is post-hoc, group results within same DOI not independent.",
+    "Use raw OOF predictions, never clipping, when auditing model reliability.",
+    "No new DOI, no new trial, no model training or automatic activation in this study."
+  ]
+}

@@ -1,0 +1,30 @@
+# dataset.template.yaml — 데이터셋 설정 원형
+#
+# 실제 설정은 configs/local/dataset.yaml 에 작성한다 (Git 제외).
+# 실제 파일 경로·시트명·열 이름은 이 원형에 넣지 않는다.
+
+schema_version: 1
+
+# 학습 파일 목록 (실제 경로는 configs/local/dataset.yaml 에서 지정)
+sources: []
+# 예시 구조:
+# sources:
+#   - file: null                # 실제 파일 경로 (configs/local/ 에서 지정)
+#     sheet: null               # Excel 시트명 (CSV 는 null)
+#     description: null         # 자료 출처 설명
+
+# 열 매핑 (원본 열 이름 → 표준 입력/목표 ID)
+column_mapping: {}
+
+# 출처·시료·측정·분할용 식별자 열
+identifiers:
+  source_id: null        # 출처(논문·실험실) 식별자 열
+  sample_id: null        # 시료 식별자 열
+  measurement_id: null   # 측정 건 식별자 열
+  split_group_id: null   # 독립 분할 그룹 식별자 열
+
+# 결측 처리 정책 (데이터 확보 후 작업 26에서 확정)
+missing_policy: {}
+
+# 단위 변환 정의 (데이터 확보 후 작업 26에서 확정)
+unit_conversions: []

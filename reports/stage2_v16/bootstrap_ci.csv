@@ -1,0 +1,2 @@
+﻿metric,point_estimate,ci95_low,ci95_high,n_boot,interpretation
+MAE_B - MAE_A (mg/g),4.993,0.5776,10.6422,2000,양수 = B 오차가 A 보다 큼(개선 아님). CI 가 0 을 포함하면 차이 불확실.

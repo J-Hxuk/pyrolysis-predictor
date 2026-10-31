@@ -1,0 +1,53 @@
+{
+  "records": 98,
+  "DOIs": 26,
+  "baseline": {
+    "mae": 29.04658765790356,
+    "r2": 0.3928586820264234,
+    "raw_violations": 47
+  },
+  "enriched": {
+    "mae": 30.883017282588167,
+    "r2": 0.3927091152679898,
+    "raw_violations": 48
+  },
+  "ranking": {
+    "baseline": {
+      "groups": 11,
+      "macro_pairwise": 0.8712121212121212,
+      "pairs": 30,
+      "predicted_ties": 10,
+      "raw_violations_group_rows": 16
+    },
+    "enriched": {
+      "groups": 11,
+      "macro_pairwise": 0.8560606060606062,
+      "pairs": 30,
+      "predicted_ties": 8,
+      "raw_violations_group_rows": 18
+    }
+  },
+  "exploratory_only": true,
+  "limitations": [
+    "Agent text extraction rules inspected after v28 collisions; evaluation is post-hoc and not independent model selection.",
+    "No model or historical core rewrite; no external validation of novel agent combinations.",
+    "A source note containing a named chemical does not establish complete quantitative reagent dose.",
+    "P-only control label lacks separate synthesis evidence; kept as uncertainty-marked category.",
+    "Raw qe is reported uptake, not universally certified equilibrium.",
+    "LODO does not establish pyrolysis temperature optimization."
+  ],
+  "pairwise_feature_identifiability": {
+    "all_unequal_target_pairs": 30,
+    "old_collisions": 6,
+    "new_collisions": 0,
+    "resolved_collisions": 6,
+    "remaining_pairs": []
+  },
+  "source_evidence_tiers": {
+    "UNREPORTED": 26,
+    "SOURCE_REAGENT_EXPLICIT": 24,
+    "SOURCE_CONTROL_EXPLICIT": 7,
+    "REPORTED_AGENT_FIELD": 3,
+    "LABEL_ONLY_METHOD_NR": 1
+  }
+}

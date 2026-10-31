@@ -1,0 +1,209 @@
+{
+  "audit": {
+    "stage2": {
+      "rows": 113,
+      "n_doi": 28,
+      "unknown_pH": 12,
+      "note": "reported uptake. 엄격 평형 qe는 인증하지 않음; 신규 15행은 연구용 조건부 자료"
+    },
+    "stage1": {
+      "rows": 333,
+      "n_doi": 45,
+      "targets": {
+        "BET": {
+          "rows": 299,
+          "n_doi": 39
+        },
+        "TPV": {
+          "rows": 199,
+          "n_doi": 29
+        }
+      },
+      "note": "신규 Stage1 원문검증 후보를 포함한 연구용 시료; 출처 분류/시험 승인 여부 재감사 필요"
+    },
+    "cv": {
+      "n_folds": "5 (GroupKFold DOI)",
+      "algorithm_settings": "fixed a priori, non-nested",
+      "source_selection": "same-target only; noncertified candidates used for research"
+    },
+    "auto_deploy": false
+  },
+  "scores": [
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "A",
+      "algorithm": "Dummy",
+      "n": 113,
+      "r2": -0.04674454809894213,
+      "MAE": 39.04571766345749,
+      "RMSE": 58.498477845439595,
+      "raw_violation_count": 54,
+      "clipped_MAE": 27.45757445053551
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "A",
+      "algorithm": "Ridge",
+      "n": 113,
+      "r2": -0.07584721776675307,
+      "MAE": 34.16289333228628,
+      "RMSE": 59.306120062693935,
+      "raw_violation_count": 32,
+      "clipped_MAE": 23.564140493205905
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "A",
+      "algorithm": "RF",
+      "n": 113,
+      "r2": 0.35438637304164466,
+      "MAE": 29.560967409673175,
+      "RMSE": 45.942069677895766,
+      "raw_violation_count": 51,
+      "clipped_MAE": 21.20263305140989
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "A",
+      "algorithm": "XGBoost",
+      "n": 113,
+      "r2": 0.6853828267978818,
+      "MAE": 19.800076850418495,
+      "RMSE": 32.071215812656774,
+      "raw_violation_count": 34,
+      "clipped_MAE": 16.243430848986822
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "B",
+      "algorithm": "Dummy",
+      "n": 113,
+      "r2": -0.04674454809894213,
+      "MAE": 39.04571766345749,
+      "RMSE": 58.498477845439595,
+      "raw_violation_count": 54,
+      "clipped_MAE": 27.45757445053551
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "B",
+      "algorithm": "Ridge",
+      "n": 113,
+      "r2": 0.23641979494867815,
+      "MAE": 33.02170902219948,
+      "RMSE": 49.96334917232405,
+      "raw_violation_count": 48,
+      "clipped_MAE": 18.96960638744013
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "B",
+      "algorithm": "RF",
+      "n": 113,
+      "r2": 0.2913158276049077,
+      "MAE": 31.596395015453705,
+      "RMSE": 48.13384760563623,
+      "raw_violation_count": 54,
+      "clipped_MAE": 21.28755168598026
+    },
+    {
+      "stage": "Stage2",
+      "target": "reported_qe",
+      "variant": "B",
+      "algorithm": "XGBoost",
+      "n": 113,
+      "r2": 0.6772766857778554,
+      "MAE": 19.74225907904701,
+      "RMSE": 32.48174722848323,
+      "raw_violation_count": 43,
+      "clipped_MAE": 15.03139926672396
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET",
+      "variant": "manufacture_inputs",
+      "algorithm": "Dummy",
+      "n": 299,
+      "r2": -0.045859600168407955,
+      "MAE": 415.190228088153,
+      "RMSE": 551.4669036004418
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET",
+      "variant": "manufacture_inputs",
+      "algorithm": "Ridge",
+      "n": 299,
+      "r2": 0.49083952925426844,
+      "MAE": 255.821676513489,
+      "RMSE": 384.7778816380448
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET",
+      "variant": "manufacture_inputs",
+      "algorithm": "RF",
+      "n": 299,
+      "r2": 0.44654977890645997,
+      "MAE": 266.6415901750172,
+      "RMSE": 401.16408248494236
+    },
+    {
+      "stage": "Stage1",
+      "target": "BET",
+      "variant": "manufacture_inputs",
+      "algorithm": "RF_log",
+      "n": 299,
+      "r2": 0.1725364812885527,
+      "MAE": 287.07539698467224,
+      "RMSE": 490.5205284778935
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV",
+      "variant": "manufacture_inputs",
+      "algorithm": "Dummy",
+      "n": 199,
+      "r2": -0.018710532694399262,
+      "MAE": 0.24101003247102423,
+      "RMSE": 0.31847153960162117
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV",
+      "variant": "manufacture_inputs",
+      "algorithm": "Ridge",
+      "n": 199,
+      "r2": 0.24575196501203034,
+      "MAE": 0.19669887278727427,
+      "RMSE": 0.27403265780547864
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV",
+      "variant": "manufacture_inputs",
+      "algorithm": "RF",
+      "n": 199,
+      "r2": 0.3606984601797262,
+      "MAE": 0.17320322067099653,
+      "RMSE": 0.2522888774747745
+    },
+    {
+      "stage": "Stage1",
+      "target": "TPV",
+      "variant": "manufacture_inputs",
+      "algorithm": "RF_log",
+      "n": 199,
+      "r2": 0.34988143149962136,
+      "MAE": 0.17081892079603214,
+      "RMSE": 0.25441429772381446
+    }
+  ]
+}

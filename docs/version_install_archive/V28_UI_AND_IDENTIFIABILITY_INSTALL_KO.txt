@@ -1,0 +1,31 @@
+Biochar v28 | 제조조건 정보손실 감사 + 사이드바 4개 메뉴로 통합
+
+필요 전제: v27까지 적용된 프로젝트. v28은 v27과 v26의 모델/검증 코드를 변경하지 않는다.
+
+1) 현재 프로그램 폴더에서 원본 UI 파일을 백업한다.
+   Set-Location "C:\Users\jh030\Desktop\대학\학술대회\프로그램"
+   Copy-Item ".\pyrolysis\biochar_ui\stage2_pages.py" "..\stage2_pages_before_v28.py"
+
+2) v28 패치 ZIP을 프로그램 폴더 안에 다운로드/복사한 뒤 다음 명령 실행.
+   Expand-Archive -LiteralPath ".\Biochar_v28_Navigation_And_Identifiability_Patch.zip" -DestinationPath "." -Force
+
+3) 테스트.
+   .\.venv\Scripts\python.exe -m pytest tests\test_v28_identifiability_and_navigation.py tests\test_v27_recommendation_audit.py tests\test_v26_physics_aware.py -q
+
+4) 실행.
+   .\.venv\Scripts\python.exe -m streamlit run biochar_stage2_app.py
+
+5) 보고서: reports\v28_feature_identifiability\RESULTS_KO.md
+   분석 재현(선택): .\.venv\Scripts\python.exe -m scripts.evaluate_v28_feature_identifiability
+
+앱의 기존 기능은 삭제되지 않는다. 바뀐 사이드바는 4개다.
+ - 흡착성능 예측
+ - 제조조건 탐색 (문헌 후보 비교, 연구용 온도 민감도)
+ - BET 물성 예측
+ - 데이터·모델 검증 (모델 개요, 예측 검증, Phase8, v24 신규문헌표가 있으면 표시)
+
+중요: v27의 11개 평가 가능 그룹에는 온도 조건 변화가 없다.
+따라서 그 결과를 열분해온도 최적화 검증으로 홍보하면 안 된다.
+
+기존 .venv, data, deployment, Stage1 v60, Stage2 A/B/C/D 저장 모델은 수정하지 않는다.
+Windows 실제 Streamlit 화면 렌더링은 사용자 환경에서 별도 확인 필요.

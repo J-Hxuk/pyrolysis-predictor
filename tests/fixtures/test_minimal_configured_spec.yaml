@@ -1,0 +1,19 @@
+schema_version: 1
+problem_id: fixture-test-v1
+status: configured
+inputs:
+- id: x1
+  label_ko: 입력 1
+  description: 픽스처 입력
+  role: feedstock
+  dtype: float
+  required: true
+targets:
+- id: y1
+  label_ko: 출력 1
+  family: performance
+  task: regression
+  definition: 픽스처 회귀 대상
+  input_ids:
+  - x1
+composition_groups: []

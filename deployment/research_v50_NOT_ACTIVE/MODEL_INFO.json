@@ -1,0 +1,18 @@
+{
+  "input_columns": [
+    "pollutant",
+    "C0_mg_L",
+    "initial_pH",
+    "dose_g_L",
+    "adsorption_T_C",
+    "contact_time_min"
+  ],
+  "target_transform": "logit(qe/(C0/dose))",
+  "training_records": 140,
+  "training_dois": 32,
+  "source_sha256": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+  "evaluation_scope": "Cu(II) exploratory only",
+  "deployment_approved": false,
+  "warning": "Cross-validation CI includes zero; NOT an improved production model.",
+  "model_file": "v50_globalA_boundedFraction_CU_SCOPE_RESEARCH_NOT_ACTIVE.joblib"
+}

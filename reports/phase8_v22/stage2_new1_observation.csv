@@ -1,0 +1,2 @@
+﻿adsorption_id,doi,pollutant,qe_mg_g,C0_mg_L,dose_g_L,source_target_status
+V15_ADS_ALMOND_SP_C500,10.3390/molecules30204121,Pb(II),103.0,500,2,USE_DIRECT_EQUILIBRIUM

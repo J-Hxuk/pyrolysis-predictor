@@ -1,0 +1,11 @@
+{
+  "version": "v34",
+  "training_rows": 113,
+  "doi": 28,
+  "targets": "reported experimental uptake only; strict qe not certified",
+  "no_zhou_qt_mixing": true,
+  "deployed": false,
+  "active_json_unchanged": true,
+  "sklearn_version": "1.8.0",
+  "algorithm_recipe": "v16_validate.validation_algorithms()"
+}

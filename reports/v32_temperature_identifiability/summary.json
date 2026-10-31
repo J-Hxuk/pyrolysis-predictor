@@ -1,0 +1,140 @@
+{
+  "purpose": "v32 temperature contribution and rank learnability; research-only",
+  "source_training": "Core98/26DOI; no v24 external or v30 markers included",
+  "external_evidence": "v30 rice graph qt approximations, held out, NOT certified equilibrium qe",
+  "design": {
+    "total_observations": 98,
+    "doi_count": 26,
+    "reported_temperature_observations": 79,
+    "unreported_temperature_observations": 19,
+    "doi_with_more_than_one_reported_temperature": 0,
+    "strict_adsorption_identical_groups": 12,
+    "strict_temperature_contrast_groups": 0,
+    "note": "DOI-constant temperature makes within-paper temperature effects unidentifiable on Core98."
+  },
+  "ablation": {
+    "Ridge": {
+      "with_temperature": {
+        "mae_mg_g": 29.04658765790356,
+        "r2": 0.3928586820264234,
+        "raw_physical_violations": 47
+      },
+      "no_temperature": {
+        "mae_mg_g": 28.83562389943221,
+        "r2": 0.3997876586504614,
+        "raw_physical_violations": 47
+      },
+      "delta_no_temp_minus_with_temp_mae_mg_g": -0.21096375847135052,
+      "doi_bootstrap_ci95": [
+        -0.5990018126790877,
+        0.0677538398682427
+      ]
+    },
+    "XGBoost": {
+      "with_temperature": {
+        "mae_mg_g": 21.350323496665276,
+        "r2": 0.6291555236300207,
+        "raw_physical_violations": 36
+      },
+      "no_temperature": {
+        "mae_mg_g": 22.813738212075165,
+        "r2": 0.6319114940481207,
+        "raw_physical_violations": 42
+      },
+      "delta_no_temp_minus_with_temp_mae_mg_g": 1.463414715409887,
+      "doi_bootstrap_ci95": [
+        -2.1636789798877922,
+        4.254238425929039
+      ]
+    }
+  },
+  "temperature_curves": {
+    "grid_min": 300,
+    "grid_max": 500,
+    "grid_step": 25,
+    "evaluation_points": [
+      300,
+      400,
+      500
+    ],
+    "interpretation": "This is a diagnostic temperature response for a fixed external recipe, not learned within-paper temperature causality."
+  },
+  "ranking_training_feasible": false,
+  "released_model": false,
+  "app_changed": false,
+  "hard_limitations": [
+    "No within-DOI temperature contrasts in Core98; between-paper temperature feature is confounded with DOI/feedstock/route.",
+    "A no-temperature ablation can assess prediction association only; cannot establish causal role of temperature.",
+    "No legitimate supervised temperature pairwise ranker can be validated with this cohort.",
+    "External one DOI/2 correlated pollutant series cannot estimate generalization accuracy.",
+    "DOI cluster bootstrap is exploratory because ablation choices were motivated by earlier failures.",
+    "Model B ridge and XGBoost are fixed research recipes refit Core98, not deployed artifacts.",
+    "Raw physical constraint violations remain uncorrected in scores."
+  ],
+  "rice_curve_diagnostics": [
+    {
+      "pollutant": "Cd(II)",
+      "algorithm": "Ridge",
+      "curve_is_nondecreasing": true,
+      "curve_is_nonincreasing": false,
+      "curve_has_interior_strict_local_maximum": false,
+      "n_equal_adjacent_grid_steps": 0,
+      "predicted_best_C_300_400_500": 500,
+      "observed_best_C": 400,
+      "top1_expected_3_temps": 0.0,
+      "regret_mg_g": 3.0,
+      "pairwise": 0.6666666666666666,
+      "pairwise_pairs": 3,
+      "pred_ties": 0,
+      "n_grid_raw_violations": 9
+    },
+    {
+      "pollutant": "Cd(II)",
+      "algorithm": "XGBoost",
+      "curve_is_nondecreasing": true,
+      "curve_is_nonincreasing": false,
+      "curve_has_interior_strict_local_maximum": false,
+      "n_equal_adjacent_grid_steps": 5,
+      "predicted_best_C_300_400_500": 500,
+      "observed_best_C": 400,
+      "top1_expected_3_temps": 0.0,
+      "regret_mg_g": 3.0,
+      "pairwise": 0.6666666666666666,
+      "pairwise_pairs": 3,
+      "pred_ties": 0,
+      "n_grid_raw_violations": 0
+    },
+    {
+      "pollutant": "Pb(II)",
+      "algorithm": "Ridge",
+      "curve_is_nondecreasing": true,
+      "curve_is_nonincreasing": false,
+      "curve_has_interior_strict_local_maximum": false,
+      "n_equal_adjacent_grid_steps": 0,
+      "predicted_best_C_300_400_500": 500,
+      "observed_best_C": 400,
+      "top1_expected_3_temps": 0.0,
+      "regret_mg_g": 1.5,
+      "pairwise": 0.6666666666666666,
+      "pairwise_pairs": 3,
+      "pred_ties": 0,
+      "n_grid_raw_violations": 0
+    },
+    {
+      "pollutant": "Pb(II)",
+      "algorithm": "XGBoost",
+      "curve_is_nondecreasing": true,
+      "curve_is_nonincreasing": false,
+      "curve_has_interior_strict_local_maximum": false,
+      "n_equal_adjacent_grid_steps": 5,
+      "predicted_best_C_300_400_500": 500,
+      "observed_best_C": 400,
+      "top1_expected_3_temps": 0.0,
+      "regret_mg_g": 1.5,
+      "pairwise": 0.6666666666666666,
+      "pairwise_pairs": 3,
+      "pred_ties": 0,
+      "n_grid_raw_violations": 9
+    }
+  ]
+}

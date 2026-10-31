@@ -1,0 +1,90 @@
+[
+  {
+    "model": "A",
+    "scenario": "strict8_sensitivity",
+    "path": "deployment\\research_v53_NOT_ACTIVE\\V53_STAGE2_A_148_strict8_sensitivity_NOT_ACTIVE.joblib",
+    "sha256": "918048630c4d4ffc383343a062085141b4fb9a2eb8e4cd8cbebda558e382863c",
+    "nrows": 148,
+    "doi_count": 33,
+    "features": [
+      "pollutant",
+      "C0_mg_L",
+      "initial_pH",
+      "dose_g_L",
+      "adsorption_T_C",
+      "contact_time_min"
+    ],
+    "status": "RESEARCH_ONLY_NOT_APPROVED_NOT_ACTIVE"
+  },
+  {
+    "model": "B",
+    "scenario": "strict8_sensitivity",
+    "path": "deployment\\research_v53_NOT_ACTIVE\\V53_STAGE2_B_148_strict8_sensitivity_NOT_ACTIVE.joblib",
+    "sha256": "e84bb6177db15b15ee701e065c02fb44e8175ef2f95e2d7630bbc386046a69e9",
+    "nrows": 148,
+    "doi_count": 33,
+    "features": [
+      "pollutant",
+      "C0_mg_L",
+      "initial_pH",
+      "dose_g_L",
+      "adsorption_T_C",
+      "contact_time_min",
+      "feedstock_label_normalized",
+      "manufacturing_route",
+      "process_step_count",
+      "pyrolysis_temperature_C",
+      "pyrolysis_hold_min",
+      "heating_rate_C_min",
+      "pyrolysis_atmosphere",
+      "activation_or_modification",
+      "secondary_temperature_C",
+      "secondary_hold_min"
+    ],
+    "status": "RESEARCH_ONLY_NOT_APPROVED_NOT_ACTIVE"
+  },
+  {
+    "model": "A",
+    "scenario": "all24_sensitivity",
+    "path": "deployment\\research_v53_NOT_ACTIVE\\V53_STAGE2_A_164_all24_sensitivity_NOT_ACTIVE.joblib",
+    "sha256": "bb03f1866d56c14e80f86ed3b66becc9be24eb7573c74dfaf9dd98d605814384",
+    "nrows": 164,
+    "doi_count": 33,
+    "features": [
+      "pollutant",
+      "C0_mg_L",
+      "initial_pH",
+      "dose_g_L",
+      "adsorption_T_C",
+      "contact_time_min"
+    ],
+    "status": "RESEARCH_ONLY_NOT_APPROVED_NOT_ACTIVE"
+  },
+  {
+    "model": "B",
+    "scenario": "all24_sensitivity",
+    "path": "deployment\\research_v53_NOT_ACTIVE\\V53_STAGE2_B_164_all24_sensitivity_NOT_ACTIVE.joblib",
+    "sha256": "b32cb851c2f1d4c1fb5f90fa75217555280b2b36ee72ee9dc025e7592539a5a3",
+    "nrows": 164,
+    "doi_count": 33,
+    "features": [
+      "pollutant",
+      "C0_mg_L",
+      "initial_pH",
+      "dose_g_L",
+      "adsorption_T_C",
+      "contact_time_min",
+      "feedstock_label_normalized",
+      "manufacturing_route",
+      "process_step_count",
+      "pyrolysis_temperature_C",
+      "pyrolysis_hold_min",
+      "heating_rate_C_min",
+      "pyrolysis_atmosphere",
+      "activation_or_modification",
+      "secondary_temperature_C",
+      "secondary_hold_min"
+    ],
+    "status": "RESEARCH_ONLY_NOT_APPROVED_NOT_ACTIVE"
+  }
+]

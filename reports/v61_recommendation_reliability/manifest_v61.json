@@ -1,0 +1,19 @@
+{
+  "version": "v61",
+  "role": "RESEARCH_AUDIT_ONLY_NOT_ACTIVE",
+  "posthoc": true,
+  "train_new_models": false,
+  "n_observations": 188,
+  "n_panels": 15,
+  "n_dois": 9,
+  "n_complete_panels": 4,
+  "n_strict_panels": 2,
+  "source_sha256": {
+    "reports\\v60_separate_effects\\all188_doi_oof_predictions.csv": "630fb768da0e92539281fa16514b4df0345514659e2b9843243f90ec8b8ae865",
+    "reports\\v60_separate_effects\\panel_evidence_quality.csv": "713f0a25fa518317053745cbc4f26d0c5a2720c8252b027bd4ea34c3c0921551",
+    "reports\\v59_doi_material_weighting\\chen16_weighted_predictions.csv": "f2f3eac2a141a644580cf39bb5861d7d07a5bfda15fcbfc9f351a62c1c37d9e7"
+  },
+  "top_tie_tolerance": 1e-08,
+  "heuristic_gap_not_calibrated_mg_g": 1.0,
+  "warning": "No deployment claim; retrospective reused DOIs; Chen initial pH missing; original v60 local artifacts may differ by library versions."
+}

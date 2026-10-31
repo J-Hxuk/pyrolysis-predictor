@@ -1,0 +1,101 @@
+{
+  "version": "v55_source_cumulative_research",
+  "status": "RESEARCH_ONLY_NOT_ACTIVE",
+  "stage2_new_reported_qe": 8,
+  "stage2_new_source_strict_candidate": 4,
+  "stage2_new_source_conditional_candidate": 4,
+  "qmax_new_fitted": 16,
+  "stage1_new_BET": 29,
+  "stage1_new_TPV": 10,
+  "source_registry_entries": 5,
+  "python": "3.12.10",
+  "scikit_learn": "1.5.2",
+  "xgboost": "2.1.3",
+  "source_data_hashes": {
+    "base_stage2_140": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+    "v52_apple24": "6e3444784354571507f2c07975dc42036e9890004774169ae4f9ced248662905",
+    "base_stage1_417": "f2f8ce477b374dda75b8b8a2e09221316142260947fb79afbf99c44fc48e033d"
+  },
+  "models": [
+    {
+      "model": "A",
+      "scenario": "v53_148",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_A_v53_148_148_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "918048630c4d4ffc383343a062085141b4fb9a2eb8e4cd8cbebda558e382863c"
+    },
+    {
+      "model": "B",
+      "scenario": "v53_148",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_B_v53_148_148_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "e84bb6177db15b15ee701e065c02fb44e8175ef2f95e2d7630bbc386046a69e9"
+    },
+    {
+      "model": "A",
+      "scenario": "v53_164_sensitivity",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_A_v53_164_sensitivity_164_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "bb03f1866d56c14e80f86ed3b66becc9be24eb7573c74dfaf9dd98d605814384"
+    },
+    {
+      "model": "B",
+      "scenario": "v53_164_sensitivity",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_B_v53_164_sensitivity_164_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "b32cb851c2f1d4c1fb5f90fa75217555280b2b36ee72ee9dc025e7592539a5a3"
+    },
+    {
+      "model": "A",
+      "scenario": "v55_152_plus_sugar",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_A_v55_152_plus_sugar_152_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "f7f88ec7522b9cb393d350f000561084456d34e242f0716fee4f23a41935e5fd"
+    },
+    {
+      "model": "B",
+      "scenario": "v55_152_plus_sugar",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_B_v55_152_plus_sugar_152_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "e64f9f99a169c09c27d6314af7d837aafcd810a157c5a46b4c3c3138f40a3b5c"
+    },
+    {
+      "model": "A",
+      "scenario": "v55_156_plus_cocoa_conditional",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_A_v55_156_plus_cocoa_conditional_156_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "0379ce31f8226f4b6bcc4ea366c82f8d615bb8bebe46983e6dca447111683e7d"
+    },
+    {
+      "model": "B",
+      "scenario": "v55_156_plus_cocoa_conditional",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_B_v55_156_plus_cocoa_conditional_156_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "66f9f2ca4f9d2585958dece72fcda9281d9afa4aa5be85279de29d1dbe404af5"
+    },
+    {
+      "model": "A",
+      "scenario": "v55_168_all24_plus_sugar_sensitivity",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_A_v55_168_all24_plus_sugar_sensitivity_168_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "0fed1301dc9b0a6f910aed00c21d2837c537bf448ff41f5a431f2766139ea7bb"
+    },
+    {
+      "model": "B",
+      "scenario": "v55_168_all24_plus_sugar_sensitivity",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_B_v55_168_all24_plus_sugar_sensitivity_168_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "1e4da0239e9d153b393aa8a7ad337e9f90acdffb29b9234c818ab3d9ac62d1a8"
+    },
+    {
+      "model": "A",
+      "scenario": "v55_172_all24_plus_cocoa_sensitivity",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_A_v55_172_all24_plus_cocoa_sensitivity_172_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "689ccca510792641ef893731dd6cf01c2381ec159034dbaabae500e8e9fed00f"
+    },
+    {
+      "model": "B",
+      "scenario": "v55_172_all24_plus_cocoa_sensitivity",
+      "path": "deployment/research_v55_NOT_ACTIVE/STAGE2_B_v55_172_all24_plus_cocoa_sensitivity_172_RESEARCH_NOT_ACTIVE.joblib",
+      "sha256": "1f4c60fa2f500cbd3417bde0e9d62259e49194c1c3f59438965685cd877c8fbd"
+    }
+  ],
+  "source_doi": {
+    "cocoa": "10.1007/s13399-026-07198-4",
+    "ragweed": "10.1016/j.biortech.2020.124011",
+    "rice": "10.1155/2018/2684962",
+    "sugar": "10.1016/j.chemosphere.2013.12.042",
+    "sludge": "10.1016/j.biortech.2013.08.082"
+  },
+  "note": "Evaluate same original DOIs; new sources not in original folds; new DOI challenge only pre-inclusion; no independent test after model selection"
+}

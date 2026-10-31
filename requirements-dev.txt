@@ -1,0 +1,64 @@
+# ============================================================
+# 개발·테스트 의존성
+# requirements.txt 를 기본으로 추가 설치한다:
+#   pip install -r requirements.txt -r requirements-dev.txt
+# ============================================================
+
+# ── 테스트 ────────────────────────────────────────────────
+pytest==8.3.4
+pytest-cov==6.0.0
+
+# ── Jupyter 연구 환경 ─────────────────────────────────────
+jupyterlab==4.3.4
+ipykernel==6.29.5
+ipython==8.31.0
+nbformat==5.10.4
+nbconvert==7.16.4
+
+# ── Streamlit AppTest (requirements.txt 의 streamlit 에 포함) ──
+# AppTest 는 streamlit 패키지에 내장되어 있어 별도 설치 불필요.
+
+# ── 코드 품질 ─────────────────────────────────────────────
+ruff==0.9.1
+
+# ── jupyterlab 간접 의존성 ────────────────────────────────
+anyio==4.7.0
+argon2-cffi==23.1.0
+async-lru==2.0.4
+comm==0.2.2
+debugpy==1.8.11
+executing==2.1.0
+httpx==0.28.1
+ipywidgets==8.1.5
+jinja2==3.1.5
+json5==0.10.0
+jupyter-client==8.6.3
+jupyter-core==5.7.2
+jupyter-events==0.11.0
+jupyter-lsp==2.2.5
+jupyter-server==2.15.0
+jupyter-server-terminals==0.5.3
+jupyterlab-pygments==0.3.0
+jupyterlab-server==2.27.3
+jupyterlab-widgets==3.0.13
+markupsafe==3.0.2
+mistune==3.0.2
+nbclient==0.10.2
+nest-asyncio==1.6.0
+overrides==7.7.0
+pandocfilters==1.5.1
+platformdirs==4.3.6
+prometheus-client==0.21.1
+psutil==6.1.1
+pygments==2.19.1
+python-json-logger==3.2.1
+pyzmq==26.2.0
+referencing==0.35.1
+rpds-py==0.22.3
+send2trash==1.8.3
+sniffio==1.3.1
+terminado==0.18.1
+tinycss2==1.4.0
+traitlets==5.14.3
+webcolors==24.11.1
+websocket-client==1.8.0

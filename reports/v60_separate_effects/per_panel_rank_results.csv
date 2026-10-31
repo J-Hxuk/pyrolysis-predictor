@@ -1,0 +1,241 @@
+panel_type,panel_id,doi,feedstock,n,model,rho,concordance,n_pairs,pred_tied_pairs,n_tied_top,top1_regret_worst,unique_top1,monotonic_violations,observed_monotonic_violations,scenario
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,A_row,,0.5,10,10,5,19.7,False,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,A_row,,0.5,6,6,4,7.6,False,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,16.83,False,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,21.659999999999997,False,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,18.64,False,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,4.46,False,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,A_row,,0.5,10,10,5,8.199999999999989,False,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,A_row,,0.5,21,21,7,106.88,False,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,A_row,,0.5,3,3,3,47.99000000000001,False,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,A_row,,0.5,6,6,4,4.739999999999999,False,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,A_row,,0.5,6,6,4,4.81,False,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,A_row,,0.5,6,6,4,0.3550000000000004,False,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,A_row,,0.5,6,6,4,1.7899999999999991,False,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,A_row,,0.5,6,6,4,8.7125,False,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,A_row,,0.5,3,3,3,3.079999999999999,False,,,152
+concentration,0,10.1007/s11356-017-8847-2,rice husk,5,A_row,0.9746794344808964,0.95,10,1,1,0.0,True,0.0,0.0,152
+concentration,1,10.1007/s11356-017-8847-2,rice husk,8,A_row,0.33737388489831593,0.6428571428571429,28,2,1,0.0,True,1.0,0.0,152
+concentration,2,10.1007/s11356-017-8847-2,wheat straw pellets,8,A_row,0.33737388489831593,0.6428571428571429,28,2,1,0.0,True,1.0,0.0,152
+concentration,3,10.1007/s11356-017-8847-2,wheat straw pellets,8,A_row,0.313275750262722,0.6071428571428571,28,2,1,2.247392999999999,True,1.0,1.0,152
+concentration,4,10.1039/d6ra08271h,rice husk,8,A_row,0.6347419188140272,0.7678571428571429,28,1,1,1.0999999999999996,True,1.0,0.0,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_row,0.9486832980505138,0.9,10,2,2,2.1000000000000014,False,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_row,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,0.5,0.6666666666666666,3,0,1,14.86,True,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,0.5,0.6666666666666666,3,0,1,17.89,True,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_row,0.5270462766947299,0.7,10,2,2,3.0999999999999943,False,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_row,-0.30631873731649006,0.4523809523809524,21,1,1,62.989999999999995,True,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_row,0.5,0.6666666666666666,3,0,1,0.0,True,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_row,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_row,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_row,,0.5,6,6,4,0.3550000000000004,False,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_row,0.7745966692414834,0.75,6,3,3,1.6899999999999995,False,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_row,,0.5,6,6,4,8.7125,False,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,B_row,,0.5,3,3,3,3.079999999999999,False,,,152
+concentration,0,10.1007/s11356-017-8847-2,rice husk,5,B_row,0.8944271909999157,0.85,10,3,1,0.0,True,0.0,0.0,152
+concentration,1,10.1007/s11356-017-8847-2,rice husk,8,B_row,0.9940297973880048,0.9821428571428571,28,1,1,0.0,True,0.0,0.0,152
+concentration,2,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_row,0.938590635448906,0.8928571428571429,28,6,1,0.0,True,0.0,0.0,152
+concentration,3,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_row,0.9700772721497397,0.9464285714285714,28,1,1,2.247392999999999,True,0.0,1.0,152
+concentration,4,10.1039/d6ra08271h,rice husk,8,B_row,1.0,1.0,28,0,1,0.0,True,0.0,0.0,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_row_unclipped_DIAGNOSTIC,0.9486832980505138,0.9,10,2,2,2.1000000000000014,False,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_row_unclipped_DIAGNOSTIC,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,14.86,True,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,17.89,True,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_row_unclipped_DIAGNOSTIC,0.5270462766947299,0.7,10,2,2,3.0999999999999943,False,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_row_unclipped_DIAGNOSTIC,-0.30631873731649006,0.4523809523809524,21,1,1,62.989999999999995,True,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,0.0,True,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_row_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_row_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_row_unclipped_DIAGNOSTIC,0.10540925533894598,0.5833333333333334,6,1,2,0.3550000000000004,False,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_row_unclipped_DIAGNOSTIC,0.632455532033676,0.75,6,1,2,1.6899999999999995,False,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_row_unclipped_DIAGNOSTIC,0.10540925533894598,0.5833333333333334,6,1,2,8.7125,False,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_doi_material,0.7999999999999999,0.8,10,0,1,2.1000000000000014,True,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_doi_material,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,0.5,0.6666666666666666,3,0,1,14.86,True,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,0.5,0.6666666666666666,3,0,1,17.89,True,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_doi_material,0.46169025843831935,0.65,10,1,1,3.0999999999999943,True,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_doi_material,0.9636241116594316,0.9285714285714286,21,3,3,16.129999999999995,False,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_doi_material,0.5,0.6666666666666666,3,0,1,18.0,True,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_doi_material,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_doi_material,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_doi_material,,0.5,6,6,4,0.3550000000000004,False,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_doi_material,0.632455532033676,0.75,6,1,2,1.6899999999999995,False,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_doi_material,,0.5,6,6,4,8.7125,False,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,B_doi_material,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,152
+concentration,0,10.1007/s11356-017-8847-2,rice husk,5,B_doi_material,0.9746794344808964,0.95,10,1,1,0.0,True,0.0,0.0,152
+concentration,1,10.1007/s11356-017-8847-2,rice husk,8,B_doi_material,1.0,1.0,28,0,1,0.0,True,0.0,0.0,152
+concentration,2,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_doi_material,0.9940297973880048,0.9821428571428571,28,1,1,0.0,True,0.0,0.0,152
+concentration,3,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_doi_material,0.9761904761904763,0.9642857142857143,28,0,1,2.247392999999999,True,0.0,1.0,152
+concentration,4,10.1039/d6ra08271h,rice husk,8,B_doi_material,1.0,1.0,28,0,1,0.0,True,0.0,0.0,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_doi_material_unclipped_DIAGNOSTIC,0.7999999999999999,0.8,10,0,1,2.1000000000000014,True,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_doi_material_unclipped_DIAGNOSTIC,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,14.86,True,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,17.89,True,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_doi_material_unclipped_DIAGNOSTIC,0.46169025843831935,0.65,10,1,1,3.0999999999999943,True,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_doi_material_unclipped_DIAGNOSTIC,0.9636241116594316,0.9285714285714286,21,3,3,16.129999999999995,False,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,18.0,True,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_doi_material_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_doi_material_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_doi_material_unclipped_DIAGNOSTIC,-0.19999999999999998,0.5,6,0,1,0.3550000000000004,True,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_doi_material_unclipped_DIAGNOSTIC,0.39999999999999997,0.6666666666666666,6,0,1,1.6899999999999995,True,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_doi_material_unclipped_DIAGNOSTIC,-0.19999999999999998,0.5,6,0,1,8.7125,True,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8,10,0,1,2.1000000000000014,True,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,14.86,True,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,17.89,True,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.6,0.7,10,0,1,3.0999999999999943,True,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.9642857142857145,0.9523809523809523,21,0,1,5.119999999999976,True,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,18.0,True,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,-0.19999999999999998,0.5,6,0,1,0.3550000000000004,True,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,1.6899999999999995,True,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,-0.19999999999999998,0.5,6,0,1,8.7125,True,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,mfg_forest_RELATIVE_SCORE_NOT_QE,-0.7826237921249264,0.25,10,3,1,17.4,True,,,152
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,mfg_forest_RELATIVE_SCORE_NOT_QE,-0.19999999999999998,0.5,6,0,1,4.5,True,,,152
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,0.0,True,,,152
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,-0.5,0.3333333333333333,3,0,1,7.979999999999997,True,,,152
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,152
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,2.8600000000000003,True,,,152
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,mfg_forest_RELATIVE_SCORE_NOT_QE,0.3,0.6,10,0,1,3.0999999999999943,True,,,152
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,mfg_forest_RELATIVE_SCORE_NOT_QE,0.6785714285714287,0.7619047619047619,21,0,1,5.119999999999976,True,,,152
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,0.0,True,,,152
+manufacturing,9,10.3390/en13133498,apple tree branches,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.0,0.5,6,0,1,2.1399999999999997,True,,,152
+manufacturing,10,10.3390/en13133498,apple tree branches,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.0,0.5,6,0,1,3.419999999999999,True,,,152
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,0.0,True,,,152
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8333333333333334,6,0,1,0.0,True,,,152
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,0.0,True,,,152
+manufacturing,14,10.3390/su14159022,maize straw,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,152
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,A_row,,0.5,10,10,5,19.7,False,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,A_row,,0.5,6,6,4,7.6,False,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,16.83,False,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,21.659999999999997,False,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,18.64,False,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,A_row,,0.5,3,3,3,4.46,False,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,A_row,,0.5,10,10,5,8.199999999999989,False,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,A_row,,0.5,21,21,7,106.88,False,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,A_row,,0.5,3,3,3,47.99000000000001,False,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,A_row,,0.5,6,6,4,4.739999999999999,False,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,A_row,,0.5,6,6,4,4.81,False,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,A_row,,0.5,6,6,4,0.3550000000000004,False,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,A_row,,0.5,6,6,4,1.7899999999999991,False,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,A_row,,0.5,6,6,4,8.7125,False,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,A_row,,0.5,3,3,3,3.079999999999999,False,,,188
+concentration,0,10.1007/s11356-017-8847-2,rice husk,5,A_row,0.8944271909999157,0.85,10,3,1,0.0,True,0.0,0.0,188
+concentration,1,10.1007/s11356-017-8847-2,rice husk,8,A_row,0.7637626158259734,0.7321428571428571,28,15,1,0.0,True,0.0,0.0,188
+concentration,2,10.1007/s11356-017-8847-2,wheat straw pellets,8,A_row,0.7637626158259734,0.7321428571428571,28,15,1,0.0,True,0.0,0.0,188
+concentration,3,10.1007/s11356-017-8847-2,wheat straw pellets,8,A_row,0.7325886315065459,0.6964285714285714,28,15,1,2.247392999999999,True,0.0,1.0,188
+concentration,4,10.1039/d6ra08271h,rice husk,8,A_row,0.9759000729485332,0.9464285714285714,28,3,1,0.0,True,0.0,0.0,188
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_row,0.8720815992723809,0.85,10,1,2,2.1000000000000014,False,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_row,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,0.5,0.6666666666666666,3,0,1,14.86,True,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,0.5,0.6666666666666666,3,0,1,17.89,True,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_row,0.6,0.7,10,0,1,3.0999999999999943,True,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_row,-0.2702812388086677,0.5,21,1,1,62.989999999999995,True,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_row,0.5,0.6666666666666666,3,0,1,18.0,True,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_row,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_row,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_row,0.2581988897471611,0.5833333333333334,6,3,3,0.3550000000000004,False,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_row,0.632455532033676,0.75,6,1,2,1.6899999999999995,False,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_row,-0.19999999999999998,0.5,6,0,1,8.7125,True,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,B_row,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,188
+concentration,0,10.1007/s11356-017-8847-2,rice husk,5,B_row,0.8944271909999157,0.85,10,3,1,0.0,True,0.0,0.0,188
+concentration,1,10.1007/s11356-017-8847-2,rice husk,8,B_row,1.0,1.0,28,0,1,0.0,True,0.0,0.0,188
+concentration,2,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_row,0.9759000729485332,0.9464285714285714,28,3,1,0.0,True,0.0,0.0,188
+concentration,3,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_row,0.9761904761904763,0.9642857142857143,28,0,1,2.247392999999999,True,0.0,1.0,188
+concentration,4,10.1039/d6ra08271h,rice husk,8,B_row,0.9761904761904763,0.9642857142857143,28,0,1,0.09999999999999964,True,1.0,0.0,188
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_row_unclipped_DIAGNOSTIC,0.8720815992723809,0.85,10,1,2,2.1000000000000014,False,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_row_unclipped_DIAGNOSTIC,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,14.86,True,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,17.89,True,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_row_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_row_unclipped_DIAGNOSTIC,0.6,0.7,10,0,1,3.0999999999999943,True,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_row_unclipped_DIAGNOSTIC,-0.2702812388086677,0.5,21,1,1,62.989999999999995,True,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,18.0,True,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_row_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_row_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_row_unclipped_DIAGNOSTIC,-0.19999999999999998,0.5,6,0,1,0.3550000000000004,True,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_row_unclipped_DIAGNOSTIC,0.39999999999999997,0.6666666666666666,6,0,1,1.6899999999999995,True,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_row_unclipped_DIAGNOSTIC,-0.19999999999999998,0.5,6,0,1,8.7125,True,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,B_row_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,188
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_doi_material,0.7905694150420948,0.8,10,2,2,2.1000000000000014,False,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_doi_material,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,0.5,0.6666666666666666,3,0,1,14.86,True,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,0.5,0.6666666666666666,3,0,1,17.89,True,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_doi_material,0.6,0.7,10,0,1,3.0999999999999943,True,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_doi_material,0.9910312089651149,0.9761904761904762,21,1,2,5.119999999999976,False,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_doi_material,0.5,0.6666666666666666,3,0,1,18.0,True,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_doi_material,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_doi_material,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_doi_material,0.2581988897471611,0.5833333333333334,6,3,3,0.3550000000000004,False,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_doi_material,0.7745966692414834,0.75,6,3,3,1.6899999999999995,False,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_doi_material,0.2581988897471611,0.5833333333333334,6,3,3,8.7125,False,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,B_doi_material,,0.5,3,3,3,3.079999999999999,False,,,188
+concentration,0,10.1007/s11356-017-8847-2,rice husk,5,B_doi_material,0.8944271909999157,0.85,10,3,1,0.0,True,0.0,0.0,188
+concentration,1,10.1007/s11356-017-8847-2,rice husk,8,B_doi_material,1.0,1.0,28,0,1,0.0,True,0.0,0.0,188
+concentration,2,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_doi_material,0.9759000729485332,0.9464285714285714,28,3,1,0.0,True,0.0,0.0,188
+concentration,3,10.1007/s11356-017-8847-2,wheat straw pellets,8,B_doi_material,0.9761904761904763,0.9642857142857143,28,0,1,2.247392999999999,True,0.0,1.0,188
+concentration,4,10.1039/d6ra08271h,rice husk,8,B_doi_material,0.9761904761904763,0.9642857142857143,28,0,1,0.09999999999999964,True,1.0,0.0,188
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,B_doi_material_unclipped_DIAGNOSTIC,0.7905694150420948,0.8,10,2,2,2.1000000000000014,False,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,B_doi_material_unclipped_DIAGNOSTIC,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,14.86,True,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,17.89,True,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,B_doi_material_unclipped_DIAGNOSTIC,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,B_doi_material_unclipped_DIAGNOSTIC,0.6,0.7,10,0,1,3.0999999999999943,True,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,B_doi_material_unclipped_DIAGNOSTIC,0.9910312089651149,0.9761904761904762,21,1,2,5.119999999999976,False,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,18.0,True,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,B_doi_material_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,B_doi_material_unclipped_DIAGNOSTIC,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,B_doi_material_unclipped_DIAGNOSTIC,-0.19999999999999998,0.5,6,0,1,0.3550000000000004,True,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,B_doi_material_unclipped_DIAGNOSTIC,0.39999999999999997,0.6666666666666666,6,0,1,1.6899999999999995,True,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,B_doi_material_unclipped_DIAGNOSTIC,-0.19999999999999998,0.5,6,0,1,8.7125,True,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,B_doi_material_unclipped_DIAGNOSTIC,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,188
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8,10,0,1,2.1000000000000014,True,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,-0.7999999999999999,0.16666666666666666,6,0,1,7.6,True,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,14.86,True,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,17.89,True,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.6,0.7,10,0,1,3.0999999999999943,True,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.9642857142857145,0.9523809523809523,21,0,1,5.119999999999976,True,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,18.0,True,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8333333333333334,6,0,1,0.8300000000000001,True,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8333333333333334,6,0,1,1.1199999999999992,True,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,-0.19999999999999998,0.5,6,0,1,0.3550000000000004,True,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,1.6899999999999995,True,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,mfg_ridge_RELATIVE_SCORE_NOT_QE,-0.19999999999999998,0.5,6,0,1,8.7125,True,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,mfg_ridge_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,188
+manufacturing,0,10.1016/j.biortech.2014.04.048,municipal sewage sludge (biophysically dried),5,mfg_forest_RELATIVE_SCORE_NOT_QE,0.8720815992723809,0.85,10,1,2,2.1000000000000014,False,,,188
+manufacturing,1,10.1016/j.chemosphere.2013.12.042,sugarcane bagasse,4,mfg_forest_RELATIVE_SCORE_NOT_QE,-0.19999999999999998,0.5,6,0,1,4.5,True,,,188
+manufacturing,2,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,14.86,True,,,188
+manufacturing,3,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,4,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,17.89,True,,,188
+manufacturing,5,10.1016/j.chemosphere.2022.134051,spent coffee grounds,3,mfg_forest_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,6,10.1016/j.psep.2017.10.014,sewage sludge (oven dried),5,mfg_forest_RELATIVE_SCORE_NOT_QE,0.09999999999999999,0.5,10,0,1,3.0999999999999943,True,,,188
+manufacturing,7,10.1016/j.scitotenv.2019.07.102,wheat straw,7,mfg_forest_RELATIVE_SCORE_NOT_QE,0.6785714285714287,0.7619047619047619,21,0,1,5.119999999999976,True,,,188
+manufacturing,8,10.3390/app11199223,Macrocystis pyrifera,3,mfg_forest_RELATIVE_SCORE_NOT_QE,1.0,1.0,3,0,1,0.0,True,,,188
+manufacturing,9,10.3390/en13133498,apple tree branches,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,2.1399999999999997,True,,,188
+manufacturing,10,10.3390/en13133498,apple tree branches,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,3.419999999999999,True,,,188
+manufacturing,11,10.3390/ijerph16050845,maize straw,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,0.0,True,,,188
+manufacturing,12,10.3390/ijerph16050845,maize straw,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.7999999999999999,0.8333333333333334,6,0,1,0.0,True,,,188
+manufacturing,13,10.3390/ijerph16050845,maize straw,4,mfg_forest_RELATIVE_SCORE_NOT_QE,0.39999999999999997,0.6666666666666666,6,0,1,0.0,True,,,188
+manufacturing,14,10.3390/su14159022,maize straw,3,mfg_forest_RELATIVE_SCORE_NOT_QE,0.5,0.6666666666666666,3,0,1,1.5499999999999998,True,,,188

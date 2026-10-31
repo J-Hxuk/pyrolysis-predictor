@@ -1,0 +1,82 @@
+[
+  {
+    "target": "BET_m2_g_training_candidate",
+    "baseline": "Ridge",
+    "challenger": "Poisson_Process",
+    "n": 336,
+    "n_doi": 45,
+    "MAE_baseline": 249.47339137314827,
+    "MAE_challenger": 239.43955980280805,
+    "delta_MAE_challenger_minus_baseline": -10.033831570340226,
+    "bootstrap_DOI_95CI": [
+      -61.930236159236586,
+      40.6634679600982
+    ],
+    "n_negative_baseline": 66,
+    "n_negative_challenger": 0,
+    "n_low_target_le_25": 73,
+    "low_target_MAE_baseline": 130.29944429132337,
+    "low_target_MAE_challenger": 97.26678370664636,
+    "limitations": "v40 OOF 파일에 fold ID가 없어 동일 split의 구조적 보증은 원본 평가 코드에서 확인해야 하며, 모델 선택에 이미 사용한 DOI에서의 평가임"
+  },
+  {
+    "target": "BET_m2_g_training_candidate",
+    "baseline": "Ridge",
+    "challenger": "Poisson_Composition",
+    "n": 336,
+    "n_doi": 45,
+    "MAE_baseline": 249.47339137314827,
+    "MAE_challenger": 241.02284086661257,
+    "delta_MAE_challenger_minus_baseline": -8.45055050653568,
+    "bootstrap_DOI_95CI": [
+      -60.08812186116155,
+      43.00132626587689
+    ],
+    "n_negative_baseline": 66,
+    "n_negative_challenger": 0,
+    "n_low_target_le_25": 73,
+    "low_target_MAE_baseline": 130.29944429132337,
+    "low_target_MAE_challenger": 98.92496032522466,
+    "limitations": "v40 OOF 파일에 fold ID가 없어 동일 split의 구조적 보증은 원본 평가 코드에서 확인해야 하며, 모델 선택에 이미 사용한 DOI에서의 평가임"
+  },
+  {
+    "target": "TPV_cm3_g_training_candidate",
+    "baseline": "Ridge",
+    "challenger": "Poisson_Process",
+    "n": 213,
+    "n_doi": 33,
+    "MAE_baseline": 0.18732323420077804,
+    "MAE_challenger": 0.18073239439295627,
+    "delta_MAE_challenger_minus_baseline": -0.0065908398078218505,
+    "bootstrap_DOI_95CI": [
+      -0.04294403961385762,
+      0.027010880978633744
+    ],
+    "n_negative_baseline": 6,
+    "n_negative_challenger": 0,
+    "n_low_target_le_25": 213,
+    "low_target_MAE_baseline": 0.18732323420077804,
+    "low_target_MAE_challenger": 0.18073239439295627,
+    "limitations": "v40 OOF 파일에 fold ID가 없어 동일 split의 구조적 보증은 원본 평가 코드에서 확인해야 하며, 모델 선택에 이미 사용한 DOI에서의 평가임"
+  },
+  {
+    "target": "TPV_cm3_g_training_candidate",
+    "baseline": "Ridge",
+    "challenger": "Poisson_Composition",
+    "n": 213,
+    "n_doi": 33,
+    "MAE_baseline": 0.18732323420077804,
+    "MAE_challenger": 0.17910682743228645,
+    "delta_MAE_challenger_minus_baseline": -0.008216406768491653,
+    "bootstrap_DOI_95CI": [
+      -0.04832483722505019,
+      0.02852894976066854
+    ],
+    "n_negative_baseline": 6,
+    "n_negative_challenger": 0,
+    "n_low_target_le_25": 213,
+    "low_target_MAE_baseline": 0.18732323420077804,
+    "low_target_MAE_challenger": 0.17910682743228645,
+    "limitations": "v40 OOF 파일에 fold ID가 없어 동일 split의 구조적 보증은 원본 평가 코드에서 확인해야 하며, 모델 선택에 이미 사용한 DOI에서의 평가임"
+  }
+]

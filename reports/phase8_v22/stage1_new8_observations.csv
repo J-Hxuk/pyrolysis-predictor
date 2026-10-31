@@ -1,0 +1,9 @@
+﻿material_id,doi,feedstock,pyrolysis_temperature_C,BET_m2_g,TPV_cm3_g
+V13_XIAN_PC300,10.1039/c8ra03958e,Spent Pleurotus ostreatus substrate,300,3.79,0.014
+V13_XIAN_PC500,10.1039/c8ra03958e,Spent Pleurotus ostreatus substrate,500,18.05,0.061
+V13_XIAN_PC700,10.1039/c8ra03958e,Spent Pleurotus ostreatus substrate,700,188.57,0.134
+V13_XIAN_SC300,10.1039/c8ra03958e,Spent shiitake substrate,300,12.97,0.028
+V13_XIAN_SC500,10.1039/c8ra03958e,Spent shiitake substrate,500,47.07,0.07
+V13_XIAN_SC700,10.1039/c8ra03958e,Spent shiitake substrate,700,218.7,0.138
+V15_ALMOND_AS-RAW-SP,10.3390/molecules30204121,almond shell,600,693.0,0.598
+V15_ALMOND_AS-KOH-SP,10.3390/molecules30204121,almond shell,600,476.0,0.185

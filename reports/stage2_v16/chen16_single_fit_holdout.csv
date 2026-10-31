@@ -1,0 +1,6 @@
+﻿algo,pairwise_ranking_accuracy,top1_hit_rate,top3_overlap_mean_of_3,regret_pp_mean,removal_mae_pp_mean,n_evaluated_splits
+Dummy,0.0,0.25,2.28,30.9656,23.7004,50
+Ridge,0.9,0.92,2.6,0.5134,13.8915,50
+RandomForest,0.8033,0.7,2.6,5.529,19.0624,50
+ExtraTrees,0.82,0.88,2.54,2.4044,20.0449,50
+XGBoost,0.6767,0.5767,2.6,7.5092,13.6408,50

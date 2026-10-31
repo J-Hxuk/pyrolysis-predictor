@@ -1,0 +1,58 @@
+{
+  "status": "PASS_LOCAL_REPORT_COHERENCE_NOT_EXTERNAL_GENERALIZATION_PROOF",
+  "environment": {
+    "python": "3.12.10",
+    "sklearn": "1.5.2",
+    "xgboost": "2.1.3"
+  },
+  "note": "Historical figures not exact contracts across Python/sklearn/xgboost versions. Metric deltas may also have other causes and need investigation.",
+  "n_original_test_rows": 140,
+  "n_original_test_dois": 32,
+  "comparison": [
+    {
+      "model": "A",
+      "scenario": "base140",
+      "historical_2026_10_31_mae": 17.246810957570563,
+      "local_retrained_mae": 17.912488792833926,
+      "delta_local_minus_historical": 0.665677835263363
+    },
+    {
+      "model": "A",
+      "scenario": "plus8",
+      "historical_2026_10_31_mae": 17.189799,
+      "local_retrained_mae": 17.644987095033205,
+      "delta_local_minus_historical": 0.4551880950332041
+    },
+    {
+      "model": "A",
+      "scenario": "plus24",
+      "historical_2026_10_31_mae": 16.760127406300303,
+      "local_retrained_mae": 16.64097424479728,
+      "delta_local_minus_historical": -0.11915316150302147
+    },
+    {
+      "model": "B",
+      "scenario": "base140",
+      "historical_2026_10_31_mae": 17.690416,
+      "local_retrained_mae": 17.894913350944094,
+      "delta_local_minus_historical": 0.20449735094409505
+    },
+    {
+      "model": "B",
+      "scenario": "plus8",
+      "historical_2026_10_31_mae": 17.64299,
+      "local_retrained_mae": 18.25534447456408,
+      "delta_local_minus_historical": 0.6123544745640785
+    },
+    {
+      "model": "B",
+      "scenario": "plus24",
+      "historical_2026_10_31_mae": 17.760963,
+      "local_retrained_mae": 18.09605277674405,
+      "delta_local_minus_historical": 0.3350897767440486
+    }
+  ],
+  "v53_report": "reports/v53_evidence_tier_refit/v53_fixed140_metrics.csv",
+  "v54_report": "reports/v54_bounded_ranking/v54_same140_metrics.csv",
+  "deployment": "RESEARCH_ONLY_NOT_ACTIVE"
+}

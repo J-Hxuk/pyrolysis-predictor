@@ -1,0 +1,10 @@
+doi,category,v40_action,source_locator
+10.1016/j.egyr.2021.07.032,feedstock+char property,2 char; 1 BET + 2 TPV,Table 1 p4; Table 6 p6
+10.1021/acsomega.1c04717,independent soybean raw feedstock reference,not matched to v33 soybean batch,Table 1 p2
+10.1016/j.biteb.2021.100920,"paired Stage1, adsorption numeric blocked",3 BET+3 TPV; Pb/Zn mass balance unresolved,Methods p2; Table 3 p4; Fig 1 p5
+10.3390/ma17123030,paired raw composition + BET,"18 char, 16 BET; 3 source feedstock batches",Tables 1/2 pp5/7
+10.3390/ijerph16050845,duplicate DOI,already v33,Table 1 p5
+10.3390/en13226033,independent raw feedstock reference,not matched to existing adsorption batch,Table 1 p3
+10.3390/app11199223,paired Stage1 + 24h qe,3 BET+3 TPV + 3 experimental qe,Tables 2/5 pp6/13
+10.1039/C9RA08199B,manufacturing + fitted qmax,"4 char; 0 BET/TPV, 4 qmax candidate",Table 1 p2; Table 2 pp4-5
+10.3390/su14159022,duplicate DOI,already v33,Table 1 p5

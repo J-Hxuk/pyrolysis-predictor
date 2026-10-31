@@ -1,0 +1,33 @@
+{
+  "source_papers": 5,
+  "source_doi": [
+    "10.1016/j.arabjc.2024.105946",
+    "10.1038/s41598-024-54028-6",
+    "10.3390/app8071019",
+    "10.3390/ijerph16050845",
+    "10.3390/su14159022"
+  ],
+  "stage1_material_records": 30,
+  "stage1_BET_numeric": 29,
+  "stage1_reported_pore_volume_numeric": 20,
+  "stage1_pore_volume_type_counts": {
+    "SOURCE_PORE_VOLUME": 7,
+    "NOT_REPORTED": 10,
+    "MICROPORE_VOLUME_NOT_TPV": 10,
+    "SOURCE_PV_P_P0_0P5": 3
+  },
+  "stage2_single_metal_experimental_derived_rows": 15,
+  "stage2_leachate_separate_domain_rows": 3,
+  "fitted_qmax_rows": 23,
+  "stage2_training_approved_rows": 0,
+  "new_feedstock_composition_complete_rows": 0,
+  "within_doi_temperature_ranking_comparisons": 4,
+  "physical_fail_on_new_18": 0,
+  "source_quality_flags": 15,
+  "baseline_comparison": {
+    "baseline_file_found": true,
+    "existing_master_overlap": [],
+    "extended_master_row_count": 327
+  },
+  "note": "Source-transcribed, not independent two-reviewer QA, no model updated"
+}

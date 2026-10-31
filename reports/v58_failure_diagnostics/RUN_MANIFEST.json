@@ -1,0 +1,25 @@
+{
+  "policy": "RESEARCH_ANALYSIS_ONLY_NEVER_ACTIVATE",
+  "n_original_test": 140,
+  "n_original_doi": 32,
+  "n_new_rows": 36,
+  "n_new_DOI": 2,
+  "source_hashes_sha256": {
+    "v46_original_140": "fa9aef842242495361f54539e37837e46a26f14ba3bb10431ad7b7effb074c0a",
+    "v55_152": "4aa3c2685cf39b9f2ef2264e2852324dc975b60555b599e6873b622ec73fe0ad",
+    "v57_new36": "07e7fa9fbf39bafb76806ee5a37de1278c3768b1a8c7a726358ca2364a369081",
+    "v57_original_OOF": "5cd1db44ccfa6f34988e7c5ae8b621405f56df1509680982e5ec63101fe347c7"
+  },
+  "feature_set": [
+    "cap",
+    "cap_log"
+  ],
+  "group_unit": "DOI",
+  "limitations": [
+    "The same original DOI cohort has been inspected for model development; all score comparisons are exploratory.",
+    "Source-out new DOI results are retrospective, not genuinely prospective.",
+    "Extra 29 isotherm concentration observations come from 4 materials within one DOI.",
+    "Raw-source qe/qt/qmax qualifications are unchanged.",
+    "No active artifact, existing CSV, or existing model is replaced."
+  ]
+}

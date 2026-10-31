@@ -1,0 +1,11 @@
+pairwise_tie_half,n_pairs,prediction_ties,top1_expected,regret_mg_g,top_prediction_ties,observed_best_has_digitization_margin,obs_best_gap_to_second_mg_g,pollutant,model,n_rows,experimental_best_C,predicted_best_C,mae_mg_g,raw_physical_violations,all_predictions_physically_valid,is_exploratory_model_comparison
+0.5,3,3,0.3333333333333333,2.5,3,True,3.0,Cd(II),A_XGBoost,3,400,,4.838113594055176,0,True,True
+0.6666666666666666,3,0,0.0,3.0,1,True,3.0,Cd(II),B_Ridge,3,400,500.0,10.38926244304673,3,False,True
+0.6666666666666666,3,0,0.0,3.0,1,True,3.0,Cd(II),B_XGBoost_sensitivity,3,400,500.0,8.644376881917319,0,True,True
+0.6666666666666666,3,0,0.0,3.0,1,True,3.0,Cd(II),B_Ridge_refitCore97_sensitivity,3,400,500.0,8.700541075708179,3,False,True
+0.6666666666666666,3,0,0.0,3.0,1,True,3.0,Cd(II),B_XGBoost_refitCore97_sensitivity,3,400,500.0,8.543272145589194,0,True,True
+0.5,3,3,0.3333333333333333,3.266666666666667,3,True,1.5,Pb(II),A_XGBoost,3,400,,17.960629145304363,3,False,True
+0.6666666666666666,3,0,0.0,1.5,1,True,1.5,Pb(II),B_Ridge,3,400,500.0,6.011864359093863,0,True,True
+0.6666666666666666,3,0,0.0,1.5,1,True,1.5,Pb(II),B_XGBoost_sensitivity,3,400,500.0,16.339041392008465,3,False,True
+0.6666666666666666,3,0,0.0,1.5,1,True,1.5,Pb(II),B_Ridge_refitCore97_sensitivity,3,400,500.0,4.48786919559586,0,True,True
+0.6666666666666666,3,0,0.0,1.5,1,True,1.5,Pb(II),B_XGBoost_refitCore97_sensitivity,3,400,500.0,22.375286102294922,3,False,True
