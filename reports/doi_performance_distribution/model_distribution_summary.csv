@@ -1,0 +1,4 @@
+﻿model,n_doi,overall_MAE_capped,overall_R2_capped,DOI_MAE_median,DOI_MAE_q25,DOI_MAE_q75,DOI_MAE_worst,DOI_R2_median,DOI_R2_worst,n_DOI_negative_R2,overall_violation_rate
+A_adsorption_only,36,16.486,0.6595,11.564,3.726,32.252,101.275,-0.7209,-278.0006,21,0.0
+B_direct_equal,36,15.781,0.665,10.892,4.754,34.76,94.059,-1.3097,-241.2104,21,0.0
+B_direct_weighted,36,16.049,0.6689,12.037,4.908,32.379,91.886,-0.6615,-233.4597,23,0.0

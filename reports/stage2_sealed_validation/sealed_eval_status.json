@@ -1,0 +1,37 @@
+{
+  "status": "SEALED_DATA_NOT_READY",
+  "reason": "봉인 CSV 가 존재하지 않음: data/imports/stage2_sealed_v1/Stage2_Sealed_Challenge_V1.csv",
+  "what_is_ready": "프로토콜·규칙·코드는 확정됨 (PROTOCOL_KO.md, 이 스크립트).",
+  "what_is_missing": "적격 봉인 CSV: data/imports/stage2_sealed_v1/Stage2_Sealed_Challenge_V1.csv",
+  "candidate_dois_to_digitize": [
+    "10.1016/j.ecoenv.2014.04.042",
+    "10.1016/j.scitotenv.2020.136894",
+    "10.1021/acs.est.7b06261"
+  ],
+  "required_columns": [
+    "doi",
+    "pollutant",
+    "C0_mg_L",
+    "initial_pH",
+    "dose_g_L",
+    "adsorption_T_C",
+    "contact_time_min",
+    "feedstock_label_normalized",
+    "manufacturing_route",
+    "process_step_count",
+    "pyrolysis_temperature_C",
+    "pyrolysis_hold_min",
+    "heating_rate_C_min",
+    "pyrolysis_atmosphere",
+    "activation_or_modification",
+    "secondary_temperature_C",
+    "secondary_hold_min",
+    "target_value"
+  ],
+  "eligibility": [
+    "봉인 DOI 는 학습 188행과 완전히 disjoint",
+    "0 <= qe <= C0/dose (physical_cap_pass)",
+    "평형 qe 근거 기록(target_origin/qualification)"
+  ],
+  "next_step": "STAGED DOI 3개의 qe 추출·QC 후 CSV 배치 → 본 스크립트 재실행"
+}

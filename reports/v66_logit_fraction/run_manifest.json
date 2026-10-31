@@ -1,0 +1,90 @@
+{
+  "version": "v66",
+  "role": "RESEARCH_ONLY_NOT_ACTIVE",
+  "hypothesis": "logit-space fraction target keeps 0% cap violation while reducing worst-DOI inverse-transform blowup seen in v65 linear fraction",
+  "fair_comparison": {
+    "same_data": "188 rows / 36 DOI (v55_152 + new36)",
+    "same_split": "GroupKFold(DOI, n_splits=5)",
+    "same_features": "Model B, feature_set=cap",
+    "same_algorithm": "XGBoost s2_model (unchanged)",
+    "only_changed": "learning target (qe vs qe/cap vs logit(qe/cap))",
+    "logit_epsilon": 0.01
+  },
+  "aggregate": [
+    {
+      "method": "BASELINE_qe_then_clip",
+      "n": 188,
+      "mae": 15.7807,
+      "rmse": 31.1505,
+      "r2": 0.665,
+      "upper_cap_violation": 52,
+      "violation_rate": 0.2766
+    },
+    {
+      "method": "FRACTION_linear",
+      "n": 188,
+      "mae": 16.2674,
+      "rmse": 34.9253,
+      "r2": 0.5789,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    },
+    {
+      "method": "LOGIT_FRACTION",
+      "n": 188,
+      "mae": 17.2018,
+      "rmse": 37.2256,
+      "r2": 0.5216,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    }
+  ],
+  "distribution": [
+    {
+      "method": "BASELINE_qe_then_clip",
+      "DOI_MAE_median": 10.892,
+      "DOI_MAE_q75": 34.76,
+      "DOI_MAE_worst": 94.059,
+      "DOI_R2_median": -1.3097,
+      "DOI_R2_worst": -241.2104,
+      "n_DOI_negative_R2": 21
+    },
+    {
+      "method": "FRACTION_linear",
+      "DOI_MAE_median": 11.881,
+      "DOI_MAE_q75": 24.294,
+      "DOI_MAE_worst": 174.753,
+      "DOI_R2_median": -0.6612,
+      "DOI_R2_worst": -968.2897,
+      "n_DOI_negative_R2": 19
+    },
+    {
+      "method": "LOGIT_FRACTION",
+      "DOI_MAE_median": 11.337,
+      "DOI_MAE_q75": 20.735,
+      "DOI_MAE_worst": 193.706,
+      "DOI_R2_median": -0.4359,
+      "DOI_R2_worst": -1179.0561,
+      "n_DOI_negative_R2": 20
+    }
+  ],
+  "doi_bootstrap": {
+    "LOGIT_vs_BASELINE": {
+      "mean_gain_mg_g": -1.4211,
+      "ci95_low": -7.7397,
+      "ci95_high": 4.2952,
+      "ci_excludes_zero": false
+    },
+    "LOGIT_vs_FRACTION": {
+      "mean_gain_mg_g": -0.9344,
+      "ci95_low": -2.1117,
+      "ci95_high": 0.0219,
+      "ci_excludes_zero": false
+    }
+  },
+  "environment": {
+    "python": "3.12.10",
+    "sklearn": "1.5.2",
+    "xgboost": "2.1.3"
+  }
+}

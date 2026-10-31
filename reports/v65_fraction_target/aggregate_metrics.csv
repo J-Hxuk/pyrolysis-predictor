@@ -1,0 +1,3 @@
+﻿method,n,mae,rmse,r2,upper_cap_violation,violation_rate
+BASELINE_qe_then_clip,188,15.7807,31.1505,0.665,52,0.2766
+FRACTION_qe_over_cap,188,16.2674,34.9253,0.5789,0,0.0

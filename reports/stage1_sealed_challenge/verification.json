@@ -1,0 +1,74 @@
+{
+  "BET": {
+    "target": "BET",
+    "recomputed_overall": {
+      "n": 23,
+      "mae": 301.979,
+      "rmse": 362.773,
+      "r2": -0.891443
+    },
+    "reported_overall": {
+      "n": 23,
+      "mae": 301.979,
+      "rmse": 362.773,
+      "r2": -0.891443
+    },
+    "overall_match": true,
+    "doi_match": [
+      {
+        "doi": "10.1007/s10450-023-00399-7",
+        "recomputed_r2": -2.537705,
+        "reported_r2": -2.537705,
+        "match": true
+      },
+      {
+        "doi": "10.1039/C9RA09208K",
+        "recomputed_r2": 0.976876,
+        "reported_r2": 0.976876,
+        "match": true
+      },
+      {
+        "doi": "10.1080/10962247.2018.1460282",
+        "recomputed_r2": -5.70932,
+        "reported_r2": -5.70932,
+        "match": true
+      }
+    ]
+  },
+  "TPV": {
+    "target": "TPV",
+    "recomputed_overall": {
+      "n": 23,
+      "mae": 0.2708,
+      "rmse": 0.338,
+      "r2": -3.330832
+    },
+    "reported_overall": {
+      "n": 23,
+      "mae": 0.2708,
+      "rmse": 0.338,
+      "r2": -3.330832
+    },
+    "overall_match": true,
+    "doi_match": [
+      {
+        "doi": "10.1007/s10450-023-00399-7",
+        "recomputed_r2": -19.217032,
+        "reported_r2": -19.217032,
+        "match": true
+      },
+      {
+        "doi": "10.1039/C9RA09208K",
+        "recomputed_r2": -2.197569,
+        "reported_r2": -2.197569,
+        "match": true
+      },
+      {
+        "doi": "10.1080/10962247.2018.1460282",
+        "recomputed_r2": -0.484657,
+        "reported_r2": -0.484657,
+        "match": true
+      }
+    ]
+  }
+}

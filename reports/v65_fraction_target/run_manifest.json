@@ -1,0 +1,45 @@
+{
+  "version": "v65",
+  "role": "RESEARCH_ONLY_NOT_ACTIVE",
+  "hypothesis": "fraction target f=qe/(C0/dose) removes cap violations and stabilizes per-DOI performance",
+  "fair_comparison": {
+    "same_data": "188 rows / 36 DOI (v55_152 + new36)",
+    "same_split": "GroupKFold(DOI, n_splits=5)",
+    "same_features": "Model B, feature_set=cap",
+    "same_algorithm": "XGBoost s2_model (unchanged hyperparameters)",
+    "only_changed": "learning target (qe vs qe/cap)",
+    "weighting": "row_equal"
+  },
+  "aggregate": [
+    {
+      "method": "BASELINE_qe_then_clip",
+      "n": 188,
+      "mae": 15.7807,
+      "rmse": 31.1505,
+      "r2": 0.665,
+      "upper_cap_violation": 52,
+      "violation_rate": 0.2766
+    },
+    {
+      "method": "FRACTION_qe_over_cap",
+      "n": 188,
+      "mae": 16.2674,
+      "rmse": 34.9253,
+      "r2": 0.5789,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    }
+  ],
+  "doi_bootstrap": {
+    "mean_MAE_gain_fraction_minus_baseline_mg_g": -0.4868,
+    "gain_ci95_low": -5.9212,
+    "gain_ci95_high": 4.555,
+    "positive_means_fraction_better": true,
+    "ci_excludes_zero": false
+  },
+  "environment": {
+    "python": "3.12.10",
+    "sklearn": "1.5.2",
+    "xgboost": "2.1.3"
+  }
+}
