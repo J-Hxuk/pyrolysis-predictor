@@ -1,0 +1,1167 @@
+{
+ "master": {
+  "rows": 256,
+  "dois": 30,
+  "columns": 127,
+  "per_route": {
+   "chemical": {
+    "rows": 115,
+    "dois": 19,
+    "bet_rows": 115,
+    "tpv_rows": 88,
+    "rows_with_any_composition": 6
+   },
+   "none": {
+    "rows": 88,
+    "dois": 19,
+    "bet_rows": 88,
+    "tpv_rows": 50,
+    "rows_with_any_composition": 33
+   },
+   "physical": {
+    "rows": 53,
+    "dois": 10,
+    "bet_rows": 53,
+    "tpv_rows": 53,
+    "rows_with_any_composition": 30
+   }
+  },
+  "paper_year": {
+   "rows_with_year": 233,
+   "dois_with_year": 27,
+   "dois_by_year": {
+    "2004": 2,
+    "2014": 1,
+    "2017": 1,
+    "2018": 2,
+    "2021": 4,
+    "2022": 2,
+    "2023": 2,
+    "2024": 1,
+    "2025": 6,
+    "2026": 6
+   }
+  },
+  "eng_columns_present": [],
+  "status_columns": {
+   "BET_candidate_flag": {
+    "True": 79,
+    "candidate": 36,
+    "provisional_figure_extraction": 27,
+    "YES": 24
+   },
+   "TPV_candidate_flag": {
+    "True": 79,
+    "exclude_missing": 27,
+    "include_primary_verified_v55": 26,
+    "YES": 24
+   },
+   "release_status": {
+    "PRIMARY_VERIFIED": 47,
+    "V57_PRIMARY_VERIFIED": 35,
+    "FIGURE_CROSSCHECKED_PROVISIONAL_NOT_FINAL_ML": 27,
+    "PRIMARY_VERIFIED_CANDIDATE": 25
+   },
+   "source_primary_verified": {
+    "True": 126,
+    "as_v47": 46,
+    "YES_FOR_TARGET_TABLE3_NUMERIC": 20,
+    "YES": 20
+   },
+   "new_data_release_gate": {
+    "APPROVED_STAGE1_V57": 35,
+    "PRIMARY_VERIFIED_CANDIDATE": 25,
+    "APPROVED_PRIMARY": 24,
+    "BET_TARGET_PDF_VERIFIED_PROCESS_GAPS_TPV_HOLD": 18
+   },
+   "v53_pdf_bet_numeric_verified": {
+    "YES": 20
+   },
+   "v53_pdf_pore_volume_numeric_verified": {
+    "YES_NOT_TPV_CLASSIFIED": 20
+   },
+   "v53_bet_process_temperature_status": {
+    "PDF_VERIFIED_TARGET_PROCESS_OTHER_FIELDS_NR": 18,
+    "TEMP_CONFLICT_HOLD": 2
+   },
+   "v53_TPV_release_status": {
+    "HOLD_UNSPECIFIED_TOTAL": 20,
+    "PROMOTED_V55_PRIMARY_TOTAL_PORE_VOLUME": 9
+   },
+   "v55_release_status": {
+    "PRIMARY_VERIFIED": 19,
+    "PRIMARY_VERIFIED_INCLUDE": 17,
+    "PRIMARY_VERIFIED_TPV_PROMOTED": 9,
+    "PRIMARY_VERIFIED_INCLUDE_CALCULATED_TPV": 3
+   },
+   "v55_split_role": {
+    "DEVELOPMENT": 119,
+    "FINAL_EXTERNAL_2026_CHALLENGE": 11
+   },
+   "v55_primary_tier": {
+    "LEGACY_STAGING": 110,
+    "PRIMARY_VERIFIED": 20
+   },
+   "v56_evaluation_role": {
+    "DEVELOPMENT_AFTER_V55": 132,
+    "MODEL_SELECTION_VALIDATION2": 9,
+    "FINAL_UNTOUCHED_EXTERNAL": 8
+   },
+   "v56_source_tier": {
+    "LEGACY_STAGING": 110,
+    "PRIMARY_VERIFIED": 39
+   },
+   "v57_evaluation_role": {
+    "DEVELOPMENT": 174,
+    "FINAL_UNTOUCHED_EXTERNAL": 10
+   },
+   "v57_source_tier": {
+    "LEGACY_STAGING": 110,
+    "PRIMARY_VERIFIED": 39,
+    "PRIMARY_DIRECT": 35
+   },
+   "v58_evaluation_role": {
+    "DEVELOPMENT": 196,
+    "FINAL_UNTOUCHED_EXTERNAL_V58": 13
+   },
+   "v58_source_tier": {
+    "LEGACY_STAGING": 110,
+    "PRIMARY_DIRECT": 60,
+    "PRIMARY_VERIFIED": 39
+   },
+   "v59_evaluation_role": {
+    "DEVELOPMENT": 209,
+    "FINAL_UNTOUCHED_EXTERNAL_V59": 24,
+    "V60_POSTLOCK_TRAINING": 23
+   },
+   "v59_source_tier": {
+    "LEGACY_STAGING": 110,
+    "PRIMARY_DIRECT": 60,
+    "PRIMARY_VERIFIED": 39,
+    "PRIMARY_DIRECT_TABLE": 24
+   }
+  }
+ },
+ "published_lodo": {
+  "BET": {
+   "exists": true,
+   "rows": 254,
+   "columns": [
+    "material_id",
+    "doi",
+    "v59_route_family",
+    "BET_m2_g_training_candidate",
+    "actual",
+    "prediction",
+    "residual",
+    "abs_error"
+   ],
+   "target_rows_not_in_lodo": [
+    {
+     "material_id": "VALI2025_LSS_700",
+     "doi": "10.1021/acsomega.4c11089",
+     "pyrolysis_temperature_C": "700.0",
+     "activation_temperature_C": "nan",
+     "v53_bet_process_temperature_status": "TEMP_CONFLICT_HOLD",
+     "v53_table2_vs_table3_temperature": "TABLE2_650_VS_TABLE3_700_CONFLICT"
+    },
+    {
+     "material_id": "VALI2025_BSS_700",
+     "doi": "10.1021/acsomega.4c11089",
+     "pyrolysis_temperature_C": "700.0",
+     "activation_temperature_C": "nan",
+     "v53_bet_process_temperature_status": "TEMP_CONFLICT_HOLD",
+     "v53_table2_vs_table3_temperature": "TABLE2_650_VS_TABLE3_700_CONFLICT"
+    }
+   ]
+  },
+  "TPV": {
+   "exists": true,
+   "rows": 191,
+   "columns": [
+    "material_id",
+    "doi",
+    "v59_route_family",
+    "TPV_cm3_g_training_candidate",
+    "actual",
+    "prediction",
+    "residual",
+    "abs_error"
+   ],
+   "target_rows_not_in_lodo": []
+  }
+ },
+ "other_sources": {
+  "v45_404": {
+   "exists": true,
+   "rows": 404,
+   "dois": 57,
+   "master_columns_present": 127,
+   "master_columns_total": 127,
+   "per_route": {
+    "chemical": {
+     "rows": 116,
+     "bet_rows": 116,
+     "bet_rows_new_doi": 1,
+     "new_dois": 1,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "none": {
+     "rows": 234,
+     "bet_rows": 178,
+     "bet_rows_new_doi": 90,
+     "new_dois": 17,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "physical": {
+     "rows": 54,
+     "bet_rows": 54,
+     "bet_rows_new_doi": 1,
+     "new_dois": 1,
+     "bet_rows_master_doi_new_material": 0
+    }
+   },
+   "activated_bet_candidates_not_in_master": [
+    {
+     "doi": "10.1016/j.egyr.2021.07.032",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [],
+     "status": {
+      "BET_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "TPV_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "release_status": {
+       "RESEARCH_NOT_PRODUCTION_APPROVED": 1
+      },
+      "source_primary_verified": {
+       "True": 1
+      },
+      "new_data_release_gate": {
+       "V40_RESEARCH_STAGING_DO_NOT_AUTO_DEPLOY": 1
+      },
+      "v40_review_status": {
+       "ORIGINAL_PDF_NUMERIC_CHECKED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules30204121",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 1
+     },
+     "activation_agents": [
+      "KOH"
+     ],
+     "status": {
+      "BET_candidate_flag": {
+       "NR": 1
+      },
+      "TPV_candidate_flag": {
+       "NR": 1
+      },
+      "release_status": {
+       "V15_USE_VERIFIED_MANUFACTURING_PROPERTIES": 1
+      },
+      "source_primary_verified": {
+       "YES_THIS_PHASE": 1
+      },
+      "new_data_release_gate": {
+       "NR": 1
+      },
+      "v53_pdf_bet_numeric_verified": {
+       "NR": 1
+      },
+      "v53_pdf_pore_volume_numeric_verified": {
+       "NR": 1
+      },
+      "v53_bet_process_temperature_status": {
+       "NR": 1
+      },
+      "v53_TPV_release_status": {
+       "NR": 1
+      },
+      "v55_release_status": {
+       "NR": 1
+      },
+      "v55_split_role": {
+       "NR": 1
+      },
+      "v55_primary_tier": {
+       "NR": 1
+      },
+      "v56_evaluation_role": {
+       "NR": 1
+      },
+      "v56_source_tier": {
+       "NR": 1
+      },
+      "v57_evaluation_role": {
+       "NR": 1
+      },
+      "v57_source_tier": {
+       "NR": 1
+      },
+      "v58_evaluation_role": {
+       "NR": 1
+      },
+      "v58_source_tier": {
+       "NR": 1
+      },
+      "v59_evaluation_role": {
+       "NR": 1
+      },
+      "v59_source_tier": {
+       "NR": 1
+      }
+     }
+    }
+   ]
+  },
+  "v46_417": {
+   "exists": true,
+   "rows": 417,
+   "dois": 58,
+   "master_columns_present": 127,
+   "master_columns_total": 127,
+   "per_route": {
+    "chemical": {
+     "rows": 128,
+     "bet_rows": 128,
+     "bet_rows_new_doi": 13,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "none": {
+     "rows": 235,
+     "bet_rows": 179,
+     "bet_rows_new_doi": 91,
+     "new_dois": 18,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "physical": {
+     "rows": 54,
+     "bet_rows": 54,
+     "bet_rows_new_doi": 1,
+     "new_dois": 1,
+     "bet_rows_master_doi_new_material": 0
+    }
+   },
+   "activated_bet_candidates_not_in_master": [
+    {
+     "doi": "10.1016/j.egyr.2021.07.032",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [],
+     "status": {
+      "BET_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "TPV_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "release_status": {
+       "RESEARCH_NOT_PRODUCTION_APPROVED": 1
+      },
+      "source_primary_verified": {
+       "True": 1
+      },
+      "new_data_release_gate": {
+       "V40_RESEARCH_STAGING_DO_NOT_AUTO_DEPLOY": 1
+      },
+      "v40_review_status": {
+       "ORIGINAL_PDF_NUMERIC_CHECKED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules26196014",
+     "rows": 12,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 12
+     },
+     "activation_agents": [
+      "K2CO3",
+      "K2CO3+FeCl3"
+     ],
+     "status": {
+      "release_status": {
+       "RESEARCH_SENSITIVITY_ONLY_NOT_AUTO_APPROVED": 12
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules30204121",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 1
+     },
+     "activation_agents": [
+      "KOH"
+     ],
+     "status": {
+      "BET_candidate_flag": {
+       "NR": 1
+      },
+      "TPV_candidate_flag": {
+       "NR": 1
+      },
+      "release_status": {
+       "V15_USE_VERIFIED_MANUFACTURING_PROPERTIES": 1
+      },
+      "source_primary_verified": {
+       "YES_THIS_PHASE": 1
+      },
+      "new_data_release_gate": {
+       "NR": 1
+      },
+      "v53_pdf_bet_numeric_verified": {
+       "NR": 1
+      },
+      "v53_pdf_pore_volume_numeric_verified": {
+       "NR": 1
+      },
+      "v53_bet_process_temperature_status": {
+       "NR": 1
+      },
+      "v53_TPV_release_status": {
+       "NR": 1
+      },
+      "v55_release_status": {
+       "NR": 1
+      },
+      "v55_split_role": {
+       "NR": 1
+      },
+      "v55_primary_tier": {
+       "NR": 1
+      },
+      "v56_evaluation_role": {
+       "NR": 1
+      },
+      "v56_source_tier": {
+       "NR": 1
+      },
+      "v57_evaluation_role": {
+       "NR": 1
+      },
+      "v57_source_tier": {
+       "NR": 1
+      },
+      "v58_evaluation_role": {
+       "NR": 1
+      },
+      "v58_source_tier": {
+       "NR": 1
+      },
+      "v59_evaluation_role": {
+       "NR": 1
+      },
+      "v59_source_tier": {
+       "NR": 1
+      }
+     }
+    }
+   ]
+  },
+  "v52_421": {
+   "exists": true,
+   "rows": 421,
+   "dois": 59,
+   "master_columns_present": 127,
+   "master_columns_total": 127,
+   "per_route": {
+    "chemical": {
+     "rows": 128,
+     "bet_rows": 128,
+     "bet_rows_new_doi": 13,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "none": {
+     "rows": 239,
+     "bet_rows": 183,
+     "bet_rows_new_doi": 95,
+     "new_dois": 19,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "physical": {
+     "rows": 54,
+     "bet_rows": 54,
+     "bet_rows_new_doi": 1,
+     "new_dois": 1,
+     "bet_rows_master_doi_new_material": 0
+    }
+   },
+   "activated_bet_candidates_not_in_master": [
+    {
+     "doi": "10.1016/j.egyr.2021.07.032",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [],
+     "status": {
+      "BET_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "TPV_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "release_status": {
+       "RESEARCH_NOT_PRODUCTION_APPROVED": 1
+      },
+      "source_primary_verified": {
+       "True": 1
+      },
+      "new_data_release_gate": {
+       "V40_RESEARCH_STAGING_DO_NOT_AUTO_DEPLOY": 1
+      },
+      "v40_review_status": {
+       "ORIGINAL_PDF_NUMERIC_CHECKED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules26196014",
+     "rows": 12,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 12
+     },
+     "activation_agents": [
+      "K2CO3",
+      "K2CO3+FeCl3"
+     ],
+     "status": {
+      "release_status": {
+       "RESEARCH_SENSITIVITY_ONLY_NOT_AUTO_APPROVED": 12
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules30204121",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 1
+     },
+     "activation_agents": [
+      "KOH"
+     ],
+     "status": {
+      "BET_candidate_flag": {
+       "NR": 1
+      },
+      "TPV_candidate_flag": {
+       "NR": 1
+      },
+      "release_status": {
+       "V15_USE_VERIFIED_MANUFACTURING_PROPERTIES": 1
+      },
+      "source_primary_verified": {
+       "YES_THIS_PHASE": 1
+      },
+      "new_data_release_gate": {
+       "NR": 1
+      },
+      "v53_pdf_bet_numeric_verified": {
+       "NR": 1
+      },
+      "v53_pdf_pore_volume_numeric_verified": {
+       "NR": 1
+      },
+      "v53_bet_process_temperature_status": {
+       "NR": 1
+      },
+      "v53_TPV_release_status": {
+       "NR": 1
+      },
+      "v55_release_status": {
+       "NR": 1
+      },
+      "v55_split_role": {
+       "NR": 1
+      },
+      "v55_primary_tier": {
+       "NR": 1
+      },
+      "v56_evaluation_role": {
+       "NR": 1
+      },
+      "v56_source_tier": {
+       "NR": 1
+      },
+      "v57_evaluation_role": {
+       "NR": 1
+      },
+      "v57_source_tier": {
+       "NR": 1
+      },
+      "v58_evaluation_role": {
+       "NR": 1
+      },
+      "v58_source_tier": {
+       "NR": 1
+      },
+      "v59_evaluation_role": {
+       "NR": 1
+      },
+      "v59_source_tier": {
+       "NR": 1
+      }
+     }
+    }
+   ]
+  },
+  "v55_431": {
+   "exists": true,
+   "rows": 431,
+   "dois": 61,
+   "master_columns_present": 127,
+   "master_columns_total": 127,
+   "per_route": {
+    "chemical": {
+     "rows": 128,
+     "bet_rows": 128,
+     "bet_rows_new_doi": 13,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "none": {
+     "rows": 248,
+     "bet_rows": 192,
+     "bet_rows_new_doi": 104,
+     "new_dois": 21,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "physical": {
+     "rows": 55,
+     "bet_rows": 55,
+     "bet_rows_new_doi": 2,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    }
+   },
+   "activated_bet_candidates_not_in_master": [
+    {
+     "doi": "10.1007/s13399-026-07198-4",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [
+      "CO2"
+     ],
+     "status": {
+      "v55_release_status": {
+       "RESEARCH_PROPERTY_SOURCE_VERIFIED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.1016/j.egyr.2021.07.032",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [],
+     "status": {
+      "BET_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "TPV_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "release_status": {
+       "RESEARCH_NOT_PRODUCTION_APPROVED": 1
+      },
+      "source_primary_verified": {
+       "True": 1
+      },
+      "new_data_release_gate": {
+       "V40_RESEARCH_STAGING_DO_NOT_AUTO_DEPLOY": 1
+      },
+      "v40_review_status": {
+       "ORIGINAL_PDF_NUMERIC_CHECKED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules26196014",
+     "rows": 12,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 12
+     },
+     "activation_agents": [
+      "K2CO3",
+      "K2CO3+FeCl3"
+     ],
+     "status": {
+      "release_status": {
+       "RESEARCH_SENSITIVITY_ONLY_NOT_AUTO_APPROVED": 12
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules30204121",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 1
+     },
+     "activation_agents": [
+      "KOH"
+     ],
+     "status": {
+      "BET_candidate_flag": {
+       "NR": 1
+      },
+      "TPV_candidate_flag": {
+       "NR": 1
+      },
+      "release_status": {
+       "V15_USE_VERIFIED_MANUFACTURING_PROPERTIES": 1
+      },
+      "source_primary_verified": {
+       "YES_THIS_PHASE": 1
+      },
+      "new_data_release_gate": {
+       "NR": 1
+      },
+      "v53_pdf_bet_numeric_verified": {
+       "NR": 1
+      },
+      "v53_pdf_pore_volume_numeric_verified": {
+       "NR": 1
+      },
+      "v53_bet_process_temperature_status": {
+       "NR": 1
+      },
+      "v53_TPV_release_status": {
+       "NR": 1
+      },
+      "v55_release_status": {
+       "NR": 1
+      },
+      "v55_split_role": {
+       "NR": 1
+      },
+      "v55_primary_tier": {
+       "NR": 1
+      },
+      "v56_evaluation_role": {
+       "NR": 1
+      },
+      "v56_source_tier": {
+       "NR": 1
+      },
+      "v57_evaluation_role": {
+       "NR": 1
+      },
+      "v57_source_tier": {
+       "NR": 1
+      },
+      "v58_evaluation_role": {
+       "NR": 1
+      },
+      "v58_source_tier": {
+       "NR": 1
+      },
+      "v59_evaluation_role": {
+       "NR": 1
+      },
+      "v59_source_tier": {
+       "NR": 1
+      }
+     }
+    }
+   ]
+  },
+  "v55_446": {
+   "exists": true,
+   "rows": 446,
+   "dois": 63,
+   "master_columns_present": 127,
+   "master_columns_total": 127,
+   "per_route": {
+    "chemical": {
+     "rows": 128,
+     "bet_rows": 128,
+     "bet_rows_new_doi": 13,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "none": {
+     "rows": 263,
+     "bet_rows": 207,
+     "bet_rows_new_doi": 119,
+     "new_dois": 23,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "physical": {
+     "rows": 55,
+     "bet_rows": 55,
+     "bet_rows_new_doi": 2,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    }
+   },
+   "activated_bet_candidates_not_in_master": [
+    {
+     "doi": "10.1007/s13399-026-07198-4",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [
+      "CO2"
+     ],
+     "status": {
+      "v55_release_status": {
+       "RESEARCH_PROPERTY_SOURCE_VERIFIED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.1016/j.egyr.2021.07.032",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [],
+     "status": {
+      "BET_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "TPV_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "release_status": {
+       "RESEARCH_NOT_PRODUCTION_APPROVED": 1
+      },
+      "source_primary_verified": {
+       "True": 1
+      },
+      "new_data_release_gate": {
+       "V40_RESEARCH_STAGING_DO_NOT_AUTO_DEPLOY": 1
+      },
+      "v40_review_status": {
+       "ORIGINAL_PDF_NUMERIC_CHECKED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules26196014",
+     "rows": 12,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 12
+     },
+     "activation_agents": [
+      "K2CO3",
+      "K2CO3+FeCl3"
+     ],
+     "status": {
+      "release_status": {
+       "RESEARCH_SENSITIVITY_ONLY_NOT_AUTO_APPROVED": 12
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules30204121",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 1
+     },
+     "activation_agents": [
+      "KOH"
+     ],
+     "status": {
+      "BET_candidate_flag": {
+       "NR": 1
+      },
+      "TPV_candidate_flag": {
+       "NR": 1
+      },
+      "release_status": {
+       "V15_USE_VERIFIED_MANUFACTURING_PROPERTIES": 1
+      },
+      "source_primary_verified": {
+       "YES_THIS_PHASE": 1
+      },
+      "new_data_release_gate": {
+       "NR": 1
+      },
+      "v53_pdf_bet_numeric_verified": {
+       "NR": 1
+      },
+      "v53_pdf_pore_volume_numeric_verified": {
+       "NR": 1
+      },
+      "v53_bet_process_temperature_status": {
+       "NR": 1
+      },
+      "v53_TPV_release_status": {
+       "NR": 1
+      },
+      "v55_release_status": {
+       "NR": 1
+      },
+      "v55_split_role": {
+       "NR": 1
+      },
+      "v55_primary_tier": {
+       "NR": 1
+      },
+      "v56_evaluation_role": {
+       "NR": 1
+      },
+      "v56_source_tier": {
+       "NR": 1
+      },
+      "v57_evaluation_role": {
+       "NR": 1
+      },
+      "v57_source_tier": {
+       "NR": 1
+      },
+      "v58_evaluation_role": {
+       "NR": 1
+      },
+      "v58_source_tier": {
+       "NR": 1
+      },
+      "v59_evaluation_role": {
+       "NR": 1
+      },
+      "v59_source_tier": {
+       "NR": 1
+      }
+     }
+    }
+   ]
+  },
+  "v57_450": {
+   "exists": true,
+   "rows": 450,
+   "dois": 64,
+   "master_columns_present": 127,
+   "master_columns_total": 127,
+   "per_route": {
+    "chemical": {
+     "rows": 128,
+     "bet_rows": 128,
+     "bet_rows_new_doi": 13,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "none": {
+     "rows": 267,
+     "bet_rows": 211,
+     "bet_rows_new_doi": 123,
+     "new_dois": 24,
+     "bet_rows_master_doi_new_material": 0
+    },
+    "physical": {
+     "rows": 55,
+     "bet_rows": 55,
+     "bet_rows_new_doi": 2,
+     "new_dois": 2,
+     "bet_rows_master_doi_new_material": 0
+    }
+   },
+   "activated_bet_candidates_not_in_master": [
+    {
+     "doi": "10.1007/s13399-026-07198-4",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [
+      "CO2"
+     ],
+     "status": {
+      "v55_release_status": {
+       "RESEARCH_PROPERTY_SOURCE_VERIFIED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.1016/j.egyr.2021.07.032",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "physical": 1
+     },
+     "activation_agents": [],
+     "status": {
+      "BET_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "TPV_candidate_flag": {
+       "V40_NUMERIC_SOURCE_STAGED": 1
+      },
+      "release_status": {
+       "RESEARCH_NOT_PRODUCTION_APPROVED": 1
+      },
+      "source_primary_verified": {
+       "True": 1
+      },
+      "new_data_release_gate": {
+       "V40_RESEARCH_STAGING_DO_NOT_AUTO_DEPLOY": 1
+      },
+      "v40_review_status": {
+       "ORIGINAL_PDF_NUMERIC_CHECKED": 1
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules26196014",
+     "rows": 12,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 12
+     },
+     "activation_agents": [
+      "K2CO3",
+      "K2CO3+FeCl3"
+     ],
+     "status": {
+      "release_status": {
+       "RESEARCH_SENSITIVITY_ONLY_NOT_AUTO_APPROVED": 12
+      }
+     }
+    },
+    {
+     "doi": "10.3390/molecules30204121",
+     "rows": 1,
+     "in_master_doi": false,
+     "routes": {
+      "chemical": 1
+     },
+     "activation_agents": [
+      "KOH"
+     ],
+     "status": {
+      "BET_candidate_flag": {
+       "NR": 1
+      },
+      "TPV_candidate_flag": {
+       "NR": 1
+      },
+      "release_status": {
+       "V15_USE_VERIFIED_MANUFACTURING_PROPERTIES": 1
+      },
+      "source_primary_verified": {
+       "YES_THIS_PHASE": 1
+      },
+      "new_data_release_gate": {
+       "NR": 1
+      },
+      "v53_pdf_bet_numeric_verified": {
+       "NR": 1
+      },
+      "v53_pdf_pore_volume_numeric_verified": {
+       "NR": 1
+      },
+      "v53_bet_process_temperature_status": {
+       "NR": 1
+      },
+      "v53_TPV_release_status": {
+       "NR": 1
+      },
+      "v55_release_status": {
+       "NR": 1
+      },
+      "v55_split_role": {
+       "NR": 1
+      },
+      "v55_primary_tier": {
+       "NR": 1
+      },
+      "v56_evaluation_role": {
+       "NR": 1
+      },
+      "v56_source_tier": {
+       "NR": 1
+      },
+      "v57_evaluation_role": {
+       "NR": 1
+      },
+      "v57_source_tier": {
+       "NR": 1
+      },
+      "v58_evaluation_role": {
+       "NR": 1
+      },
+      "v58_source_tier": {
+       "NR": 1
+      },
+      "v59_evaluation_role": {
+       "NR": 1
+      },
+      "v59_source_tier": {
+       "NR": 1
+      }
+     }
+    }
+   ]
+  }
+ },
+ "v60_bet_model": {
+  "top_keys": [
+   "architecture",
+   "data_version",
+   "features",
+   "locked_v60_external",
+   "router",
+   "target"
+  ],
+  "router_keys": [
+   "experts",
+   "global",
+   "target"
+  ],
+  "experts": [],
+  "global_estimator": "XGBRegressor",
+  "global_params": {
+   "objective": "reg:squarederror",
+   "colsample_bytree": 0.87,
+   "gamma": null,
+   "learning_rate": 0.03,
+   "max_depth": 3,
+   "min_child_weight": 2,
+   "n_estimators": 280,
+   "random_state": 42,
+   "reg_alpha": 0.3,
+   "reg_lambda": 9,
+   "subsample": 0.87
+  },
+  "pipeline_steps": [
+   "prep",
+   "reg"
+  ]
+ }
+}

@@ -1,0 +1,260 @@
+{
+  "version": "v67",
+  "role": "RESEARCH_ONLY_NOT_ACTIVE",
+  "hypothesis": "cap^alpha sample weights on the fraction target suppress inverse-transform blowups while keeping 0% cap violations",
+  "identity": "sum cap^2 (f_hat-f)^2 == sum (q_hat-q)^2, so alpha=2 equals qe-space MSE",
+  "design": {
+    "data": "188 rows / 36 DOI (v55_152 + new36)",
+    "outer_split": "GroupKFold(DOI, 5)",
+    "inner_split_for_alpha": "GroupKFold(DOI, 4) within outer training DOIs",
+    "alphas": [
+      0.0,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "features": "Model B, feature_set=cap",
+    "algorithm": "XGBoost s2_model (unchanged hyperparameters)",
+    "primary_comparison": "NESTED_alpha vs BASELINE (DOI paired bootstrap of MAE gain)",
+    "posthoc_note": "fixed-alpha results share the evaluation OOF; picking the best is post-hoc"
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "n_test": 38,
+      "n_test_doi": 5,
+      "chosen_alpha": 1.0,
+      "inner_mae": {
+        "0": 20.3578,
+        "0.5": 20.354,
+        "1": 20.1639,
+        "2": 22.3085
+      }
+    },
+    {
+      "fold": 2,
+      "n_test": 38,
+      "n_test_doi": 8,
+      "chosen_alpha": 0.0,
+      "inner_mae": {
+        "0": 20.8566,
+        "0.5": 20.957,
+        "1": 21.1272,
+        "2": 21.4348
+      }
+    },
+    {
+      "fold": 3,
+      "n_test": 38,
+      "n_test_doi": 8,
+      "chosen_alpha": 0.0,
+      "inner_mae": {
+        "0": 17.8016,
+        "0.5": 18.4913,
+        "1": 18.9552,
+        "2": 19.7497
+      }
+    },
+    {
+      "fold": 4,
+      "n_test": 37,
+      "n_test_doi": 7,
+      "chosen_alpha": 1.0,
+      "inner_mae": {
+        "0": 15.4954,
+        "0.5": 15.5976,
+        "1": 15.4736,
+        "2": 15.62
+      }
+    },
+    {
+      "fold": 5,
+      "n_test": 37,
+      "n_test_doi": 8,
+      "chosen_alpha": 2.0,
+      "inner_mae": {
+        "0": 20.7135,
+        "0.5": 20.6213,
+        "1": 20.0926,
+        "2": 18.8529
+      }
+    }
+  ],
+  "aggregate": [
+    {
+      "method": "BASELINE_qe_then_clip",
+      "n": 188,
+      "mae": 15.7807,
+      "rmse": 31.1505,
+      "r2": 0.665,
+      "upper_cap_violation": 52,
+      "violation_rate": 0.2766
+    },
+    {
+      "method": "CAPW_a0",
+      "n": 188,
+      "mae": 16.2674,
+      "rmse": 34.9253,
+      "r2": 0.5789,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    },
+    {
+      "method": "CAPW_a0.5",
+      "n": 188,
+      "mae": 15.8569,
+      "rmse": 31.9726,
+      "r2": 0.6471,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    },
+    {
+      "method": "CAPW_a1",
+      "n": 188,
+      "mae": 16.5702,
+      "rmse": 32.4506,
+      "r2": 0.6364,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    },
+    {
+      "method": "CAPW_a2",
+      "n": 188,
+      "mae": 17.2147,
+      "rmse": 31.9743,
+      "r2": 0.647,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    },
+    {
+      "method": "NESTED_alpha",
+      "n": 188,
+      "mae": 17.5646,
+      "rmse": 37.0206,
+      "r2": 0.5268,
+      "upper_cap_violation": 0,
+      "violation_rate": 0.0
+    }
+  ],
+  "distribution": [
+    {
+      "method": "BASELINE_qe_then_clip",
+      "DOI_MAE_median": 10.892,
+      "DOI_MAE_q75": 34.76,
+      "DOI_MAE_worst": 94.059,
+      "DOI_R2_median": -1.3097,
+      "DOI_R2_worst": -241.2104,
+      "n_DOI_negative_R2": 21
+    },
+    {
+      "method": "CAPW_a0",
+      "DOI_MAE_median": 11.881,
+      "DOI_MAE_q75": 24.294,
+      "DOI_MAE_worst": 174.753,
+      "DOI_R2_median": -0.6612,
+      "DOI_R2_worst": -968.2897,
+      "n_DOI_negative_R2": 19
+    },
+    {
+      "method": "CAPW_a0.5",
+      "DOI_MAE_median": 10.995,
+      "DOI_MAE_q75": 24.724,
+      "DOI_MAE_worst": 140.945,
+      "DOI_R2_median": -0.4187,
+      "DOI_R2_worst": -758.6863,
+      "n_DOI_negative_R2": 18
+    },
+    {
+      "method": "CAPW_a1",
+      "DOI_MAE_median": 10.79,
+      "DOI_MAE_q75": 19.611,
+      "DOI_MAE_worst": 127.049,
+      "DOI_R2_median": -0.3075,
+      "DOI_R2_worst": -804.6821,
+      "n_DOI_negative_R2": 19
+    },
+    {
+      "method": "CAPW_a2",
+      "DOI_MAE_median": 13.23,
+      "DOI_MAE_q75": 26.777,
+      "DOI_MAE_worst": 114.473,
+      "DOI_R2_median": -0.5848,
+      "DOI_R2_worst": -605.5611,
+      "n_DOI_negative_R2": 19
+    },
+    {
+      "method": "NESTED_alpha",
+      "DOI_MAE_median": 11.58,
+      "DOI_MAE_q75": 20.317,
+      "DOI_MAE_worst": 174.753,
+      "DOI_R2_median": -0.6945,
+      "DOI_R2_worst": -968.2897,
+      "n_DOI_negative_R2": 20
+    }
+  ],
+  "tail_dois": [
+    {
+      "doi": "10.1371/journal.pone.0218114",
+      "n": 3,
+      "BASELINE_qe_then_clip": 94.059,
+      "CAPW_a0": 174.753,
+      "CAPW_a0.5": 140.945,
+      "CAPW_a1": 127.049,
+      "CAPW_a2": 114.473,
+      "NESTED_alpha": 174.753
+    },
+    {
+      "doi": "10.1016/j.psep.2017.10.014",
+      "n": 5,
+      "BASELINE_qe_then_clip": 11.516,
+      "CAPW_a0": 67.183,
+      "CAPW_a0.5": 71.837,
+      "CAPW_a1": 74.011,
+      "CAPW_a2": 63.53,
+      "NESTED_alpha": 67.183
+    }
+  ],
+  "doi_bootstrap": {
+    "PRIMARY_NESTED_vs_BASELINE": {
+      "mean_gain_mg_g": -1.7839,
+      "ci95_low": -6.8565,
+      "ci95_high": 2.5727,
+      "ci_excludes_zero": false
+    },
+    "NESTED_vs_CAPW_a0": {
+      "mean_gain_mg_g": -1.2972,
+      "ci95_low": -2.9002,
+      "ci95_high": 0.2334,
+      "ci_excludes_zero": false
+    },
+    "POSTHOC_CAPW_a0_vs_BASELINE": {
+      "mean_gain_mg_g": -0.4868,
+      "ci95_low": -5.9212,
+      "ci95_high": 4.555,
+      "ci_excludes_zero": false
+    },
+    "POSTHOC_CAPW_a0.5_vs_BASELINE": {
+      "mean_gain_mg_g": -0.0762,
+      "ci95_low": -4.9611,
+      "ci95_high": 4.5031,
+      "ci_excludes_zero": false
+    },
+    "POSTHOC_CAPW_a1_vs_BASELINE": {
+      "mean_gain_mg_g": -0.7895,
+      "ci95_low": -5.6278,
+      "ci95_high": 3.6229,
+      "ci_excludes_zero": false
+    },
+    "POSTHOC_CAPW_a2_vs_BASELINE": {
+      "mean_gain_mg_g": -1.434,
+      "ci95_low": -5.4837,
+      "ci95_high": 2.2733,
+      "ci_excludes_zero": false
+    }
+  },
+  "environment": {
+    "python": "3.12.10",
+    "sklearn": "1.5.2",
+    "xgboost": "2.1.3"
+  }
+}
