@@ -26,7 +26,13 @@ from pyrolysis.biochar_stage2.v43_scenarios import (
     comparison_frame, printable_report,
 )
 from pyrolysis.biochar_stage2.v15_train import Stage2Registry
-from pyrolysis.biochar_stage2 import v104_exploratory as e104  # v104 OPTIONAL_EXPLORATION
+# v104 is an optional research-only module and is not present in every release.
+# Check for the source file before importing; do not mask errors inside an installed module.
+from importlib.util import find_spec
+if find_spec("pyrolysis.biochar_stage2.v104_exploratory") is not None:
+    from pyrolysis.biochar_stage2 import v104_exploratory as e104
+else:
+    e104 = None
 from pyrolysis.biochar_stage2.candidate_screening import (
     observed_manufacturing_candidates, score_observed_candidates,
 )
@@ -552,7 +558,10 @@ def page_predict():
         return
     _live_prediction_panel(models, ads, man, match, comp, use_model_b=use_model_b)
     if use_model_b and "B" in models:
-        _v104_exploratory_panel(ads, man, match, models)  # v104 optional, inactive by default
+        if e104 is not None:
+            _v104_exploratory_panel(ads, man, match, models)
+        else:
+            st.caption("v104 실험용 탐색 모델은 배포 소스가 없어 비활성화되어 있습니다. 기존 Model A/B는 그대로 사용합니다.")
 
 
 
@@ -773,7 +782,8 @@ def page_compare():
                    "제조조건 추가가 Model A보다 일반화 성능을 개선하지 못했고, 전역 최적조건 추천으로 해석하면 안 됩니다.")
         if match.matched is None:
             st.caption("미학습 원료 외삽으로 분류되어 순위의 유효성이 검증되지 않았습니다.")
-        _v104_compare_overlay(input_rows, df, match.matched is None)  # v104 optional
+        if e104 is not None:
+            _v104_compare_overlay(input_rows, df, match.matched is None)  # optional beta
 
 
 def page_validation():
