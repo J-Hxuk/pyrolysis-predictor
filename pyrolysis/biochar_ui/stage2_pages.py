@@ -916,13 +916,19 @@ def page_data_validation_workspace():
         )
 
 
-from pyrolysis.biochar_ui.v105_integrated_page import render_v105_integrated
-
-from pyrolysis.biochar_ui.v112_unified_page import render_v112_unified
-
-PAGES = {
-    "통합 예측": render_v112_unified,
-}
+# v105 integrated UI is not imported: it is unused and not included in this
+# deployment. The v112 unified UI is only activated when its source is present.
+# Never invent a substitute model or claim this fallback is the v112 simulator.
+if find_spec("pyrolysis.biochar_ui.v112_unified_page") is not None:
+    from pyrolysis.biochar_ui.v112_unified_page import render_v112_unified
+    PAGES = {"통합 예측": render_v112_unified}
+else:
+    PAGES = {
+        "흡착성능 예측 (기존)": page_predict,
+        "제조조건 탐색 (기존)": page_manufacturing_workspace,
+        "BET·TPV 물성 예측 (기존)": render_v48_properties,
+        "데이터·모델 검증 (기존)": page_data_validation_workspace,
+    }
 
 
 def render_stage2_app():
@@ -941,6 +947,8 @@ def render_stage2_app():
     st.sidebar.markdown("### BIOCHAR / WORKBENCH")
     st.sidebar.caption("제조조건 · 물성 · 흡착성능 예측")
     st.sidebar.caption("원료 조성 · 제조조건 → BET/TPV → 단일 흡착량 예측")
+    if "통합 예측" not in PAGES:
+        st.sidebar.warning("v112 통합 UI 소스가 배포 저장소에 없어 기존 분석 화면을 제공합니다.")
     choice = st.sidebar.radio("통합 예측", list(PAGES.keys()), label_visibility="collapsed",
                               key="v112_navigation")
     st.sidebar.divider()
