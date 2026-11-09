@@ -1,0 +1,14 @@
+﻿qa_id,severity,affected_records,release_status,required_action
+ORIGINAL_QE_EQUILIBRIUM,HIGH,97,EXPLORATORY_ONLY,Source qe numeric is aligned but not all 97 endpoints strict equilibrium verified; no final claim
+CHEMISTRY_RAW_BASIS,HIGH,69,STORED_NOT_AUTOMATICALLY_MODELLED,Distinct basis like daf/dry/wt%/NR; fit transforms within each DOI fold only
+STAGE1_ENV_GATE,HIGH,441,STAGE1_TO_STAGE2_DISABLED,sklearn/xgboost version conflicts and Stage1 v60 independent challenge R² negative; isolated compatibility test first
+STAGE2_PROCESS_CHEMISTRY,HIGH,44,VERIFICATION_NEEDED,"Source method text preserved for 60 Stage2 materials, reported agents conditional/NR not auto-imputed; use manufacturing_route and protocol-specific audit"
+V13_QT_NOT_QE,HIGH,32,SEPARATE_TARGET,120-min uptake Qt must not be labelled equilibrium qe
+V13_REMOVAL_NOT_QE,HIGH,16,SEPARATE_TARGET,Percentage removal alone is reported; optional qe converted value is not independent target
+V13_QEXP_KINETIC,MEDIUM,6,OPTIONAL_SEPARATE,Experimental kinetic qexp; series-specific equilibrium certification outstanding
+V13_QMAX_FITTED,HIGH,32,SEPARATE_TARGET,Langmuir fitted qmax must not be mixed with experimental qe
+WANG2020_MASS_BALANCE_REPORT_CONFLICT,HIGH,2,PRESERVE_UPTAKE_ONLY,Reported removal percentages differ from uptake and stated dose; no implied Ce
+V13_FIGURES_UNEXTRACTED,LOW,104,NOT_TRAINABLE,Figure-only values unextracted; no synthetic rows
+NATURAL_LANGUAGE_FEEDSTOCK_OOD,HIGH,441,NOT_VALIDATED,Allow typed raw name lookup but no composition imputation or quantified novelty accuracy claim
+V14_EXTERNAL_SOURCE_QA,MEDIUM,5275,REFERENCE_ONLY,"Jaffari releases have no DOI provenance per row, target chemical mismatch; external data excluded"
+NEW_DOI_BENCHMARK_DESIGN,HIGH,7,NO_FOLDS_ASSIGNED,Freeze external source DOI and materials before hyperparameter selection; no retrospectively chosen validation set

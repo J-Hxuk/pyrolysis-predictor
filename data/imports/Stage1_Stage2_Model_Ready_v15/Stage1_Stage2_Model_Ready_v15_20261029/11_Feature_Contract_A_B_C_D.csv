@@ -1,0 +1,51 @@
+﻿field,category,meaning,A_conditions_only,B_direct_manufacture,C_measured_property_oracle,D_predicted_property,handling_note
+doi_group,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+observation_id,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+material_uid,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+sample_group,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+experiment_series_id,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+source_url,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+target_origin,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+target_qualification,SPLIT_OR_PROVENANCE,not an input feature,NO,NO,NO,NO,"DOI/sample splitting, IDs must not enter predictive model"
+pollutant,ADSORPTION,experimental bath/chemistry context,YES,YES,YES,YES,Missing not filled from other series; inspect temporal meaning
+C0_mg_L,ADSORPTION,experimental bath/chemistry context,YES,YES,YES,YES,Missing not filled from other series; inspect temporal meaning
+initial_pH,ADSORPTION,experimental bath/chemistry context,YES,YES,YES,YES,Missing not filled from other series; inspect temporal meaning
+dose_g_L,ADSORPTION,experimental bath/chemistry context,YES,YES,YES,YES,Missing not filled from other series; inspect temporal meaning
+adsorption_T_C,ADSORPTION,experimental bath/chemistry context,YES,YES,YES,YES,Missing not filled from other series; inspect temporal meaning
+contact_time_min,ADSORPTION,experimental bath/chemistry context,YES,YES,YES,YES,Missing not filled from other series; inspect temporal meaning
+feedstock_raw,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+feedstock_label_normalized,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+manufacturing_route,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+process_step_count,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+pyrolysis_temperature_C,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+pyrolysis_hold_min,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+heating_rate_C_min,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+pyrolysis_atmosphere,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+activation_or_modification,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+secondary_temperature_C,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+secondary_hold_min,RAW_AND_PROCESS,precursor and manufacturing descriptor,NO,YES,YES,YES,Raw name taxonomy is categorical only; never derive chemical composition from name
+reported_activation_agent,PROCESS_AGENT_REPORTED,reported activation/impregnation source label,NO,REVIEW_REQUIRED,REVIEW_REQUIRED,REVIEW_REQUIRED,Legacy original source fields and v13 methods; training only after paper-wise role normalization
+reported_impregnation_agent,PROCESS_AGENT_REPORTED,reported activation/impregnation source label,NO,REVIEW_REQUIRED,REVIEW_REQUIRED,REVIEW_REQUIRED,Legacy original source fields and v13 methods; training only after paper-wise role normalization
+raw_C_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_H_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_O_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_N_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_S_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_ash_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_VM_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_FC_wt_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_cellulose_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_hemicellulose_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+raw_lignin_pct,RAW_FEEDSTOCK_CHEMISTRY,precursor pre-pyrolysis composition,NO,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,OPTIONAL_AFTER_BASIS_AUDIT,Raw comp sparsely recorded; dry/daf and sample basis require validation; not char C/H/O
+BET_measured_m2_g,MEASURED_BIOCHAR_PROPERTIES,post-manufacture measured properties,NO,NO,YES,NO,C is measured-property reference; not deployable manufacturing-only predictor
+TPV_measured_cm3_g,MEASURED_BIOCHAR_PROPERTIES,post-manufacture measured properties,NO,NO,YES,NO,C is measured-property reference; not deployable manufacturing-only predictor
+BET_predicted_m2_g,STAGE1_PREDICTED_BIOCHAR,stage1 v60 out of fold prediction,NO,NO,NO,GATED_NOT_READY,Never fill with measured property; source-independent OOF and route validity required
+TPV_predicted_cm3_g,STAGE1_PREDICTED_BIOCHAR,stage1 v60 out of fold prediction,NO,NO,NO,GATED_NOT_READY,Never fill with measured property; source-independent OOF and route validity required
+target_value,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+mass_balance_cap_mg_g,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+physical_cap_pass,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+reported_removal_pct,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+qe_derived_from_removal_mg_g,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+qmax_mg_g,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+BET_POST_C,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock
+O_POST,LEAKAGE_OR_TARGET,"output, derived label, verification flag, or char chemistry",NO,NO,NO,NO,Targets/derived outputs cannot be model features; biochar C after manufacturing not raw feedstock

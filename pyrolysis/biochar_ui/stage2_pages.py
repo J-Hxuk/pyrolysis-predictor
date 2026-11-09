@@ -26,6 +26,7 @@ from pyrolysis.biochar_stage2.v43_scenarios import (
     comparison_frame, printable_report,
 )
 from pyrolysis.biochar_stage2.v15_train import Stage2Registry
+from pyrolysis.biochar_stage2 import v104_exploratory as e104  # v104 OPTIONAL_EXPLORATION
 from pyrolysis.biochar_stage2.candidate_screening import (
     observed_manufacturing_candidates, score_observed_candidates,
 )
@@ -107,8 +108,9 @@ def _feedstock_control(key="s2_bio", default="rice husk"):
     elif m.status == "empty":
         st.warning("원료명을 입력해 주세요.")
     else:
-        st.info("등록되지 않은 원료명입니다. Model A는 원료를 구별하지 않는 흡착조건 기반 예측만 제공합니다. "
-                "Model B는 학습되지 않은 원료의 효과를 검증하지 못했습니다.")
+        st.info("미학습 원료입니다. Model A와 Model B의 수치 출력은 가능하나, "
+                "Model B는 이 원료의 실제 화학적 특성을 학습하지 않았습니다. "
+                "결과는 탐색적 계산으로만 해석하세요.")  # v103 coverage-first UI
     if m.suggestions and m.status not in ("exact", "alias"):
         st.caption("문자열이 유사한 등록 원료 · 실제 다른 원료일 수 있으니 직접 확인 후 선택하세요.")
         for i, suggestion in enumerate(m.suggestions[:4]):
@@ -278,11 +280,7 @@ def _prediction_output(models, ads, man, match, comp, use_model_b=True):
                 st.caption("Model B · 제조조건 포함")
                 st.info("제조조건 입력을 선택하지 않아 실행하지 않았습니다.")
             continue
-        if model_key == "B" and match.matched is None:
-            with c:
-                st.caption("Model B · 원료·제조조건 추가")
-                st.info("미학습 원료에서는 Model B 예측값을 제공하지 않습니다. 미지 범주가 실제 원료 특성을 의미하지 않기 때문입니다.")
-            continue
+        # v103: do not block Model B solely because the feedstock name is unseen.
         if model_key not in models:
             continue
         raw, capped, cap = _predict_row(models[model_key], row)
@@ -301,7 +299,8 @@ def _prediction_output(models, ads, man, match, comp, use_model_b=True):
             if used:
                 st.caption(f"실제 사용된 추가 조성: {', '.join(used)}")
     if match.matched is None:
-        st.warning("미학습 원료: Model A만 탐색적으로 표시합니다. 원료 특성을 반영한 예측이나 제조조건 추천은 불가능합니다.")
+        st.warning("미학습 원료: 표시된 Model B 값은 탐색적 추정입니다. "
+                   "원료 고유 특성을 식별하지 못하므로 제조조건 최적화의 근거가 아닙니다.")
     st.caption("A와 B의 숫자 차이는 제조조건의 인과효과가 아닙니다. "
                "현재 Core 97의 qe는 엄격한 평형 흡착량으로 인증되지 않았습니다.")
 
@@ -400,7 +399,7 @@ def _live_prediction_panel(models, ads, man, match, comp, *, use_model_b: bool):
     feedstock = match.matched if match.matched else match.normalized
     row = {**ads, **man, **comp, "feedstock_label_normalized": feedstock}
     enabled = {"A": models["A"]} if "A" in models else {}
-    if use_model_b and match.matched is not None and "B" in models:
+    if use_model_b and "B" in models:  # v103: allow numeric inference for new feedstock
         enabled["B"] = models["B"]
     if not enabled:
         st.warning("예측 모델이 없습니다.")
@@ -456,8 +455,10 @@ def _live_prediction_panel(models, ads, man, match, comp, *, use_model_b: bool):
             cv = _v16_summary().get("nested_cv", {}).get(label, {})
             if cv:
                 st.caption(f"기존 모델의 DOI Nested CV: MAE {cv.get('mae', float('nan')):.1f} mg/g")
-    if use_model_b and match.matched is None:
-        st.info("미학습 원료: Model B를 표시하지 않습니다. Model A는 원료별 차이를 구분하지 않습니다.")
+    if use_model_b and match.matched is None and "B" in enabled:
+        st.warning("미학습 원료에 대한 Model B 탐색적 출력입니다. "
+                   "학습되지 않은 원료명은 one-hot 미지 범주로 처리되며, "
+                   "원료별 화학적 차이와 예측 정확도는 보장되지 않습니다.")
     if comp:
         st.caption("현재 A/B에는 입력한 원소·공업분석값이 반영되지 않습니다.")
     st.markdown("#### 변수별 민감도 · 모델 응답 곡선")
@@ -538,7 +539,8 @@ def page_predict():
         comp, comp_errors = _composition_controls()
     st.markdown("#### 03 · 흡착 실험조건")
     ads = _adsorption_widgets()
-    use_model_b = st.checkbox("제조조건을 포함하는 Model B와 함께 비교", value=False, key="s2_enable_B")
+    use_model_b = st.checkbox("제조조건을 포함하는 Model B와 함께 비교", value=True, key="s2_enable_B")
+    st.caption("v103: 미지 원료도 Model B의 숫자를 표시합니다. 관측치·검증된 추천값은 아닙니다.")
     man = {"_input_errors": []}
     if use_model_b:
         with st.container(border=True):
@@ -549,6 +551,87 @@ def page_predict():
         st.info("입력 오류를 수정하면 실시간 예측이 표시됩니다.")
         return
     _live_prediction_panel(models, ads, man, match, comp, use_model_b=use_model_b)
+    if use_model_b and "B" in models:
+        _v104_exploratory_panel(ads, man, match, models)  # v104 optional, inactive by default
+
+
+
+def _v104_get_models():
+    """On-demand training; never write to frozen active A/B model registry."""
+    digest = e104.source_sha(_REPO)
+    return _v104_cache_models(digest), digest
+
+
+@st.cache_resource(show_spinner=False)
+def _v104_cache_models(core_sha: str):
+    return e104.fit_optional_models(_REPO, expected_sha=core_sha)
+
+
+def _v104_exploratory_panel(ads, man, match, active_models):
+    with st.expander("v104 · 추가 탐색 모델 비교 (베타 · 학습검증 미완료)", expanded=False):
+        st.caption("기존 A/B는 그대로 유지됩니다. 이 모드에서만 Core97로 연구용 모델 2개를 재학습합니다. "
+                   "실험 데이터와 직접 검증한 신규 시료의 흡착량이 아닙니다.")
+        if not st.checkbox("추가 탐색 모델 계산", key="v104_enable_optional", value=False):
+            return
+        unknown_ph = st.checkbox("초기 pH 미보고 (추가 모델에서만 결측)", key="v104_hide_ph")
+        unknown_temp = st.checkbox("흡착온도 미보고 (추가 모델에서만 결측)", key="v104_hide_adsT")
+        unknown_time = st.checkbox("접촉시간 미보고 (추가 모델에서만 결측)", key="v104_hide_time")
+        hidden = [name for hide, name in ((unknown_ph, 'initial_pH'),
+                   (unknown_temp, 'adsorption_T_C'), (unknown_time, 'contact_time_min')) if hide]
+        row = {**ads, **man, 'feedstock_label_normalized': match.matched or match.normalized}
+        row = e104.mask_unknown(row, hidden)
+        try:
+            with st.spinner("기존 Core97로 선택형 탐색 모델 학습/계산 중"):
+                fitted, digest = _v104_get_models()
+                result = e104.predict_many(fitted, [row]).iloc[0]
+                old_raw, old_clip, _ = _predict_row(active_models['B'], row)
+        except Exception as exc:
+            st.error(f"추가 탐색 모델을 계산하지 못했습니다: {type(exc).__name__}: {exc}")
+            return
+        prefer = e104.recommended_model(row)
+        summary = pd.DataFrame([
+            {'모델': '저장 B (기존)', '원시 qe (mg/g)': old_raw,
+             '제약 후 qe (mg/g)': old_clip, '상태': '기존 활성 모델'},
+            *[{'모델': name, '원시 qe (mg/g)': float(result[f'{name}_raw_mg_g']),
+               '제약 후 qe (mg/g)': float(result[f'{name}_bounded_mg_g']),
+               '상태': '선택 추천 · 연구용' if name == prefer else '연구용'}
+              for name in e104.EXPERIMENTS],
+        ])
+        st.dataframe(summary, hide_index=True, use_container_width=True)
+        st.caption(f"추가 모델 입력 기준: {'미보고 ' + ', '.join(hidden) if hidden else '사용자 입력값 전체 사용'}"
+                   f" · Core97 원본 SHA-256: {digest[:12]}… · 물질수지 상한 {result['mass_balance_cap_mg_g']:.2f} mg/g")
+        if match.matched is None:
+            st.warning("미학습 원료의 조성·혼합비 차이는 이 모델도 구분하지 못합니다. 제조온도별 수치가 검증된 최적조건은 아닙니다.")
+        st.warning("v101 동일 개발 DOI 평가에서 원료명 제외 B MAE 15.73, Compact 16.15 mg/g. "
+                   "이 값은 신규 시료 외부검증 성능이 아니며, 우열이 통계적으로 확정되지 않았습니다.")
+        st.download_button("v104 비교 수치 CSV", summary.to_csv(index=False).encode('utf-8-sig'),
+                           'stage2_v104_optional_models.csv', 'text/csv', key='v104_csv_export')
+
+
+def _v104_compare_overlay(input_rows, base_df, is_novel):
+    if not st.checkbox("v104 탐색 모델 곡선도 표시 (선택)", value=False, key='v104_compare_enable'):
+        return
+    try:
+        with st.spinner("추가 탐색 모델 학습/온도별 계산 중"):
+            fitted, _ = _v104_get_models()
+            pred = e104.predict_many(fitted, input_rows)
+    except Exception as exc:
+        st.error(f"v104 비교곡선 오류: {type(exc).__name__}: {exc}")
+        return
+    allcurves = base_df[['열분해온도 (°C)', '제약 후 qe (mg/g)']].copy().rename(
+        columns={'제약 후 qe (mg/g)': '기존 B (mg/g)'})
+    for name in e104.EXPERIMENTS:
+        allcurves[name + ' (mg/g)'] = pred[f'{name}_bounded_mg_g'].to_numpy()
+        allcurves[name + ' 원시 (mg/g)'] = pred[f'{name}_raw_mg_g'].to_numpy()
+    st.markdown('#### v104 · 선택형 탐색 모델 비교')
+    cols = ['기존 B (mg/g)'] + [n + ' (mg/g)' for n in e104.EXPERIMENTS]
+    st.line_chart(allcurves.set_index('열분해온도 (°C)')[cols])
+    st.dataframe(allcurves, hide_index=True, use_container_width=True)
+    st.download_button('v104 온도별 비교 CSV', allcurves.to_csv(index=False).encode('utf-8-sig'),
+                       'stage2_v104_temperature_comparison.csv', 'text/csv', key='v104_cmp_csv')
+    if is_novel:
+        st.warning('새 원료의 최적 제조온도는 미검증입니다. 현재 모델은 새 원료의 고유 조성을 식별하지 못합니다.')
+    st.caption('v104 두 모델은 개발자료 97행으로 별도 재학습한 탐색 후보이며 기존 저장 B나 검증 지표를 변경하지 않습니다.')
 
 
 def page_screening():
@@ -655,8 +738,8 @@ def page_compare():
         return
     match = _feedstock_control(key="cmp_bio", default="rice husk")
     if match.matched is None:
-        st.warning("미학습 원료는 Model B 온도 스윕의 유효성이 검증되지 않아 실행하지 않습니다.")
-        return
+        st.warning("미학습 원료의 온도별 Model B 응답을 탐색적으로 표시합니다. "
+                   "원료별 실제 차이·최적온도는 검증되지 않았습니다.")  # v103
     st.warning("수동 온도 스윕은 관측된 제조조건 범위를 벗어날 수 있으며 최적조건 추천이 아닙니다.")
     ads = _adsorption_widgets(prefix="cmp")
     man = _manufacture_widgets(prefix="cmp")
@@ -672,9 +755,11 @@ def page_compare():
         return
     if match.status != "empty" and not man["_input_errors"]:
         rows = []
+        input_rows = []  # v104 research overlay only
         for t in np.arange(low, high + 1e-6, step):
             row = {**ads, **man, "feedstock_label_normalized":
                    match.matched or match.normalized, "pyrolysis_temperature_C": float(t)}
+            input_rows.append(row)  # v104 overlay, no active model changed
             raw, capped, cap = _predict_row(models["B"], row)
             rows.append({"열분해온도 (°C)": float(t), "원시 qe (mg/g)": raw,
                          "제약 후 qe (mg/g)": capped,
@@ -688,6 +773,7 @@ def page_compare():
                    "제조조건 추가가 Model A보다 일반화 성능을 개선하지 못했고, 전역 최적조건 추천으로 해석하면 안 됩니다.")
         if match.matched is None:
             st.caption("미학습 원료 외삽으로 분류되어 순위의 유효성이 검증되지 않았습니다.")
+        _v104_compare_overlay(input_rows, df, match.matched is None)  # v104 optional
 
 
 def page_validation():
@@ -820,11 +906,12 @@ def page_data_validation_workspace():
         )
 
 
+from pyrolysis.biochar_ui.v105_integrated_page import render_v105_integrated
+
+from pyrolysis.biochar_ui.v112_unified_page import render_v112_unified
+
 PAGES = {
-    "흡착성능 예측": page_predict,
-    "제조조건 탐색": page_manufacturing_workspace,
-    "BET 물성 예측": render_v48_properties,
-    "데이터·모델 검증": page_data_validation_workspace,
+    "통합 예측": render_v112_unified,
 }
 
 
@@ -843,14 +930,12 @@ def render_stage2_app():
     </style>""", unsafe_allow_html=True)
     st.sidebar.markdown("### BIOCHAR / WORKBENCH")
     st.sidebar.caption("제조조건 · 물성 · 흡착성능 예측")
-    st.sidebar.caption("① BET·TPV 물성 → ② 흡착성능 qe → ③ 조건 비교 → ④ 데이터 검증")
-    choice = st.sidebar.radio("주요 기능", list(PAGES.keys()), label_visibility="collapsed",
-                              key="v48_navigation")
+    st.sidebar.caption("원료 조성 · 제조조건 → BET/TPV → 단일 흡착량 예측")
+    choice = st.sidebar.radio("통합 예측", list(PAGES.keys()), label_visibility="collapsed",
+                              key="v112_navigation")
     st.sidebar.divider()
-    st.sidebar.caption("활성 Stage 2: Core 97 · 연구 데이터: Stage 1 417 / Stage 2 140")
-    with st.sidebar.expander("현재 모델 구조 · 반드시 확인"):
-        st.markdown("**BET (v20):** 원료 조성 모델 · 연구용.\n\n"
-                    "**BET/TPV (v46):** 문헌 시료 제조특성 모델 · 비활성 연구용.\n\n"
-                    "**qe (A/B):** Core 97 활성 모델. BET/TPV 예측값을 qe 입력으로 사용하지 않음.\n\n"
-                    "**제조조건 비교:** 탐색적 응답이며 실험 최적화가 아님.")
+    st.sidebar.caption("Stage 1: BET·TPV / Stage 2: 4,795행 · 26종 오염물질")
+    with st.sidebar.expander("데이터·모델의 한계"):
+        st.markdown("문헌 Reported Capacity 예측입니다. 모든 데이터가 엄격한 평형 qₑ는 아닙니다. "
+                    "Stage 1 물성 예측오차가 최종 흡착량에 전달될 수 있습니다.")
     PAGES[choice]()

@@ -50,6 +50,30 @@ data/
 runs/
 templates/local/
 
+# ── Streamlit Cloud 배포에 필요한 v15 데이터 파일 예외 ──
+# data/ 전체를 제외하되 v15 패키지 파일들은 예외 처리한다.
+# 이 파일들은 소형(총 ~2.5 MB)이며 앱 실행에 필수적이다.
+!data/
+!data/imports/
+!data/imports/Stage1_Stage2_Model_Ready_v15/
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/00_README_START_HERE.md
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/01_Manufacturing_And_Feedstock_Materials_441.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/02_Adsorption_Target_Ledger_151.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/03_Stage2_QE_Core_97.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/04_QEXP_Kinetic_Optional_6.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/05_QT_120min_Separate_32.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/06_Removal_Separate_16.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/07_QE_Derived_From_Removal_16_DO_NOT_DOUBLE_COUNT.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/08_Langmuir_Qmax_Fitted_Separate_32.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/09_Manufacturing_Recommendation_Benchmark_Chen16.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/10_Primary_Source_DOI_Registry_61.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/11_Feature_Contract_A_B_C_D.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/12_QA_Model_Gates.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/13_Evaluation_And_Handoff_Protocol.md
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/14_SHA256_Manifest.csv
+!data/imports/Stage1_Stage2_Model_Ready_v15/Stage1_Stage2_Model_Ready_v15_20261029/Stage1_Stage2_Model_Ready_v15.sqlite
+
 # ── 로컬 전용 설정 (실제 파일 경로·변수명 포함) ──────────
 configs/local/
 
