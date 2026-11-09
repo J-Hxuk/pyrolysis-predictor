@@ -1,14 +1,10 @@
-# .streamlit/config.toml — Streamlit 앱 설정
-#
-# disableDataExport 와 enableStaticServing 은 Streamlit 1.40 이상에서 지원한다.
-# 해당 설정을 지원하지 않는 버전을 사용하면 초기 배포의 지원 환경에 포함하지 않는다.
-# 설정 미지원 오류를 무시한 채 내보내기를 활성 상태로 두지 않는다.
-
-[client]
-# 데이터프레임 내보내기(CSV 다운로드) 비활성화
-disableDataExport = true
+# Streamlit Community Cloud deployment config (Streamlit 1.40.0).
+# client.disableDataExport is unsupported in 1.40.0; do not enable it here.
 
 [server]
+# Disable file watchers in Cloud to avoid Linux inotify watch-limit crashes.
+# Automatic source hot-reload is not needed for the deployed application.
+fileWatcherType = "none"
 # 정적 파일 제공 비활성화
 enableStaticServing = false
 
