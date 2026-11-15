@@ -96,7 +96,7 @@ def attach_coverage(df: pd.DataFrame, models: Mapping, stage2_bounds) -> pd.Data
 def export_csv_with_inputs(df: pd.DataFrame, *, feedstock_input: str, feedstock_used: str,
                            process: Mapping, adsorption: Mapping, composition: Mapping,
                            model_sha256: str, properties_connected: bool,
-                           stage1_warnings: str = '') -> bytes:
+                           stage1_warnings: str = '', stage1_bet_path: str = '', stage1_tpv_path: str = '') -> bytes:
     """One row per prediction temperature, with fixed inputs and provenance columns."""
     out = df.copy()
     fixed = {
@@ -106,6 +106,11 @@ def export_csv_with_inputs(df: pd.DataFrame, *, feedstock_input: str, feedstock_
         '승온속도 (℃/min)': process.get('heating_rate_C_min'),
         '열분해 분위기': process.get('pyrolysis_atmosphere'),
         '활성화 방식': process.get('activation_method'),
+        '활성화제 종류':process.get('activation_agent'),
+        '활성화 온도 (℃)':process.get('activation_temperature_C'),
+        '활성화 시간 (min)':process.get('activation_time_min'),
+        '활성화제/원료 질량비 (g/g)':process.get('activation_agent_feedstock_mass_ratio'),
+        'Stage1 BET model':stage1_bet_path, 'Stage1 TPV model':stage1_tpv_path,
         '오염물질': adsorption.get('pollutant'),
         'C0 (mg/L)': adsorption.get('C0_mg_L'),
         'Dose (g/L)': adsorption.get('dose_g_L'),
@@ -116,7 +121,7 @@ def export_csv_with_inputs(df: pd.DataFrame, *, feedstock_input: str, feedstock_
         '학습 범위 판정 방법': '각 모델의 관측 제조온도 최소·최대(단변량)만 비교',
         '타깃 의미': 'Predicted reported adsorption capacity (strict qe 인증 아님)',
         '운영 모델 SHA256': model_sha256,
-        '프로그램 출력 버전': 'v133 / v113 UI + v114 Stage2',
+        '프로그램 출력 버전': 'v134 Stage1 HGB / v114 Stage2',
         '비온도 입력 경고': stage1_warnings,
     }
     for key, value in composition.items():

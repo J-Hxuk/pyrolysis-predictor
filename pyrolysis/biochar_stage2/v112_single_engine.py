@@ -10,20 +10,14 @@ import warnings
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from pyrolysis.biochar_stage1.unified_hgb_v134 import (
+    MODEL_VERSION, S1_NUM, S1_CAT, S1_FEATURES, TARGETS, prepare_inputs, make_stage1_model)
 from pyrolysis.biochar_stage2.input_support import match_feedstock, normalize_name
 from pyrolysis.biochar_stage1.composition_inference_v20 import (
     default_model_path, load_portable_model, assess_inputs, estimate_bet)
 
 STAGE1_DATA = Path('data/imports/v46_phase8/Stage1_417_EXPLORATORY_UNAPPROVED.csv')
 S2_MODEL = Path('deployment/v112_single_stage2.joblib')
-S1_NUM = ['pyrolysis_temperature_C','pyrolysis_hold_min','heating_rate_C_min']
-S1_CAT = ['feedstock','pyrolysis_atmosphere','activation_method']
-S1_FEATURES = S1_NUM + S1_CAT
 CATS = ['pollutant','dataset','pollutant_domain']
 
 
@@ -72,7 +66,9 @@ def assess_stage1_input(models: Mapping, *, feedstock: str, process: Mapping) ->
     warnings_list = []
     labels = {'feedstock':'원료명', 'pyrolysis_atmosphere':'열분해 분위기',
               'activation_method':'활성화 방식', 'pyrolysis_temperature_C':'제조온도',
-              'pyrolysis_hold_min':'유지시간', 'heating_rate_C_min':'승온속도'}
+              'pyrolysis_hold_min':'유지시간', 'heating_rate_C_min':'승온속도',
+              'activation_agent':'활성화제', 'activation_temperature_C':'활성화 온도',
+              'activation_time_min':'활성화 시간', 'activation_agent_feedstock_mass_ratio':'활성화제/원료 질량비'}
     vals = {'feedstock':used, **dict(process)}
     for field in S1_CAT:
         val = str(vals.get(field, 'UNKNOWN'))
@@ -82,6 +78,8 @@ def assess_stage1_input(models: Mapping, *, feedstock: str, process: Mapping) ->
             warnings_list.append(f"{labels[field]} '{val}'은(는) Stage 1 {'·'.join(missing)} 학습 범주에 없습니다. "
                                  '해당 범주 효과는 OneHotEncoder에서 무시될 수 있습니다.')
     for field in S1_NUM:
+        if field.startswith('activation_') and vals.get('activation_method') == 'none':
+            continue
         value = vals.get(field)
         try: num = float(value)
         except (ValueError, TypeError): continue
@@ -109,13 +107,23 @@ def _raise(msg):
     raise ValueError(msg)
 
 
-def _s1_forest():
-    prep=ColumnTransformer([
-        ('num',Pipeline([('imp',SimpleImputer(strategy='median',add_indicator=True)),('scale',StandardScaler())]),S1_NUM),
-        ('cat',Pipeline([('imp',SimpleImputer(strategy='constant',fill_value='UNKNOWN')),
-                         ('onehot',OneHotEncoder(handle_unknown='ignore'))]),S1_CAT)])
-    forest=RandomForestRegressor(n_estimators=150,max_depth=9,min_samples_leaf=3,max_features=.9,n_jobs=1,random_state=42)
-    return Pipeline([('pre',prep),('model',forest)])
+def normalize_activation_details(method, details=None):
+    """Unknown/non-applicable fields stay missing. Never invent activation settings."""
+    details = details or {}
+    if method == 'none':
+        return {'activation_agent':'none', 'activation_temperature_C':np.nan,
+                'activation_time_min':np.nan, 'activation_agent_feedstock_mass_ratio':np.nan}
+    result = {'activation_agent':str(details.get('activation_agent') or 'UNKNOWN').strip() or 'UNKNOWN'}
+    for field in ('activation_temperature_C','activation_time_min','activation_agent_feedstock_mass_ratio'):
+        value = details.get(field)
+        if value is None or (isinstance(value,str) and not value.strip()):
+            result[field]=np.nan
+        else:
+            value=_finite(value)
+            if value<0 or (field=='activation_temperature_C' and value==0):
+                raise ValueError('활성화 조건은 음수가 될 수 없으며 활성화 온도는 양수여야 합니다.')
+            result[field]=value
+    return result
 
 
 def load_chain(root: Path):
@@ -128,17 +136,17 @@ def load_chain(root: Path):
     s1=pd.read_csv(s1_path,low_memory=False)
     if len(s1)!=417 or s1.material_id.duplicated().any():
         raise ValueError('Unexpected Stage1 source version: expected 417 unique material IDs')
-    for c in S1_NUM:s1[c]=pd.to_numeric(s1[c],errors='coerce')
-    for c in S1_CAT:s1[c]=s1[c].fillna('UNKNOWN').astype(str)
+    s1[S1_FEATURES]=prepare_inputs(s1)
     out={'s1_reference': _stage1_reference(s1, 'BET_m2_g_training_candidate',
                                          'TPV_cm3_g_training_candidate')}
     with warnings.catch_warnings():
         warnings.simplefilter('ignore',FutureWarning)
-        for name,target in [('BET','BET_m2_g_training_candidate'),('TPV','TPV_cm3_g_training_candidate')]:
+        for name,target in TARGETS.items():
             y=pd.to_numeric(s1[target],errors='coerce')
             x=s1.loc[y.notna()].copy()
             if len(x)<30:raise ValueError(f'Not enough Stage1 {name} data')
-            m=_s1_forest();m.fit(x[S1_FEATURES],np.log1p(y[y.notna()].clip(lower=0).to_numpy(float)))
+            if (y.dropna()<0).any():raise ValueError(f'Negative Stage1 {name} target')
+            m=make_stage1_model();m.fit(x[S1_FEATURES],y[y.notna()].to_numpy(float))
             out['s1_'+name]=m
     out['composition_bet']=load_portable_model(default_model_path(root))
     out['stage2']=joblib.load(s2_path)
@@ -147,24 +155,26 @@ def load_chain(root: Path):
         raise ValueError('Unexpected Stage2 artifact schema; refuse to predict')
     out['metadata']={'stage1_BET_n':int(s1.BET_m2_g_training_candidate.notna().sum()),
                      'stage1_TPV_n':int(s1.TPV_cm3_g_training_candidate.notna().sum()),
-                     'stage2_n':int(b['n_rows']),'pollutants':len(b['supported_labels'])}
+                     'stage2_n':int(b['n_rows']),'pollutants':len(b['supported_labels']),
+                     'stage1_model':MODEL_VERSION,'stage1_features':list(S1_FEATURES)}
     return out
 
 
-def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmosphere,activated,composition,activation_method=None):
+def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmosphere,activated,composition,activation_method=None,activation_details=None):
     if not str(feedstock).strip():raise ValueError('원료명이 필요합니다')
     temp,hold,heat=[_finite(x) for x in (temperature,hold,heat)]
     if min(temp,hold,heat)<=0:raise ValueError('제조 온도·유지시간·승온속도는 양수여야 합니다')
     process={'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
              'heating_rate_C_min':heat,'pyrolysis_atmosphere':atmosphere,
              'activation_method':(activation_method or ('chemical_activation' if activated else 'none'))}
+    process.update(normalize_activation_details(process['activation_method'],activation_details))
     input_contract=assess_stage1_input(models,feedstock=feedstock,process=process)
     s1row={'feedstock':input_contract['used_feedstock'],**process}
-    m=pd.DataFrame([s1row])
-    bet=max(0.0,float(np.expm1(models['s1_BET'].predict(m[S1_FEATURES])[0])))
-    tpv=max(0.0,float(np.expm1(models['s1_TPV'].predict(m[S1_FEATURES])[0])))
+    m=prepare_inputs(pd.DataFrame([s1row]))
+    bet=max(0.0,float(models['s1_BET'].predict(m)[0]))
+    tpv=max(0.0,float(models['s1_TPV'].predict(m)[0]))
     comp_status='NOT_PROVIDED';warnings_list=[]
-    bet_path='manufacturing_surrogate'
+    bet_path=MODEL_VERSION
     if any(v is not None and str(v).strip() for v in composition.values()):
         checked=assess_inputs(models['composition_bet'],process,composition,
                     elemental_basis='daf',proximate_basis='dry',
@@ -181,7 +191,7 @@ def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmospher
             warnings_list+=list(checked.get('errors',[]))+list(checked.get('outside_training_range',[]))
     if not np.isfinite(bet) or not np.isfinite(tpv) or min(bet,tpv)<0:
         raise ValueError('Stage1 property prediction invalid')
-    return {'BET_m2_g':bet,'TPV_cm3_g':tpv,'bet_path':bet_path,'tpv_path':'manufacturing_surrogate',
+    return {'BET_m2_g':bet,'TPV_cm3_g':tpv,'bet_path':bet_path,'tpv_path':MODEL_VERSION,
             'composition_status':comp_status,'warnings':warnings_list,
             'stage1_feedstock_used':input_contract['used_feedstock'],
             'stage1_input_warnings':input_contract['warnings']}
@@ -224,7 +234,7 @@ def predict_one(models,root,*,feedstock,process,composition,adsorption,activated
         temperature=process['pyrolysis_temperature_C'],hold=process['pyrolysis_hold_min'],
         heat=process['heating_rate_C_min'],atmosphere=process['pyrolysis_atmosphere'],
         activated=activated,composition=composition,
-        activation_method=process.get('activation_method'))
+        activation_method=process.get('activation_method'),activation_details=process)
     bundle=models['stage2']
     row,meta=stage2_row(bundle,adsorption,process['pyrolysis_temperature_C'],process['pyrolysis_hold_min'],prop)
     raw=float(bundle['pipeline'].predict(row)[0])

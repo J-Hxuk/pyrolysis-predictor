@@ -51,7 +51,7 @@ def _poster_image(df: pd.DataFrame, image_format: str) -> bytes:
 
 def _select_feedstock(name):
     st.session_state[FEED_KEY]=name
-    st.session_state.pop('v113_last_prediction',None)
+    st.session_state.pop('v134_last_prediction',None)
 
 
 def _feedstock_input(root):
@@ -151,11 +151,28 @@ def render_v112_unified():
         activation_modes={'없음':'none','화학적 활성화/함침':'chemical_impregnation',
                 '물리적 활성화':'physical_activation','수증기 활성화':'physical_steam'}
         activation_method=activation_modes[activation]
-        st.caption('활성화 방식은 Stage 1 물성 모델에만 반영됩니다. 활성화제 혼합비 등은 현재 학습 입력에 없습니다.')
+        with st.expander('활성화 세부 조건 (Stage 1 · 선택)',expanded=True):
+            st.caption('활성화 방식이 없음이면 아래 조건은 무시됩니다. 미보고 수치는 공란으로 두며 0으로 대체하지 않습니다.')
+            ref=models['s1_reference']
+            agents=sorted(set().union(*(ref[k]['categorical'].get('activation_agent',()) for k in ('BET','TPV')))-{'UNKNOWN','none'})
+            x1,x2=st.columns(2)
+            with x1:
+                activation_agent=st.selectbox('활성화제 종류',['UNKNOWN']+agents,
+                    format_func=lambda v:'미보고 / NR' if v=='UNKNOWN' else v)
+                activation_time=st.text_input('활성화 시간 (min)',placeholder='미보고')
+            with x2:
+                activation_temp=st.text_input('활성화 온도 (℃)',placeholder='미보고')
+                activation_ratio=st.text_input('활성화제 / 원료 질량비 (g/g)',placeholder='미보고',
+                    help='원료 질량 기준의 비율만 입력. 적용 불가나 미보고는 공란.')
+        activation_details={'activation_agent':activation_agent if activation_method!='none' else 'none',
+             'activation_temperature_C':activation_temp if activation_method!='none' else '',
+             'activation_time_min':activation_time if activation_method!='none' else '',
+             'activation_agent_feedstock_mass_ratio':activation_ratio if activation_method!='none' else ''}
+        st.caption('기본 Stage 1: Poisson HGB · 10개 제조조건 변수. Stage 2는 기존 모델 유지.')
         stage1_preview=assess_stage1_input(models,feedstock=feedstock,process={
             'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
             'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
-            'activation_method':activation_method})
+            'activation_method':activation_method,**activation_details})
         if stage1_preview['used_feedstock'] != str(feedstock).strip():
             st.caption('실제 Stage 1 원료 피처: '+stage1_preview['used_feedstock']+
                        ' (동의어/표기 정규화, 원료 조성값 자동대입 아님)')
@@ -172,7 +189,7 @@ def render_v112_unified():
                 for col,k in zip(cols,keys):
                     label=k.removeprefix('raw_').replace('_wt_pct','').upper().replace('ASH','Ash')
                     with col:composition[k]=st.text_input(label,placeholder='미측정',key=f'v113_{k}')
-            st.caption('조성 입력의 영향은 Stage 1 BET 경로를 통해 전달됩니다. TPV는 현재 제조조건 기반 모델입니다.')
+            st.caption('조성 입력 시 별도 연구용 RF BET 경로가 우선 적용될 수 있습니다. 기본 HGB Fig. 4 검증과는 별개이며 TPV는 10변수 HGB입니다.')
 
         st.markdown('### 03 · 흡착 조건')
         labels=models['stage2']['supported_labels']
@@ -206,7 +223,7 @@ def render_v112_unified():
             if not str(feedstock).strip():raise ValueError('원료명을 입력해 주세요.')
             process={'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
                      'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
-                     'activation_method':activation_method}
+                     'activation_method':activation_method,**activation_details}
             ads={'pollutant':pollutant,'C0_mg_L':c0,'dose_g_L':dose,
                  'initial_pH':_num_optional(None if missing_ph else ph),
                  'adsorption_T_C':_num_optional(None if missing_ads_temp else ads_temp),
@@ -226,17 +243,17 @@ def render_v112_unified():
             df=pd.DataFrame(rows)
             stage2_bounds=_stage2_temperature_bounds(str(ROOT), pollutant)
             df=attach_coverage(df, models, stage2_bounds)
-            st.session_state['v113_last_prediction']={
+            st.session_state['v134_last_prediction']={
                 'result':result,'table':df,'feedstock':feedstock,
                 'pollutant':pollutant,'temperature':temp,
                 'process':process,'adsorption':ads,'composition':composition,
                 'stage2_temperature_bounds':stage2_bounds,
             }
         except Exception as exc:
-            st.session_state.pop('v113_last_prediction',None)
+            st.session_state.pop('v134_last_prediction',None)
             st.error(f'예측을 완료하지 못했습니다: {type(exc).__name__}: {exc}')
 
-    payload=st.session_state.get('v113_last_prediction')
+    payload=st.session_state.get('v134_last_prediction')
     if payload is None:
         st.caption('조건을 설정한 뒤 위의 예측 버튼을 누르면 결과와 온도별 비교 그래프가 표시됩니다.')
         return
@@ -291,7 +308,7 @@ def render_v112_unified():
         process=payload['process'],adsorption=payload['adsorption'],
         composition=payload['composition'],model_sha256=model_sha,
         properties_connected=bool(r['stage1_property_feature_used']),
-        stage1_warnings=export_warnings)
+        stage1_warnings=export_warnings,stage1_bet_path=r['bet_path'],stage1_tpv_path=r['tpv_path'])
     ex1,ex2,ex3=st.columns(3)
     with ex1:
         st.download_button('포스터 PNG (300 dpi)', _poster_image(df,'png'),
@@ -306,7 +323,8 @@ def render_v112_unified():
                            file_name='biochar_poster_v133_inputs_predictions.csv',
                            mime='text/csv',use_container_width=True)
     with st.expander('데이터 범위·연구 한계'):
-        st.write('Stage 1: 문헌 기반 BET·TPV 추정. Stage 2: 4,795행·26종 오염물질 통합 예측.')
+        st.write('Stage 1 기본: Poisson HGB (10변수), BET/TPV 별도 학습. Stage 2: 기존 4,795행·26종 오염물질 모델 유지.')
+        st.write('Stage 1 변경 후 연계 흡착량 성능의 재검증은 아직 수행하지 않았습니다. 조성 RF 경로는 별도 연구용입니다.')
         st.write('원료명 추천은 Stage 1/핵심 Stage 2에 실제 기록된 명칭만 사용합니다. 원료명을 선택한다고 원소분석값이 자동 채워지지는 않습니다.')
         st.write('문헌 Reported Capacity에는 strict qe가 아닌 관측이 포함될 수 있으며, Stage 1의 예측 오차가 Stage 2에 전파됩니다.')
         st.write('모델 버전: '+str(models['stage2'].get('selected_candidate','unknown')))
