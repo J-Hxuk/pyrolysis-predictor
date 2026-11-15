@@ -1,4 +1,4 @@
-"""One user-facing pipeline: raw feedstock -> Stage1 BET/TPV -> ONE broad Stage2 predictor.
+"""One user-facing pipeline: raw feedstock -> Stage1 BET/TPV -> ONE broad Stage2 ensemble predictor (KNN + weighted ET).
 Research demonstration, not strict equilibrium adsorption or external DOI validation.
 No legacy Stage2 A/B/C model is loaded by this module.
 """
@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Mapping
 import warnings
 
-import joblib
+from pyrolysis.biochar_stage2.stage2_blend_v139 import load_blend, SNAPSHOT as S2_DATA
 import numpy as np
 import pandas as pd
 from pyrolysis.biochar_stage1.unified_hgb_v134 import (
@@ -127,12 +127,12 @@ def normalize_activation_details(method, details=None):
 
 
 def load_chain(root: Path):
-    """Build Stage1 surrogates only; load just one Stage2 regressor trained locally."""
+    """Fit Stage1 and the fixed Stage2 ensemble from versioned sources."""
     root=Path(root)
     s1_path=root/STAGE1_DATA
-    s2_path=root/S2_MODEL
+    s2_path=root/S2_DATA
     if not s1_path.is_file():raise FileNotFoundError(f'Stage1 417 source missing: {s1_path}')
-    if not s2_path.is_file():raise FileNotFoundError(f'v112 model missing: {s2_path}. Run v112 training/install first.')
+    if not s2_path.is_file():raise FileNotFoundError(f'Stage2 training snapshot missing: {s2_path}')
     s1=pd.read_csv(s1_path,low_memory=False)
     if len(s1)!=417 or s1.material_id.duplicated().any():
         raise ValueError('Unexpected Stage1 source version: expected 417 unique material IDs')
@@ -149,14 +149,15 @@ def load_chain(root: Path):
             m=make_stage1_model();m.fit(x[S1_FEATURES],y[y.notna()].to_numpy(float))
             out['s1_'+name]=m
     out['composition_bet']=load_portable_model(default_model_path(root))
-    out['stage2']=joblib.load(s2_path)
+    out['stage2']=load_blend(root)
     b=out['stage2']
     if b.get('n_rows')!=4795 or len(b.get('supported_labels',[]))!=26 or b.get('model_target')!='removal_fraction':
         raise ValueError('Unexpected Stage2 artifact schema; refuse to predict')
     out['metadata']={'stage1_BET_n':int(s1.BET_m2_g_training_candidate.notna().sum()),
                      'stage1_TPV_n':int(s1.TPV_cm3_g_training_candidate.notna().sum()),
                      'stage2_n':int(b['n_rows']),'pollutants':len(b['supported_labels']),
-                     'stage1_model':MODEL_VERSION,'stage1_features':list(S1_FEATURES)}
+                     'stage1_model':MODEL_VERSION,'stage1_features':list(S1_FEATURES),
+                     'stage2_model':b['selected_candidate'],'stage2_training_snapshot_sha256':b['training_snapshot_sha256']}
     return out
 
 

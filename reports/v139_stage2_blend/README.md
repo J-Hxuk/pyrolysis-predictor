@@ -1,0 +1,7 @@
+# v139 Stage 2 fixed blend (research deployment)
+- Stage 1: v134 ten-feature Poisson HGB, unchanged. Stage 2: equal-weight fraction prediction from distance-weighted KNN (k=10) and 100-tree cap/material-weighted Extra Trees (leaf=2, max_features=.9, seed=107). Multiply clipped blend by C0/dose; no logit inversion.
+- Fit from verified 4,795-row CSV at startup and cache in Streamlit; the v114 joblib is retained but not loaded by the unified engine. The output CSV hash identifies the training snapshot, not a pickle.
+- Development scores (scikit-learn 1.8.0): standalone fixed material/DOI 5-fold MAE 17.273 mg/g, R2 .718386; organic 23.161/.679556; inorganic 2.022/.983629; 178-row linked MAE 17.942, R2 .680499, macro MAE 22.498; Core97 measured 21.840 vs predicted 21.276 mg/g.
+- The previously compared 29 candidate configurations reused development observations. Nested selection R2 .175 vs fixed ET .394; bootstrap improvement intervals include zero. This is an exploratory deployment at the user's request, not statistically confirmed superiority or independent external validation.
+- Separate research Manufacturing RF is unchanged and not wired into this UI. Optional composition RF is outside default HGB validation. v135-v138 names already exist in local external-test protocols; v139 avoids those names.
+- Factory verified on full training source and five fixed folds against optimization OOF under scikit-learn 1.8.0. Repository requirements pin 1.5.2; exact cross-version numerical parity and full Streamlit runtime remain unverified.

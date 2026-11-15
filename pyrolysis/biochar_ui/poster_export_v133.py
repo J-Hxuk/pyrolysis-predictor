@@ -120,8 +120,8 @@ def export_csv_with_inputs(df: pd.DataFrame, *, feedstock_input: str, feedstock_
         'Stage2 BET/TPV 전달': '예' if properties_connected else '아니오',
         '학습 범위 판정 방법': '각 모델의 관측 제조온도 최소·최대(단변량)만 비교',
         '타깃 의미': 'Predicted reported adsorption capacity (strict qe 인증 아님)',
-        '운영 모델 SHA256': model_sha256,
-        '프로그램 출력 버전': 'v134 Stage1 HGB / v114 Stage2',
+        'Stage2 training snapshot SHA256': model_sha256,
+        '프로그램 출력 버전': 'v139 Stage1 HGB / KNN+weighted ET 50:50',
         '비온도 입력 경고': stage1_warnings,
     }
     for key, value in composition.items():

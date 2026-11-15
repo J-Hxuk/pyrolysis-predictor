@@ -51,7 +51,7 @@ def _poster_image(df: pd.DataFrame, image_format: str) -> bytes:
 
 def _select_feedstock(name):
     st.session_state[FEED_KEY]=name
-    st.session_state.pop('v134_last_prediction',None)
+    st.session_state.pop('v139_last_prediction',None)
 
 
 def _feedstock_input(root):
@@ -168,7 +168,7 @@ def render_v112_unified():
              'activation_temperature_C':activation_temp if activation_method!='none' else '',
              'activation_time_min':activation_time if activation_method!='none' else '',
              'activation_agent_feedstock_mass_ratio':activation_ratio if activation_method!='none' else ''}
-        st.caption('기본 Stage 1: Poisson HGB · 10개 제조조건 변수. Stage 2는 기존 모델 유지.')
+        st.caption('기본 Stage 1: Poisson HGB · 10개 제조조건 변수. Stage 2: KNN + 가중 Extra Trees (50:50).')
         stage1_preview=assess_stage1_input(models,feedstock=feedstock,process={
             'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
             'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
@@ -243,17 +243,17 @@ def render_v112_unified():
             df=pd.DataFrame(rows)
             stage2_bounds=_stage2_temperature_bounds(str(ROOT), pollutant)
             df=attach_coverage(df, models, stage2_bounds)
-            st.session_state['v134_last_prediction']={
+            st.session_state['v139_last_prediction']={
                 'result':result,'table':df,'feedstock':feedstock,
                 'pollutant':pollutant,'temperature':temp,
                 'process':process,'adsorption':ads,'composition':composition,
                 'stage2_temperature_bounds':stage2_bounds,
             }
         except Exception as exc:
-            st.session_state.pop('v134_last_prediction',None)
+            st.session_state.pop('v139_last_prediction',None)
             st.error(f'예측을 완료하지 못했습니다: {type(exc).__name__}: {exc}')
 
-    payload=st.session_state.get('v134_last_prediction')
+    payload=st.session_state.get('v139_last_prediction')
     if payload is None:
         st.caption('조건을 설정한 뒤 위의 예측 버튼을 누르면 결과와 온도별 비교 그래프가 표시됩니다.')
         return
@@ -300,8 +300,7 @@ def render_v112_unified():
                '모델 불확실도나 실측값을 임의로 표시하지 않습니다.')
     export_warnings='; '.join(w for w in r.get('stage1_input_warnings', [])
                               if not w.startswith('제조온도 '))
-    model_file=ROOT/'deployment/v112_single_stage2.joblib'
-    model_sha=hashlib.sha256(model_file.read_bytes()).hexdigest()
+    model_sha=models['stage2']['training_snapshot_sha256']
     csv_bytes=export_csv_with_inputs(
         df,feedstock_input=payload['feedstock'],
         feedstock_used=str(r.get('stage1_feedstock_used',payload['feedstock'])),
@@ -312,19 +311,19 @@ def render_v112_unified():
     ex1,ex2,ex3=st.columns(3)
     with ex1:
         st.download_button('포스터 PNG (300 dpi)', _poster_image(df,'png'),
-                           file_name='biochar_poster_v133_3panel.png',mime='image/png',
+                           file_name='biochar_poster_v139_3panel.png',mime='image/png',
                            use_container_width=True)
     with ex2:
         st.download_button('포스터 SVG (벡터)', _poster_image(df,'svg'),
-                           file_name='biochar_poster_v133_3panel.svg',mime='image/svg+xml',
+                           file_name='biochar_poster_v139_3panel.svg',mime='image/svg+xml',
                            use_container_width=True)
     with ex3:
         st.download_button('조건·예측값 CSV',csv_bytes,
-                           file_name='biochar_poster_v133_inputs_predictions.csv',
+                           file_name='biochar_poster_v139_inputs_predictions.csv',
                            mime='text/csv',use_container_width=True)
     with st.expander('데이터 범위·연구 한계'):
-        st.write('Stage 1 기본: Poisson HGB (10변수), BET/TPV 별도 학습. Stage 2: 기존 4,795행·26종 오염물질 모델 유지.')
-        st.write('Stage 1 변경 후 연계 흡착량 성능의 재검증은 아직 수행하지 않았습니다. 조성 RF 경로는 별도 연구용입니다.')
+        st.write('Stage 1 기본: Poisson HGB (10변수), BET/TPV 별도 학습. Stage 2: KNN(k=10) + 가중 Extra Trees 50:50, 4,795행·26종.')
+        st.write('연계 개발평가 178행·36 DOI: R² 0.680, MAE 17.942 mg/g. 후보 선택에 개발 데이터를 재사용했으며 독립 외부 검증은 아닙니다. 조성 RF 및 제조조건 순위 RF는 별도 연구 경로입니다.')
         st.write('원료명 추천은 Stage 1/핵심 Stage 2에 실제 기록된 명칭만 사용합니다. 원료명을 선택한다고 원소분석값이 자동 채워지지는 않습니다.')
         st.write('문헌 Reported Capacity에는 strict qe가 아닌 관측이 포함될 수 있으며, Stage 1의 예측 오차가 Stage 2에 전파됩니다.')
         st.write('모델 버전: '+str(models['stage2'].get('selected_candidate','unknown')))
