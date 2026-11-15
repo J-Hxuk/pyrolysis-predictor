@@ -10,6 +10,7 @@ import pandas as pd
 import streamlit as st
 from pyrolysis.biochar_stage2.input_support import match_feedstock,normalize_name
 from pyrolysis.biochar_stage2.v112_single_engine import load_chain,predict_one,assess_stage1_input
+from pyrolysis.biochar_stage2.manufacturing_rank_v140 import load_ranker,rank_sweep
 from pyrolysis.biochar_ui.poster_export_v133 import (
     read_stage2_temperature_bounds, stage1_temperature_bounds, attach_coverage,
     format_bounds, export_csv_with_inputs, render_poster_figure,
@@ -22,6 +23,11 @@ FEED_KEY='v113_feedstock'
 @st.cache_resource(show_spinner='통합 모델을 준비하고 있습니다...')
 def _models(root):
     return load_chain(Path(root))
+
+@st.cache_resource(show_spinner=False)
+def _ranking_model(root):
+    return load_ranker(Path(root))
+
 
 @st.cache_data(show_spinner=False)
 def _feedstock_catalog(root):
@@ -51,7 +57,7 @@ def _poster_image(df: pd.DataFrame, image_format: str) -> bytes:
 
 def _select_feedstock(name):
     st.session_state[FEED_KEY]=name
-    st.session_state.pop('v139_last_prediction',None)
+    st.session_state.pop('v140_last_prediction',None)
 
 
 def _feedstock_input(root):
@@ -126,12 +132,12 @@ def render_v112_unified():
       div[data-testid="stForm"] {border:1px solid rgba(128,128,128,.23); border-radius:8px; padding:1rem;}
     </style>''',unsafe_allow_html=True)
     st.title('바이오차 제조·흡착성능 예측')
-    st.caption('원료 조성 · 열분해조건 → BET / TPV → 문헌 기반 흡착량 → 제조온도 비교')
+    st.caption('원료 조성 · 열분해조건 → BET / TPV → 문헌 기반 흡착량 · 독립 Manufacturing RF 제조온도 순위')
     try:
         models=_models(str(ROOT))
     except Exception as exc:
         st.error(f'모델을 읽을 수 없습니다: {type(exc).__name__}: {exc}')
-        st.info('v112 단일 모델 설치 및 로컬 학습 상태를 확인해 주세요.')
+        st.info('v139 물성·흡착량 학습 원장과 설치 환경을 확인해 주세요.')
         return
     st.markdown('### 01 · 원료 선택')
     feedstock=_feedstock_input(ROOT)
@@ -243,17 +249,17 @@ def render_v112_unified():
             df=pd.DataFrame(rows)
             stage2_bounds=_stage2_temperature_bounds(str(ROOT), pollutant)
             df=attach_coverage(df, models, stage2_bounds)
-            st.session_state['v139_last_prediction']={
+            st.session_state['v140_last_prediction']={
                 'result':result,'table':df,'feedstock':feedstock,
                 'pollutant':pollutant,'temperature':temp,
                 'process':process,'adsorption':ads,'composition':composition,
                 'stage2_temperature_bounds':stage2_bounds,
             }
         except Exception as exc:
-            st.session_state.pop('v139_last_prediction',None)
+            st.session_state.pop('v140_last_prediction',None)
             st.error(f'예측을 완료하지 못했습니다: {type(exc).__name__}: {exc}')
 
-    payload=st.session_state.get('v139_last_prediction')
+    payload=st.session_state.get('v140_last_prediction')
     if payload is None:
         st.caption('조건을 설정한 뒤 위의 예측 버튼을 누르면 결과와 온도별 비교 그래프가 표시됩니다.')
         return
@@ -295,6 +301,43 @@ def render_v112_unified():
     st.caption('계산 구간 내 예측 최댓값(최적 조건 검증 아님): '+
                ', '.join(str(t)+'℃' for t in top['제조온도 (℃)'])+' · 동률은 그대로 표시')
     st.dataframe(df,use_container_width=True,hide_index=True)
+    st.markdown('### 제조조건 순위 추천 · Manufacturing RF')
+    st.caption('흡착량 예측과 독립적인 상대 순위 모델입니다. 상대 점수(pp)는 계열 내 중심화된 제거율 차이의 예측값이며, 제거율 자체나 흡착량(mg/g)이 아닙니다.')
+    st.caption('학습: 59개 제조 관측점 / 15계열 / 9 DOI. 비교 개발평가: 12계열 / 9 DOI, Top-1 41.7%, 평균 Regret 2.781 mg/g. 독립 외부 검증 아님.')
+    st.caption('현재 순위 기능은 단일 열분해·무활성화 제조온도 비교만 지원합니다. 초기농도·pH·투입량·접촉시간·조성은 RF 피처가 아니므로 해당 변화에 따른 순위 민감도는 평가되지 않습니다.')
+    try:
+        rank_bundle=_ranking_model(str(ROOT))
+        if not r['known_pollutant']:
+            st.info('통합 흡착량 모델이 지원하지 않는 오염물질에는 공통 추천을 제공하지 않습니다.')
+        else:
+            ranking,rank_notes=rank_sweep(rank_bundle,payload['feedstock'],payload['process'],
+                                         payload['pollutant'],df['제조온도 (℃)'].tolist())
+            if rank_notes:
+                st.warning('순위 모델 적용 범위: '+'; '.join(rank_notes))
+            if ranking is not None:
+                rank_table=df[['제조온도 (℃)','예측 흡착량 (mg/g)']].merge(ranking,on='제조온도 (℃)',how='left')
+                rank_table['RF 순위']=rank_table['RF 순위'].astype('Int64')
+                winners=ranking.loc[ranking['RF 순위'].eq(1),'제조온도 (℃)']
+                a,b=st.columns(2)
+                a.metric('예측 흡착량 최대 후보',', '.join(f'{v:g}℃' for v in top['제조온도 (℃)']))
+                b.metric('RF 1위 후보 (탐색)',', '.join(f'{v:g}℃' for v in winners))
+                if len(winners)>1:
+                    st.info('RF 1위 동률은 그대로 표시합니다. 임의로 최적 조건을 고르지 않습니다.')
+                st.dataframe(rank_table,use_container_width=True,hide_index=True)
+                rank_export=rank_table.copy()
+                rank_export['rank_model']=rank_bundle['version']
+                rank_export['rank_training_snapshot_sha256']=rank_bundle['sha256']
+                rank_export['feedstock']=payload['feedstock']
+                rank_export['pollutant']=payload['pollutant']
+                for key,value in {**payload['process'],**payload['adsorption']}.items():
+                    if key!='pyrolysis_temperature_C': rank_export[key]=value
+                rank_export['rank_notes']='; '.join(rank_notes)
+                st.download_button('제조조건 순위 CSV',rank_export.to_csv(index=False).encode('utf-8-sig'),
+                                   file_name='biochar_v140_manufacturing_ranking.csv',mime='text/csv',
+                                   use_container_width=True)
+                st.caption('RF 1위는 모델이 비교한 후보 중 상대 순위이며 실험적 최적조건의 보증이 아닙니다. 학습 범위 안 표시도 원료·조건 조합의 검증을 의미하지 않습니다.')
+    except Exception as exc:
+        st.warning(f'순위 모델을 실행하지 못했습니다: {type(exc).__name__}: {exc}. 기존 흡착량 예측은 유지됩니다.')
     st.markdown('### 포스터용 결과 출력')
     st.caption('PNG 300 dpi / SVG 벡터 · BET, TPV, Reported Capacity 3패널. '
                '모델 불확실도나 실측값을 임의로 표시하지 않습니다.')
@@ -323,7 +366,7 @@ def render_v112_unified():
                            mime='text/csv',use_container_width=True)
     with st.expander('데이터 범위·연구 한계'):
         st.write('Stage 1 기본: Poisson HGB (10변수), BET/TPV 별도 학습. Stage 2: KNN(k=10) + 가중 Extra Trees 50:50, 4,795행·26종.')
-        st.write('연계 개발평가 178행·36 DOI: R² 0.680, MAE 17.942 mg/g. 후보 선택에 개발 데이터를 재사용했으며 독립 외부 검증은 아닙니다. 조성 RF 및 제조조건 순위 RF는 별도 연구 경로입니다.')
+        st.write('연계 개발평가 178행·36 DOI: R² 0.680, MAE 17.942 mg/g. 후보 선택에 개발 데이터를 재사용했으며 독립 외부 검증은 아닙니다. 조성 RF는 별도 연구 경로입니다. 제조조건 RF는 독립적인 상대 순위 기능으로 제공됩니다.')
         st.write('원료명 추천은 Stage 1/핵심 Stage 2에 실제 기록된 명칭만 사용합니다. 원료명을 선택한다고 원소분석값이 자동 채워지지는 않습니다.')
         st.write('문헌 Reported Capacity에는 strict qe가 아닌 관측이 포함될 수 있으며, Stage 1의 예측 오차가 Stage 2에 전파됩니다.')
         st.write('모델 버전: '+str(models['stage2'].get('selected_candidate','unknown')))

@@ -1,0 +1,60 @@
+observation_id,doi,panel_id,target_value,C0_mg_L,dose_g_L,pollutant,feedstock_label_normalized,manufacturing_route,process_step_count,pyrolysis_temperature_C,pyrolysis_hold_min,heating_rate_C_min,pyrolysis_atmosphere,activation_or_modification,secondary_temperature_C,secondary_hold_min,fold
+V33_WANG19_MSB300_Cd(II)_40,10.3390/ijerph16050845,11,4.72,40.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,300.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB400_Cd(II)_40,10.3390/ijerph16050845,11,4.765,40.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,400.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB500_Cd(II)_40,10.3390/ijerph16050845,11,4.855,40.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,500.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB600_Cd(II)_40,10.3390/ijerph16050845,11,4.5,40.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,600.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB300_Cd(II)_80,10.3390/ijerph16050845,12,8.0,80.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,300.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB400_Cd(II)_80,10.3390/ijerph16050845,12,9.73,80.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,400.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB500_Cd(II)_80,10.3390/ijerph16050845,12,9.79,80.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,500.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB600_Cd(II)_80,10.3390/ijerph16050845,12,8.1,80.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,600.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB300_Cd(II)_170,10.3390/ijerph16050845,13,15.3,170.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,300.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB400_Cd(II)_170,10.3390/ijerph16050845,13,17.6375,170.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,400.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB500_Cd(II)_170,10.3390/ijerph16050845,13,19.55,170.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,500.0,120,,oxygen_limited,none,,,3
+V33_WANG19_MSB600_Cd(II)_170,10.3390/ijerph16050845,13,10.8375,170.0,8.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,600.0,120,,oxygen_limited,none,,,3
+V33_HU22_BC300_Cd(II)_50.0,10.3390/su14159022,14,6.03,50.0,5.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,300.0,600,8.5,LIMITED_OXYGEN_UNSPECIFIED,none,,,5
+V33_HU22_BC400_Cd(II)_50.0,10.3390/su14159022,14,9.11,50.0,5.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,400.0,600,8.5,LIMITED_OXYGEN_UNSPECIFIED,none,,,5
+V33_HU22_BC500_Cd(II)_50.0,10.3390/su14159022,14,7.56,50.0,5.0,Cd(II),maize straw,SINGLE_STAGE_PYROLYSIS,1,500.0,600,8.5,LIMITED_OXYGEN_UNSPECIFIED,none,,,5
+V38_V38_CGB_300_FRESH_CdII,10.1016/j.chemosphere.2022.134051,3,5.24,50.0,1.0,Cd(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,1,300.0,120,10,inert_N2,none,,,4
+V38_V38_CGB_500_FRESH_CdII,10.1016/j.chemosphere.2022.134051,3,18.92,50.0,1.0,Cd(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,1,500.0,120,10,inert_N2,none,,,4
+V38_V38_CGB_700_FRESH_CdII,10.1016/j.chemosphere.2022.134051,3,26.9,50.0,1.0,Cd(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,1,700.0,120,10,inert_N2,none,,,4
+V38_V38_CGB_300_AGED_CdII,10.1016/j.chemosphere.2022.134051,2,5.73,50.0,1.0,Cd(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,2,300.0,120,10,inert_N2,H2O2_AGED,80,360,4
+V38_V38_CGB_500_AGED_CdII,10.1016/j.chemosphere.2022.134051,2,22.56,50.0,1.0,Cd(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,2,500.0,120,10,inert_N2,H2O2_AGED,80,360,4
+V38_V38_CGB_700_AGED_CdII,10.1016/j.chemosphere.2022.134051,2,7.7,50.0,1.0,Cd(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,2,700.0,120,10,inert_N2,H2O2_AGED,80,360,4
+V38_V38_CGB_300_FRESH_ZnII,10.1016/j.chemosphere.2022.134051,5,4.53,50.0,1.0,Zn(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,1,300.0,120,10,inert_N2,none,,,4
+V38_V38_CGB_500_FRESH_ZnII,10.1016/j.chemosphere.2022.134051,5,6.13,50.0,1.0,Zn(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,1,500.0,120,10,inert_N2,none,,,4
+V38_V38_CGB_700_FRESH_ZnII,10.1016/j.chemosphere.2022.134051,5,8.99,50.0,1.0,Zn(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,1,700.0,120,10,inert_N2,none,,,4
+V38_V38_CGB_300_AGED_ZnII,10.1016/j.chemosphere.2022.134051,4,4.03,50.0,1.0,Zn(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,2,300.0,120,10,inert_N2,H2O2_AGED,80,360,4
+V38_V38_CGB_500_AGED_ZnII,10.1016/j.chemosphere.2022.134051,4,22.67,50.0,1.0,Zn(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,2,500.0,120,10,inert_N2,H2O2_AGED,80,360,4
+V38_V38_CGB_700_AGED_ZnII,10.1016/j.chemosphere.2022.134051,4,4.78,50.0,1.0,Zn(II),spent coffee grounds,SINGLE_STAGE_PYROLYSIS,2,700.0,120,10,inert_N2,H2O2_AGED,80,360,4
+V40_Kelp_BC300_Cu_24h,10.3390/app11199223,8,71.91,125.0,1.0,Cu(II),Macrocystis pyrifera,SINGLE_STAGE_PYROLYSIS,1,300.0,60,3,inert_N2,none,,,4
+V40_Kelp_BC450_Cu_24h,10.3390/app11199223,8,119.9,125.0,1.0,Cu(II),Macrocystis pyrifera,SINGLE_STAGE_PYROLYSIS,1,450.0,60,3,inert_N2,none,,,4
+V40_Kelp_BC600_Cu_24h,10.3390/app11199223,8,101.9,125.0,1.0,Cu(II),Macrocystis pyrifera,SINGLE_STAGE_PYROLYSIS,1,600.0,60,3,inert_N2,none,,,4
+V45_Xu2018_BC300_CuII,10.1016/j.psep.2017.10.014,6,138.5,1000.0,6.666666666666667,Cu(II),sewage sludge (oven dried),SINGLE_STAGE_PYROLYSIS,1,300.0,,,inert_N2,none,,,2
+V45_Xu2018_BC500_CuII,10.1016/j.psep.2017.10.014,6,143.4,1000.0,6.666666666666667,Cu(II),sewage sludge (oven dried),SINGLE_STAGE_PYROLYSIS,1,500.0,,,inert_N2,none,,,2
+V45_Xu2018_BC600_CuII,10.1016/j.psep.2017.10.014,6,146.7,1000.0,6.666666666666667,Cu(II),sewage sludge (oven dried),SINGLE_STAGE_PYROLYSIS,1,600.0,,,inert_N2,none,,,2
+V45_Xu2018_BC700_CuII,10.1016/j.psep.2017.10.014,6,143.9,1000.0,6.666666666666667,Cu(II),sewage sludge (oven dried),SINGLE_STAGE_PYROLYSIS,1,700.0,,,inert_N2,none,,,2
+V45_Xu2018_BC900_CuII,10.1016/j.psep.2017.10.014,6,143.6,1000.0,6.666666666666667,Cu(II),sewage sludge (oven dried),SINGLE_STAGE_PYROLYSIS,1,900.0,,,inert_N2,none,,,2
+V45_Chen2014_BC500_CdII,10.1016/j.biortech.2014.04.048,0,5.6,47.44,2.0,Cd(II),municipal sewage sludge (biophysically dried),SINGLE_STAGE_PYROLYSIS,1,500.0,,,inert_N2,none,,,3
+V45_Chen2014_BC600_CdII,10.1016/j.biortech.2014.04.048,0,3.3,47.44,2.0,Cd(II),municipal sewage sludge (biophysically dried),SINGLE_STAGE_PYROLYSIS,1,600.0,,,inert_N2,none,,,3
+V45_Chen2014_BC700_CdII,10.1016/j.biortech.2014.04.048,0,6.6,47.44,2.0,Cd(II),municipal sewage sludge (biophysically dried),SINGLE_STAGE_PYROLYSIS,1,700.0,,,inert_N2,none,,,3
+V45_Chen2014_BC800_CdII,10.1016/j.biortech.2014.04.048,0,23.0,47.44,2.0,Cd(II),municipal sewage sludge (biophysically dried),SINGLE_STAGE_PYROLYSIS,1,800.0,,,inert_N2,none,,,3
+V45_Chen2014_BC900_CdII,10.1016/j.biortech.2014.04.048,0,20.9,47.44,2.0,Cd(II),municipal sewage sludge (biophysically dried),SINGLE_STAGE_PYROLYSIS,1,900.0,,,inert_N2,none,,,3
+V52_APPLE_CU_300_QEEXP,10.3390/en13133498,9,4.96,64.0,5.0,Cu(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,300.0,,,,none,,,4
+V52_APPLE_CU_400_QEEXP,10.3390/en13133498,9,7.56,64.0,5.0,Cu(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,400.0,,,,none,,,4
+V52_APPLE_CU_500_QEEXP,10.3390/en13133498,9,9.7,64.0,5.0,Cu(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,500.0,,,,none,,,4
+V52_APPLE_CU_600_QEEXP,10.3390/en13133498,9,8.87,64.0,5.0,Cu(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,600.0,,,,none,,,4
+V52_APPLE_ZN_300_QEEXP,10.3390/en13133498,10,4.3,65.0,5.0,Zn(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,300.0,,,,none,,,4
+V52_APPLE_ZN_400_QEEXP,10.3390/en13133498,10,5.69,65.0,5.0,Zn(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,400.0,,,,none,,,4
+V52_APPLE_ZN_500_QEEXP,10.3390/en13133498,10,9.11,65.0,5.0,Zn(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,500.0,,,,none,,,4
+V52_APPLE_ZN_600_QEEXP,10.3390/en13133498,10,7.99,65.0,5.0,Zn(II),apple tree branches,SINGLE_STAGE_PYROLYSIS,1,600.0,,,,none,,,4
+V55_DING_BC250_PB_C0_80,10.1016/j.chemosphere.2013.12.042,1,15.9,80.0,2.0,Pb(II),sugarcane bagasse,SINGLE_STAGE_PYROLYSIS,1,250.0,,10,N2,,,,5
+V55_DING_BC400_PB_C0_80,10.1016/j.chemosphere.2013.12.042,1,10.7,80.0,2.0,Pb(II),sugarcane bagasse,SINGLE_STAGE_PYROLYSIS,1,400.0,,10,N2,,,,5
+V55_DING_BC500_PB_C0_80,10.1016/j.chemosphere.2013.12.042,1,11.4,80.0,2.0,Pb(II),sugarcane bagasse,SINGLE_STAGE_PYROLYSIS,1,500.0,,10,N2,,,,5
+V55_DING_BC600_PB_C0_80,10.1016/j.chemosphere.2013.12.042,1,8.3,80.0,2.0,Pb(II),sugarcane bagasse,SINGLE_STAGE_PYROLYSIS,1,600.0,,10,N2,,,,5
+V57_Cao2019_WS-BC300_Pb_029,10.1016/j.scitotenv.2019.07.102,7,51.07,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,300.0,,,oxygen-limited / carbonization,,,,5
+V57_Cao2019_WS-BC400_Pb_030,10.1016/j.scitotenv.2019.07.102,7,94.96,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,400.0,,,oxygen-limited / carbonization,,,,5
+V57_Cao2019_WS-BC500_Pb_031,10.1016/j.scitotenv.2019.07.102,7,109.45,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,500.0,,,oxygen-limited / carbonization,,,,5
+V57_Cao2019_WS-BC600_Pb_032,10.1016/j.scitotenv.2019.07.102,7,124.58,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,600.0,,,oxygen-limited / carbonization,,,,5
+V57_Cao2019_WS-BC700_Pb_033,10.1016/j.scitotenv.2019.07.102,7,141.82,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,700.0,,,oxygen-limited / carbonization,,,,5
+V57_Cao2019_WS-BC800_Pb_034,10.1016/j.scitotenv.2019.07.102,7,157.95,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,800.0,,,oxygen-limited / carbonization,,,,5
+V57_Cao2019_WS-BC900_Pb_035,10.1016/j.scitotenv.2019.07.102,7,152.83,100.0,0.6,Pb(II),wheat straw,SINGLE_STAGE_PYROLYSIS,1,900.0,,,oxygen-limited / carbonization,,,,5
