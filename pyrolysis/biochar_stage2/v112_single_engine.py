@@ -168,7 +168,7 @@ def load_chain(root: Path):
     return out
 
 
-def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmosphere,activated,composition,activation_method=None,activation_details=None):
+def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmosphere,activated,composition,activation_method=None,activation_details=None,allow_composition_ood=False):
     if not str(feedstock).strip():raise ValueError('원료명이 필요합니다')
     temp,hold,heat=[_finite(x) for x in (temperature,hold,heat)]
     if min(temp,hold,heat)<=0:raise ValueError('제조 온도·유지시간·승온속도는 양수여야 합니다')
@@ -187,9 +187,9 @@ def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmospher
         checked=assess_inputs(models['composition_bet'],process,composition,
                     elemental_basis='daf',proximate_basis='dry',
                     process_type='OTHER' if activated else 'SINGLE_STAGE_PYROLYSIS',activated=activated)
-        if checked['predictable'] or checked['can_explore_composition_ood']:
+        if checked['predictable'] or (allow_composition_ood and checked['can_explore_composition_ood']):
             bet=float(estimate_bet(models['composition_bet'],checked,
-                      allow_composition_ood=bool(checked['can_explore_composition_ood'])))
+                      allow_composition_ood=bool(allow_composition_ood and checked['can_explore_composition_ood'])))
             bet_path='composition_BET_v20'
             comp_status='APPLIED'
             if checked['can_explore_composition_ood']:
@@ -197,6 +197,8 @@ def predict_properties(models, root, *,feedstock,temperature,hold,heat,atmospher
         else:
             comp_status='FALLBACK'
             warnings_list+=list(checked.get('errors',[]))+list(checked.get('outside_training_range',[]))
+            if checked.get('can_explore_composition_ood'):
+                warnings_list.append('조성 범위 밖 탐색적 BET는 명시적으로 허용한 경우에만 사용합니다. 기본 HGB로 계산했습니다.')
     if not np.isfinite(bet) or not np.isfinite(tpv) or min(bet,tpv)<0:
         raise ValueError('Stage1 property prediction invalid')
     return {'BET_m2_g':bet,'TPV_cm3_g':tpv,'bet_path':bet_path,'tpv_path':MODEL_VERSION,
@@ -237,12 +239,13 @@ def stage2_row(bundle,adsorption,temperature,hold,properties):
     return row,{'known_pollutant':known,'property_effect_enabled':use_props,'mass_balance_upper':cap}
 
 
-def predict_one(models,root,*,feedstock,process,composition,adsorption,activated=False):
+def predict_one(models,root,*,feedstock,process,composition,adsorption,activated=False,allow_composition_ood=False):
     prop=predict_properties(models,root,feedstock=feedstock,
         temperature=process['pyrolysis_temperature_C'],hold=process['pyrolysis_hold_min'],
         heat=process['heating_rate_C_min'],atmosphere=process['pyrolysis_atmosphere'],
         activated=activated,composition=composition,
-        activation_method=process.get('activation_method'),activation_details=process)
+        activation_method=process.get('activation_method'),activation_details=process,
+        allow_composition_ood=allow_composition_ood)
     bundle=models['stage2']
     row,meta=stage2_row(bundle,adsorption,process['pyrolysis_temperature_C'],process['pyrolysis_hold_min'],prop)
     raw=float(bundle['pipeline'].predict(row)[0])
