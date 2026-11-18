@@ -292,6 +292,22 @@ def render_v112_unified():
     t.metric('Reported Capacity (예측)',f"{r['reported_capacity_mg_g']:,.2f} mg/g")
     st.caption(f"물질수지 상한 {r['mass_balance_upper_mg_g']:,.2f} mg/g · BET 경로 {r['bet_path']} · TPV 경로 {r['tpv_path']}")
     st.caption('Stage 1 실제 원료 피처: '+str(r.get('stage1_feedstock_used',payload['feedstock'])))
+    st.caption('정밀 흡착량 확인: '+f"{r['reported_capacity_mg_g']:.6f} mg/g"+
+               ' · 소수점 둘째 자리 표시값이 같아도 실제 예측값은 다를 수 있습니다.')
+    st.caption('Stage 2 물성 전달: '+('BET·TPV 사용' if r['stage1_property_feature_used']
+               else 'BET·TPV 미사용')+' · 원료명/열분해 분위기는 Stage 2에 직접 입력되지 않습니다.')
+    with st.expander('입력변수 활용 현황 · 모델별 차이',expanded=False):
+        st.dataframe(pd.DataFrame([
+            {'모델':'Stage 1 기본 HGB','직접 사용':'원료명·제조온도·유지시간·승온속도·분위기·활성화 조건',
+             '사용하지 않음':'원소·공업분석 직접 입력'},
+            {'모델':'Stage 1 조성 RF (선택)','직접 사용':'원소·공업분석·일부 제조조건 (BET만)',
+             '사용하지 않음':'TPV, 활성화 제조경로'},
+            {'모델':'Stage 2 예측','직접 사용':'오염물질·C₀·pH·투입량·흡착온도·접촉시간·열분해 온도·시간·일부 BET·TPV',
+             '사용하지 않음':'원료명·분위기 직접 입력'},
+            {'모델':'Manufacturing RF','직접 사용':'원료명·오염물질·열분해 온도·시간·승온속도·분위기',
+             '사용하지 않음':'원료 조성·pH·C₀·투입량·접촉시간'},
+        ]),hide_index=True,use_container_width=True)
+        st.caption('실제 Feature 목록과 해당 모델의 지원 범위에 대한 설명입니다. 모델의 변수 중요도 순위가 아닙니다.')
     if r.get('stage1_input_warnings'):
         st.warning('예측 당시 입력 학습범위 주의: '+'; '.join(r['stage1_input_warnings']))
     if not r['known_pollutant']:
@@ -359,6 +375,71 @@ def render_v112_unified():
                 st.caption('RF 1위는 모델이 비교한 후보 중 상대 순위이며 실험적 최적조건의 보증이 아닙니다. 학습 범위 안 표시도 원료·조건 조합의 검증을 의미하지 않습니다.')
     except Exception as exc:
         st.warning(f'순위 모델을 실행하지 못했습니다: {type(exc).__name__}: {exc}. 기존 흡착량 예측은 유지됩니다.')
+    st.markdown('### A/B 시나리오 비교 · 원료와 제조 분위기')
+    with st.expander('두 조건의 BET·TPV·흡착량 나란히 비교',expanded=False):
+        st.caption('A는 위에서 계산한 결과입니다. B는 같은 흡착조건에서 원료·분위기·제조온도를 변경합니다. '
+                   '모델 응답 비교이며 실측 성능 검증이나 최적 제조조건을 의미하지 않습니다.')
+        ca,cb,cc=st.columns([1.2,1.0,1.0])
+        with ca:
+            b_feedstock=st.text_input('B 원료명',value='wheat straw',key='v141_b_feedstock')
+        with cb:
+            atmospheres=['N2','inert_N2','oxygen_limited','Ar','air','NR']
+            b_atmosphere=st.selectbox('B 열분해 분위기',atmospheres,
+                index=atmospheres.index(payload['process']['pyrolysis_atmosphere'])
+                if payload['process']['pyrolysis_atmosphere'] in atmospheres else 0,
+                key='v141_b_atmosphere')
+        with cc:
+            b_temperature=st.slider('B 제조온도 (℃)',min_value=200,max_value=1200,
+                value=int(payload['temperature']),step=25,key='v141_b_temperature')
+        same_composition=st.checkbox('A의 조성 입력을 B에도 동일하게 적용 (통제 비교 전용)',
+                                    value=False,key='v141_b_same_composition')
+        if any(str(v).strip() for v in payload['composition'].values()):
+            st.warning('A에 원료 조성값이 입력되어 있습니다. B에서 조성 미사용을 선택하면 서로 다른 BET 경로를 비교할 수 있습니다. '
+                       '동일한 조성을 복사하면 서로 다른 원료의 실제 조성 차이를 반영하는 비교가 아닙니다.')
+        b_snapshot={'A':current_signature,'B_feedstock':b_feedstock,
+                    'B_atmosphere':b_atmosphere,'B_temperature':b_temperature,
+                    'same_composition':same_composition}
+        b_signature=input_signature(b_snapshot)
+        if st.button('B 조건 계산 후 A와 비교',key='v141_run_ab',use_container_width=True):
+            try:
+                if not b_feedstock.strip():
+                    raise ValueError('B 원료명을 입력하세요.')
+                b_process={**payload['process'],'pyrolysis_atmosphere':b_atmosphere,
+                           'pyrolysis_temperature_C':b_temperature}
+                b_composition=payload['composition'] if same_composition else {}
+                b_result=predict_one(models,ROOT,feedstock=b_feedstock,
+                    process=b_process,composition=b_composition,
+                    adsorption=payload['adsorption'],
+                    activated=b_process['activation_method']!='none',
+                    allow_composition_ood=payload['allow_composition_ood'])
+                st.session_state['v141_comparison']={'signature':b_signature,
+                    'result':b_result,'composition_used':bool(same_composition)}
+            except Exception as exc:
+                st.session_state.pop('v141_comparison',None)
+                st.error(f'B 조건 예측 실패: {type(exc).__name__}: {exc}')
+        compared=st.session_state.get('v141_comparison')
+        if compared and compared.get('signature')==b_signature:
+            br=compared['result']
+            delta=comparison_delta(r,br)
+            st.dataframe(pd.DataFrame([
+                {'지표':'BET (m²/g)','A':r['BET_m2_g'],'B':br['BET_m2_g'],
+                 'B − A':delta['BET_m2_g']},
+                {'지표':'TPV (cm³/g)','A':r['TPV_cm3_g'],'B':br['TPV_cm3_g'],
+                 'B − A':delta['TPV_cm3_g']},
+                {'지표':'Reported capacity (mg/g)','A':r['reported_capacity_mg_g'],
+                 'B':br['reported_capacity_mg_g'],
+                 'B − A':delta['reported_capacity_mg_g']},
+            ]),hide_index=True,use_container_width=True)
+            st.caption('A BET 경로: '+r['bet_path']+' · B BET 경로: '+br['bet_path']+
+                       ' · 각 수치는 예측값이며 인과관계나 정확도 보증이 아닙니다.')
+            st.caption('정밀 흡착량 차이 (B − A): '+
+                       f"{delta['reported_capacity_mg_g']:+.6f} mg/g")
+            if br.get('stage1_input_warnings'):
+                st.warning('B 조건 학습 범위 주의: '+'; '.join(br['stage1_input_warnings']))
+            if br.get('warnings'):
+                st.warning('B 조성 경로 주의: '+'; '.join(map(str,br['warnings'])))
+        elif compared:
+            st.info('B 입력값이 변경되었습니다. 현재 B 조건으로 다시 계산하면 비교표가 갱신됩니다.')
     st.markdown('### 포스터용 결과 출력')
     st.caption('PNG 300 dpi / SVG 벡터 · BET, TPV, Reported Capacity 3패널. '
                '모델 불확실도나 실측값을 임의로 표시하지 않습니다.')
@@ -372,18 +453,19 @@ def render_v112_unified():
         composition=payload['composition'],model_sha256=model_sha,
         properties_connected=bool(r['stage1_property_feature_used']),
         stage1_warnings=export_warnings,stage1_bet_path=r['bet_path'],stage1_tpv_path=r['tpv_path'])
+    export_stem=safe_export_stem(payload['feedstock'],payload['pollutant'],payload['temperature'])
     ex1,ex2,ex3=st.columns(3)
     with ex1:
         st.download_button('포스터 PNG (300 dpi)', _poster_image(df,'png'),
-                           file_name='biochar_poster_v139_3panel.png',mime='image/png',
+                           file_name=export_stem+'_3panel.png',mime='image/png',
                            use_container_width=True)
     with ex2:
         st.download_button('포스터 SVG (벡터)', _poster_image(df,'svg'),
-                           file_name='biochar_poster_v139_3panel.svg',mime='image/svg+xml',
+                           file_name=export_stem+'_3panel.svg',mime='image/svg+xml',
                            use_container_width=True)
     with ex3:
         st.download_button('조건·예측값 CSV',csv_bytes,
-                           file_name='biochar_poster_v139_inputs_predictions.csv',
+                           file_name=export_stem+'_inputs_predictions.csv',
                            mime='text/csv',use_container_width=True)
     with st.expander('데이터 범위·연구 한계'):
         st.write('Stage 1 기본: Poisson HGB (10변수), BET/TPV 별도 학습. Stage 2: KNN(k=10) + 가중 Extra Trees 50:50, 4,795행·26종.')
