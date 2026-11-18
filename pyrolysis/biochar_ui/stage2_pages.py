@@ -953,7 +953,4 @@ def render_stage2_app():
                               key="v112_navigation")
     st.sidebar.divider()
     st.sidebar.caption("Stage 1: BET·TPV / Stage 2: 4,795행 · 26종 오염물질")
-    with st.sidebar.expander("데이터·모델의 한계"):
-        st.markdown("문헌 Reported Capacity 예측입니다. 모든 데이터가 엄격한 평형 qₑ는 아닙니다. "
-                    "Stage 1 물성 예측오차가 최종 흡착량에 전달될 수 있습니다.")
     PAGES[choice]()
