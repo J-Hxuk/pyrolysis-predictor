@@ -118,3 +118,32 @@ def test_unified_ui_has_stale_guard_and_no_form_submit():
     assert "st.form_submit_button(" not in source
     assert "allow_composition_ood=allow_comp_ood" in source
     assert "v141_comparison" in source
+
+
+def test_v143_ab_comparison_renders_three_separate_original_unit_charts(monkeypatch):
+    from contextlib import nullcontext
+    from pyrolysis.biochar_ui import v112_unified_page as ui
+
+    charts = []
+    captions = []
+    monkeypatch.setattr(ui.st, "columns", lambda n: [nullcontext() for _ in range(n)])
+    monkeypatch.setattr(ui.st, "markdown", lambda *_a, **_kw: None)
+    monkeypatch.setattr(ui.st, "caption", lambda text: captions.append(text))
+    monkeypatch.setattr(ui.st, "altair_chart", lambda chart, **_kw: charts.append(chart))
+    a = {"BET_m2_g": 40.0, "TPV_cm3_g": 0.12, "reported_capacity_mg_g": 52.500001}
+    b = {"BET_m2_g": 80.0, "TPV_cm3_g": 0.16, "reported_capacity_mg_g": 52.500003}
+    ui._render_ab_comparison_charts(a, b)
+    assert len(charts) == 3
+    expected = [(40.0, 80.0), (0.12, 0.16), (52.500001, 52.500003)]
+    for chart, pair in zip(charts, expected):
+        assert tuple(chart.data["예측값"]) == pair
+    assert any("+0.000002" in note for note in captions)
+
+
+def test_v143_removed_feature_status_expander_and_replaced_ab_table_with_chart():
+    source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
+    assert "입력변수 활용 현황 · 모델별 차이" not in source
+    assert "st.dataframe(ab_table" not in source
+    assert "_render_ab_comparison_charts(r, br)" in source
+    assert "scale=alt.Scale(domain=[0, axis_max])" in source
+    assert "A/B 비교 CSV" in source

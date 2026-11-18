@@ -136,6 +136,51 @@ def _render_temperature_curve(df: pd.DataFrame) -> None:
     # No .interactive() / bind='scales': wheel scrolling never zooms the chart.
     st.altair_chart((line + points).properties(height=320), use_container_width=True)
 
+def _render_ab_comparison_charts(case_a, case_b):
+    """Present original A/B model outputs in three unit-specific bar charts.
+
+    Deliberately do not normalize or mix BET, TPV and capacity scales.
+    Preserve exact values in the CSV export; graphs are display-only.
+    """
+    import altair as alt
+
+    specs = [
+        ('BET', 'BET_m2_g', 'm²/g', 2),
+        ('TPV', 'TPV_cm3_g', 'cm³/g', 4),
+        ('Reported Capacity', 'reported_capacity_mg_g', 'mg/g', 3),
+    ]
+    for col, (title, key, unit, digits) in zip(st.columns(3), specs):
+        a, b = float(case_a[key]), float(case_b[key])
+        values = pd.DataFrame({
+            '조건': ['A', 'B'],
+            '예측값': [a, b],
+            '표시값': [f'{a:,.{digits}f}', f'{b:,.{digits}f}'],
+        })
+        max_value = max(a, b, 0.0)
+        axis_max = 1.0 if max_value == 0 else max_value * 1.32
+        base = alt.Chart(values).encode(
+            x=alt.X('예측값:Q', title=unit,
+                    scale=alt.Scale(domain=[0, axis_max])),
+            y=alt.Y('조건:N', sort=['A', 'B'], title=None),
+            tooltip=[alt.Tooltip('조건:N'),
+                     alt.Tooltip('예측값:Q', title=title, format='.6f')],
+        )
+        bars = base.mark_bar(cornerRadiusEnd=4, size=28).encode(
+            color=alt.Color('조건:N', legend=None,
+                            scale=alt.Scale(domain=['A', 'B'],
+                                            range=['#315a72', '#d58b54'])),
+        )
+        numbers = base.mark_text(align='left', baseline='middle',
+                                 dx=5, color='#263845', fontSize=12).encode(
+            text=alt.Text('표시값:N'),
+        )
+        with col:
+            st.markdown(f'**{title}**')
+            st.altair_chart((bars + numbers).properties(height=145),
+                            use_container_width=True)
+            st.caption(f'B − A: {b-a:+.{max(digits+3, 6)}f} {unit}')
+
+
 def render_v112_unified():
     """Keep existing v112 import/navigation contract while improving the one page."""
     st.markdown('''<style>
@@ -325,18 +370,6 @@ def render_v112_unified():
                ' · 소수점 둘째 자리 표시값이 같아도 실제 예측값은 다를 수 있습니다.')
     st.caption('Stage 2 물성 전달: '+('BET·TPV 사용' if r['stage1_property_feature_used']
                else 'BET·TPV 미사용')+' · 원료명/열분해 분위기는 Stage 2에 직접 입력되지 않습니다.')
-    with st.expander('입력변수 활용 현황 · 모델별 차이',expanded=False):
-        st.dataframe(pd.DataFrame([
-            {'모델':'Stage 1 기본 HGB','직접 사용':'원료명·제조온도·유지시간·승온속도·분위기·활성화 조건',
-             '사용하지 않음':'원소·공업분석 직접 입력'},
-            {'모델':'Stage 1 조성 RF (선택)','직접 사용':'원소·공업분석·일부 제조조건 (BET만)',
-             '사용하지 않음':'TPV, 활성화 제조경로'},
-            {'모델':'Stage 2 예측','직접 사용':'오염물질·C₀·pH·투입량·흡착온도·접촉시간·열분해 온도·시간·일부 BET·TPV',
-             '사용하지 않음':'원료명·분위기 직접 입력'},
-            {'모델':'Manufacturing RF','직접 사용':'원료명·오염물질·열분해 온도·시간·승온속도·분위기',
-             '사용하지 않음':'원료 조성·pH·C₀·투입량·접촉시간'},
-        ]),hide_index=True,use_container_width=True)
-        st.caption('실제 Feature 목록과 해당 모델의 지원 범위에 대한 설명입니다. 모델의 변수 중요도 순위가 아닙니다.')
     if r.get('stage1_input_warnings'):
         st.warning('예측 당시 입력 학습범위 주의: '+'; '.join(r['stage1_input_warnings']))
     if not r['known_pollutant']:
@@ -462,7 +495,8 @@ def render_v112_unified():
                      'B':br['reported_capacity_mg_g'],
                      'B − A':delta['reported_capacity_mg_g']},
                 ])
-                st.dataframe(ab_table,hide_index=True,use_container_width=True)
+                _render_ab_comparison_charts(r, br)
+                st.caption('각 그래프는 해당 지표의 원래 단위를 유지합니다. 막대 길이는 서로 다른 지표 사이에서 비교하지 마세요.')
                 st.download_button('A/B 비교 CSV',ab_table.to_csv(index=False).encode('utf-8-sig'),
                                    file_name=safe_export_stem(payload['feedstock'],payload['pollutant'],payload['temperature'])+'_AB.csv',
                                    mime='text/csv',key='v141_export_ab',use_container_width=True)
