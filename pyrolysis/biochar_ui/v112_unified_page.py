@@ -150,7 +150,8 @@ def render_v112_unified():
         with c:heat=st.slider('승온속도 (℃/min)',min_value=1,max_value=50,value=10,step=1)
         d,e=st.columns([1.0,1.0])
         with d:
-            atm=st.selectbox('열분해 분위기',['N2','inert_N2','oxygen_limited','Ar','air','NR'])
+            atm=st.selectbox('열분해 분위기',['N2','inert_N2','oxygen_limited','Ar','air','NR'],
+                format_func=lambda v: 'air (Stage 1 미학습 · 탐색용)' if v=='air' else v)
         with e:
             activation=st.selectbox('후처리/활성화',[
                 '없음','화학적 활성화/함침','물리적 활성화','수증기 활성화'],index=0)
@@ -175,27 +176,38 @@ def render_v112_unified():
              'activation_time_min':activation_time if activation_method!='none' else '',
              'activation_agent_feedstock_mass_ratio':activation_ratio if activation_method!='none' else ''}
         st.caption('기본 Stage 1: Poisson HGB · 10개 제조조건 변수. Stage 2: KNN + 가중 Extra Trees (50:50).')
-        stage1_preview=assess_stage1_input(models,feedstock=feedstock,process={
-            'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
-            'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
-            'activation_method':activation_method,**activation_details})
-        if stage1_preview['used_feedstock'] != str(feedstock).strip():
-            st.caption('실제 Stage 1 원료 피처: '+stage1_preview['used_feedstock']+
-                       ' (동의어/표기 정규화, 원료 조성값 자동대입 아님)')
-        if stage1_preview['warnings']:
-            st.warning('Stage 1 입력 학습범위 주의: '+'; '.join(stage1_preview['warnings']))
+        # The name field is outside the form and can be blank during editing.
+        # Do not call resolve_stage1_feedstock until a non-empty name exists.
+        stage1_preview=None
+        if str(feedstock).strip():
+            stage1_preview=assess_stage1_input(models,feedstock=feedstock,process={
+                'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
+                'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
+                'activation_method':activation_method,**activation_details})
+            if stage1_preview['used_feedstock'] != str(feedstock).strip():
+                st.caption('실제 Stage 1 원료 피처: '+stage1_preview['used_feedstock']+
+                           ' (동의어/표기 정규화, 원료 조성값 자동대입 아님)')
+            if stage1_preview['warnings']:
+                st.warning('Stage 1 입력 학습범위 주의: '+'; '.join(stage1_preview['warnings']))
 
-        with st.expander('원료 조성 · 공업분석 및 원소분석 (선택)',expanded=False):
-            st.caption('열분해 전 원료의 측정값을 입력합니다. 공업분석 dry basis, 원소분석 daf basis. 미측정 항목은 공란으로 둡니다.')
-            composition={}
-            for keys,title in [(['raw_VM_wt_pct','raw_ash_wt_pct','raw_FC_wt_pct'],'공업분석 (wt%)'),
-                                (['raw_C_wt_pct','raw_H_wt_pct','raw_N_wt_pct','raw_O_wt_pct'],'원소분석 (wt%)')]:
-                st.markdown('**'+title+'**')
-                cols=st.columns(len(keys))
-                for col,k in zip(cols,keys):
-                    label=k.removeprefix('raw_').replace('_wt_pct','').upper().replace('ASH','Ash')
-                    with col:composition[k]=st.text_input(label,placeholder='미측정',key=f'v113_{k}')
-            st.caption('조성 입력 시 별도 연구용 RF BET 경로가 우선 적용될 수 있습니다. 기본 HGB Fig. 4 검증과는 별개이며 TPV는 10변수 HGB입니다.')
+        # Raw composition is collected only for feedstocks absent from the
+        # Stage 1 training inventory; recognized names use the default HGB path.
+        composition={}
+        unknown_feedstock=(stage1_preview is not None and
+                           stage1_preview['feedstock_match_status'] not in ('exact','alias'))
+        if unknown_feedstock:
+            with st.expander('미등록 원료 · 공업분석 및 원소분석 (선택)',expanded=True):
+                st.caption('Stage 1 학습 원료에 없는 시료입니다. 열분해 전 원료의 공업분석(dry basis)·원소분석(daf basis) 실측값만 입력하세요. 모르는 값은 공란으로 둡니다.')
+                for keys,title in [(['raw_VM_wt_pct','raw_ash_wt_pct','raw_FC_wt_pct'],'공업분석 (wt%)'),
+                                    (['raw_C_wt_pct','raw_H_wt_pct','raw_N_wt_pct','raw_O_wt_pct'],'원소분석 (wt%)')]:
+                    st.markdown('**'+title+'**')
+                    cols=st.columns(len(keys))
+                    for col,k in zip(cols,keys):
+                        label=k.removeprefix('raw_').replace('_wt_pct','').upper().replace('ASH','Ash')
+                        with col:composition[k]=st.text_input(label,placeholder='미측정',key=f'v113_{k}')
+                st.caption('조성 입력 시 별도 연구용 RF BET 경로가 우선 적용될 수 있습니다. 기본 HGB 검증과는 별개이며 TPV는 10변수 HGB입니다.')
+        elif stage1_preview is not None:
+            st.caption('Stage 1 등록 원료: 공업·원소분석 입력 없이 기존 제조조건 기반 HGB 모델을 사용합니다.')
 
         st.markdown('### 03 · 흡착 조건')
         labels=models['stage2']['supported_labels']
@@ -222,7 +234,8 @@ def render_v112_unified():
         x,y=st.columns([2,1])
         with x: sweep=st.slider('비교 온도 범위 (℃)',min_value=200,max_value=1200,value=(300,700),step=25)
         with y: step=st.selectbox('비교 간격 (℃)',[50,100,25],index=0)
-        submitted=st.form_submit_button('흡착성능 예측 및 조건 비교',type='primary',use_container_width=True)
+        submitted=st.form_submit_button('흡착성능 예측 및 조건 비교',type='primary',use_container_width=True,
+                                        disabled=not bool(str(feedstock).strip()))
 
     if submitted:
         try:
