@@ -1,0 +1,2 @@
+# Keep the SHA256-pinned Stage 2 training snapshot byte-identical across OS checkouts.
+v114_patch/v112_training_4795.csv -text
