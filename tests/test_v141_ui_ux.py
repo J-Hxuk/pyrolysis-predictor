@@ -147,3 +147,14 @@ def test_v143_removed_feature_status_expander_and_replaced_ab_table_with_chart()
     assert "_render_ab_comparison_charts(r, br)" in source
     assert "scale=alt.Scale(domain=[0, axis_max])" in source
     assert "A/B 비교 CSV" in source
+
+
+def test_v144_activation_labels_and_tab_spacing_are_ui_only():
+    """Keep the trained activation code unchanged while simplifying the display name."""
+    source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
+    assert "'화학적 활성화':'chemical_impregnation'" in source
+    assert "화학적 활성화/함침" not in source
+    assert "'없음','화학적 활성화','물리적 활성화','수증기 활성화'" in source
+    assert source.count('v144-tab-bottom-space') == 3
+    assert 'div[data-baseweb=' in source and 'tab-panel' in source
+    assert "padding-bottom:4.5rem" in source
