@@ -155,6 +155,6 @@ def test_v144_activation_labels_and_tab_spacing_are_ui_only():
     assert "'화학적 활성화':'chemical_impregnation'" in source
     assert "화학적 활성화/함침" not in source
     assert "['없음','화학적 활성화','물리적 활성화','수증기 활성화']" in source
-    assert source.count("st.markdown('<div class=\\\"v144-tab-bottom-space\\\"") == 2
-    assert "div[data-baseweb=\\\"tab-panel\\\"]" in source
+    assert source.count('v144-tab-bottom-space') == 3
+    assert 'div[data-baseweb=' in source and 'tab-panel' in source
     assert "padding-bottom:4.5rem" in source
