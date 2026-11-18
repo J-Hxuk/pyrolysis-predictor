@@ -141,6 +141,9 @@ def render_v112_unified():
         return
     st.markdown('### 01 · 원료 선택')
     feedstock=_feedstock_input(ROOT)
+    if not str(feedstock).strip():
+        # Do not display a prior prediction after its feedstock has been erased.
+        st.session_state.pop('v140_last_prediction', None)
     with st.form('v113_prediction_form',clear_on_submit=False):
         st.markdown('### 02 · 열분해 공정')
         a,b,c=st.columns(3)
