@@ -178,7 +178,7 @@ def _render_ab_comparison_charts(case_a, case_b):
             st.markdown(f'**{title}**')
             st.altair_chart((bars + numbers).properties(height=145),
                             use_container_width=True)
-            st.caption(f'B − A: {b-a:+.{digits+2}f} {unit}')
+            st.caption(f'B − A: {b-a:+.{max(digits+3, 6)}f} {unit}')
 
 
 def render_v112_unified():
