@@ -347,7 +347,7 @@ def render_v112_unified():
         st.warning('조성 입력을 반영하지 못하고 제조조건 기반 BET로 계산했습니다: '+'; '.join(map(str,r['warnings'])))
     elif r['composition_status']=='APPLIED':
         st.caption('조성은 Stage 1 BET를 통해 간접 반영되었습니다. 입력 변화에 따른 출력 차이는 인과관계가 아닙니다.')
-    tab_sweep,tab_ab,tab_exports=st.tabs(['제조온도·RF 순위','A/B 조건 비교','내보내기·연구 한계'])
+    tab_sweep,tab_ab,tab_exports=st.tabs(['제조온도·RF 순위','A/B 조건 비교','내보내기'])
     with tab_sweep:
         st.markdown('### 제조온도 비교')
         _render_temperature_curve(df)
@@ -504,9 +504,3 @@ def render_v112_unified():
             st.download_button('조건·예측값 CSV',csv_bytes,
                                file_name=export_stem+'_inputs_predictions.csv',
                                mime='text/csv',use_container_width=True)
-        with st.expander('데이터 범위·연구 한계'):
-            st.write('Stage 1 기본: Poisson HGB (10변수), BET/TPV 별도 학습. Stage 2: KNN(k=10) + 가중 Extra Trees 50:50, 4,795행·26종.')
-            st.write('연계 개발평가 178행·36 DOI: R² 0.680, MAE 17.942 mg/g. 후보 선택에 개발 데이터를 재사용했으며 독립 외부 검증은 아닙니다. 조성 RF는 별도 연구 경로입니다. 제조조건 RF는 독립적인 상대 순위 기능으로 제공됩니다.')
-            st.write('원료명 추천은 Stage 1/핵심 Stage 2에 실제 기록된 명칭만 사용합니다. 원료명을 선택한다고 원소분석값이 자동 채워지지는 않습니다.')
-            st.write('문헌 Reported Capacity에는 strict qe가 아닌 관측이 포함될 수 있으며, Stage 1의 예측 오차가 Stage 2에 전파됩니다.')
-            st.write('모델 버전: '+str(models['stage2'].get('selected_candidate','unknown')))
