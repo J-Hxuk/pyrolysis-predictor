@@ -20,6 +20,9 @@ from pyrolysis.biochar_ui.poster_export_v133 import (
 
 ROOT=Path(__file__).resolve().parents[2]
 FEED_KEY='v113_feedstock'
+# Shared UI-only atmosphere options. 'air' has zero Stage 1 training rows.
+# Retain the inference layer's air warning for legacy/programmatic inputs.
+ATMOSPHERE_OPTIONS=('N2','inert_N2','oxygen_limited','Ar','NR')
 
 @st.cache_resource(show_spinner='통합 모델을 준비하고 있습니다...')
 def _models(root):
@@ -214,8 +217,7 @@ def render_v112_unified():
         with c:heat=st.slider('승온속도 (℃/min)',min_value=1,max_value=50,value=10,step=1)
         d,e=st.columns([1.0,1.0])
         with d:
-            atm=st.selectbox('열분해 분위기',['N2','inert_N2','oxygen_limited','Ar','air','NR'],
-                format_func=lambda v: 'air (Stage 1 미학습 · 탐색용)' if v=='air' else v)
+            atm=st.selectbox('열분해 분위기',ATMOSPHERE_OPTIONS)
         with e:
             activation=st.selectbox('후처리/활성화',[
                 '없음','화학적 활성화','물리적 활성화','수증기 활성화'],index=0)
@@ -450,7 +452,7 @@ def render_v112_unified():
             with ca:
                 b_feedstock=st.text_input('B 원료명',value='wheat straw',key='v141_b_feedstock')
             with cb:
-                atmospheres=['N2','inert_N2','oxygen_limited','Ar','air','NR']
+                atmospheres=ATMOSPHERE_OPTIONS
                 b_atmosphere=st.selectbox('B 열분해 분위기',atmospheres,
                     index=atmospheres.index(payload['process']['pyrolysis_atmosphere'])
                     if payload['process']['pyrolysis_atmosphere'] in atmospheres else 0,
