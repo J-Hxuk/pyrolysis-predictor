@@ -11,6 +11,7 @@ import streamlit as st
 from pyrolysis.biochar_stage2.input_support import match_feedstock,normalize_name
 from pyrolysis.biochar_stage2.v112_single_engine import load_chain,predict_one,assess_stage1_input
 from pyrolysis.biochar_stage2.manufacturing_rank_v140 import load_ranker,rank_sweep
+from pyrolysis.biochar_ui.v141_ui_state import input_signature, safe_export_stem, comparison_delta
 from pyrolysis.biochar_ui.poster_export_v133 import (
     read_stage2_temperature_bounds, stage1_temperature_bounds, attach_coverage,
     format_bounds, export_csv_with_inputs, render_poster_figure,
@@ -58,6 +59,7 @@ def _poster_image(df: pd.DataFrame, image_format: str) -> bytes:
 def _select_feedstock(name):
     st.session_state[FEED_KEY]=name
     st.session_state.pop('v140_last_prediction',None)
+    st.session_state.pop('v141_comparison',None)
 
 
 def _feedstock_input(root):
@@ -141,7 +143,8 @@ def render_v112_unified():
         return
     st.markdown('### 01 · 원료 선택')
     feedstock=_feedstock_input(ROOT)
-    with st.form('v113_prediction_form',clear_on_submit=False):
+    # Reactive widgets ensure stale results are hidden before a new prediction.
+    with st.container():
         st.markdown('### 02 · 열분해 공정')
         a,b,c=st.columns(3)
         with a:temp=st.slider('제조온도 (℃)',min_value=200,max_value=1200,value=500,step=25,
@@ -196,6 +199,8 @@ def render_v112_unified():
                     label=k.removeprefix('raw_').replace('_wt_pct','').upper().replace('ASH','Ash')
                     with col:composition[k]=st.text_input(label,placeholder='미측정',key=f'v113_{k}')
             st.caption('조성 입력 시 별도 연구용 RF BET 경로가 우선 적용될 수 있습니다. 기본 HGB Fig. 4 검증과는 별개이며 TPV는 10변수 HGB입니다.')
+            allow_comp_ood=st.checkbox('학습 범위 밖 조성의 탐색용 BET 계산 허용',value=False,
+                key='v141_allow_comp_ood',help='조성값만 범위를 벗어나고 공정조건은 학습범위 안인 경우에 한하여 탐색적 계산. 미허용 시 기본 HGB를 사용합니다.')
 
         st.markdown('### 03 · 흡착 조건')
         labels=models['stage2']['supported_labels']
@@ -222,28 +227,37 @@ def render_v112_unified():
         x,y=st.columns([2,1])
         with x: sweep=st.slider('비교 온도 범위 (℃)',min_value=200,max_value=1200,value=(300,700),step=25)
         with y: step=st.selectbox('비교 간격 (℃)',[50,100,25],index=0)
-        submitted=st.form_submit_button('흡착성능 예측 및 조건 비교',type='primary',use_container_width=True)
+        submitted=st.button('흡착성능 예측 및 조건 비교',type='primary',use_container_width=True)
+
+    current_process={'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
+         'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
+         'activation_method':activation_method,**activation_details}
+    current_ads={'pollutant':pollutant,'C0_mg_L':c0,'dose_g_L':dose,
+         'initial_pH':_num_optional(None if missing_ph else ph),
+         'adsorption_T_C':_num_optional(None if missing_ads_temp else ads_temp),
+         'contact_time_min':_num_optional(None if missing_contact else contact)}
+    current_signature=input_signature({
+         'feedstock':feedstock,'process':current_process,'adsorption':current_ads,
+         'composition':composition,'sweep':list(sweep),'step':step,
+         'allow_composition_ood':allow_comp_ood})
 
     if submitted:
         try:
             if not str(feedstock).strip():raise ValueError('원료명을 입력해 주세요.')
-            process={'pyrolysis_temperature_C':temp,'pyrolysis_hold_min':hold,
-                     'heating_rate_C_min':heat,'pyrolysis_atmosphere':atm,
-                     'activation_method':activation_method,**activation_details}
-            ads={'pollutant':pollutant,'C0_mg_L':c0,'dose_g_L':dose,
-                 'initial_pH':_num_optional(None if missing_ph else ph),
-                 'adsorption_T_C':_num_optional(None if missing_ads_temp else ads_temp),
-                 'contact_time_min':_num_optional(None if missing_contact else contact)}
+            process=current_process
+            ads=current_ads
             active=activation_method!='none'
             result=predict_one(models,ROOT,feedstock=feedstock,process=process,
-                               composition=composition,adsorption=ads,activated=active)
+                               composition=composition,adsorption=ads,activated=active,
+                        allow_composition_ood=allow_comp_ood)
             ts=sorted(set([sweep[0],sweep[1]]+list(range(sweep[0],sweep[1]+1,step))))
             if len(ts)>45:raise ValueError('온도 비교 구간은 45개 이하로 설정해 주세요.')
             rows=[]
             for t in ts:
                 pr=predict_one(models,ROOT,feedstock=feedstock,
                        process={**process,'pyrolysis_temperature_C':t},
-                       composition=composition,adsorption=ads,activated=active)
+                       composition=composition,adsorption=ads,activated=active,
+                        allow_composition_ood=allow_comp_ood)
                 rows.append({'제조온도 (℃)':int(t),'예측 흡착량 (mg/g)':pr['reported_capacity_mg_g'],
                              'BET (m²/g)':pr['BET_m2_g'],'TPV (cm³/g)':pr['TPV_cm3_g']})
             df=pd.DataFrame(rows)
@@ -254,14 +268,21 @@ def render_v112_unified():
                 'pollutant':pollutant,'temperature':temp,
                 'process':process,'adsorption':ads,'composition':composition,
                 'stage2_temperature_bounds':stage2_bounds,
+                'input_signature':current_signature,
+                'allow_composition_ood':allow_comp_ood,
             }
+            st.session_state.pop('v141_comparison',None)
         except Exception as exc:
             st.session_state.pop('v140_last_prediction',None)
+            st.session_state.pop('v141_comparison',None)
             st.error(f'예측을 완료하지 못했습니다: {type(exc).__name__}: {exc}')
 
     payload=st.session_state.get('v140_last_prediction')
     if payload is None:
         st.caption('조건을 설정한 뒤 위의 예측 버튼을 누르면 결과와 온도별 비교 그래프가 표시됩니다.')
+        return
+    if payload.get('input_signature') != current_signature:
+        st.warning('입력조건이 변경되었습니다. 이전 결과를 현재 입력의 예측으로 오인하지 않도록 숨겼습니다. 예측 버튼을 다시 눌러 주세요.')
         return
     r=payload['result'];df=payload['table']
     st.markdown('### 예측 결과')
