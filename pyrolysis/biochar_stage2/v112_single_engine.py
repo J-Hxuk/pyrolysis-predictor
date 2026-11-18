@@ -91,6 +91,13 @@ def assess_stage1_input(models: Mapping, *, feedstock: str, process: Mapping) ->
                                      f'[{bounds[0]:g}, {bounds[1]:g}] 밖입니다.')
     if str(process.get('pyrolysis_atmosphere','')) == 'NR':
         warnings_list.append('NR은 분위기 미보고 표기이며 재현 가능한 공정 분위기 조건이 아닙니다.')
+    if str(process.get('pyrolysis_atmosphere','')).strip().casefold() == 'air':
+        warnings_list.append(
+            'air는 현재 Stage 1의 BET·TPV 학습 원장(417행)에 관측되지 않습니다. '
+            '공기 중 산화·연소에 따른 물성 변화는 검증되지 않았으며, '
+            'oxygen_limited나 N2 조건으로 간주해서는 안 됩니다. '
+            '계산값은 탐색용으로만 해석하세요.'
+        )
     return {'used_feedstock':used, 'feedstock_match_status':status, 'warnings':warnings_list}
 
 def _finite(value, *, optional=False):
