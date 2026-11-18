@@ -184,7 +184,9 @@ def _render_ab_comparison_charts(case_a, case_b):
 def render_v112_unified():
     """Keep existing v112 import/navigation contract while improving the one page."""
     st.markdown('''<style>
-      .block-container {padding-top:1.4rem; padding-bottom:2.2rem; max-width:1220px;}
+      .block-container {padding-top:1.4rem; padding-bottom:4.5rem; max-width:1220px;}
+      div[data-baseweb="tab-panel"] {padding-top:1.1rem;}
+      .v144-tab-bottom-space {height:4.5rem; width:100%;}
       [data-testid="stMetric"] {padding:0.9rem 1rem; border:1px solid rgba(128,128,128,.23); border-radius:7px;}
       [data-testid="stMetricLabel"] {letter-spacing:.01em;}
       div[data-testid="stForm"] {border:1px solid rgba(128,128,128,.23); border-radius:8px; padding:1rem;}
@@ -216,8 +218,8 @@ def render_v112_unified():
                 format_func=lambda v: 'air (Stage 1 미학습 · 탐색용)' if v=='air' else v)
         with e:
             activation=st.selectbox('후처리/활성화',[
-                '없음','화학적 활성화/함침','물리적 활성화','수증기 활성화'],index=0)
-        activation_modes={'없음':'none','화학적 활성화/함침':'chemical_impregnation',
+                '없음','화학적 활성화','물리적 활성화','수증기 활성화'],index=0)
+        activation_modes={'없음':'none','화학적 활성화':'chemical_impregnation',
                 '물리적 활성화':'physical_activation','수증기 활성화':'physical_steam'}
         activation_method=activation_modes[activation]
         with st.expander('활성화 세부 조건 (Stage 1 · 선택)',expanded=True):
@@ -510,6 +512,8 @@ def render_v112_unified():
                     st.warning('B 조성 경로 주의: '+'; '.join(map(str,br['warnings'])))
             elif compared:
                 st.info('B 입력값이 변경되었습니다. 현재 B 조건으로 다시 계산하면 비교표가 갱신됩니다.')
+        st.markdown('<div class="v144-tab-bottom-space" aria-hidden="true"></div>',
+                    unsafe_allow_html=True)
     with tab_exports:
         st.markdown('### 포스터용 결과 출력')
         st.caption('PNG 300 dpi / SVG 벡터 · BET, TPV, Reported Capacity 3패널. '
@@ -538,3 +542,5 @@ def render_v112_unified():
             st.download_button('조건·예측값 CSV',csv_bytes,
                                file_name=export_stem+'_inputs_predictions.csv',
                                mime='text/csv',use_container_width=True)
+        st.markdown('<div class="v144-tab-bottom-space" aria-hidden="true"></div>',
+                    unsafe_allow_html=True)
