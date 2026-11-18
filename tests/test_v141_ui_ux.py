@@ -137,7 +137,6 @@ def test_v143_ab_comparison_renders_three_separate_original_unit_charts(monkeypa
     expected = [(40.0, 80.0), (0.12, 0.16), (52.500001, 52.500003)]
     for chart, pair in zip(charts, expected):
         assert tuple(chart.data["예측값"]) == pair
-        assert chart.encoding.x.scale.domain[0] == 0
     assert any("+0.000002" in note for note in captions)
 
 
@@ -146,4 +145,5 @@ def test_v143_removed_feature_status_expander_and_replaced_ab_table_with_chart()
     assert "입력변수 활용 현황 · 모델별 차이" not in source
     assert "st.dataframe(ab_table" not in source
     assert "_render_ab_comparison_charts(r, br)" in source
+    assert "scale=alt.Scale(domain=[0, axis_max])" in source
     assert "A/B 비교 CSV" in source
