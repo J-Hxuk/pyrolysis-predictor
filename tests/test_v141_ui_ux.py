@@ -158,3 +158,17 @@ def test_v144_activation_labels_and_tab_spacing_are_ui_only():
     assert source.count('v144-tab-bottom-space') == 3
     assert 'div[data-baseweb=' in source and 'tab-panel' in source
     assert "padding-bottom:4.5rem" in source
+
+
+def test_v145_air_is_unavailable_in_both_user_atmosphere_selectors():
+    """Air is unseen in Stage 1; keep backend guard, not UI choice."""
+    from pyrolysis.biochar_ui import v112_unified_page as ui
+
+    assert "air" not in ui.ATMOSPHERE_OPTIONS
+    assert ui.ATMOSPHERE_OPTIONS == ("N2", "inert_N2", "oxygen_limited", "Ar", "NR")
+    source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
+    assert "st.selectbox('열분해 분위기',ATMOSPHERE_OPTIONS)" in source
+    assert "atmospheres=ATMOSPHERE_OPTIONS" in source
+    backend_source = (ROOT / "pyrolysis/biochar_stage2/v112_single_engine.py").read_text(encoding="utf-8")
+    assert "'air'" in backend_source
+    assert "air는 현재 Stage 1" in backend_source
