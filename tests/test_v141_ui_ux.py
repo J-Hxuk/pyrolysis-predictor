@@ -136,7 +136,7 @@ def test_v143_ab_comparison_renders_three_separate_original_unit_charts(monkeypa
     assert len(charts) == 3
     expected = [(40.0, 80.0), (0.12, 0.16), (52.500001, 52.500003)]
     for chart, pair in zip(charts, expected):
-        assert tuple(chart.layer[0].data["예측값"]) == pair
+        assert tuple(chart.data["예측값"]) == pair
         assert chart.layer[0].encoding.x.scale.domain[0] == 0
     assert any("+0.000002" in note for note in captions)
 
