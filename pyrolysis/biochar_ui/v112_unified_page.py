@@ -29,21 +29,32 @@ def _ranking_model(root):
     return load_ranker(Path(root))
 
 
-@st.cache_data(show_spinner=False)
-def _feedstock_catalog(root):
-    """Names from actual Stage1 417 observations and Stage2 Core97, never synthetic names."""
+def _build_feedstock_catalog(root):
+    """Always use Stage 1 source; legacy v15 Core97 names are optional UI metadata.
+
+    A missing v15 ZIP must not block the deployed v139 Stage 1/2 prediction.
+    No Stage 2 feedstock labels are fabricated from material_group codes.
+    """
     path=Path(root)/'data/imports/v46_phase8/Stage1_417_EXPLORATORY_UNAPPROVED.csv'
     s1=pd.read_csv(path,usecols=['feedstock'])
     stage1={normalize_name(v) for v in s1.feedstock.dropna().astype(str) if normalize_name(v)}
     core=set()
     try:
         from pyrolysis.biochar_stage2 import v15_loader as L, v15_features as fc
+        from pyrolysis.biochar_stage2.v15_extract import V15ExtractError
         src=L.load_core_qe(Path(root)).df
         core={normalize_name(v) for v in src[fc.GROUP_FEEDSTOCK].dropna().astype(str) if normalize_name(v)}
-    except (FileNotFoundError,KeyError,ValueError):
-        pass  # real Stage1 inventory is still available; no invented Core97 entries
+    except (V15ExtractError, FileNotFoundError, KeyError, ValueError):
+        # v15 Core97 is a legacy convenience catalog, not a dependency of
+        # the currently deployed v139 model. Keep genuine Stage 1 names.
+        pass
     names=sorted(stage1|core)
     return names,stage1,core
+
+
+@st.cache_data(show_spinner=False)
+def _feedstock_catalog(root):
+    return _build_feedstock_catalog(root)
 
 
 
