@@ -9,6 +9,7 @@ on:
       - "tests/test_v141_ui_ux.py"
       - "tests/test_stage1_hgb_v134.py"
       - "tests/test_stage2_blend_v139.py"
+      - "tests/test_research_blend_v146.py"
       - "tests/test_manufacturing_rank_v140.py"
       - ".gitattributes"
       - ".github/workflows/biochar-deployment-smoke.yml"
@@ -31,7 +32,7 @@ jobs:
           python -m pip install pytest==8.3.4
       - name: Unit and model regression checks
         run: |
-          python -m pytest -q --tb=short tests/test_stage1_hgb_v134.py tests/test_v141_ui_ux.py tests/test_stage2_blend_v139.py tests/test_manufacturing_rank_v140.py
+          python -m pytest -q --tb=short tests/test_stage1_hgb_v134.py tests/test_v141_ui_ux.py tests/test_stage2_blend_v139.py tests/test_research_blend_v146.py tests/test_manufacturing_rank_v140.py
       - name: Load Streamlit unified screen without legacy v15 archive
         run: |
           python - <<'PY'
