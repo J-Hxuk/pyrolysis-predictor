@@ -940,15 +940,30 @@ def render_stage2_app():
         div[data-testid="stMetric"] {background: #f5f8fa; border: 1px solid #dbe5ed;
           border-radius: 8px; padding: 13px 18px;}
         div[data-testid="stMetricValue"] {font-variant-numeric:tabular-nums;}
-        section[data-testid="stSidebar"] {position:relative; border-right:1px solid #e2e9ee;}
-        section[data-testid="stSidebar"] .biochar-sidebar-footer {
-          position:absolute; bottom:1.25rem; left:1rem; right:1rem;
-          color:#8191a8; font-size:.76rem; line-height:1.55;
+        section[data-testid="stSidebar"] {border-right:1px solid #e2e9ee;}
+        /* Keep footer in normal flow; use remaining sidebar height, never overlay widgets. */
+        section[data-testid="stSidebar"] [data-testid="stVerticalBlock"]:has(.biochar-sidebar-footer) {
+          display:flex; flex-direction:column;
+          min-height:calc(100dvh - 4rem);
         }
-        section[data-testid="stSidebar"] .biochar-sidebar-credit {margin-top:.75rem;}
+        section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div:has(.biochar-sidebar-footer) {
+          margin-top:auto; flex-shrink:0;
+        }
+        section[data-testid="stSidebar"] .biochar-sidebar-footer {
+          position:static;
+          border-top:1px solid #d2dbe5;
+          padding-top:.85rem;
+          color:#718299; font-size:.76rem; line-height:1.55;
+          overflow-wrap:anywhere;
+        }
+        section[data-testid="stSidebar"] .biochar-sidebar-models {margin-bottom:.65rem;}
+        section[data-testid="stSidebar"] .biochar-sidebar-credit {margin-top:.65rem;}
         @media (max-height:500px) {
-          section[data-testid="stSidebar"] .biochar-sidebar-footer {
-            position:static; margin-top:1.5rem;
+          section[data-testid="stSidebar"] [data-testid="stVerticalBlock"]:has(.biochar-sidebar-footer) {
+            min-height:0;
+          }
+          section[data-testid="stSidebar"] [data-testid="stVerticalBlock"] > div:has(.biochar-sidebar-footer) {
+            margin-top:1.5rem;
           }
         }
         .stButton > button[kind="primary"] {background:#1d5279; border:0; border-radius:6px;}
@@ -961,10 +976,9 @@ def render_stage2_app():
         st.sidebar.warning("v112 통합 UI 소스가 배포 저장소에 없어 기존 분석 화면을 제공합니다.")
     choice = st.sidebar.radio("통합 예측", list(PAGES.keys()), label_visibility="collapsed",
                               key="v112_navigation")
-    st.sidebar.divider()
-    st.sidebar.caption("Stage 1: BET·TPV / Stage 2: 4,795행 · 26종 오염물질")
     st.sidebar.markdown(
         '<div class="biochar-sidebar-footer">'
+        '<div class="biochar-sidebar-models">Stage 1: BET·TPV / Stage 2: 4,795행 · 26종 오염물질</div>'
         '<div>Model version:</div>'
         '<div>Stage1 v134</div>'
         '<div>Stage2 v139</div>'
