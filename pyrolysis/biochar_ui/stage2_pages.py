@@ -940,7 +940,17 @@ def render_stage2_app():
         div[data-testid="stMetric"] {background: #f5f8fa; border: 1px solid #dbe5ed;
           border-radius: 8px; padding: 13px 18px;}
         div[data-testid="stMetricValue"] {font-variant-numeric:tabular-nums;}
-        section[data-testid="stSidebar"] {border-right:1px solid #e2e9ee;}
+        section[data-testid="stSidebar"] {position:relative; border-right:1px solid #e2e9ee;}
+        section[data-testid="stSidebar"] .biochar-sidebar-footer {
+          position:absolute; bottom:1.25rem; left:1rem; right:1rem;
+          color:#8191a8; font-size:.76rem; line-height:1.55;
+        }
+        section[data-testid="stSidebar"] .biochar-sidebar-credit {margin-top:.75rem;}
+        @media (max-height:500px) {
+          section[data-testid="stSidebar"] .biochar-sidebar-footer {
+            position:static; margin-top:1.5rem;
+          }
+        }
         .stButton > button[kind="primary"] {background:#1d5279; border:0; border-radius:6px;}
         .stButton > button {border-radius:6px;}
     </style>""", unsafe_allow_html=True)
@@ -953,4 +963,13 @@ def render_stage2_app():
                               key="v112_navigation")
     st.sidebar.divider()
     st.sidebar.caption("Stage 1: BET·TPV / Stage 2: 4,795행 · 26종 오염물질")
+    st.sidebar.markdown(
+        '<div class="biochar-sidebar-footer">'
+        '<div>Model version:</div>'
+        '<div>Stage1 v134</div>'
+        '<div>Stage2 v139</div>'
+        '<div class="biochar-sidebar-credit">Made by 한양대학교 자원환경공학과 한재혁</div>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
     PAGES[choice]()
