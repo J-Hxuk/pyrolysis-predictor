@@ -178,7 +178,8 @@ def test_sidebar_footer_displays_active_model_versions_and_author():
     """The sidebar credits are presentation-only and must stay vertically ordered."""
     source = (ROOT / "pyrolysis/biochar_ui/stage2_pages.py").read_text(encoding="utf-8")
     assert "biochar-sidebar-footer" in source
-    assert "bottom:1.25rem" in source
+    assert "position:static;" in source
+    assert "margin-top:auto;" in source
     assert source.index("Model version:") < source.index("Stage1 v134") < source.index("Stage2 v139")
     assert "Made by 한양대학교 자원환경공학과 한재혁" in source
     assert "unsafe_allow_html=True" in source
