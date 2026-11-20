@@ -368,12 +368,6 @@ def render_v112_unified():
     p.metric('BET (예측)',f"{r['BET_m2_g']:,.2f} m²/g")
     q.metric('TPV (예측)',f"{r['TPV_cm3_g']:,.4f} cm³/g")
     t.metric('Reported Capacity (예측)',f"{r['reported_capacity_mg_g']:,.2f} mg/g")
-    st.caption(f"물질수지 상한 {r['mass_balance_upper_mg_g']:,.2f} mg/g · BET 경로 {r['bet_path']} · TPV 경로 {r['tpv_path']}")
-    st.caption('Stage 1 실제 원료 피처: '+str(r.get('stage1_feedstock_used',payload['feedstock'])))
-    st.caption('정밀 흡착량 확인: '+f"{r['reported_capacity_mg_g']:.6f} mg/g"+
-               ' · 소수점 둘째 자리 표시값이 같아도 실제 예측값은 다를 수 있습니다.')
-    st.caption('Stage 2 물성 전달: '+('BET·TPV 사용' if r['stage1_property_feature_used']
-               else 'BET·TPV 미사용')+' · 원료명/열분해 분위기는 Stage 2에 직접 입력되지 않습니다.')
     if r.get('stage1_input_warnings'):
         st.warning('예측 당시 입력 학습범위 주의: '+'; '.join(r['stage1_input_warnings']))
     if not r['known_pollutant']:
