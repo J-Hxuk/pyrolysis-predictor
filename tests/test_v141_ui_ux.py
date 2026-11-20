@@ -178,7 +178,38 @@ def test_sidebar_footer_displays_active_model_versions_and_author():
     """The sidebar credits are presentation-only and must stay vertically ordered."""
     source = (ROOT / "pyrolysis/biochar_ui/stage2_pages.py").read_text(encoding="utf-8")
     assert "biochar-sidebar-footer" in source
-    assert "bottom:1.25rem" in source
+    assert "position:static;" in source
+    assert "margin-top:auto;" in source
     assert source.index("Model version:") < source.index("Stage1 v134") < source.index("Stage2 v139")
     assert "Made by 한양대학교 자원환경공학과 한재혁" in source
     assert "unsafe_allow_html=True" in source
+
+
+def test_v146_sweep_and_rank_have_csv_downloads_without_on_screen_tables():
+    source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
+    sweep = source.split("    with tab_sweep:", 1)[1].split("    with tab_ab:", 1)[0]
+
+    # Full sweep DataFrame is exported, including temperature coverage diagnostics.
+    assert "df=attach_coverage(df, models, stage2_bounds)" in source
+    assert "온도 비교 결과 CSV" in sweep
+    assert "data=df.to_csv(index=False).encode('utf-8-sig')" in sweep
+    assert "_temperature_comparison.csv" in sweep
+
+    # Ranking retains raw scores, rank, and provenance fields in the CSV.
+    assert "rank_export=rank_table.copy()" in sweep
+    assert "rank_export['rank_model']" in sweep
+    assert "rank_export['rank_training_snapshot_sha256']" in sweep
+    assert "제조조건 순위 CSV" in sweep
+    assert "rank_export.to_csv(index=False).encode('utf-8-sig')" in sweep
+
+    # Neither of the dense result tables nor the grey explanatory captions render.
+    assert "st.dataframe(" not in sweep
+    assert "st.caption(" not in sweep
+    assert "st.markdown('### 제조조건 순위 추천')" in sweep
+    assert "Manufacturing RF')" not in sweep
+
+    # Visual prediction and safety messages remain in the screen.
+    assert "_render_temperature_curve(df)" in sweep
+    assert "st.warning(" in sweep
+    assert "a.metric('예측 흡착량 최대 후보'" in sweep
+    assert "b.metric('RF 1위 후보 (탐색)'" in sweep
