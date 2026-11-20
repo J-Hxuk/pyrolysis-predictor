@@ -13,8 +13,8 @@ from pyrolysis.biochar_stage2.v112_single_engine import load_chain,predict_one,a
 from pyrolysis.biochar_stage2.manufacturing_rank_v140 import load_ranker,rank_sweep
 from pyrolysis.biochar_ui.v141_ui_state import input_signature, safe_export_stem, comparison_delta
 from pyrolysis.biochar_ui.poster_export_v133 import (
-    read_stage2_temperature_bounds, stage1_temperature_bounds, attach_coverage,
-    format_bounds, export_csv_with_inputs, render_poster_figure,
+    read_stage2_temperature_bounds, attach_coverage,
+    export_csv_with_inputs, render_poster_figure,
     IN_RANGE, OUT_OF_RANGE, NOT_VERIFIED,
 )
 
@@ -388,28 +388,18 @@ def render_v112_unified():
     with tab_sweep:
         st.markdown('### 제조온도 비교')
         _render_temperature_curve(df)
-        bounds=stage1_temperature_bounds(models)
-        st.caption('관측 제조온도: Stage 1 BET '+format_bounds(bounds['BET'])+
-                   ' · Stage 1 TPV '+format_bounds(bounds['TPV'])+
-                   ' · Stage 2 '+str(payload['pollutant'])+' '+
-                   format_bounds(payload.get('stage2_temperature_bounds')))
         outside=int((df['온도 범위 판정']==OUT_OF_RANGE).sum())
         unknown=int((df['온도 범위 판정']==NOT_VERIFIED).sum())
         if outside or unknown:
             st.warning(f'온도 비교 {len(df)}점 중 관측 온도범위 밖 {outside}점, 범위 미확인 {unknown}점입니다. '
                        '해당 점의 예측은 외삽 또는 근거 부족 가능성에 주의해야 합니다.')
-        st.caption('범위 판정은 각 모델/오염물질의 관측 온도 최소·최대만 이용합니다. '
-                   '범위 안이라는 표시도 원료·흡착조건 조합의 검증이나 정확도 보증은 아닙니다.')
-        if not r['stage1_property_feature_used']:
-            st.caption('선택 오염물질은 Stage 2에서 BET·TPV를 사용하지 않습니다.')
         top=df.loc[df['예측 흡착량 (mg/g)']==df['예측 흡착량 (mg/g)'].max()]
-        st.caption('계산 구간 내 예측 최댓값(최적 조건 검증 아님): '+
-                   ', '.join(str(t)+'℃' for t in top['제조온도 (℃)'])+' · 동률은 그대로 표시')
-        st.dataframe(df,use_container_width=True,hide_index=True)
-        st.markdown('### 제조조건 순위 추천 · Manufacturing RF')
-        st.caption('흡착량 예측과 독립적인 상대 순위 모델입니다. 상대 점수(pp)는 계열 내 중심화된 제거율 차이의 예측값이며, 제거율 자체나 흡착량(mg/g)이 아닙니다.')
-        st.caption('학습: 59개 제조 관측점 / 15계열 / 9 DOI. 비교 개발평가: 12계열 / 9 DOI, Top-1 41.7%, 평균 Regret 2.781 mg/g. 독립 외부 검증 아님.')
-        st.caption('현재 순위 기능은 단일 열분해·무활성화 제조온도 비교만 지원합니다. 초기농도·pH·투입량·접촉시간·조성은 RF 피처가 아니므로 해당 변화에 따른 순위 민감도는 평가되지 않습니다.')
+        st.download_button(
+            '온도 비교 결과 CSV',
+            data=df.to_csv(index=False).encode('utf-8-sig'),
+            file_name=safe_export_stem(payload['feedstock'],payload['pollutant'],payload['temperature'])+'_temperature_comparison.csv',
+            mime='text/csv',key='v146_temperature_csv',use_container_width=True)
+        st.markdown('### 제조조건 순위 추천')
         try:
             rank_bundle=_ranking_model(str(ROOT))
             if not r['known_pollutant']:
@@ -428,7 +418,6 @@ def render_v112_unified():
                     b.metric('RF 1위 후보 (탐색)',', '.join(f'{v:g}℃' for v in winners))
                     if len(winners)>1:
                         st.info('RF 1위 동률은 그대로 표시합니다. 임의로 최적 조건을 고르지 않습니다.')
-                    st.dataframe(rank_table,use_container_width=True,hide_index=True)
                     rank_export=rank_table.copy()
                     rank_export['rank_model']=rank_bundle['version']
                     rank_export['rank_training_snapshot_sha256']=rank_bundle['sha256']
@@ -440,7 +429,6 @@ def render_v112_unified():
                     st.download_button('제조조건 순위 CSV',rank_export.to_csv(index=False).encode('utf-8-sig'),
                                        file_name=safe_export_stem(payload['feedstock'],payload['pollutant'],payload['temperature'])+'_ranking.csv',mime='text/csv',
                                        use_container_width=True)
-                    st.caption('RF 1위는 모델이 비교한 후보 중 상대 순위이며 실험적 최적조건의 보증이 아닙니다. 학습 범위 안 표시도 원료·조건 조합의 검증을 의미하지 않습니다.')
         except Exception as exc:
             st.warning(f'순위 모델을 실행하지 못했습니다: {type(exc).__name__}: {exc}. 기존 흡착량 예측은 유지됩니다.')
     with tab_ab:
