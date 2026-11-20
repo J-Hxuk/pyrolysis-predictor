@@ -117,7 +117,7 @@ def test_unified_ui_has_stale_guard_and_no_form_submit():
     assert "payload.get('input_signature') != current_signature" in source
     assert "st.form_submit_button(" not in source
     assert "allow_composition_ood=allow_comp_ood" in source
-    assert "v141_comparison" in source
+    assert "v147_pin_signature" in source
 
 
 def test_v143_ab_comparison_renders_three_separate_original_unit_charts(monkeypatch):
@@ -144,9 +144,9 @@ def test_v143_removed_feature_status_expander_and_replaced_ab_table_with_chart()
     source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
     assert "입력변수 활용 현황 · 모델별 차이" not in source
     assert "st.dataframe(ab_table" not in source
-    assert "_render_ab_comparison_charts(r, br)" in source
-    assert "scale=alt.Scale(domain=[0, axis_max])" in source
-    assert "A/B 비교 CSV" in source
+    assert "_render_pinned_ab_details(payload,compared)" in source
+    assert "_render_temperature_curve(df," in source
+    assert "A/B 제조온도 곡선 CSV" in source
 
 
 def test_v144_activation_labels_and_tab_spacing_are_ui_only():
@@ -155,7 +155,7 @@ def test_v144_activation_labels_and_tab_spacing_are_ui_only():
     assert "'화학적 활성화':'chemical_impregnation'" in source
     assert "화학적 활성화/함침" not in source
     assert "'없음','화학적 활성화','물리적 활성화','수증기 활성화'" in source
-    assert source.count('v144-tab-bottom-space') == 3
+    assert source.count('v144-tab-bottom-space') == 2
     assert 'div[data-baseweb=' in source and 'tab-panel' in source
     assert "padding-bottom:4.5rem" in source
 
@@ -187,7 +187,7 @@ def test_sidebar_footer_displays_active_model_versions_and_author():
 
 def test_v146_sweep_and_rank_have_csv_downloads_without_on_screen_tables():
     source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
-    sweep = source.split("    with tab_sweep:", 1)[1].split("    with tab_ab:", 1)[0]
+    sweep = source.split("    with tab_sweep:", 1)[1].split("    with tab_exports:", 1)[0]
 
     # Full sweep DataFrame is exported, including temperature coverage diagnostics.
     assert "df=attach_coverage(df, models, stage2_bounds)" in source
@@ -213,3 +213,74 @@ def test_v146_sweep_and_rank_have_csv_downloads_without_on_screen_tables():
     assert "st.warning(" in sweep
     assert "a.metric('예측 흡착량 최대 후보'" in sweep
     assert "b.metric('RF 1위 후보 (탐색)'" in sweep
+
+
+
+def test_v147_pinned_ab_is_inline_not_a_separate_tab():
+    source = (ROOT / "pyrolysis/biochar_ui/v112_unified_page.py").read_text(encoding="utf-8")
+    assert "with tab_ab:" not in source
+    assert "v147_toggle_pin" in source
+    assert "_set_b_defaults_from_a(payload)" in source
+    assert "_render_pinned_b_inputs(models,payload)" in source
+    assert "'v147_pin_signature'" in source
+    assert "A: 점선(고정) · B: 실선(비교)" in source
+    assert "B RF 1위 후보 (탐색)" in source
+
+
+def test_v147_temperature_overlay_uses_dashed_A_and_solid_B(monkeypatch):
+    import pandas as pd
+    from pyrolysis.biochar_ui import v112_unified_page as ui
+
+    charts=[]
+    monkeypatch.setattr(ui.st,"altair_chart",lambda chart,**kwargs: charts.append(chart))
+    table=pd.DataFrame([
+        {"제조온도 (℃)":300,"예측 흡착량 (mg/g)":25.0,
+         "BET (m²/g)":40.0,"TPV (cm³/g)":0.1,
+         "온도 범위 판정":ui.IN_RANGE,"BET 온도범위":ui.IN_RANGE,
+         "TPV 온도범위":ui.IN_RANGE,"Stage2 오염물질 온도범위":ui.IN_RANGE},
+        {"제조온도 (℃)":350,"예측 흡착량 (mg/g)":33.0,
+         "BET (m²/g)":50.0,"TPV (cm³/g)":0.2,
+         "온도 범위 판정":ui.IN_RANGE,"BET 온도범위":ui.IN_RANGE,
+         "TPV 온도범위":ui.IN_RANGE,"Stage2 오염물질 온도범위":ui.IN_RANGE},
+    ])
+    ui._render_temperature_curve(table,table.assign(**{"예측 흡착량 (mg/g)": [30., 42.]}),
+                                 pinned=True)
+    assert len(charts)==1
+    chart=charts[0].to_dict()
+    assert len(chart["layer"])==4
+    assert chart["layer"][0]["mark"]["strokeDash"]==[6,4]
+    assert chart["layer"][2]["mark"]["type"]=="line"
+    assert chart["layer"][2]["mark"]["color"]=="#d58b54"
+
+
+def test_v147_b_temperature_sweep_uses_A_grid_and_adsorption(monkeypatch):
+    import pandas as pd
+    from pyrolysis.biochar_ui import v112_unified_page as ui
+
+    calls=[]
+    def fake_predict(_models,_root,**kwargs):
+        calls.append(kwargs)
+        t=kwargs["process"]["pyrolysis_temperature_C"]
+        return {"reported_capacity_mg_g":t/10,
+                "BET_m2_g":t/5,"TPV_cm3_g":t/10000}
+    monkeypatch.setattr(ui,"predict_one",fake_predict)
+    monkeypatch.setattr(ui,"attach_coverage",lambda table,*args: table.assign(**{
+        "온도 범위 판정": ui.IN_RANGE}))
+    a_process={"pyrolysis_temperature_C":500,"pyrolysis_hold_min":120,
+               "heating_rate_C_min":10,"pyrolysis_atmosphere":"N2",
+               "activation_method":"none"}
+    a_ads={"pollutant":"Pb(II)","C0_mg_L":100,"dose_g_L":1}
+    payload={"temperature":500,"process":a_process,"adsorption":a_ads,
+             "allow_composition_ood":False,"stage2_temperature_bounds":{},
+             "table":pd.DataFrame({"제조온도 (℃)":[300,400,500]})}
+    b_process={**a_process,"pyrolysis_hold_min":60,"pyrolysis_atmosphere":"Ar"}
+    result,b_table=ui._run_b_temperature_sweep(
+        {},payload,"wheat straw",b_process,{})
+    assert result["reported_capacity_mg_g"]==50
+    assert b_table["제조온도 (℃)"].tolist()==[300,400,500]
+    assert b_table["예측 흡착량 (mg/g)"].tolist()==[30,40,50]
+    assert [c["process"]["pyrolysis_temperature_C"] for c in calls]==[
+        500,300,400,500]
+    assert all(c["adsorption"] is a_ads for c in calls)
+    assert all(c["process"]["pyrolysis_hold_min"]==60 for c in calls)
+    assert payload["process"]==a_process
