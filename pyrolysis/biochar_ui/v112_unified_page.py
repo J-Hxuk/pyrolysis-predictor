@@ -74,6 +74,8 @@ def _select_feedstock(name):
     st.session_state[FEED_KEY]=name
     st.session_state.pop('v140_last_prediction',None)
     st.session_state.pop('v141_comparison',None)
+    st.session_state.pop('v147_pin_signature',None)
+    st.session_state.pop('v147_comparison',None)
 
 
 def _feedstock_input(root):
@@ -108,36 +110,189 @@ def _num_optional(value):
 
 
 
-def _render_temperature_curve(df: pd.DataFrame) -> None:
-    """Static Altair line: hover works but wheel zoom/pan is disabled.
+def _render_temperature_curve(df: pd.DataFrame, df_b: pd.DataFrame | None = None,
+                              *, pinned: bool = False) -> None:
+    """Overlay a frozen A curve (dashed) and optional B curve (solid).
 
-    Do not call `.interactive()` or add a `bind='scales'` interval selection.
-    Without interactive scale bindings, wheel scroll continues to scroll the page.
+    These are absolute reported-capacity predictions (mg/g), not the separate
+    Manufacturing RF's centered relative scores (percentage points).
+    Scales are deliberately not scroll-zoomable.
     """
     import altair as alt
 
-    base = alt.Chart(df).encode(
-        x=alt.X('제조온도 (℃):Q', title='제조온도 (℃)', scale=alt.Scale(zero=False)),
-        y=alt.Y('예측 흡착량 (mg/g):Q', title='예측 흡착량 (mg/g)',
-                scale=alt.Scale(zero=False)),
-        tooltip=[
-            alt.Tooltip('제조온도 (℃):Q', title='제조온도 (℃)', format='.0f'),
-            alt.Tooltip('예측 흡착량 (mg/g):Q', title='예측 흡착량 (mg/g)', format='.2f'),
-            alt.Tooltip('온도 범위 판정:N', title='관측범위'),
-            alt.Tooltip('BET 온도범위:N'),
-            alt.Tooltip('TPV 온도범위:N'),
-            alt.Tooltip('Stage2 오염물질 온도범위:N'),
-        ],
-    )
-    line = base.mark_line(color='#315a72', strokeWidth=2)
-    points = base.mark_circle(size=75).encode(
-        color=alt.Color('온도 범위 판정:N',
-            scale=alt.Scale(domain=[IN_RANGE, OUT_OF_RANGE, NOT_VERIFIED],
-                            range=['#157f72', '#bd4d3a', '#777777']),
-            title='관측 온도범위'),
-    )
-    # No .interactive() / bind='scales': wheel scrolling never zooms the chart.
-    st.altair_chart((line + points).properties(height=320), use_container_width=True)
+    def base_curve(frame, label):
+        data=frame.copy()
+        data['조건']=label
+        return alt.Chart(data).encode(
+            x=alt.X('제조온도 (℃):Q', title='제조온도 (℃)',
+                    scale=alt.Scale(zero=False)),
+            y=alt.Y('예측 흡착량 (mg/g):Q', title='예측 흡착량 (mg/g)',
+                    scale=alt.Scale(zero=False)),
+            tooltip=[
+                alt.Tooltip('조건:N'),
+                alt.Tooltip('제조온도 (℃):Q', format='.0f'),
+                alt.Tooltip('예측 흡착량 (mg/g):Q', format='.3f'),
+                alt.Tooltip('BET (m²/g):Q', format='.2f'),
+                alt.Tooltip('TPV (cm³/g):Q', format='.4f'),
+                alt.Tooltip('온도 범위 판정:N'),
+                alt.Tooltip('BET 온도범위:N'),
+                alt.Tooltip('TPV 온도범위:N'),
+                alt.Tooltip('Stage2 오염물질 온도범위:N'),
+            ],
+        )
+
+    a=base_curve(df,'A · 고정' if pinned else 'A')
+    a_line=a.mark_line(color='#64748b' if pinned else '#315a72',
+                       strokeWidth=2.5, strokeDash=[6,4] if pinned else [1,0])
+    if not pinned:
+        a_points=a.mark_circle(size=75).encode(
+            color=alt.Color('온도 범위 판정:N',
+                scale=alt.Scale(domain=[IN_RANGE,OUT_OF_RANGE,NOT_VERIFIED],
+                                range=['#157f72','#bd4d3a','#777777']),
+                title='관측 온도범위'))
+    else:
+        a_points=a.mark_circle(size=45,color='#64748b',opacity=0.7)
+    chart=a_line+a_points
+    if pinned and df_b is not None:
+        b=base_curve(df_b,'B · 비교')
+        chart=chart+b.mark_line(color='#d58b54',strokeWidth=3)+b.mark_circle(
+            size=55,color='#d58b54')
+    st.altair_chart(chart.properties(height=330),use_container_width=True)
+
+
+def _set_b_defaults_from_a(payload):
+    """Copy A's manufacturing inputs without altering the pinned A snapshot."""
+    process=payload['process']
+    st.session_state['v147_b_feedstock']=payload['feedstock']
+    atmosphere=process['pyrolysis_atmosphere']
+    st.session_state['v147_b_atmosphere']=(
+        atmosphere if atmosphere in ATMOSPHERE_OPTIONS else ATMOSPHERE_OPTIONS[0])
+    st.session_state['v147_b_hold']=int(process['pyrolysis_hold_min'])
+    st.session_state['v147_b_heat']=int(process['heating_rate_C_min'])
+    st.session_state['v147_b_same_composition']=False
+
+
+def _run_b_temperature_sweep(models, payload, feedstock, process, composition):
+    """Infer B on exactly the A temperature grid with identical adsorption inputs."""
+    kwargs={
+        'feedstock':feedstock,'composition':composition,
+        'adsorption':payload['adsorption'],
+        'activated':process['activation_method']!='none',
+        'allow_composition_ood':payload['allow_composition_ood'],
+    }
+    baseline=predict_one(models,ROOT,
+                         process={**process,'pyrolysis_temperature_C':payload['temperature']},
+                         **kwargs)
+    rows=[]
+    for temperature in payload['table']['제조온도 (℃)'].tolist():
+        prediction=predict_one(models,ROOT,
+                               process={**process,'pyrolysis_temperature_C':int(temperature)},
+                               **kwargs)
+        rows.append({
+            '제조온도 (℃)':int(temperature),
+            '예측 흡착량 (mg/g)':prediction['reported_capacity_mg_g'],
+            'BET (m²/g)':prediction['BET_m2_g'],
+            'TPV (cm³/g)':prediction['TPV_cm3_g'],
+        })
+    b_table=attach_coverage(pd.DataFrame(rows),models,payload['stage2_temperature_bounds'])
+    return baseline,b_table
+
+
+def _render_pinned_b_inputs(models, payload):
+    """Return only the B comparison matching the present B inputs and frozen A."""
+    st.markdown('#### B 조건 입력')
+    if st.button('A 조건 복사',key='v147_copy_a',use_container_width=True):
+        _set_b_defaults_from_a(payload)
+        st.session_state.pop('v147_comparison',None)
+    b_feedstock=st.text_input('B 원료명',key='v147_b_feedstock')
+    atmospheres=ATMOSPHERE_OPTIONS
+    b_atmosphere=st.selectbox('B 열분해 분위기',atmospheres,key='v147_b_atmosphere')
+    b_hold=st.number_input('B 유지시간 (min)',min_value=10,max_value=600,step=10,
+                           key='v147_b_hold')
+    b_heat=st.number_input('B 승온속도 (℃/min)',min_value=1,max_value=50,step=1,
+                           key='v147_b_heat')
+    same_composition=st.checkbox('A의 원료 조성값 사용 (통제 비교)',
+                                 key='v147_b_same_composition')
+    st.caption('제조온도 범위·흡착조건·활성화 방식은 A와 동일합니다.')
+    if same_composition and any(str(v).strip() for v in payload['composition'].values()):
+        st.warning('다른 원료에 A의 실측 조성을 재사용하면 그 원료의 실제 조성 차이를 반영하지 않습니다.')
+    b_process={**payload['process'],
+               'pyrolysis_atmosphere':b_atmosphere,
+               'pyrolysis_hold_min':int(b_hold),
+               'heating_rate_C_min':int(b_heat)}
+    b_composition=payload['composition'] if same_composition else {}
+    b_signature=input_signature({
+        'a_signature':payload['input_signature'],
+        'b_feedstock':b_feedstock,'b_process':b_process,
+        'b_composition':b_composition,'adsorption':payload['adsorption'],
+        'temperatures':payload['table']['제조온도 (℃)'].tolist(),
+        'allow_composition_ood':payload['allow_composition_ood'],
+    })
+    if st.button('B 곡선 계산',type='primary',key='v147_run_b',
+                 use_container_width=True):
+        try:
+            if not str(b_feedstock).strip():
+                raise ValueError('B 원료명을 입력하세요.')
+            b_result,b_table=_run_b_temperature_sweep(
+                models,payload,b_feedstock,b_process,b_composition)
+            st.session_state['v147_comparison']={
+                'signature':b_signature,'result':b_result,'table':b_table,
+                'feedstock':b_feedstock,'process':b_process,
+                'composition':b_composition,
+            }
+        except Exception as exc:
+            st.session_state.pop('v147_comparison',None)
+            st.error(f'B 조건 예측 실패: {type(exc).__name__}: {exc}')
+    compared=st.session_state.get('v147_comparison')
+    if compared and compared['signature']!=b_signature:
+        st.info('B 입력값이 변경되었습니다. B 곡선을 다시 계산해 주세요.')
+        return None
+    return compared
+
+
+def _render_pinned_ab_details(payload, compared):
+    """Show numerical differences without treating model response as causal effect."""
+    a=payload['result'];b=compared['result']
+    delta=comparison_delta(a,b)
+    st.markdown(f"#### 선택 제조온도 {payload['temperature']}℃ · A/B 결과")
+    summary=pd.DataFrame([
+        {'지표':'BET (m²/g)','A':a['BET_m2_g'],
+         'B':b['BET_m2_g'],'B − A':delta['BET_m2_g']},
+        {'지표':'TPV (cm³/g)','A':a['TPV_cm3_g'],
+         'B':b['TPV_cm3_g'],'B − A':delta['TPV_cm3_g']},
+        {'지표':'Reported Capacity (mg/g)','A':a['reported_capacity_mg_g'],
+         'B':b['reported_capacity_mg_g'],
+         'B − A':delta['reported_capacity_mg_g']},
+    ])
+    with st.expander('선택 온도 정밀 비교값',expanded=False):
+        st.dataframe(summary,hide_index=True,use_container_width=True)
+        st.caption('B − A는 동일한 제조온도에서 계산한 모델 예측 차이이며 실측 효과가 아닙니다.')
+    combined=payload['table'].rename(columns={
+        '예측 흡착량 (mg/g)':'A 예측 흡착량 (mg/g)',
+        'BET (m²/g)':'A BET (m²/g)','TPV (cm³/g)':'A TPV (cm³/g)',
+    })[['제조온도 (℃)','A 예측 흡착량 (mg/g)','A BET (m²/g)','A TPV (cm³/g)']]
+    b_table=compared['table'].rename(columns={
+        '예측 흡착량 (mg/g)':'B 예측 흡착량 (mg/g)',
+        'BET (m²/g)':'B BET (m²/g)','TPV (cm³/g)':'B TPV (cm³/g)',
+    })[['제조온도 (℃)','B 예측 흡착량 (mg/g)','B BET (m²/g)','B TPV (cm³/g)']]
+    combined=combined.merge(b_table,on='제조온도 (℃)',validate='one_to_one')
+    combined['B − A 흡착량 (mg/g)']=(
+        combined['B 예측 흡착량 (mg/g)']-combined['A 예측 흡착량 (mg/g)'])
+    st.download_button('A/B 제조온도 곡선 CSV',
+        data=combined.to_csv(index=False).encode('utf-8-sig'),
+        file_name=safe_export_stem(payload['feedstock'],payload['pollutant'],
+                                    payload['temperature'])+'_AB_temperature.csv',
+        mime='text/csv',key='v147_export_ab_curve',use_container_width=True)
+    if b.get('stage1_input_warnings'):
+        st.warning('B 학습범위 주의: '+'; '.join(b['stage1_input_warnings']))
+    if b.get('warnings'):
+        st.warning('B 예측 경로 주의: '+'; '.join(map(str,b['warnings'])))
+    outside=int((compared['table']['온도 범위 판정']==OUT_OF_RANGE).sum())
+    unknown=int((compared['table']['온도 범위 판정']==NOT_VERIFIED).sum())
+    if outside or unknown:
+        st.warning(f'B 온도 비교 중 관측범위 밖 {outside}점, 범위 미확인 {unknown}점입니다.')
+    st.info('A/B 곡선은 문헌 기반 예측모델의 응답 비교입니다. 조건 변경의 인과효과나 신규 시료에서의 정확도를 보증하지 않습니다.')
+
 
 def _render_ab_comparison_charts(case_a, case_b):
     """Present original A/B model outputs in three unit-specific bar charts.
@@ -207,6 +362,8 @@ def render_v112_unified():
     if not str(feedstock).strip():
         st.session_state.pop('v140_last_prediction',None)
         st.session_state.pop('v141_comparison',None)
+        st.session_state.pop('v147_pin_signature',None)
+        st.session_state.pop('v147_comparison',None)
     # Reactive widgets ensure stale results are hidden before a new prediction.
     with st.container():
         st.markdown('### 02 · 열분해 공정')
@@ -349,9 +506,13 @@ def render_v112_unified():
                 'allow_composition_ood':allow_comp_ood,
             }
             st.session_state.pop('v141_comparison',None)
+            st.session_state.pop('v147_pin_signature',None)
+            st.session_state.pop('v147_comparison',None)
         except Exception as exc:
             st.session_state.pop('v140_last_prediction',None)
             st.session_state.pop('v141_comparison',None)
+            st.session_state.pop('v147_pin_signature',None)
+            st.session_state.pop('v147_comparison',None)
             st.error(f'예측을 완료하지 못했습니다: {type(exc).__name__}: {exc}')
 
     payload=st.session_state.get('v140_last_prediction')
@@ -359,8 +520,11 @@ def render_v112_unified():
         st.caption('조건을 설정한 뒤 위의 예측 버튼을 누르면 결과와 온도별 비교 그래프가 표시됩니다.')
         return
     if payload.get('input_signature') != current_signature:
-        st.warning('입력조건이 변경되었습니다. 이전 결과를 현재 입력의 예측으로 오인하지 않도록 숨겼습니다. 예측 버튼을 다시 눌러 주세요.')
-        return
+        if st.session_state.get('v147_pin_signature')==payload['input_signature']:
+            st.info('A 조건이 고정되어 있습니다. 상단의 변경값은 새 A 예측을 실행하기 전까지 반영되지 않습니다.')
+        else:
+            st.warning('입력조건이 변경되었습니다. 이전 결과를 현재 입력의 예측으로 오인하지 않도록 숨겼습니다. 예측 버튼을 다시 눌러 주세요.')
+            return
     r=payload['result'];df=payload['table']
     st.caption('학습 문헌 기반 연구용 모델 · 출력값은 실측값이나 독립 검증 결과가 아닙니다.')
     st.markdown('### 예측 결과')
@@ -378,10 +542,39 @@ def render_v112_unified():
         st.warning('조성 입력을 반영하지 못하고 제조조건 기반 BET로 계산했습니다: '+'; '.join(map(str,r['warnings'])))
     elif r['composition_status']=='APPLIED':
         st.caption('조성은 Stage 1 BET를 통해 간접 반영되었습니다. 입력 변화에 따른 출력 차이는 인과관계가 아닙니다.')
-    tab_sweep,tab_ab,tab_exports=st.tabs(['제조온도·RF 순위','A/B 조건 비교','내보내기'])
+    tab_sweep,tab_exports=st.tabs(['제조온도·RF 순위 · A/B 비교','내보내기'])
     with tab_sweep:
-        st.markdown('### 제조온도 비교')
-        _render_temperature_curve(df)
+        heading,pin_col=st.columns([5,1.35])
+        with heading:
+            st.markdown('### 제조온도 비교')
+        pinned=st.session_state.get('v147_pin_signature')==payload['input_signature']
+        with pin_col:
+            if st.button('고정 해제' if pinned else '📌 A 고정',
+                         key='v147_toggle_pin',use_container_width=True):
+                if pinned:
+                    st.session_state.pop('v147_pin_signature',None)
+                    st.session_state.pop('v147_comparison',None)
+                    pinned=False
+                else:
+                    st.session_state['v147_pin_signature']=payload['input_signature']
+                    st.session_state.pop('v147_comparison',None)
+                    _set_b_defaults_from_a(payload)
+                    pinned=True
+        compared=None
+        if pinned:
+            chart_col,b_col=st.columns([2.45,1.05],gap='medium')
+            with b_col:
+                compared=_render_pinned_b_inputs(models,payload)
+            with chart_col:
+                _render_temperature_curve(df,
+                    compared['table'] if compared else None,pinned=True)
+                st.markdown('**A: 점선(고정) · B: 실선(비교)**')
+                if compared is None:
+                    st.info('오른쪽에서 B 조건을 입력하고 B 곡선 계산을 누르세요.')
+            if compared:
+                _render_pinned_ab_details(payload,compared)
+        else:
+            _render_temperature_curve(df)
         outside=int((df['온도 범위 판정']==OUT_OF_RANGE).sum())
         unknown=int((df['온도 범위 판정']==NOT_VERIFIED).sum())
         if outside or unknown:
@@ -412,6 +605,17 @@ def render_v112_unified():
                     b.metric('RF 1위 후보 (탐색)',', '.join(f'{v:g}℃' for v in winners))
                     if len(winners)>1:
                         st.info('RF 1위 동률은 그대로 표시합니다. 임의로 최적 조건을 고르지 않습니다.')
+                    if compared:
+                        b_ranking,b_notes=rank_sweep(
+                            rank_bundle,compared['feedstock'],compared['process'],
+                            payload['pollutant'],df['제조온도 (℃)'].tolist())
+                        if b_ranking is not None:
+                            b_winners=b_ranking.loc[
+                                b_ranking['RF 순위'].eq(1),'제조온도 (℃)']
+                            st.metric('B RF 1위 후보 (탐색)',
+                                      ', '.join(f'{v:g}℃' for v in b_winners))
+                        if b_notes:
+                            st.warning('B 순위 모델 적용 범위: '+'; '.join(b_notes))
                     rank_export=rank_table.copy()
                     rank_export['rank_model']=rank_bundle['version']
                     rank_export['rank_training_snapshot_sha256']=rank_bundle['sha256']
@@ -425,79 +629,6 @@ def render_v112_unified():
                                        use_container_width=True)
         except Exception as exc:
             st.warning(f'순위 모델을 실행하지 못했습니다: {type(exc).__name__}: {exc}. 기존 흡착량 예측은 유지됩니다.')
-    with tab_ab:
-        st.markdown('### A/B 시나리오 비교 · 원료와 제조 분위기')
-        with st.expander('두 조건의 BET·TPV·흡착량 나란히 비교',expanded=False):
-            st.caption('A는 위에서 계산한 결과입니다. B는 같은 흡착조건에서 원료·분위기·제조온도를 변경합니다. '
-                       '모델 응답 비교이며 실측 성능 검증이나 최적 제조조건을 의미하지 않습니다.')
-            ca,cb,cc=st.columns([1.2,1.0,1.0])
-            with ca:
-                b_feedstock=st.text_input('B 원료명',value='wheat straw',key='v141_b_feedstock')
-            with cb:
-                atmospheres=ATMOSPHERE_OPTIONS
-                b_atmosphere=st.selectbox('B 열분해 분위기',atmospheres,
-                    index=atmospheres.index(payload['process']['pyrolysis_atmosphere'])
-                    if payload['process']['pyrolysis_atmosphere'] in atmospheres else 0,
-                    key='v141_b_atmosphere')
-            with cc:
-                b_temperature=st.slider('B 제조온도 (℃)',min_value=200,max_value=1200,
-                    value=int(payload['temperature']),step=25,key='v141_b_temperature')
-            same_composition=st.checkbox('A의 조성 입력을 B에도 동일하게 적용 (통제 비교 전용)',
-                                        value=False,key='v141_b_same_composition')
-            if any(str(v).strip() for v in payload['composition'].values()):
-                st.warning('A에 원료 조성값이 입력되어 있습니다. B에서 조성 미사용을 선택하면 서로 다른 BET 경로를 비교할 수 있습니다. '
-                           '동일한 조성을 복사하면 서로 다른 원료의 실제 조성 차이를 반영하는 비교가 아닙니다.')
-            b_snapshot={'A':current_signature,'B_feedstock':b_feedstock,
-                        'B_atmosphere':b_atmosphere,'B_temperature':b_temperature,
-                        'same_composition':same_composition}
-            b_signature=input_signature(b_snapshot)
-            if st.button('B 조건 계산 후 A와 비교',key='v141_run_ab',use_container_width=True):
-                try:
-                    if not b_feedstock.strip():
-                        raise ValueError('B 원료명을 입력하세요.')
-                    b_process={**payload['process'],'pyrolysis_atmosphere':b_atmosphere,
-                               'pyrolysis_temperature_C':b_temperature}
-                    b_composition=payload['composition'] if same_composition else {}
-                    b_result=predict_one(models,ROOT,feedstock=b_feedstock,
-                        process=b_process,composition=b_composition,
-                        adsorption=payload['adsorption'],
-                        activated=b_process['activation_method']!='none',
-                        allow_composition_ood=payload['allow_composition_ood'])
-                    st.session_state['v141_comparison']={'signature':b_signature,
-                        'result':b_result,'composition_used':bool(same_composition)}
-                except Exception as exc:
-                    st.session_state.pop('v141_comparison',None)
-                    st.error(f'B 조건 예측 실패: {type(exc).__name__}: {exc}')
-            compared=st.session_state.get('v141_comparison')
-            if compared and compared.get('signature')==b_signature:
-                br=compared['result']
-                delta=comparison_delta(r,br)
-                ab_table=pd.DataFrame([
-                    {'지표':'BET (m²/g)','A':r['BET_m2_g'],'B':br['BET_m2_g'],
-                     'B − A':delta['BET_m2_g']},
-                    {'지표':'TPV (cm³/g)','A':r['TPV_cm3_g'],'B':br['TPV_cm3_g'],
-                     'B − A':delta['TPV_cm3_g']},
-                    {'지표':'Reported capacity (mg/g)','A':r['reported_capacity_mg_g'],
-                     'B':br['reported_capacity_mg_g'],
-                     'B − A':delta['reported_capacity_mg_g']},
-                ])
-                _render_ab_comparison_charts(r, br)
-                st.caption('각 그래프는 해당 지표의 원래 단위를 유지합니다. 막대 길이는 서로 다른 지표 사이에서 비교하지 마세요.')
-                st.download_button('A/B 비교 CSV',ab_table.to_csv(index=False).encode('utf-8-sig'),
-                                   file_name=safe_export_stem(payload['feedstock'],payload['pollutant'],payload['temperature'])+'_AB.csv',
-                                   mime='text/csv',key='v141_export_ab',use_container_width=True)
-                st.caption('A BET 경로: '+r['bet_path']+' · B BET 경로: '+br['bet_path']+
-                           ' · 각 수치는 예측값이며 인과관계나 정확도 보증이 아닙니다.')
-                st.caption('정밀 흡착량 차이 (B − A): '+
-                           f"{delta['reported_capacity_mg_g']:+.6f} mg/g")
-                if br.get('stage1_input_warnings'):
-                    st.warning('B 조건 학습 범위 주의: '+'; '.join(br['stage1_input_warnings']))
-                if br.get('warnings'):
-                    st.warning('B 조성 경로 주의: '+'; '.join(map(str,br['warnings'])))
-            elif compared:
-                st.info('B 입력값이 변경되었습니다. 현재 B 조건으로 다시 계산하면 비교표가 갱신됩니다.')
-        st.markdown('<div class="v144-tab-bottom-space" aria-hidden="true"></div>',
-                    unsafe_allow_html=True)
     with tab_exports:
         st.markdown('### 포스터용 결과 출력')
         st.caption('PNG 300 dpi / SVG 벡터 · BET, TPV, Reported Capacity 3패널. '
