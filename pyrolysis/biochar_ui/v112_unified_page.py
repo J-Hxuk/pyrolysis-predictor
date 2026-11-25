@@ -80,7 +80,10 @@ def _select_feedstock(name):
 
 def _feedstock_input(root):
     names,s1,core=_feedstock_catalog(str(root))
-    query=st.text_input('바이오매스 원료명',value='rice husk',key=FEED_KEY,
+    # Initialize keyed state once; do not also pass an explicit widget default.
+    if FEED_KEY not in st.session_state:
+        st.session_state[FEED_KEY]='rice husk'
+    query=st.text_input('바이오매스 원료명',key=FEED_KEY,
              help='등록된 원료명을 검색합니다. 다른 원료로 자동 치환하지 않으며 미등록 원료도 입력할 수 있습니다.')
     m=match_feedstock(query,names,limit=8)
     if m.status in ('exact','alias'):
@@ -284,7 +287,8 @@ def _render_pinned_ab_details(payload, compared):
                                     payload['temperature'])+'_AB_temperature.csv',
         mime='text/csv',key='v147_export_ab_curve',use_container_width=True)
     if b.get('stage1_input_warnings'):
-        st.warning('B 학습범위 주의: '+'; '.join(b['stage1_input_warnings']))
+        with st.expander('B 학습범위 상세 정보',expanded=False):
+            st.warning('B 학습범위 주의: '+'; '.join(b['stage1_input_warnings']))
     if b.get('warnings'):
         st.warning('B 예측 경로 주의: '+'; '.join(map(str,b['warnings'])))
     outside=int((compared['table']['온도 범위 판정']==OUT_OF_RANGE).sum())
@@ -411,7 +415,8 @@ def render_v112_unified():
                 st.caption('실제 Stage 1 원료 피처: '+stage1_preview['used_feedstock']+
                            ' (동의어/표기 정규화, 원료 조성값 자동대입 아님)')
             if stage1_preview['warnings']:
-                st.warning('Stage 1 입력 학습범위 주의: '+'; '.join(stage1_preview['warnings']))
+                with st.expander('Stage 1 학습범위 상세 정보',expanded=False):
+                    st.warning('Stage 1 입력 학습범위 주의: '+'; '.join(stage1_preview['warnings']))
 
         # Raw composition is collected only for feedstocks absent from the
         # Stage 1 training inventory; recognized names use the default HGB path.
@@ -533,7 +538,8 @@ def render_v112_unified():
     q.metric('TPV (예측)',f"{r['TPV_cm3_g']:,.4f} cm³/g")
     t.metric('Reported Capacity (예측)',f"{r['reported_capacity_mg_g']:,.2f} mg/g")
     if r.get('stage1_input_warnings'):
-        st.warning('예측 당시 입력 학습범위 주의: '+'; '.join(r['stage1_input_warnings']))
+        with st.expander('예측 당시 학습범위 상세 정보',expanded=False):
+            st.warning('예측 당시 입력 학습범위 주의: '+'; '.join(r['stage1_input_warnings']))
     if not r['known_pollutant']:
         st.warning('미학습 오염물질에 대한 외삽 예측입니다.')
     if not r['stage1_property_feature_used']:
