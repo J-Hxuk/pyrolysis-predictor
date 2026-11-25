@@ -372,9 +372,9 @@ def render_v112_unified():
     with st.container():
         st.markdown('### 02 · 열분해 공정')
         a,b,c=st.columns(3)
-        with a:temp=st.slider('제조온도 (℃)',min_value=200,max_value=1200,value=500,step=25,
+        with a:temp=st.slider('제조온도 (℃)',min_value=200,max_value=1200,value=300,step=25,
                               help='일부 구간은 학습 범위를 벗어날 수 있습니다.')
-        with b:hold=st.slider('유지시간 (min)',min_value=10,max_value=600,value=120,step=10)
+        with b:hold=st.slider('유지시간 (min)',min_value=10,max_value=600,value=60,step=10)
         with c:heat=st.slider('승온속도 (℃/min)',min_value=1,max_value=50,value=10,step=1)
         d,e=st.columns([1.0,1.0])
         with d:
