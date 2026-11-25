@@ -177,13 +177,14 @@ def render_poster_figure(df: pd.DataFrame, *, image_format: str = 'png', dpi: in
                 ax.margins(x=0.3)
         axes[-1].set_xlabel('Pyrolysis temperature (°C)', fontsize=11)
         legend = [
-            Line2D([0], [0], marker='o', color='none', markerfacecolor=c,
+            Line2D([0], [0], marker='o', color='none', markerfacecolor=palette[category],
                    markeredgecolor='white', markersize=7, label=label)
-            for label, c in [('Within observed ranges', palette[IN_RANGE]),
-                             ('Outside at least one range', palette[OUT_OF_RANGE]),
-                             ('Coverage not verified', palette[NOT_VERIFIED])]
+            for category, label in [(IN_RANGE, 'Within observed ranges'),
+                                    (OUT_OF_RANGE, 'Outside at least one range'),
+                                    (NOT_VERIFIED, 'Coverage not verified')]
+            if status.eq(category).any()
         ]
-        fig.legend(handles=legend, loc='upper center', ncol=3,
+        fig.legend(handles=legend, loc='upper center', ncol=max(1, len(legend)),
                    bbox_to_anchor=(0.51, 0.992), frameon=False, fontsize=9)
         fig.text(0.50, 0.012,
                  'Temperature min–max checks only; in-range does not imply validated accuracy.',
