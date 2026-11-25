@@ -148,10 +148,13 @@ def _render_temperature_curve(df: pd.DataFrame, df_b: pd.DataFrame | None = None
     a_line=a.mark_line(color='#64748b' if pinned else '#315a72',
                        strokeWidth=2.5, strokeDash=[6,4] if pinned else [1,0])
     if not pinned:
+        # Show only coverage categories present in this temperature sweep.
+        palette={IN_RANGE:'#157f72',OUT_OF_RANGE:'#bd4d3a',NOT_VERIFIED:'#777777'}
+        present=set(df['온도 범위 판정'].dropna())
+        domain=[label for label in palette if label in present]
         a_points=a.mark_circle(size=75).encode(
             color=alt.Color('온도 범위 판정:N',
-                scale=alt.Scale(domain=[IN_RANGE,OUT_OF_RANGE,NOT_VERIFIED],
-                                range=['#157f72','#bd4d3a','#777777']),
+                scale=alt.Scale(domain=domain,range=[palette[label] for label in domain]),
                 title='관측 온도범위'))
     else:
         a_points=a.mark_circle(size=45,color='#64748b',opacity=0.7)
