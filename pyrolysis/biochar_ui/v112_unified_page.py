@@ -297,7 +297,8 @@ def _render_pinned_ab_details(payload, compared):
     outside=int((compared['table']['온도 범위 판정']==OUT_OF_RANGE).sum())
     unknown=int((compared['table']['온도 범위 판정']==NOT_VERIFIED).sum())
     if outside or unknown:
-        st.warning(f'B 온도 비교 중 관측범위 밖 {outside}점, 범위 미확인 {unknown}점입니다.')
+        with st.expander(f'B 온도 학습범위 상세 · 범위 밖 {outside}점 / 미확인 {unknown}점',expanded=False):
+            st.caption('해당 점의 예측은 외삽 또는 근거 부족 가능성에 주의해야 합니다.')
     st.info('A/B 곡선은 문헌 기반 예측모델의 응답 비교입니다. 조건 변경의 인과효과나 신규 시료에서의 정확도를 보증하지 않습니다.')
 
 
@@ -587,8 +588,8 @@ def render_v112_unified():
         outside=int((df['온도 범위 판정']==OUT_OF_RANGE).sum())
         unknown=int((df['온도 범위 판정']==NOT_VERIFIED).sum())
         if outside or unknown:
-            st.warning(f'온도 비교 {len(df)}점 중 관측 온도범위 밖 {outside}점, 범위 미확인 {unknown}점입니다. '
-                       '해당 점의 예측은 외삽 또는 근거 부족 가능성에 주의해야 합니다.')
+            with st.expander(f'온도 학습범위 상세 · 범위 밖 {outside}/{len(df)}점 / 미확인 {unknown}점',expanded=False):
+                st.caption('해당 점의 예측은 외삽 또는 근거 부족 가능성에 주의해야 합니다.')
         top=df.loc[df['예측 흡착량 (mg/g)']==df['예측 흡착량 (mg/g)'].max()]
         st.download_button(
             '온도 비교 결과 CSV',
@@ -604,7 +605,9 @@ def render_v112_unified():
                 ranking,rank_notes=rank_sweep(rank_bundle,payload['feedstock'],payload['process'],
                                              payload['pollutant'],df['제조온도 (℃)'].tolist())
                 if rank_notes:
-                    st.warning('순위 모델 적용 범위: '+'; '.join(rank_notes))
+                    label='RF 추천 미지원 · 상세 정보' if ranking is None else 'RF 적용범위 상세 정보'
+                    with st.expander(label,expanded=False):
+                        st.caption('순위 모델 적용 범위: '+'; '.join(rank_notes))
                 if ranking is not None:
                     rank_table=df[['제조온도 (℃)','예측 흡착량 (mg/g)']].merge(ranking,on='제조온도 (℃)',how='left')
                     rank_table['RF 순위']=rank_table['RF 순위'].astype('Int64')
@@ -624,7 +627,9 @@ def render_v112_unified():
                             st.metric('B RF 1위 후보 (탐색)',
                                       ', '.join(f'{v:g}℃' for v in b_winners))
                         if b_notes:
-                            st.warning('B 순위 모델 적용 범위: '+'; '.join(b_notes))
+                            label='B RF 추천 미지원 · 상세 정보' if b_ranking is None else 'B RF 적용범위 상세 정보'
+                            with st.expander(label,expanded=False):
+                                st.caption('B 순위 모델 적용 범위: '+'; '.join(b_notes))
                     rank_export=rank_table.copy()
                     rank_export['rank_model']=rank_bundle['version']
                     rank_export['rank_training_snapshot_sha256']=rank_bundle['sha256']
