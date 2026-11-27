@@ -389,19 +389,22 @@ def render_v112_unified():
         activation_modes={'없음':'none','화학적 활성화':'chemical_impregnation',
                 '물리적 활성화':'physical_activation','수증기 활성화':'physical_steam'}
         activation_method=activation_modes[activation]
-        with st.expander('활성화 세부 조건 (Stage 1 · 선택)',expanded=True):
-            st.caption('활성화 방식이 없음이면 아래 조건은 무시됩니다. 미보고 수치는 공란으로 두며 0으로 대체하지 않습니다.')
-            ref=models['s1_reference']
-            agents=sorted(set().union(*(ref[k]['categorical'].get('activation_agent',()) for k in ('BET','TPV')))-{'UNKNOWN','none'})
-            x1,x2=st.columns(2)
-            with x1:
-                activation_agent=st.selectbox('활성화제 종류',['UNKNOWN']+agents,
-                    format_func=lambda v:'미보고 / NR' if v=='UNKNOWN' else v)
-                activation_time=st.text_input('활성화 시간 (min)',placeholder='미보고')
-            with x2:
-                activation_temp=st.text_input('활성화 온도 (℃)',placeholder='미보고')
-                activation_ratio=st.text_input('활성화제 / 원료 질량비 (g/g)',placeholder='미보고',
-                    help='원료 질량 기준의 비율만 입력. 적용 불가나 미보고는 공란.')
+        activation_agent='none'
+        activation_time=activation_temp=activation_ratio=''
+        if activation_method!='none':
+            with st.expander('활성화 세부 조건 (Stage 1 · 선택)',expanded=True):
+                st.caption('미보고 수치는 공란으로 두며 0으로 대체하지 않습니다.')
+                ref=models['s1_reference']
+                agents=sorted(set().union(*(ref[k]['categorical'].get('activation_agent',()) for k in ('BET','TPV')))-{'UNKNOWN','none'})
+                x1,x2=st.columns(2)
+                with x1:
+                    activation_agent=st.selectbox('활성화제 종류',['UNKNOWN']+agents,
+                        format_func=lambda v:'미보고 / NR' if v=='UNKNOWN' else v)
+                    activation_time=st.text_input('활성화 시간 (min)',placeholder='미보고')
+                with x2:
+                    activation_temp=st.text_input('활성화 온도 (℃)',placeholder='미보고')
+                    activation_ratio=st.text_input('활성화제 / 원료 질량비 (g/g)',placeholder='미보고',
+                        help='원료 질량 기준의 비율만 입력. 적용 불가나 미보고는 공란.')
         activation_details={'activation_agent':activation_agent if activation_method!='none' else 'none',
              'activation_temperature_C':activation_temp if activation_method!='none' else '',
              'activation_time_min':activation_time if activation_method!='none' else '',
